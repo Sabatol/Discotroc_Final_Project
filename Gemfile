@@ -60,3 +60,5 @@ gem 'devise'
 
 # Dotenv to protect API keys
 gem 'dotenv-rails'
+gem 'faker'
+gem 'table_print'
