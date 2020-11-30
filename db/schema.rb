@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_132714) do
+ActiveRecord::Schema.define(version: 2020_11_30_144346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2020_11_30_132714) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["disc_id"], name: "index_disc_genres_on_disc_id"
     t.index ["genre_id"], name: "index_disc_genres_on_genre_id"
+  end
+
+  create_table "disc_states", force: :cascade do |t|
+    t.string "name"
+    t.float "coefficient"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "disc_styles", force: :cascade do |t|
@@ -88,7 +95,29 @@ ActiveRecord::Schema.define(version: 2020_11_30_132714) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_libraries", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "disc_id"
+    t.text "description"
+    t.bigint "disc_state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disc_id"], name: "index_user_libraries_on_disc_id"
+    t.index ["disc_state_id"], name: "index_user_libraries_on_disc_state_id"
+    t.index ["user_id"], name: "index_user_libraries_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "additional_address"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.text "description"
+    t.string "avatar"
+    t.boolean "is_admin?", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

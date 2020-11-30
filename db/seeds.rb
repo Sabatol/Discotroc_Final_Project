@@ -38,6 +38,7 @@ end
 end
 
 
+
 12.times do
     DiscArtist.create(artist_id: Artist.ids.sample, disc_id: Disc.ids.sample)
 end
@@ -52,4 +53,23 @@ end
 
 10.times do
     DiscGenre.create(genre_id: Genre.ids.sample, disc_id: Disc.ids.sample)
+end
+
+
+10.times do 
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "Cacaboudin", password_confirmation: "Cacaboudin", address: Faker::Address.street_address, additional_address: Faker::Address.secondary_address, zipcode: Faker::Address.zip_code, city: Faker::Address.city, country: Faker::Address.country, description: "proutproutpouet")
+end
+
+
+states = ["neuf", "moyen", "pas ouf", "naze"]
+coeff = [1, 0.75, 0.5, 0.25]
+n = 0
+4.times do
+  DiscState.create(name: states[n], coefficient: coeff[n])
+  n+=1
+end
+
+15.times do 
+  i = rand(4..10)
+  UserLibrary.create(user_id: User.ids.sample, disc_id: Disc.ids.sample, disc_state_id: DiscState.ids.sample, description: Faker::Lorem.sentence(word_count: i) )
 end
