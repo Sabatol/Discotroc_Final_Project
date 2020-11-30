@@ -11,6 +11,9 @@ class Disc < ApplicationRecord
   has_many :disc_styles
   has_many :styles, through: :disc_styles
 
+  has_many :user_libraries
+  has_many :users, through: :user_libraries
+
 
   validates :title, presence: true, length: { in: 1..60 }
   
