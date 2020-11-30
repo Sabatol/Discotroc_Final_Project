@@ -10,7 +10,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-<<<<<<< HEAD
  
   validates :first_name, presence: true, length: { in: 1..35 }
 
@@ -22,6 +21,4 @@ class User < ApplicationRecord
   validates :country, presence: true, length: { in: 2..45 }
   validates :zipcode, presence: true
   validates :description, length: { in: 5..200 }
-=======
->>>>>>> main
 end
