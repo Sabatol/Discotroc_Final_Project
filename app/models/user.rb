@@ -6,8 +6,10 @@ class User < ApplicationRecord
   has_many :user_libraries
   has_many :discs, through: :user_libraries  
   
-  has_many :deals, foreign_key: 'sender_id'
-  has_many :deals, foreign_key: 'receiver_id' 
+  has_many :deals_sender, class_name: "Deal", foreign_key: 'sender_id'
+  has_many :deals_receiver, class_name: "Deal", foreign_key: 'receiver_id' 
+
+
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

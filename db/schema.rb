@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_173133) do
+ActiveRecord::Schema.define(version: 2020_12_01_082435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_11_30_173133) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "deal_contents", force: :cascade do |t|
+    t.bigint "deal_id"
+    t.bigint "sender_library_id"
+    t.bigint "receiver_library_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deal_id"], name: "index_deal_contents_on_deal_id"
+    t.index ["receiver_library_id"], name: "index_deal_contents_on_receiver_library_id"
+    t.index ["sender_library_id"], name: "index_deal_contents_on_sender_library_id"
   end
 
   create_table "deals", force: :cascade do |t|

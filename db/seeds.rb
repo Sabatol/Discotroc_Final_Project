@@ -77,4 +77,8 @@ end
 
 8.times do
     Deal.create(sender_id: User.ids.sample, receiver_id: User.ids.sample)
-  end
+end
+
+12.times do
+    DealContent.create(deal_id: Deal.ids.sample, sender_library_id: UserLibrary.ids.sample, receiver_library_id: UserLibrary.ids.sample)
+end
