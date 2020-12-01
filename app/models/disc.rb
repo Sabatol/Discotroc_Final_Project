@@ -1,17 +1,17 @@
 class Disc < ApplicationRecord
-  has_many :disc_artists
+  has_many :disc_artists, dependent: :destroy 
   has_many :artists, through: :disc_artists
 
-  has_many :disc_genres
+  has_many :disc_genres, dependent: :destroy 
   has_many :genres, through: :disc_genres
 
-  has_many :disc_tracks
+  has_many :disc_tracks, dependent: :destroy 
   has_many :tracks, through: :disc_tracks
 
-  has_many :disc_styles
+  has_many :disc_styles, dependent: :destroy 
   has_many :styles, through: :disc_styles
 
-  has_many :user_libraries
+  has_many :user_libraries, dependent: :destroy 
   has_many :users, through: :user_libraries
 
 
