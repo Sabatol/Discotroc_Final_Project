@@ -73,3 +73,7 @@ end
   i = rand(4..10)
   UserLibrary.create(user_id: User.ids.sample, disc_id: Disc.ids.sample, disc_state_id: DiscState.ids.sample, description: Faker::Lorem.sentence(word_count: i) )
 end
+
+8.times do
+  Deal.create(sender_id: User.ids.sample, receiver_id: User.ids.sample)
+end
