@@ -4,5 +4,7 @@ class Deal < ApplicationRecord
 
     has_many :deal_contents
 
+    has_many :deal_pms
+
 
 end
