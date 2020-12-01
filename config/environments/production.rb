@@ -111,6 +111,8 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # To config ActionMailer in production for Discotroc
-  # config.action_mailer.default_url_options = { :host => 'discotroc-dev.herokuapp.com/' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'discotroc-dev.herokuapp.com/' }
+
 
 end
