@@ -10,6 +10,30 @@ module Discotroc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.assets.enabled = true
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "lato")
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "glyphicons")
+    config.assets.paths << Rails.root.join("app", "assets", "images")
+    config.assets.paths << Rails.root.join("vendor", "app", "images")
+    config.assets.paths << Rails.root.join("vendor", "app", "styles", "modules")
+    config.assets.paths << Rails.root.join("vendor", "app", "images", "carousel")
+    config.assets.paths << Rails.root.join("vendor", "app", "images", "icons")
+    config.assets.paths << Rails.root.join("vendor", "app", "images", "login")
+    config.assets.paths << Rails.root.join("vendor", "app", "images", "tile")
+    config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "carousel")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "demo")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "getting-started")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "icons")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "login")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "tile")
+     config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "video")
+
+     
+    
+    
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
