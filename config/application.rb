@@ -6,13 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# config/application.rb, in order to make it work in Heroku
-config.assets.initialize_on_precompile = false
+
 
 module Discotroc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    
+    # config/application.rb, in order to make it work in Heroku
+    config.assets.initialize_on_precompile = false
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
