@@ -1,0 +1,14 @@
+    <%= form_for @edit_style do |f| %>
+        <form>
+
+            <%= label_tag 'Titre' %> <br />
+            <%= f.text_field :name, class: "form-control", placeholder: 'Nom du style', autocomplete: 'off' %>
+ 
+
+          <%= submit_tag "Modifier le style", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
+
+
+      </form>
+    <% end %>
+
+        <%= link_to 'Destroy', style_path(@edit_style.id), method: :delete, data: { confirm: 'Are you sure?' } %>

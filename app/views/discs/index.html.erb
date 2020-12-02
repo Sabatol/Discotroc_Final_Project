@@ -1,0 +1,4 @@
+<% @discs.each do |disc| %>
+<p> <%=disc.title%></p>
+<%= link_to "Voir", disc_path(disc.id)%>
+<%end%>
