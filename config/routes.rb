@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :tracks
   resources :artists
   resources :styles
+  resources :deals 
+  resources :deal_contents
+  resources :deal_pms
 end

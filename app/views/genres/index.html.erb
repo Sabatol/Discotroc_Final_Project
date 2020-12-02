@@ -1,4 +1,12 @@
+ <center>
+ <h3> Créer un Genre </h3>
+ <%= link_to "Créer", new_genre_path%>
+ <br>
+  <h2> Index</h2>
+
+
 <% @genres.each do |genre| %>
 <p> <%=genre.name%></p>
-
+<%= link_to "Voir", genre_path(genre.id)%>
 <%end%>
+</center>

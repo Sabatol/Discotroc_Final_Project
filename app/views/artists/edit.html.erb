@@ -1,12 +1,12 @@
+        <center>
     <%= form_for @edit_artist do |f| %>
         <form>
 
             <%= label_tag 'Titre' %> <br />
             <%= f.text_field :name, class: "form-control", placeholder: "Nom de l'artist", autocomplete: 'off' %>
- 
-
           <%= submit_tag "Modifier l'artist", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
           <%= button_to "Supprimer", @destroy_artist, method: :delete, data: {confirm: "T'es sur ?"}%>
 
       </form>
     <% end %>
+        </center>

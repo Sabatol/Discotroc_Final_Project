@@ -1,4 +1,12 @@
+ 
+<center>
+ <h3> Créer un Style </h3>
+ <%= link_to "Créer", new_style_path%>
+ <br>
+  <h2> Index</h2>
+
 <% @styles.each do |style| %>
 <p> <%=style.name%></p>
-
+<%= link_to "Voir", style_path(style.id)%>
 <%end%>
+</center>

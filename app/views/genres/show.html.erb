@@ -1,0 +1,9 @@
+<center>
+<p> Deal Content N° <%= @genre.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<p> Nom <%=@genre.name%></p>
+
+<%= link_to "Modifier", edit_genre_path(@genre.id)%>
+<br>
+<%= link_to "Retour a l'index des Genres", genres_path%>
+</center>

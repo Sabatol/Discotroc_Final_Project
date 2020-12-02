@@ -1,1 +1,7 @@
-<%=@artist.name%>
+<center>
+<p> Nom : <%=@artist.name%> </p>
+<br>
+<%= link_to "Modifier", edit_artist_path(@artist.id)%>
+<br>
+<%= link_to "Retour a l'index Artist", artists_path%>
+</center>

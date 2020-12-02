@@ -1,3 +1,12 @@
+ <center>
+ <h3> Créer un Artist </h3>
+ <%= link_to "Créer", new_artist_path%>
+ <br>
+  <h2> Index</h2>
+
+
 <% @artists.each do |artist| %>
 <p> <%=artist.name%></p>
+<%= link_to "Voir", artist_path(artist.id)%>
 <%end%>
+</center>

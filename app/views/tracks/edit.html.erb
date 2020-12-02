@@ -1,3 +1,4 @@
+        <center>
     <%= form_for @edit_track do |f| %>
         <form>
 
@@ -12,3 +13,4 @@
     <% end %>
 
         <%= link_to 'Destroy', track_path(@edit_track.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </center>
