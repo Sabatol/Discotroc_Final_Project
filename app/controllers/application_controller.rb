@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
 
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:password, :email, :first_name, :last_name, :address, :zipcode, :city, :country, :description)
@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
       )
     end
   end
+
+
+# lines in order to get access to Discogs API and do research directly on Discogs via our app. First it refers to the gem 'discogs-wrapper' then it sets the global variable '$wrapper' used throughout the app to get data from Discogs thanks to our user_token
+require "discogs"
+$wrapper = Discogs::Wrapper.new("Test OAuth", user_token: "UVWCcIcNhiFOYksyxJyWygbBQfqpIRfBILAtYGQV")
+
 end
-
-
