@@ -1,54 +1,67 @@
-<p>
-  <% artist = $wrapper.get_artist("329937")%>
-    <%= artist.name%>
+<form>
+  <div class="form-group">
+    <label for="exampleInputArtist">Rechercher un artiste</label>
+    <input type="artist" class="form-control" id="searchArtist">
+    <small id="emailHelp" class="form-text text-muted">Powered by Discogs©</small>
+    <button class="btn btn-info" type="submit">
+      Rechercher
+    </button>
+  </div>
+</form>
+<% search = $wrapper.search("beatle", :per_page => 10, :type => :artist)%>
+  <% artist_id = search.results.first.id %>
     <br>
-    <%= artist.profile%>
-    <br>
-  </p>
+    <%artist = $wrapper.get_artist(artist_id)%>
+      <%= artist.name%>
+      <br>
+      <%= artist.profile%>
+      <%artist_releases = $wrapper.get_artist_releases(artist_id)%>
+        <br>
+        <%= artist_releases.releases.first.title%>
 
-  <ul>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        Voici ton email :
-        <%= current_user.email %>
-      </li>
-      <li>
-        <%= link_to "Secret page", root_path %>
-      </li>
-      <li>
-        <%= link_to "Edit email / password", edit_user_registration_path %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Sign in", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-    <% end %>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center>
-      <%= link_to "Voir les disques", discs_path%>
-      <br>
-      <%= link_to "Voir les tracks", tracks_path%>
-      <br>
-      <%= link_to "Voir les styles", styles_path%>
-      <br>
-      <%= link_to "Voir les genres", genres_path%>
-      <br>
-      <%= link_to "Voir les artistes", artists_path%>
-      <br>
-      <%= link_to "Voir les deals", deals_path%>
-      <br>
-      <%= link_to "Voir les deals PM", deal_pms_path%>
-      <br>
-      <%= link_to "Voir les deals contents", deal_contents_path%>
-      <br>
-    </center>
-  </ul>
+        <ul>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+            <li>
+              Voici ton email :
+              <%= current_user.email %>
+            </li>
+            <li>
+              <%= link_to "Secret page", root_path %>
+            </li>
+            <li>
+              <%= link_to "Edit email / password", edit_user_registration_path %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Sign in", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+          <% end %>
+          <br>
+          <br>
+          <br>
+          <br>
+          <center>
+            <%= link_to "Voir les disques", discs_path%>
+            <br>
+            <%= link_to "Voir les tracks", tracks_path%>
+            <br>
+            <%= link_to "Voir les styles", styles_path%>
+            <br>
+            <%= link_to "Voir les genres", genres_path%>
+            <br>
+            <%= link_to "Voir les artistes", artists_path%>
+            <br>
+            <%= link_to "Voir les deals", deals_path%>
+            <br>
+            <%= link_to "Voir les deals PM", deal_pms_path%>
+            <br>
+            <%= link_to "Voir les deals contents", deal_contents_path%>
+            <br>
+          </center>
+        </ul>
