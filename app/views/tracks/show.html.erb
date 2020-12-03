@@ -1,7 +1,9 @@
 <center>
 <p> Nom : <%=@track.name%> </p>
 <br>
+<% if current_user.is_admin? == true %>
 <%= link_to "Modifier", edit_track_path(@track.id)%>
+<%end%>
 <br>
 <%= link_to "Retour a l'index Track", tracks_path%>
 </center>

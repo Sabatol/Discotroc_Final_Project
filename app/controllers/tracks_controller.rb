@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-
+  before_action :authenticate_user!, only: [:index, :show]
   def index 
     @tracks = Track.all
   end
@@ -26,7 +26,7 @@ class TracksController < ApplicationController
   def edit
     @edit_track = Track.find(params[:id])
   end
-  
+
   def update
     @edit_track = Track.find(params[:id])
     post_params = params.require(:track).permit(:name)

@@ -42,5 +42,7 @@
         
 
     <% end %>
-<%= link_to 'Destroy', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if current_user.is_admin? == true %>
+<%= link_to 'Destroy', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Confirmer la suppression ?' } %>
+    <%end%>
     </center>

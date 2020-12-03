@@ -1,19 +1,98 @@
 <center>
 <p> Deal N° <%= @deal.id%>
+<hr style="width: 5%; border: 1px solid black;">
+
+<h6> Sender Disque(s) </h6>
 <hr style="width: 5%; border: 1px solid black;" >
-<p> Sender: <%=@deal.sender_id%></p>
-<p> Receiver: <%=@deal.receiver_id%></p>
-<p> Sender Ok ?: <%=@deal.sender_ok?%></p>
-<p> Receiver Ok ?: <%=@deal.receiver_ok?%></p>
+<% search_sender_disc(@deal).each do |content| %>
+<%= link_to disc_path(content.id) do %>
+<%= content.title%> 
+<% end %>
+| <%= content.value%> <br>
+<%end %>
+Valeur total : <%= search_sender_disc(@deal).sum(:value)%>
+<br> <br>
+<h6> Receiver Disque(s) </h6> 
+<hr style="width: 5%; border: 1px solid black;" >
+<% search_receiver_disc(@deal).each do |content| %>
+<%= link_to disc_path(content.id) do %>
+<%= content.title%> 
+<% end %>
+| <%= content.value%> <br>
+<%end %>
+Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
 
+<%if current_user.id == @deal.sender_id %>
+<h5> Sender </h5>
+<p> Vous êtes le créateur du deal ! </p>
+<% else %>
+<h5> Sender </h5>
+<p> Prénom/Nom :
+<%= link_to user_path(@deal.sender_id) do %>
+ <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
+<% end %>
+<%end%>
+
+<%if current_user.id == @deal.receiver_id %>
+<h5> Receiver </h5>
+<p> Vous participez à ce deal ! </p>
+<% else %>
+<h5> Receiver </h5>
+<p> Prénom/Nom :<%=link_to user_path(@deal.receiver_id) do%> <%=User.find_by(id: @deal.receiver_id).first_name%> <%=User.find_by(id: @deal.receiver_id).last_name%></p>
+<%end %>
+<%end %>
+
+<h5> Status </h5>
+
+<% if current_user.id == @deal.sender_id && @deal.sender_ok? == true %>
+<p> Vous êtes ok pour ce deal </p>
+<% elsif current_user.id == @deal.sender_id && @deal.sender_ok? == false %>
+<p> En attente de confirmation</p>
+<% else%>
+<p><%=User.find_by(id: @deal.sender_id).first_name%> n'a pas encore validé le troc.</p>
+<% end %>
+
+
+<% if current_user.id == @deal.receiver_id && @deal.receiver_ok? == true %>
+<p> Vous êtes ok pour ce deal </p>
+<% elsif current_user.id == @deal.receiver_id && @deal.receiver_ok? == false %>
+<p> Vous n'avez pas encore validé</p>
+<% else%>
+<p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
+<% end %>
+
+<% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
 <%= link_to "Modifier", edit_deal_path(@deal.id)%>
-
+<% end %>
 </center>
 
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
+<center>
+<%number = 1 %>
+<% search_pm.each do |pm| %>
+<p> Deal PM N° <%=number%>
+<hr style="width: 5%; border: 1px solid black;" >
+<h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
+<p><%=pm.content%></p>
+<% end %>
+
+ <center>
+<%= form_tag deal_pms_path(action: 'create'), method: "post" do %>
+
+
+                <%= label_tag 'Content' %> <br>
+        <%= text_field_tag 'content', "test" %> <br>
+<%= label_tag 'Deal' %> <br>
+        <%= text_field_tag 'deal_id', @deal.id %> <br>
+        <%= label_tag 'Deal' %> <br>
+        <%= text_field_tag 'pm_author_id', current_user.id %> <br>
+
+<%= submit_tag "Envoyer" %>
+
+    <% end %>
+    </center>
+
+</center>
