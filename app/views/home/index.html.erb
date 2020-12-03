@@ -1,55 +1,91 @@
-<p>
-  <% artist = @wrapper.get_artist("329937")%>
-  <%= artist.name%>
-  <br>
-  <%= artist.profile%>
-  <br>
-</p>
-<% search = @auth_wrapper.search("Beatles", :type => :artist) %>
-<%= search.results.first.title %>
-<ul>
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </li>
-    <li>
-      Voici ton email :
-      <%= current_user.email %>
-    </li>
-    <li>
-      <%= link_to "Secret page", root_path %>
-    </li>
-    <li>
-      <%= link_to "Edit email / password", edit_user_registration_path %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to "Sign in", new_user_session_path %>
-    </li>
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
-  <% end %>
-  <br>
-  <br>
-  <br>
-  <br>
-  <center>
-    <%= link_to "Voir les disques", discs_path%>
-    <br>
-    <%= link_to "Voir les tracks", tracks_path%>
-    <br>
-    <%= link_to "Voir les styles", styles_path%>
-    <br>
-    <%= link_to "Voir les genres", genres_path%>
-    <br>
-    <%= link_to "Voir les artistes", artists_path%>
-    <br>
-    <%= link_to "Voir les deals", deals_path%>
-    <br>
-    <%= link_to "Voir les deals PM", deal_pms_path%>
-    <br>
-    <%= link_to "Voir les deals contents", deal_contents_path%>
-    <br>
-  </center>
-</ul>
+<%= form_tag(root_path,method: :get) do %>
+<%= text_field_tag(:search,params[:search])%>
+<%= submit_tag "search"%>
+<div class="container">
+  <div class="row my-3">
+    <%  @search = @auth_wrapper.search(params[:search], type: :release)%>
+      <%  @release = @wrapper.get_release(@search.id)%>
+        <%if @search.results != nil%>
+          <% @search.results.each do |search|%>
+            <div class="card col-4 " style="width: 18rem;">
+              <%= image_tag search.cover_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%=search.title%></h5>
+                <p class="card-text">Pays :<%=search.country%></p>
+                <p class="card-text">Sortie en :
+                  <%=search.year%></p>
+                <%= @release.title%>
+              <%end%>
+            <% end%>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end%>
+  <p>
+    <% artist = @wrapper.get_artist("329937")%>
+      <%= artist.name%>
+      <br>
+      <%= artist.profile%>
+      <br>
+      <% release1 = @wrapper.get_release("1529724")%>
+        <br>
+        <%= release1.title%>
+        <br>
+        <%tracklist = release1.tracklist.pluck(:title)%><br>
+          <%= "Liste des titres de l'album #{release1.title} :"%><br>
+          <%tracklist.each do |n| %>
+            <%= n%><br>
+          <%end%><br>
+
+          <br>
+
+        </p>
+        <% search = @auth_wrapper.search("Beatles", :type => :artist) %>
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              </li>
+              <li>
+                Voici ton email :
+                <%= current_user.email %>
+              </li>
+              <li>
+                <%= link_to "Secret page", root_path %>
+              </li>
+              <li>
+                <%= link_to "Edit email / password", edit_user_registration_path %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Sign in", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+            <% end %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <center>
+              <%= link_to "Voir les disques", discs_path%>
+              <br>
+              <%= link_to "Voir les tracks", tracks_path%>
+              <br>
+              <%= link_to "Voir les styles", styles_path%>
+              <br>
+              <%= link_to "Voir les genres", genres_path%>
+              <br>
+              <%= link_to "Voir les artistes", artists_path%>
+              <br>
+              <%= link_to "Voir les deals", deals_path%>
+              <br>
+              <%= link_to "Voir les deals PM", deal_pms_path%>
+              <br>
+              <%= link_to "Voir les deals contents", deal_contents_path%>
+              <br>
+            </center>
+          </ul>
