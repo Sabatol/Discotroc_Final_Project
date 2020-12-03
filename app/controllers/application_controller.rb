@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   protected
 
 
@@ -21,10 +22,5 @@ class ApplicationController < ActionController::Base
       )
     end
   end
-
-
-# lines in order to get access to Discogs API and do research directly on Discogs via our app. First it refers to the gem 'discogs-wrapper' then it sets the global variable '$wrapper' used throughout the app to get data from Discogs thanks to our user_token
-require "discogs"
-$wrapper = Discogs::Wrapper.new("Test OAuth", user_token: "UVWCcIcNhiFOYksyxJyWygbBQfqpIRfBILAtYGQV")
 
 end
