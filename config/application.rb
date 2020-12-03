@@ -11,7 +11,6 @@ module Discotroc
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.assets.enabled = true
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "lato")
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "glyphicons")
