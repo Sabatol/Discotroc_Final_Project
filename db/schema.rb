@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_123239) do
   end
 
   create_table "deals", force: :cascade do |t|
-    t.boolean "sender_ok?", default: false
-    t.boolean "receiver_ok?", default: false
+    t.boolean "sender_ok", default: false
+    t.boolean "receiver_ok", default: false
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.datetime "created_at", precision: 6, null: false

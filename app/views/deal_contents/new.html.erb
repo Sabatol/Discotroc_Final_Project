@@ -1,0 +1,22 @@
+ <center>
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+        <%= label_tag 'Deal ID' %> <br>
+        <%= text_field_tag 'deal_id'%> <br>
+
+        <%= label_tag 'Sender Library ID' %> <br>
+        <%= text_field_tag 'sender_library_id' %> <br>
+
+                <%= label_tag 'Receiver Library ID' %> <br>
+        <%= text_field_tag 'receiver_library_id' %> <br>
+
+<%= submit_tag "Envoyer" %>
+
+    <% end %>
+    </center>
+
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br> 

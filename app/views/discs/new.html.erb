@@ -1,0 +1,36 @@
+     <center>
+ <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+
+
+        <%= label_tag 'Titre' %> <br>
+        <%= text_field_tag 'title'%> <br>
+
+        <%= label_tag 'Année de création' %> <br>
+        <%= text_field_tag 'release' %> <br>
+
+        <%= label_tag 'Code' %> <br>
+        <%= text_field_tag 'code' %> <br>
+
+        <%= label_tag 'Valeur' %> <br> 
+        <%= text_field_tag 'value' %> <br>
+
+        <%= label_tag 'Label' %> <br> 
+        <%= text_field_tag 'label' %> <br>
+
+        <%= label_tag 'Format' %> <br>
+        <%= text_field_tag 'format' %> <br>
+
+                <%= label_tag 'Country' %> <br>
+        <%= text_field_tag 'country' %> <br>
+
+                <%= label_tag 'Cover Picture' %> <br>
+        <%= text_field_tag 'cover_picture' %> <br>
+
+
+
+
+<%= submit_tag "Envoyer" %>
+
+    <% end %> 
+        </center>

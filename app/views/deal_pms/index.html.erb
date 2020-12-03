@@ -1,0 +1,16 @@
+
+
+ <center>
+ <h3> Créer un DEAL PM </h3>
+ <%= link_to "Créer", new_deal_pm_path%>
+ <br>
+  <h2> Index</h2>
+<% @deal_pms.each do |deal_pm| %>
+<p> Deal_PM N° <%= deal_pm.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<h5>Auteur : <%=User.find(deal_pm.pm_author_id).first_name%> <%=User.find(deal_pm.pm_author_id).last_name%></h5>
+<p><%=deal_pm.content%></p>
+<%= link_to "Voir", deal_pm_path(deal_pm.id)%>
+<br> <br>
+<%end%>
+</center> 

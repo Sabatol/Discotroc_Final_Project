@@ -1,0 +1,12 @@
+ <center>
+ <h3> Créer un Track </h3>
+ <%= link_to "Créer", new_track_path%>
+ <br>
+  <h2> Index</h2>
+
+
+<% @tracks.each do |track| %>
+<p> <%=track.name%></p>
+<%= link_to "Voir", track_path(track.id)%>
+<%end%>
+</center>

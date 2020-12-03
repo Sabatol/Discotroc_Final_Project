@@ -1,0 +1,16 @@
+<center>
+<p> Deal PM N° <%= @deal_pm.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<h5>Auteur : <%=User.find(@deal_pm.pm_author_id).first_name%> <%=User.find(@deal_pm.pm_author_id).last_name%></h5>
+<p><%=@deal_pm.content%></p>
+
+<%= link_to "Modifier", edit_deal_pm_path(@deal_pm.id)%>
+
+</center>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

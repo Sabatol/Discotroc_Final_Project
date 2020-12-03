@@ -1,0 +1,19 @@
+<center>
+<p> Deal N° <%= @deal.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<p> Sender: <%=@deal.sender_id%></p>
+<p> Receiver: <%=@deal.receiver_id%></p>
+<p> Sender Ok ?: <%=@deal.sender_ok?%></p>
+<p> Receiver Ok ?: <%=@deal.receiver_ok?%></p>
+
+
+<%= link_to "Modifier", edit_deal_path(@deal.id)%>
+
+</center>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

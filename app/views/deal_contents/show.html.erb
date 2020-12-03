@@ -1,0 +1,13 @@
+<center>
+<p> Deal Content N° <%= @deal_content.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<p> Deal ID: <%=@deal_content.deal_id%></p>
+<p> Sender Library ID: <%=@deal_content.sender_library_id%></p>
+<p> Titre de l'album du Sender => <%= Disc.find(UserLibrary.find(@deal_content.sender_library_id).disc_id).title%> </p>
+<p> Receiver Library ID: <%=@deal_content.receiver_library_id%></p>
+<p> Titre de l'album du Receiver => <%= Disc.find(UserLibrary.find(@deal_content.receiver_library_id).disc_id).title%> </p>
+
+<%= link_to "Modifier", edit_deal_content_path(@deal_content.id)%>
+<br>
+<%= link_to "Retour a l'index Deal Content", deal_contents_path%>
+</center>
