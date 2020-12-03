@@ -1,60 +1,27 @@
-<h2>Inscription</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="login-screen">
+  <h2 class="text-dark">S'inscrire</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="login-form">
+      <%= f.label :email, class: "text-dark" %><br />
+      <%= f.email_field :email, class: "form-control login-field", autofocus: true, autocomplete: "email", placeholder: "Entrez votre email" %>
+    </div>
+    <div class="login-form">
+      <%= f.label :password, class: "text-dark"  %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, class: "form-control login-field", autocomplete: "new-password", placeholder: "Définissez votre mot de passe" %>
+    </div>
+    <div class="login-form">
+      <%= f.label :password_confirmation, class: "text-dark"  %><br />
+      <%= f.password_field :password_confirmation, class: "form-control login-field", autocomplete: "new-password", placeholder: "Confirmez votre mot de passe" %>
+    </div>
+    <div class="login-form">
+      <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg btn-block text-dark"  %>
+    </div>
+  <% end %>
+  <div class="login-link">
+    <%= render "devise/shared/links" %>
   </div>
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-    <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "Prenom", required: true %>
-  </div>
-
-    <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", required: true %>
-  </div>
-
-
-      <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "Adress", required: true %>
-  </div>
-
-      <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, autofocus: true, autocomplete: "City", required: true %>
-  </div>
-
-        <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country, autofocus: true, autocomplete: "Country", required: true %>
-  </div>
-
-        <div class="field">
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode, autofocus: true, autocomplete: "ZipCode", required: true %>
-  </div>
-
-          <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, autofocus: true, autocomplete: "Description", required: true %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "S'inscrire" %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
+</div>
