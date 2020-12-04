@@ -1,0 +1,28 @@
+<center>
+<p> Utilisateurs n° <%= @user.id%>
+<hr style="width: 5%; border: 1px solid black;" >
+<p> Prénom: <%=@user.first_name%></p>
+<p> Nom: <%=@user.last_name%></p>
+<p> Description: <%=@user.description%></p>
+<p> Adresse: <%=@user.address%></p>
+<%if @user.additional_address != nil %>
+<p> Complément d'adresse: <%=@user.additional_address%></p>
+<%end%>
+<p> Code Postal: <%=@user.zipcode%></p>
+<p> Ville: <%=@user.city%></p>
+<p> Pays: <%=@user.country%></p>
+
+<%= link_to "Modifier", edit_user_path(@user.id)%>
+
+
+<% UserLibrary.where(user_id: @user.id).each do |disc_id|%>
+<h5><%= Disc.find_by(id: disc_id).title %></h5>
+<%end%>
+
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

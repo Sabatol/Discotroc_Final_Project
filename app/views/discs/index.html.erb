@@ -1,0 +1,12 @@
+ <center>
+ <h3> Créer un Disque </h3>
+ <%= link_to "Créer", new_disc_path%>
+ <br>
+  <h2> Index</h2>
+
+
+<% @discs.each do |disc| %>
+<p> <%=disc.title%></p>
+<%= link_to "Voir", disc_path(disc.id)%>
+<%end%>
+</center>

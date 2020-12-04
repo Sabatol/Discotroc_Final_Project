@@ -1,0 +1,48 @@
+     <center>
+<%= form_for @edit_disc do |f| %>
+        
+          
+            <%= label_tag 'Titre' %> <br />
+            <%= f.text_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off' %>
+          
+          
+            <%= label_tag 'Release' %> <br />
+            <%= f.text_field :release, placeholder: 'Année de sortie', autocomplete: 'off'%>
+          
+          
+            <%= label_tag 'Code' %> <br />
+            <%= f.text_field :code, placeholder: 'Code', autocomplete: 'off'%>
+          
+          
+            <%= label_tag 'Value' %> <br />
+            <%= f.text_field :value, placeholder: 'Valeur', autocomplete: 'off'%>
+          
+          
+            <%= label_tag 'Label' %> <br />
+            <%= f.text_field :label, placeholder: 'Label', autocomplete: 'off'%>
+          
+          
+            <%= label_tag 'Format' %> <br />
+            <%= f.text_field :format, placeholder: 'Format', autocomplete: 'off'%>
+
+           <%= label_tag 'Country' %> <br />
+            <%= f.text_field :country, placeholder: 'Country', autocomplete: 'off'%>
+
+             <%= label_tag 'Cover Picture' %> <br />
+            <%= f.text_field :cover_picture, placeholder: 'Cover', autocomplete: 'off'%>
+
+        
+        <br />
+
+          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br> <%= link_to "Revenir à l'accueil", root_path%>
+          
+          
+          
+          
+        
+
+    <% end %>
+    <% if current_user.is_admin? == true %>
+<%= link_to 'Destroy', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Confirmer la suppression ?' } %>
+    <%end%>
+    </center>
