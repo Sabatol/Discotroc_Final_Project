@@ -18,5 +18,10 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
+# Call after creation to send an email
+after_create :send_welcome_email
+def send_welcome_email
+  UserMailer.send_message_new_user(self).deliver #optionnal => 'deliver_now'
+end
 
 end

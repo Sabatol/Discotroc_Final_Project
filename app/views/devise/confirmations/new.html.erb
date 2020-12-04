@@ -3,11 +3,11 @@
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="login-form">
-      <%= f.label :email, class: "text-dark" %><br />
+      <%= f.label :email, "Email", class: "text-dark" %><br />
       <%= f.email_field :email, class: "form-control login-field", autofocus: true, autocomplete: "email", placeholder: "Entrez votre email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
     </div>
     <div class="login-form">
-      <%= f.submit "Resend confirmation instructions", class: "btn btn-primary btn-lg btn-block text-dark" %>
+      <%= f.submit "Renvoyer les instruction de confirmation", class: "btn btn-primary btn-lg btn-block text-dark" %>
     </div>
   <% end %>
   <div class="login-link">
