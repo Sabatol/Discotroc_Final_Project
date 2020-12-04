@@ -1,9 +1,9 @@
 <center>
-<p> Nom : <%=@artist.name%> </p>
-<br>
-<% if current_user.is_admin? == true %>
-<%= link_to "Modifier", edit_artist_path(@artist.id)%>
-<%end%>
-<br>
-<%= link_to "Retour a l'index Artist", artists_path%>
+  <p> Nom : <%=@artist.name%> </p>
+  <br>
+  <% if current_user.is_admin? == true %>
+    <%= link_to "Modifier", edit_artist_path(@artist.id)%>
+  <%end%>
+  <br>
+  <%= link_to "Retour aux artistes", artists_path%>
 </center>

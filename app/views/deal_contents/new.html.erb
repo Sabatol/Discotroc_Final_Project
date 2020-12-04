@@ -1,7 +1,9 @@
+ 
+ 
  <center>
 <%= form_tag url_for(action: 'create'), method: "post" do %>
         <%= label_tag 'Deal ID' %> <br>
-        <%= text_field_tag 'deal_id'%> <br>
+        <%= text_field_tag 'deal_id', params[:deal_id]%> <br>
 
         <%= label_tag 'Sender Library ID' %> <br>
         <%= text_field_tag 'sender_library_id' %> <br>

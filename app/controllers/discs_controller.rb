@@ -1,6 +1,6 @@
 class DiscsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
-
+require 'discogs'
 
     def index
       @discs = Disc.all
@@ -12,13 +12,14 @@ class DiscsController < ApplicationController
   
   def new
       @new_disc = Disc.new 
+      @new_user_library = UserLibrary.new
   end 
   
   def create
       @new_disc = Disc.new(title: params[:title], release: params[:release], code: params[:code], value: params[:value], label: params[:label], format: params[:format], country: params[:country], cover_picture: params[:cover_picture])
       if @new_disc.save
         flash[:notice_good] = "Le disque a bien été créer"
-        redirect_to disc_index_path
+        redirect_to new_user_library_path
       else
         flash[:notice_bad] = "Le disque n'a pas été créer"
         render 'new'

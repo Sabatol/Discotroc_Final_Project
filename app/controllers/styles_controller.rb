@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!
+  before_action :is_admin?
   def index 
     @styles = Style.all
   end

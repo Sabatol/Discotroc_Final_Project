@@ -6,17 +6,19 @@ class UserLibrariesController < ApplicationController
 
   def show
     @user_library = UserLibrary.find(params[:id])
+    
   end
 
   def new
     @new_user_library = UserLibrary.new
+    
   end
 
   def create 
-    @new_user_library  = UserLibrary.new(user_id: session[:id], disc_id: params[:disc_id], descripion: params[:description])
+    @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description], disc_state_id: params[:disc_state_id])
     if @new_user_library.save
-      redirect_to tracks_path
       flash[:notice_good] = "Nouveeau disque ajouté a votre librarie"
+      redirect_to user_library_path(@new_user_library)
     else
       flash[:notice_bad] = "Le disque n'as pas ete ajouté"
       render 'new'
@@ -39,5 +41,6 @@ class UserLibrariesController < ApplicationController
     @destroy_user_library.destroy
     redirect_to user_libraries_path
   end
+
 
 end

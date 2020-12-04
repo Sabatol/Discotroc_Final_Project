@@ -13,10 +13,11 @@ def new
 end 
 
 def create
+  
     @new_deal = Deal.new(sender_id: params[:sender_id], receiver_id: params[:receiver_id])
     if @new_deal.save
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deal_path(@new_deal)
+      redirect_to deal_path(@new_deal.id)
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'

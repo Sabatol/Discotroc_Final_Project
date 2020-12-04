@@ -22,7 +22,6 @@ Valeur total : <%= search_sender_disc(@deal).sum(:value)%>
 <%end %>
 Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
-
 <%if current_user.id == @deal.sender_id %>
 <h5> Sender </h5>
 <p> Vous êtes le créateur du deal ! </p>
@@ -33,10 +32,11 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
  <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
 <% end %>
 <%end%>
-
+<%=link_to "propser un disque", new_deal_content_path(deal_id: @deal.id)  %>
 <%if current_user.id == @deal.receiver_id %>
 <h5> Receiver </h5>
 <p> Vous participez à ce deal ! </p>
+
 <% else %>
 <h5> Receiver </h5>
 <p> Prénom/Nom :<%=link_to user_path(@deal.receiver_id) do%> <%=User.find_by(id: @deal.receiver_id).first_name%> <%=User.find_by(id: @deal.receiver_id).last_name%></p>
@@ -69,7 +69,7 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
 <br>
 <br>
-
+<% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
 <center>
 <%number = 1 %>
 <% search_pm.each do |pm| %>
@@ -84,7 +84,7 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
 
                 <%= label_tag 'Content' %> <br>
-        <%= text_field_tag 'content', "test" %> <br>
+        <%= text_field_tag 'content', "Votre commentaire" %> <br>
 <br>
         <%= hidden_field_tag 'deal_id', @deal.id %> <br>
  <br>
@@ -93,6 +93,14 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 <%= submit_tag "Envoyer" %>
 
     <% end %>
+    <% else %>
+    <center>
+    <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
+<% end %>
     </center>
+
+    <br>
+
+
 
 </center>
