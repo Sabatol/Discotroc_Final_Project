@@ -1,0 +1,7 @@
+<center>
+<p> <%= @user_library.user.first_name%><p>
+<p> <%= @user_library.disc.title%>
+<p><%= @user_library.description%></p>
+<br>
+<%= link_to "Modifier", edit_user_library_path(@user_library.id)%>
+</center>

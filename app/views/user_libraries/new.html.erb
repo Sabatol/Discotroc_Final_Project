@@ -1,0 +1,16 @@
+     <center>
+ <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+        <%= label_tag 'disque' %>
+        <%= text_field_tag 'disc_id' %>
+
+        <%= label_tag 'Description' %>
+        <%= text_field_tag 'descritpion' %>
+        
+
+<%= hidden_field_tag 'user_id', current_user.id %> <br>
+
+<%= submit_tag "Envoyer", class:"btn btn-info" %>
+
+    <% end %> 
+        </center>

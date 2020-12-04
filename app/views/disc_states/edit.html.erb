@@ -1,0 +1,18 @@
+   <center>
+    <%= form_for @edit_disc_state do |f| %>
+        <form>
+
+            <%= label_tag 'Etat' %> <br />
+            <%= f.text_field :name, class: "form-control", placeholder: 'Nom', autocomplete: 'off' %>
+
+            <%= label_tag 'Titre' %> <br />
+            <%= f.text_field :coefficient, class: "form-control", placeholder: 'Coefficient', autocomplete: 'off' %>
+ 
+
+          <%= submit_tag "Modifier le style", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
+        
+      </form>
+    <% end %>
+
+    <%= button_to 'Destroy', disc_state_path(@edit_disc_state.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </center>
