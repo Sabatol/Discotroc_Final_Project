@@ -10,13 +10,13 @@
   <div class="row demo-tiles">
     <% @discs.each do |disc| %>
       <div class="col-3">
-        <div class="tile">
+        <div class="tile bg-secondary">
           <%= image_tag "dj.svg"%>
           <br>
           <br>
+          <h3 class="tile-title text-primary"><%=disc.title%></h3>
           <br>
-          <h3 class="tile-title"><%=disc.title%></h3>
-          <%= link_to "Voir", disc_path(disc.id), class: "btn btn-primary btn-large btn-block"%>
+          <%= link_to "Voir", disc_path(disc.id), class: "btn btn-primary btn-large btn-block text-dark"%>
         </div>
       </div>
     <%end %>
