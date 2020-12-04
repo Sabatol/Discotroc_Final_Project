@@ -1,5 +1,6 @@
 class DealPmsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_admin?
   def index
     @deal_pms = DealPm.all
 end 

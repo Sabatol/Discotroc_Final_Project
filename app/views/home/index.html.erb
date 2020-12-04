@@ -4,11 +4,9 @@
     <p class="lead">Vous ne savez pas quoi faire de vos vinyles qui trainent ?</p>
     <p>Venez les échanger avec la communauté d'échange Discotroc !</p>
     <br>
-    <%=link_to new_user_registration_path do %>
-      <p class="btn btn-primary btn-lg">Créer un compte</p>
-    <%end%> <%=link_to new_user_session_path do %>
-      <p class="btn btn-primary btn-lg">Se connecter</p>
-    <%end%>
+    <% if current_user.nil? == true%>
+    <%=link_to new_user_registration_path do %> <p class="btn btn-primary btn-lg">Créer un compte</p><%end%> <%=link_to new_user_session_path do %> <p class="btn btn-primary btn-lg">Se connecter</p><%end%>
+<%end%>
   </div>
   <!-- /.container -->
 </div>
@@ -26,21 +24,23 @@
       <h6> Voici les dernier deals </h6>
     <% end %>
   </div>
-  <div class="row demo-tiles">
-    <% search_sender_disc_home.each do |disc| %>
-      <div class="col">
-        <div class="tile">
 
-          <br>
-          <br>
-          <br>
-          <h3 class="tile-title"><%= disc.title%></h3>
-          <p><%= Artist.where(id: disc.disc_artists.ids).pluck(:name).join("")%></p>
-          <%= link_to deals_path do %>
+
+<div class="row demo-tiles">
+
+<% search_sender_disc_home.each do |disc| %>
+        <div class="col">
+          <div class="tile">
+            <br>
+            <br>
+            <br>
+            <h3 class="tile-title"><%= disc.title%></h3>
+            <p><%= disc.artists.pluck(:name).join(" & ")%></p>
+            <% library = UserLibrary.find_by(disc_id: disc.id)%>
+            <%= link_to user_library_path(library.id) do %>
             <p class="btn btn-primary btn-large btn-block">Voir le Deal</p>
-          <%end %>
+            <%end %>
+          </div>
         </div>
-      </div>
-    <%end %>
-  </div>
+<%end %>
 </div>

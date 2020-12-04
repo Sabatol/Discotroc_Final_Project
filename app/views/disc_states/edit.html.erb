@@ -14,5 +14,16 @@
       </form>
     <% end %>
 
-    <%= button_to 'Supprimer', disc_state_path(@edit_disc_state.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+<%= button_to 'Supprimer', disc_state_path(@edit_disc_state.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+
+
+
+    <%= form_tag deals_url(action: 'create'), method: "post" do %>
+           <%=select_tag "disc_id", options_from_collection_for_select(owner_disc, :id, :title) %> <br>
+           <%= submit_tag "Proposer un troc", class:"btn btn-info" %>
+
+                     <%=select_tag "disc_id", options_from_collection_for_select(owner_disc, :id, :title) %> <br>
+           <%= submit_tag "Proposer un troc", class:"btn btn-info" %>
+<%end%>
+
     </center>

@@ -10,32 +10,19 @@ class DiscsController < ApplicationController
   end
 
   def new
-    @new_disc = Disc.new
-    @auth_wrapper =
-      Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
-    @wrapper = Discogs::Wrapper.new('Discotroc')
-    @search = @auth_wrapper.search(params[:search], type: :release)
+      @new_disc = Disc.new
+      @new_user_library = UserLibrary.new
   end
 
   def create
-    @new_disc =
-      Disc.new(
-        title: params[:title],
-        release: params[:release],
-        code: params[:code],
-        value: params[:value],
-        label: params[:label],
-        format: params[:format],
-        country: params[:country],
-        cover_picture: params[:cover_picture]
-      )
-    if @new_disc.save
-      flash[:notice_good] = 'Le disque a bien été créer'
-      redirect_to disc_index_path
-    else
-      flash[:notice_bad] = "Le disque n'a pas été créer"
-      render 'new'
-    end
+      @new_disc = Disc.new(title: params[:title], release: params[:release], code: params[:code], value: params[:value], label: params[:label], format: params[:format], country: params[:country], cover_picture: params[:cover_picture])
+      if @new_disc.save
+        flash[:notice_good] = "Le disque a bien été créer"
+        redirect_to new_user_library_path
+      else
+        flash[:notice_bad] = "Le disque n'a pas été créer"
+        render 'new'
+      end
   end
 
   def edit
