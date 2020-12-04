@@ -9,7 +9,7 @@
 
     <p>Venez les échanger avec la communauté d'échange Discotroc !</p>
     <br>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Créer un compte</a>
+    <%=link_to new_user_registration_path do %> <p class="btn btn-primary btn-lg">Créer un compte</p><%end%> <%=link_to new_user_session_path do %> <p class="btn btn-primary btn-lg">Se connecter</p><%end%>
 
   </div>
   <!-- /.container -->
@@ -25,11 +25,12 @@
     <% if user_signed_in? %>
       Salut <%= current_user.first_name%>
     </h4>
+    <h6> Voici les dernier deals </h6>
     <%else %>
     <h4 class="demo-logo">
       Hey! 
     </h4>
-    <h6> Voici les dernier deals. </h6>
+    <h6> Voici les dernier deals </h6>
     <% end %>
     
   </div>
@@ -40,13 +41,17 @@
 <% search_sender_disc_home.each do |disc| %>
         <div class="col">
           <div class="tile">
-            <img src="docs/assets/images/icons/compas.svg" alt="Compas" class="tile-image big-illustration">
+            <%= image_tag "dj.svg"%>
+            <br>
+            <br>
+            <br>
             <h3 class="tile-title"><%= disc.title%></h3>
-            <p><%= disc.disc_artists.pluck(:name)%></p>
-            <a class="btn btn-primary btn-large btn-block" href="https://designmodo.com/flat">Get Pro</a>
+            <p><%= Artist.where(id: disc.disc_artists.ids).pluck(:name).join("")%></p>
+            <%= link_to deals_path do %>
+            <p class="btn btn-primary btn-large btn-block">Voir le Deal</p>
+            <%end %>
           </div>
         </div>
-
 <%end %>
 
   </div>

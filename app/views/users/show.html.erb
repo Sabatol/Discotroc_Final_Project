@@ -14,18 +14,29 @@
 
 <%= link_to "Modifier", edit_user_path(@user.id)%>
 
+
+
+
 <h5>Disques Possédés :</h5>
 
+
 <% UserLibrary.where(user_id: @user.id).each do |disc_id|%>
-<h6><%= Disc.find_by(id: disc_id).title %></h6>
+
+<h6><%= Disc.find_by(id: disc_id.disc_id).title %></h6>
+
+
 <%end%>
 
-<h5>Deals en cours : </h5>
+
+
+<h5> Library </h5>
 
 <% DealContent.where(sender_library_id: @user.id).each do |user_library_index| %>
+<%if UserLibrary.find_by(user_id: @user.id).nil? == false%>
+<% UserLibrary.find_by(user_id: @user.id).description %>
 
-<%= UserLibrary.find_by(id: user_library_index.id).description     %>
-<%end%>
+<%# @user.user_libraries.pluck(:description) %>
+<%end%><%end%>                   
 
 <h6>
 
