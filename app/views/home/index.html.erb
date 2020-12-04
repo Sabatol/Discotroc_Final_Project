@@ -1,58 +1,47 @@
-
 <body>
-<div class="jumbotron jumbotron-fluid bg-dark text-center">
-
-  <div class="container text-white">
-
-    <h1 class="display-4">Discotroc</h1>
-    <p class="lead">Vous ne savez pas quoi faire de vos vinyles qui trainent ?</p>
-
-    <p>Venez les échanger avec la communauté d'échange Discotroc !</p>
-    <br>
-    <%=link_to new_user_registration_path do %> <p class="btn btn-primary btn-lg">Créer un compte</p><%end%> <%=link_to new_user_session_path do %> <p class="btn btn-primary btn-lg">Se connecter</p><%end%>
-
+  <div class="jumbotron jumbotron-fluid bg-dark text-center">
+    <div class="container text-white">
+      <h1 class="display-4">Discotroc</h1>
+      <p class="lead">Vous ne savez pas quoi faire de vos vinyles qui trainent ?</p>
+      <p>Venez les échanger avec la communauté d'échange Discotroc !</p>
+      <br>
+      <%=link_to new_user_registration_path do %>
+        <p class="btn btn-primary btn-lg">Créer un compte</p>
+      <%end%> <%=link_to new_user_session_path do %>
+        <p class="btn btn-primary btn-lg">Se connecter</p>
+      <%end%>
+    </div>
+    <!-- /.container -->
   </div>
-  <!-- /.container -->
-
-
-</div>
-
-
-
-<div class="container">
-  <div class="demo-headline text-center">
-    <h4 class="demo-logo">
-    <% if user_signed_in? %>
-      Salut <%= current_user.first_name%>
-    </h4>
-    <h6> Voici les dernier deals </h6>
-    <%else %>
-    <h4 class="demo-logo">
-      Hey!
-    </h4>
-    <h6> Voici les dernier deals </h6>
-    <% end %>
-
-  </div>
-
-
-<div class="row demo-tiles">
-
-<% search_sender_disc_home.each do |disc| %>
+  <div class="container">
+    <div class="demo-headline text-center">
+      <h4 class="demo-logo">
+        <% if user_signed_in? %>
+          Salut <%= current_user.first_name%>
+        </h4>
+        <h6> Voici les dernier deals </h6>
+      <%else %>
+        <h4 class="demo-logo">
+          Hey!
+        </h4>
+        <h6> Voici les dernier deals </h6>
+      <% end %>
+    </div>
+    <div class="row demo-tiles">
+      <% search_sender_disc_home.each do |disc| %>
         <div class="col">
           <div class="tile">
-  
+
             <br>
             <br>
             <br>
             <h3 class="tile-title"><%= disc.title%></h3>
             <p><%= Artist.where(id: disc.disc_artists.ids).pluck(:name).join("")%></p>
             <%= link_to deals_path do %>
-            <p class="btn btn-primary btn-large btn-block">Voir le Deal</p>
+              <p class="btn btn-primary btn-large btn-block">Voir le Deal</p>
             <%end %>
           </div>
         </div>
-<%end %>
-
-  </div>
-</body>
+      <%end %>
+    </div>
+  </body>
