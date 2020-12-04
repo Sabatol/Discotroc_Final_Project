@@ -1,14 +1,16 @@
  <center>
 <%= form_tag url_for(action: 'create'), method: "post" do %>
-        <%= label_tag 'Sender' %> <br>
-        <%= text_field_tag 'sender_id'%> <br>
+        <% label_tag 'Sender' %> <br>
+        <%= hidden_field_tag 'sender_id', params[:sender_id]%> <br>
 
-        <%= label_tag 'Receiver' %> <br>
-        <%= text_field_tag 'receiver_id' %> <br>
+        <% label_tag 'Receiver' %> <br>
+        <%= hidden_field_tag 'receiver_id', current_user.id %> <br>
 
-<%= submit_tag "Envoyer" %>
+<%= submit_tag "Confirmer la demande de Troc" %>
 
     <% end %> 
+
+
     </center>
 
     <br>

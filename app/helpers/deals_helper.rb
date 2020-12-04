@@ -20,5 +20,7 @@ module DealsHelper
     return @deal_pm
     end 
 
+    def 
+
 
 end

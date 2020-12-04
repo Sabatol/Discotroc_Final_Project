@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-DiscArtist.destroy_all
-Artist.destroy_all
-Disc.destroy_all
 
 randomizer =("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a + ["_","-","."]
 
