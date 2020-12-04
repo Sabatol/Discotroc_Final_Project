@@ -3,12 +3,6 @@
      <h5> Pour terminer d'ajouter votre disque, donnez-lui une description </h5>
  <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-
-<<<<<<< HEAD
-        <%= label_tag 'Description' %>
-        <%= text_field_tag 'description' %>
-
-=======
     <%= hidden_field_tag 'user_id', current_user.id %> <br>
 <%=select_tag "disc_id", options_from_collection_for_select(Disc.all, :id, :title) %> <br>
         <%= label_tag 'Description' %> <br>
@@ -22,6 +16,3 @@
 
     <% end %>
         </center>
-
-
->>>>>>> 6e408b10b526d16caa8c5b8b452db60ddcf841ed
