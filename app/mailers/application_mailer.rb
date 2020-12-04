@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'machin@yopmail.com'
+  default from: 'discotroc@yopmail.com'
   layout 'mailer'
 end
