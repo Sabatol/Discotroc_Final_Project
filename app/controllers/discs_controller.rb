@@ -12,6 +12,10 @@ class DiscsController < ApplicationController
   
   def new
       @new_disc = Disc.new 
+
+      @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
+      @wrapper = Discogs::Wrapper.new('Discotroc')
+       @search = @auth_wrapper.search(params[:search], type: :release)
   end 
   
   def create

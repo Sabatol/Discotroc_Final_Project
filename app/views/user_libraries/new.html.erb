@@ -1,3 +1,52 @@
+<%= form_tag(new_user_library_path,method: :get) do %>
+      <%= text_field_tag($variable,params[:search])%>
+      <%= submit_tag "search"%>
+      <%if @search != nil%>
+      <div class="container">
+        <div class="row my-3">
+          <% @search.results.each do |n|%>
+            <div class="card col-4 " style="width: 18rem;">
+              <%= image_tag n.cover_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%=n.title%></h5>
+
+              </div>
+              <div class="card col-4 " style="width: 18rem;">
+
+              </div>
+            </div>
+          <% end%>
+                 <% end%>
+        </div>
+      </div>
+    <% end%> 
+
+   <%= $variable %>
+   
+   <%= @search %>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <br>
+   
+     <br>  <br>  <br>  <br>  <br>
+   <br>
+   <br>
+
+   <br>
+   <br>
+   <br>
+
+   <br>
+   
      <center>
  <%= form_tag url_for(action: 'create'), method: "post" do %>
 
@@ -14,3 +63,5 @@
 
     <% end %> 
         </center>
+
+        

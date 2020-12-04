@@ -1,3 +1,87 @@
+ <%= form_tag(new_user_library_path,method: :get) do %>
+      <%= text_field_tag(:search,params[:search])%>
+      <%= submit_tag "search"%>
+      <%if @search != nil%>
+      <div class="container">
+        <div class="row my-3">
+          <% @search.results.each do |n|%>
+            <div class="card col-4 " style="width: 18rem;">
+              <%= image_tag n.cover_image %>
+              <div class="card-body">
+                <h5 class="card-title"><%=n.title%></h5>
+
+              </div>
+              <div class="card col-4 " style="width: 18rem;">
+<%= button_to new_user_library_path  do %>
+<% $variable = n.id%>
+<% end %>
+              </div>
+            </div>
+          <% end%>
+                 <% end%>
+        </div>
+      </div>
+    <% end%> 
+   
+   <br>
+   
+     <br>  <br>  <br>  <br>  <br>
+   <br>
+   <br>
+
+   <br>
+   <br>
+   <br>
+
+   <br>
+   
+     <center>
+ <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+        <%= label_tag 'disque' %>
+        <%= text_field_tag 'disc_id' %>
+
+        <%= label_tag 'Description' %>
+        <%= text_field_tag 'descritpion' %>
+        
+
+<%= hidden_field_tag 'user_id', current_user.id %> <br>
+
+<%= submit_tag "Envoyer", class:"btn btn-info" %>
+
+    <% end %> 
+        </center>
+
+        
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
      <center>
  <%= form_tag url_for(action: 'create'), method: "post" do %>
 
