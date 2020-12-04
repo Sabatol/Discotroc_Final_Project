@@ -1,5 +1,6 @@
 class UserLibrariesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
+  require 'discogs'
   def index 
     @user_libraries = UserLibrary.all
   end
@@ -10,6 +11,10 @@ class UserLibrariesController < ApplicationController
 
   def new
     @new_user_library = UserLibrary.new
+
+    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
+    @wrapper = Discogs::Wrapper.new('Discotroc')
+     @search = @auth_wrapper.search($variable, type: :release)
   end
 
   def create 
