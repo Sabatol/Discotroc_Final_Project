@@ -1,0 +1,11 @@
+    <center>
+<h6>Etat</h6>
+<%= @disc_state.name%> <br>
+<br>
+<h6>Coefficient</h6>
+<%= @disc_state.coefficient%> <br>
+<br>
+<% if current_user.is_admin? == true %>
+<%= link_to "Modifier", edit_disc_state_path(@disc_state.id)%>
+<%end %>
+</center>

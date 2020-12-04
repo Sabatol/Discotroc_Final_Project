@@ -1,0 +1,9 @@
+<center>
+<%@user_libraries.each do |user_library|%>
+<p> <%= user_library.user.first_name%><p>
+<p> <%= user_library.disc.title%>
+<p><%= user_library.description%></p>
+<%= link_to "Voir", user_library_path(user_library.id)%>
+<hr>
+<%end%>
+</center>
