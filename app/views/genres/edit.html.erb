@@ -1,16 +1,10 @@
    <center>
-    <%= form_for @edit_genre do |f| %>
-        <form>
-
-            <%= label_tag 'Titre' %> <br />
-            <%= f.text_field :name, class: "form-control", placeholder: 'Nom du style', autocomplete: 'off' %>
- 
-
-          <%= submit_tag "Modifier le style", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
-          
-
-      </form>
-    <% end %>
-
-    <%= link_to 'Destroy', genre_path(@edit_genre.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </center>
+  <%= form_for @edit_genre do |f| %>
+    <form>
+      <%= label_tag 'Titre' %> <br />
+      <%= f.text_field :name, class: "form-control", placeholder: 'Nom du style', autocomplete: 'off' %>
+      <%= submit_tag "Modifier le style", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
+    </form>
+  <% end %>
+  <%= link_to 'Supprimer', genre_path(@edit_genre.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+</center>

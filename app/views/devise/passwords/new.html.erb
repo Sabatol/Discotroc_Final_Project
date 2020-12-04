@@ -3,14 +3,14 @@
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="login-form">
-      <%= f.label :email, class: "text-dark" %><br />
+      <%= f.label :email, "Email", class: "text-dark" %><br />
       <%= f.email_field :email, class: "form-control login-field", autofocus: true, placeholder: "Entrez votre email", autocomplete: "email" %>
     </div>
     <div class="login-form">
       <%= f.submit "Envoyez moi les instructions", class: "btn btn-primary btn-lg btn-block text-dark"  %>
     </div>
   <% end %>
-  <div class="login-form">
+  <div class="login-link">
     <%= render "devise/shared/links" %>
   </div>
 </div>

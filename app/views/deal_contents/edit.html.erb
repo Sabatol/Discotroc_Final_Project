@@ -1,33 +1,23 @@
 <center>
-
-<%= form_for @edit_deal_content do |f| %>
-        
-            <%= label_tag 'Deal ID' %> <br />
-            <%= f.text_field :deal_id, placeholder: 'deal', autocomplete: 'off' %> <br>
-          
-
-            <%= label_tag 'Sender Library ID' %> <br />
-            <%= f.text_field :sender_library_id, placeholder: 'Sender library', autocomplete: 'off' %> <br>
-          
-          
-            <%= label_tag 'Receiver Library ID' %> <br />
-            <%= f.text_field :receiver_library_id, placeholder: 'Receiver library', autocomplete: 'off'%> <br>
-
-        <br>
-        <br>
-
-          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br><br>
-         <%= link_to "Revenir à l'accueil", root_path%> 
-    <% end %>
-    <br>                                                       
-
-<%= link_to 'Destroy', deal_content_path(@edit_deal_content.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-
+  <%= form_for @edit_deal_content do |f| %>
+    <%= label_tag 'Deal ID' %> <br />
+    <%= f.text_field :deal_id, placeholder: 'deal', autocomplete: 'off' %> <br>
+    <%= label_tag 'Sender Library ID' %> <br />
+    <%= f.text_field :sender_library_id, placeholder: 'Sender library', autocomplete: 'off' %> <br>
+    <%= label_tag 'Receiver Library ID' %> <br />
+    <%= f.text_field :receiver_library_id, placeholder: 'Receiver library', autocomplete: 'off'%> <br>
+    <br>
+    <br>
+    <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+    <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+  <% end %>
+  <br>
+  <%= link_to 'Supprimer', deal_content_path(@edit_deal_content.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
 </center>
-
 <br>
 <br>
 <br>
 <br>
 <br>
-<br> 
+<br>

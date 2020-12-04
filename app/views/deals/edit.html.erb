@@ -1,70 +1,47 @@
 <center>
-<% if current_user.id == @edit_deal.sender_id %>
-<%= form_for @edit_deal do |f| %>
-        
-
-          
-            <%= label_tag 'Receiver ID' %> <br />
-            <%= f.text_field :receiver_id, placeholder: 'Receiver', autocomplete: 'off'%> <br>
-
-            <%= label_tag 'Sender Ok ? ' %> <br />
-            <%= f.check_box :sender_ok?%><br>
-
-            
-        <br>
-        <br>
-
-          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br><br>
-         <%= link_to "Revenir à l'accueil", root_path%> 
-    <% end %>
-    <br>                                                       
-
-<%= link_to 'Destroy', deal_path(@edit_deal.id), method: :delete, data: { confirm: 'Tu es sur ?' } %>
-
-
-<% elsif current_user.id == @edit_deal.receiver_id%>
-<%= form_for @edit_deal do |f| %>
-        
-
-
-            <%= label_tag 'Receiver Ok ? ' %> <br />
-            <%= f.check_box :receiver_ok?, { class: "", style: ""}, true, false%>
-            
-        <br>
-        <br>
-
-          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br><br>
-         <%= link_to "Revenir à l'accueil", root_path%> 
-    <% end %>
-
-    <% elsif current_user.is_admin? == true %>
+  <% if current_user.id == @edit_deal.sender_id %>
     <%= form_for @edit_deal do |f| %>
-        
-
-            <%= label_tag 'Sender ID' %> <br />
-            <%= f.text_field :sender_id, placeholder: 'Sender', autocomplete: 'off' %> <br>
-          
-          
-            <%= label_tag 'Receiver ID' %> <br />
-            <%= f.text_field :receiver_id, placeholder: 'Receiver', autocomplete: 'off'%> <br>
-
-            <%= label_tag 'Sender Ok ? ' %> <br />
-            <%= f.check_box :sender_ok?%><br>
-
-            <%= label_tag 'Receiver Ok ? ' %> <br />
-            <%= f.check_box :receiver_ok?, { class: "", style: ""}, true, false%>
-            
-        <br>
-        <br>
-
-          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br><br>
-         <%= link_to "Revenir à l'accueil", root_path%> 
+      <%= label_tag 'Receiver ID' %> <br />
+      <%= f.text_field :receiver_id, placeholder: 'Receiver', autocomplete: 'off'%> <br>
+      <%= label_tag 'Sender Ok ? ' %> <br />
+      <%= f.check_box :sender_ok?%><br>
+      <br>
+      <br>
+      <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+      <br>
+      <%= link_to "Revenir à l'accueil", root_path%>
     <% end %>
-    <br>                                                       
-
-<%= link_to 'Destroy', deal_path(@edit_deal.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%end %>
+    <br>
+    <%= link_to 'Supprimer', deal_path(@edit_deal.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+  <% elsif current_user.id == @edit_deal.receiver_id%>
+    <%= form_for @edit_deal do |f| %>
+      <%= label_tag 'Receiver Ok ? ' %> <br />
+      <%= f.check_box :receiver_ok?, { class: "", style: ""}, true, false%>
+      <br>
+      <br>
+      <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+      <br>
+      <%= link_to "Revenir à l'accueil", root_path%>
+    <% end %>
+  <% elsif current_user.is_admin? == true %>
+    <%= form_for @edit_deal do |f| %>
+      <%= label_tag 'Sender ID' %> <br />
+      <%= f.text_field :sender_id, placeholder: 'Sender', autocomplete: 'off' %> <br>
+      <%= label_tag 'Receiver ID' %> <br />
+      <%= f.text_field :receiver_id, placeholder: 'Receiver', autocomplete: 'off'%> <br>
+      <%= label_tag 'Sender Ok ? ' %> <br />
+      <%= f.check_box :sender_ok?%><br>
+      <%= label_tag 'Receiver Ok ? ' %> <br />
+      <%= f.check_box :receiver_ok?, { class: "", style: ""}, true, false%>
+      <br>
+      <br>
+      <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+      <br>
+      <%= link_to "Revenir à l'accueil", root_path%>
+    <% end %>
+    <br>
+    <%= link_to 'Supprimer', deal_path(@edit_deal.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+  <%end %>
 </center>
 <br>
 <br>
