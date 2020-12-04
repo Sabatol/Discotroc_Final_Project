@@ -1,121 +1,67 @@
- <%= form_tag(new_user_library_path,method: :get) do %>
-      <%= text_field_tag(:search,params[:search])%>
-      <%= submit_tag "search"%>
-      <%if @search != nil%>
-      <div class="container">
-        <div class="row my-3">
-          <% @search.results.each do |n|%>
-            <div class="card col-4 " style="width: 18rem;">
-              <%= image_tag n.cover_image %>
-              <div class="card-body">
-                <h5 class="card-title"><%=n.title%></h5>
-
-              </div>
-              <div class="card col-4 " style="width: 18rem;">
-<%= button_to new_user_library_path  do %>
-<% $variable = n.id%>
-<% end %>
-              </div>
+ <%= form_tag(new_disc_path,method: :get) do %>
+  <%= text_field_tag(:search,params[:search])%>
+  <%= submit_tag "search"%>
+  <%if @search != nil%>
+    <div class="container">
+      <div class="row my-3">
+        <% @search.results.each do |n|%>
+          <div class="card col-4 " style="width: 18rem;">
+            <%= image_tag n.cover_image %>
+            <div class="card-body">
+              <h5 class="card-title"><%=n.title%></h5>
+              <p><%$blabla= @auth_wrapper.raw(n.resource_url)%></p>
             </div>
-          <% end%>
-                 <% end%>
-        </div>
-      </div>
-    <% end%> 
-   
-   <br>
-   
-     <br>  <br>  <br>  <br>  <br>
-   <br>
-   <br>
-
-   <br>
-   <br>
-   <br>
-
-   <br>
-   
-     <center>
- <%= form_tag url_for(action: 'create'), method: "post" do %>
-
-        <%= label_tag 'disque' %>
-        <%= text_field_tag 'disc_id' %>
-
-        <%= label_tag 'Description' %>
-        <%= text_field_tag 'descritpion' %>
-        
-
-<%= hidden_field_tag 'user_id', current_user.id %> <br>
-
-<%= submit_tag "Envoyer", class:"btn btn-info" %>
-
-    <% end %> 
-        </center>
-
-        
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-     <center>
- <%= form_tag url_for(action: 'create'), method: "post" do %>
-
-
-
-        <%= label_tag 'Titre' %> <br>
-        <%= text_field_tag 'title'%> <br>
-
-        <%= label_tag 'Année de création' %> <br>
-        <%= text_field_tag 'release' %> <br>
-
-        <%= label_tag 'Code' %> <br>
-        <%= text_field_tag 'code' %> <br>
-
-        <%= label_tag 'Valeur' %> <br> 
-        <%= text_field_tag 'value' %> <br>
-
-        <%= label_tag 'Label' %> <br> 
-        <%= text_field_tag 'label' %> <br>
-
-        <%= label_tag 'Format' %> <br>
-        <%= text_field_tag 'format' %> <br>
-
-        <%= label_tag 'Country' %> <br>
-        <%= text_field_tag 'country' %> <br>
-
-        <%= label_tag 'Cover Picture' %> <br>
-        <%= text_field_tag 'cover_picture' %> <br>
-
-
-
-
-
-<%= submit_tag "Envoyer" %>
-
-    <% end %> 
-        </center>
+            <div class="card col-4 " style="width: 18rem;">
+              <%= button_to new_user_library_path  do %>
+                <% $variable = n.id%>
+              <% end %>
+            </div>
+          </div>
+        <% end%>
+      <% end%>
+    </div>
+  </div>
+<% end%>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+    <%= label_tag 'disque' %>
+    <%= text_field_tag 'disc_id' %>
+    <%= label_tag 'Description' %>
+    <%= text_field_tag 'descritpion' %>
+    <%= hidden_field_tag 'user_id', current_user.id %> <br>
+    <%= submit_tag "Envoyer", class:"btn btn-info" %>
+  <% end %>
+</center>
+<center>
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+    <%= label_tag 'Titre' %> <br>
+    <%= text_field_tag 'title'%> <br>
+    <%= label_tag 'Année de création' %> <br>
+    <%= text_field_tag 'release' %> <br>
+    <%= label_tag 'Code' %> <br>
+    <%= text_field_tag 'code' %> <br>
+    <%= label_tag 'Valeur' %> <br>
+    <%= text_field_tag 'value' %> <br>
+    <%= label_tag 'Label' %> <br>
+    <%= text_field_tag 'label' %> <br>
+    <%= label_tag 'Format' %> <br>
+    <%= text_field_tag 'format' %> <br>
+    <%= label_tag 'Country' %> <br>
+    <%= text_field_tag 'country' %> <br>
+    <%= label_tag 'Cover Picture' %> <br>
+    <%= text_field_tag 'cover_picture' %> <br>
+    <%= submit_tag "Envoyer" %>
+  <% end %>
+</center>
