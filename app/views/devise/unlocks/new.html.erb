@@ -7,10 +7,10 @@
       <%= f.email_field :email, class: "form-control login-field", placeholder: "Entrez votre email", autofocus: true, autocomplete: "email" %>
     </div>
     <div class="login-form">
-      <%= f.submit "Resend unlock instructions", class: "btn btn-primary btn-lg btn-block text-dark" %>
+      <%= f.submit "Renvoyez les instructions de déblocage", class: "btn btn-primary btn-lg btn-block text-dark" %>
     </div>
   <% end %>
-  <div class="login-form">
+  <div class="login-link">
     <%= render "devise/shared/links" %>
   </div>
 </div>
