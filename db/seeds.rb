@@ -14,19 +14,23 @@ randomizer =("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a + ["_","-","."]
 
 format = ["CD", "33 tours", "45 tours", "LaserDisc", "HDCD" ]
 
-5.times do 
+
+5.times do
     Artist.create(name: Faker::Music.band)
 end
 
-5.times do 
-    Genre.create(name: Faker::Music.genre)
+
+genres = ["Classique", "World", "Variété", "Pop", "Reggae", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "Blues", "Disco", "Musiques Electroniques"]
+genres.each do |i|
+    Genre.create(name: i)
 end
 
-5.times do 
-    Style.create(name: Faker::Music.instrument)
+styles = ["Boogie", "Disco", "Soul", "Nu-Disco", "Afrobeat", "Juke", "UK Garage", "Pop", "Funk", "Rock", "Blues", "Minimale", "Deep House", "Metal", "New Wave", "Samba", "Bossa Nova", "Acid", "Latin", "Salsa", "Italo-Disco", "Country", "Rap", "RnB", "Fusion", "House"]
+styles.each do |i|
+    Style.create(name: i)
 end
 
-60.times do 
+60.times do
     Track.create(name: Faker::Music.chord)
 end
 
@@ -56,7 +60,7 @@ end
 end
 
 
-10.times do 
+10.times do
     User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "Cacaboudin", password_confirmation: "Cacaboudin", address: Faker::Address.street_address, additional_address: Faker::Address.secondary_address, zipcode: Faker::Address.zip_code, city: Faker::Address.city, country: Faker::Address.country, description: "proutproutpouet")
 end
 
@@ -69,7 +73,7 @@ n = 0
   n+=1
 end
 
-15.times do 
+15.times do
   i = rand(4..10)
   UserLibrary.create(user_id: User.ids.sample, disc_id: Disc.ids.sample, disc_state_id: DiscState.ids.sample, description: Faker::Lorem.sentence(word_count: i) )
 end
