@@ -1,4 +1,7 @@
     <center>
+    <%if @disc.cover_picture.nil? == false%>
+<%= image_tag @disc.cover_picture%><br>
+<%end%>
     <h6>Titre</h6>
 <%= @disc.title%> <br>
 <br>
@@ -18,9 +21,7 @@
 <%= @disc.country%> <br> 
 <br>
 
-<%if @disc.cover_picture.nil? == false%>
-<%= @disc.cover_picture%><br>
-<%end%>
+
 <br>
 
 <%if @disc.artist_ids.length != 0%>

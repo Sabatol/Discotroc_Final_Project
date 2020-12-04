@@ -1,12 +1,23 @@
  <center>
- <h3> Créer un Disque </h3>
- <%= link_to "Créer", new_disc_path%>
- <br>
+  <h3> Créer un Disque </h3>
+  <%= link_to "Créer", new_disc_path%>
+  <br>
   <h2> Index</h2>
-
-
-<% @discs.each do |disc| %>
-<p> <%=disc.title%></p>
-<%= link_to "Voir", disc_path(disc.id)%>
-<%end%>
+  <br>
+  <br>
 </center>
+<div class="container">
+  <div class="row demo-tiles">
+    <% @discs.each do |disc| %>
+      <div class="col-3">
+        <div class="tile bg-secondary">
+          <br>
+          <br>
+          <h3 class="tile-title text-primary"><%=disc.title%></h3>
+          <br>
+          <%= link_to "Voir", disc_path(disc.id), class: "btn btn-primary btn-large btn-block text-dark"%>
+        </div>
+      </div>
+    <%end %>
+  </div>
+</div>

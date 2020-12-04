@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module Discotroc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -29,9 +31,10 @@ module Discotroc
      config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "tile")
      config.assets.paths << Rails.root.join("vendor", "docs", "assets", "images", "video")
 
-     
-    
-    
+
+
+     # config/application.rb, in order to make it work in Heroku
+     config.assets.initialize_on_precompile = false
 
 
     # Settings in config/environments/* take precedence over those specified here.

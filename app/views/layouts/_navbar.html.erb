@@ -8,6 +8,7 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">Tables BDD</a>
         <span class="dropdown-arrow"></span>
+        <% if user_signed_in? && current_user.is_admin? == true %>
         <ul class="dropdown-menu">
           <li><%= link_to "Voir les tracks", tracks_path%></li>
           <li><%= link_to "Voir les styles", styles_path%></li>
@@ -17,8 +18,17 @@
           <li><%= link_to "Voir les deals", deals_path%></li>
           <li><%= link_to "Voir les deals PM", deal_pms_path%></li>
           <li><%= link_to "Voir les deals contents", deal_contents_path%></li>
+          <li><%= link_to "Voir les disques", discs_path%></li>
           <li><%= link_to "Voir les user libraties", user_libraries_path%></li>
         </ul>
+        <% else %>
+          <ul class="dropdown-menu">
+          <li class="divider"></li>
+          <li><%= link_to "Voir les disques", discs_path%></li>
+          <li><%= link_to "Voir les deals", deals_path%></li>
+          <li><%= link_to "Voir les user libraties", user_libraries_path%></li>
+        </ul>
+        <%end %>
       </li>
       <li><%= link_to "Contact", root_path%></li>
     </ul>
