@@ -85,10 +85,10 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
                 <%= label_tag 'Content' %> <br>
         <%= text_field_tag 'content', "test" %> <br>
-<%= label_tag 'Deal' %> <br>
-        <%= text_field_tag 'deal_id', @deal.id %> <br>
-        <%= label_tag 'Deal' %> <br>
-        <%= text_field_tag 'pm_author_id', current_user.id %> <br>
+<br>
+        <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+ <br>
+        <%= hidden_field_tag 'pm_author_id', current_user.id %> <br>
 
 <%= submit_tag "Envoyer" %>
 
