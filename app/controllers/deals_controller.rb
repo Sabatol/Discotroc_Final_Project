@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:index, :show]
   def index
     @deals = Deal.all
 end 
@@ -16,7 +16,7 @@ def create
     @new_deal = Deal.new(sender_id: params[:sender_id], receiver_id: params[:receiver_id])
     if @new_deal.save
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deal_path
+      redirect_to deal_path(@new_deal)
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'
@@ -31,7 +31,7 @@ end
     @edit_deal = Deal.find(params[:id])
     post_params = params.require(:deal).permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
     @edit_deal.update(post_params)
-    redirect_to deal_path
+    redirect_to deal_path(@edit_deal)
   end
 
   def destroy
@@ -39,5 +39,4 @@ end
     @destroy_deal.destroy
     redirect_to deals_path
   end 
-
 end

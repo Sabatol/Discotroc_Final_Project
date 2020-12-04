@@ -1,5 +1,5 @@
 class DealPmsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @deal_pms = DealPm.all
 end 
@@ -16,7 +16,7 @@ def create
     @new_deal_pm = DealPm.new(deal_id: params[:deal_id], pm_author_id: params[:pm_author_id], content: params[:content])
     if @new_deal_pm.save
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deal_pm_path(@new_deal_pm.id)
+      redirect_to deals_path
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'
@@ -28,6 +28,7 @@ def edit
 end
 
   def update
+    
     @edit_deal_pm = DealPm.find(params[:id])
     post_params = params.require(:deal_pm).permit(:deal_id, :pm_author_id, :content)
     @edit_deal_pm.update(post_params)
@@ -42,3 +43,4 @@ end
      
 
 end
+

@@ -1,5 +1,5 @@
 class StylesController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:index, :show]
   def index 
     @styles = Style.all
   end

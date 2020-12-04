@@ -1,5 +1,5 @@
 class DealContentsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @deal_contents = DealContent.all
 end 

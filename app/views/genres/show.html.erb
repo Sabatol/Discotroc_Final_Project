@@ -1,9 +1,12 @@
 <center>
-<p> Deal Content N° <%= @genre.id%>
+<p> Genre N° <%= @genre.id%>
 <hr style="width: 5%; border: 1px solid black;" >
-<p> Nom <%=@genre.name%></p>
-
+<p> Nom </p> <p><%=@genre.name%></p>
+<hr style="width: 5%; border: 1px solid black;" >
+<h6> Disque Rock </h6>
+<% if current_user.is_admin? == true %>
 <%= link_to "Modifier", edit_genre_path(@genre.id)%>
+<%end%>
 <br>
 <%= link_to "Retour a l'index des Genres", genres_path%>
 </center>
