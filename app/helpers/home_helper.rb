@@ -5,5 +5,5 @@ module HomeHelper
         user = UserLibrary.where(id: deal_content.pluck(:sender_library_id))
         disc = Disc.where(id: user.pluck(:disc_id))
         return disc.last(4)
-        end 
+    end 
 end

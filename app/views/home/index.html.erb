@@ -47,7 +47,7 @@
             <br>
             <h3 class="tile-title"><%= disc.title%></h3>
             <p><%= Artist.where(id: disc.disc_artists.ids).pluck(:name).join("")%></p>
-            <%= link_to deals_path do %>
+            <%= link_to user_library_path(disc.id) do %>
             <p class="btn btn-primary btn-large btn-block">Voir le Deal</p>
             <%end %>
           </div>

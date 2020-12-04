@@ -1,13 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
-<<<<<<< HEAD
+ruby '2.7.2'
 
-
-=======
-gem 'jquery-rails'
->>>>>>> 341d828613a6355bb4a59f2a4476ea0ccdc03ef2
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
