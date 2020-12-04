@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   resources :deals 
   resources :deal_contents
   resources :deal_pms
+  resources :user_libraries
+  resources :disc_states
+
  
 end
