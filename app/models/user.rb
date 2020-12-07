@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :pm_authors, class_name: 'DealPm', foreign_key: 'pm_author_id'
 
   has_many :articles
+  has_many :playlists, dependent: :destroy
 
   devise :database_authenticatable,
          :registerable,
