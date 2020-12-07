@@ -1,4 +1,6 @@
 <div class="login-screen">
+  <h2 class="text-dark">Se connecter avec Spotify</h2>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
   <h2 class="text-dark">Se connecter</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="login-form">

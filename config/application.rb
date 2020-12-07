@@ -1,11 +1,12 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'rspotify'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-RSpotify::authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
+
 
 
 module Discotroc

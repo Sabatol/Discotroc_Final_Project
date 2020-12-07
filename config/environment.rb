@@ -14,3 +14,5 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
+
+ RSpotify::authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
