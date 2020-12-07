@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 2020_12_07_104753) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
+    t.bigint "comment_sender_id"
+    t.bigint "comment_receiver_id"
     t.bigint "deal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_receiver_id"], name: "index_comments_on_comment_receiver_id"
+    t.index ["comment_sender_id"], name: "index_comments_on_comment_sender_id"
     t.index ["deal_id"], name: "index_comments_on_deal_id"
-    t.index ["receiver_id"], name: "index_comments_on_receiver_id"
-    t.index ["sender_id"], name: "index_comments_on_sender_id"
   end
 
   create_table "deal_contents", force: :cascade do |t|

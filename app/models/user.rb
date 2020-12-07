@@ -14,8 +14,8 @@ class User < ApplicationRecord
   has_many :playlists, dependent: :destroy
 
 
-  has_many :comments_received, class_name: 'Comment', foreign_key: 'comments_received_id'
-  has_many :comments_sent, class_name: 'Comment', foreign_key: 'comments_sent_id'
+  has_many :comments_receiver, class_name: 'Comment', foreign_key: 'comment_receiver_id', dependent: :destroy
+  has_many :comments_sender, class_name: 'Comment', foreign_key: 'comment_sender_id'
 
   devise :database_authenticatable,
          :registerable,
