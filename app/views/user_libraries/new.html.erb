@@ -1,10 +1,10 @@
      <center>
-
      <h5> Pour terminer d'ajouter votre disque, donnez-lui une description </h5>
  <%= form_tag url_for(action: 'create'), method: "post" do %>
 
     <%= hidden_field_tag 'user_id', current_user.id %> <br>
 <%=select_tag "disc_id", options_from_collection_for_select(Disc.all, :id, :title) %> <br>
+
         <%= label_tag 'Description' %> <br>
         <%= text_field_tag 'description' %>
         <br>
@@ -15,4 +15,6 @@
 <%= submit_tag "Envoyer", class:"btn btn-info" %>
 
     <% end %>
+<h6> Vous ne trouvez pas le disque ? <%=link_to "ajoutez le", new_disc_path%></h6>
+
         </center>

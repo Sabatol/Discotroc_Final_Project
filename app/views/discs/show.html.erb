@@ -24,40 +24,54 @@
 
 <br>
 
-<%if @disc.artist_ids.length != 0%>
+<%if @disc.artists.count > 0%>
 <h4>Artiste :</h4>
-<% @disc.artist_ids.each do |artist_index|%>
-<h5> <%= Artist.find_by(id: artist_index).name%></h5>
-<%end%>
+
+<h6> <%=@disc.artists.pluck(:name).join(" & ") %></h6>
 <%end%>
 
+
 <br>
-<%if @disc.genre_ids.length != 0%>
+<%if @disc.genres.count > 0%>
 <h5>Genre :</h5>
-<% @disc.genre_ids.each do |genre_index|%>
-<p> <%= Genre.find_by(id: genre_index).name%></p>
-<%end%>
+<h6><%=@disc.genres.pluck(:name).join(", ")%></h6>
 <%end%>
 
 <br>
-<%if @disc.style_ids.length != 0%>
+<%if @disc.styles.count > 0%>
 <h5>Style :</h5>
-<% @disc.style_ids.each do |style_index|%>
-<p><%= Style.find_by(id: style_index).name%></p>
-<%end%>
+<h6><%=@disc.styles.pluck(:name).join(", ")%></h6>
 <%end%>
 
 <br>
-<%if @disc.track_ids.length != 0%>
+<%if @disc.tracks.count > 0%>
 <h5>Track :</h5>
-<h5> <%@disc.track_ids.each do |track_index| %>
-<p><%= Track.find_by(id: track_index).name%></p>
+ <%@disc.tracks.each do |disc_track|%>
+ <h6> <%=disc_track.name%> </h6>
+ <%end%>
 <%end%>
-<%end%> </h5>
 <br>
 
 <% if current_user.is_admin? == true %>
 <%= link_to "Modifier", edit_disc_path(@disc.id)%>
+<%end%>
+
+<hr style="width: 15%; border: 2px solid black;" >
+
+<%if @disc.user_libraries.count > 0%>
+<h5>Il est disponible dans une libraries d'une utilisateur</h5>
+<% index_library = 0%>
+<%@disc.user_libraries.each do |library|%>
+<%if @disc.user_libraries[index_library].user.first_name != nil && @disc.user_libraries[index_library].user.last_name != nil%>
+<h6><%=link_to "#{@disc.user_libraries[index_library].user.first_name} #{@disc.user_libraries[index_library].user.last_name}", user_path(@disc.user_libraries[index_library].user.id)%></h6>
+<p>Pays du proprietaire : <%=@disc.user_libraries[index_library].user.country%></p>
+<p>Ville : <%=@disc.user_libraries[index_library].user.city%></p>
+<%end%>
+<p>Description : <%=@disc.user_libraries[index_library].description%></p>
+<%=link_to "Voir l'annonce", user_library_path(@disc.user_libraries[index_library].id) %>
+<%index_library+=1%>
+<hr style="width: 5%; border: 1px solid black;" >
+<%end%>
 <%end%>
 
     </center>
