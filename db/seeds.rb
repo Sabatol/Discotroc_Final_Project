@@ -14,6 +14,7 @@ Deal.destroy_all
 User.destroy_all
 Article.destroy_all
 Disc.destroy_all
+Comment.destroy_all
 
 randomizer = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a + %w[_ - .]
 
@@ -168,4 +169,9 @@ n = 0
   else
     n = 0
   end
+end
+n = 0
+9.times do
+  Comment.create(sender_id: User.ids[n], receiver_id: User.ids[User.count - n], deal_id: Deal.ids[n], content: "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne.")
+    n += 1
 end

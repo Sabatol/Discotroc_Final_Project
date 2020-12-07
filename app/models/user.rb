@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :articles
   has_many :playlists, dependent: :destroy
 
+
+  has_many :comments_received, class_name: 'Comment', foreign_key: 'comments_received_id'
+  has_many :comments_sent, class_name: 'Comment', foreign_key: 'comments_sent_id'
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
