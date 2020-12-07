@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-
 randomizer = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a + %w[_ - .]
 
 format = ['CD', '33 tours', '45 tours', 'LaserDisc', 'HDCD']
@@ -160,5 +159,22 @@ n = 0
     n += 1
   else
     n = 0
+  end
+end
+
+
+n = 0
+i = 1
+15.times do
+  Comment.create(comment_sender_id: User.ids[n], comment_receiver_id: User.ids[i], deal_id: Deal.ids[n], content: "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne.")
+  if n < User.count
+    n += 1
+  else
+    n = 0
+  end
+  if i < User.count
+    i+=1
+  else 
+    i=0
   end
 end
