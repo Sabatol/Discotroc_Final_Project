@@ -17,10 +17,13 @@
 							<div class="footer-widget">
 								<h2>Sommaire</h2>
 								<ul>
-									<li><%=link_to 'Profil' %> </li>
-									<li><%=link_to 'Articles' %></li>
-									<li><%=link_to 'Marché au trocs' %></li>
-                  <li><%=link_to 'Retour accueil' %></li>
+                <%if current_user != nil%>
+									<li><%=link_to 'Profil', user_path(current_user.id) %> </li>
+                  <%else%>
+                  <li><%=link_to 'Inscription', new_user_registration_path %> </li>
+									<li><%=link_to 'Blogs', articles_path %></li>
+									<li><%=link_to 'Marché au trocs', user_libraries_path  %></li>
+                  <li><%=link_to 'Retour accueil', root_path %></li>
 								</ul>
 							</div>
 						</div>
