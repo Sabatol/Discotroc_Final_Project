@@ -4,32 +4,19 @@
  <%= favicon_link_tag asset_path('favicon.png') %>
     <title>Discotroc</title>
     
-
+ <script src="https://kit.fontawesome.com/8f239ccbef.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
    
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag "application", async: true %>
-    <!-- Loading Bootstrap -->
-
-    <!-- Loading Flat UI -->
-
-
-    <link rel="shortcut icon" href="dist/favicon.ico">
+    
 
   </head>
-
   <body>
-
-
+      <%= render 'layouts/navbar' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-  
-
-    <!-- Bootstrap 4 requires Popper.js -->
-
-    <script src="https://kit.fontawesome.com/8f239ccbef.js" crossorigin="anonymous"></script>
+    
   </body>
 </html>
