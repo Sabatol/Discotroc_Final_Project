@@ -35,21 +35,42 @@ end
 end
 
 
-
+i = 0
 12.times do
-    DiscArtist.create(artist_id: Artist.ids.sample, disc_id: Disc.ids.sample)
+    DiscArtist.create(artist_id: Artist.ids.sample, disc_id: Disc.ids[i])
+    if i < Disc.count
+    i +=1
+    else 
+        i = 0
+    end
 end
 
-10.times do
-    DiscStyle.create(style_id: Style.ids.sample, disc_id: Disc.ids.sample)
+i=0
+15.times do
+    DiscStyle.create(style_id: Style.ids.sample, disc_id: Disc.ids[i])
+    if i < Disc.count
+        i +=1
+        else 
+            i = 0
+        end
 end
-
+i=0
 70.times do
-    DiscTrack.create(track_id: Track.ids.sample, disc_id: Disc.ids.sample)
+    DiscTrack.create(track_id: Track.ids.sample, disc_id: Disc.ids[i])
+    if i < Disc.count
+        i+=1
+    else
+        i = 0
+    end
 end
-
-10.times do
-    DiscGenre.create(genre_id: Genre.ids.sample, disc_id: Disc.ids.sample)
+i=0
+15.times do
+    DiscGenre.create(genre_id: Genre.ids.sample, disc_id: Disc.ids[i])
+    if i < Disc.count
+        i +=1
+        else 
+            i = 0
+        end
 end
 
 
@@ -60,15 +81,27 @@ end
 
 states = ["neuf", "moyen", "pas ouf", "naze"]
 coeff = [1, 0.75, 0.5, 0.25]
-n = 0
-4.times do
-  DiscState.create(name: states[n], coefficient: coeff[n])
+n=0
+states.each do |state_name|
+  DiscState.create(name: state_name, coefficient: coeff[n])
   n+=1
 end
 
+i=0
+n=0
 15.times do 
   i = rand(4..10)
-  UserLibrary.create(user_id: User.ids.sample, disc_id: Disc.ids.sample, disc_state_id: DiscState.ids.sample, description: Faker::Lorem.sentence(word_count: i) )
+  UserLibrary.create(user_id: User.ids[n], disc_id: Disc.ids[i], disc_state_id: DiscState.ids.sample, description: Faker::Lorem.sentence(word_count: i) )
+  if i < Disc.count
+    i +=1
+    else 
+        i = 0
+    end
+    if n < User.count
+        n +=1
+        else 
+            n = 0
+        end
 end
 
 

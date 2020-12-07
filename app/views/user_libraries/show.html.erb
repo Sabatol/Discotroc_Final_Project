@@ -1,7 +1,9 @@
 <center>
-<p> <%= @user_library.user.first_name%><p>
-<p> <%= @user_library.disc.title%>
+<p> Possesseur du disque:<%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%><p>
+<h6> <%=link_to @user_library.disc.title, disc_path(@user_library.disc.id)%></h6>
+<%if @user_library.description != nil%>
 <p><%= @user_library.description%></p>
+<%end%>
 <p> <%= @user_library.disc_id%>
 <br>
 <% if current_user.id == @user_library.user_id || current_user.is_admin? == true %>
@@ -10,20 +12,18 @@
 
 
 <div class="col">
-<% if UserLibrary.where(user_id: current_user.id).count > 0%>
-<% n = 0%>
-
-
-
+<% if current_user.user_libraries.ids.count > 0 && @user_library.user_id != current_user.id%>
 <%= link_to "Proposer un troc", new_deal_path(sender_id: @user_library.disc_id, disc_id: @user_library.disc.id) %>
 
 
           <%else%>
-            <h3> Veuillez ajouter un disque dans votre librairie</h3>
-          
+          <h5>Ajoutez un disque a votre librairie</h5>
+            <h6><%=link_to "Veuillez ajouter un disque dans votre librairie", new_user_library_path%></h6>
+
           <%end%>
 
           
 </div>
+<div class="fixed-bottom">
 </center>
 
