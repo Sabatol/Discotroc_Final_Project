@@ -18,7 +18,7 @@
 <%= @disc.format%> <br>
 <br>
 <h6>Pays de sortie</h6>
-<%= @disc.country%> <br> 
+<%= @disc.country%> <br>
 <br>
 
 
@@ -51,6 +51,12 @@
  <%end%>
 <%end%>
 <br>
+
+<%RSpotify.raw_response = true%>
+<% response = RSpotify::Album.search(@disc.title)%>
+<%h = JSON.parse(response)%>
+<%= h.to_a%>
+<iframe src="https://open.spotify.com/embed/album/6dVIqQ8qmQ5GBnJ9shOYGE" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
 <% if current_user.is_admin? == true %>
 <%= link_to "Modifier", edit_disc_path(@disc.id)%>
