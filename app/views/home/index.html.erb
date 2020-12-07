@@ -29,7 +29,7 @@
 	</div>
 
 	<!-- Header section -->
-	<header class="header-section clearfix">
+<header class="header-section clearfix">
 		<a href="index.html" class="site-logo">
 			<%= image_tag "logo 2.png"%>
 		</a>
@@ -37,26 +37,52 @@
 			<a href="#" class="hr-btn">Help</a>
 			<span>|</span>
 			<div class="user-panel">
-				<a href="" class="login">Login</a>
-				<a href="" class="register">Create an account</a>
+      <% if user_signed_in? %>
+
+        <%= link_to "Mon profil", edit_user_registration_path, class: "login" %>
+
+
+          <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "register" %>
+
+      <% else %>
+          <%= link_to "Se connecter", new_user_session_path, class: "login" %>
+
+          <%= link_to "S'inscrire", new_user_registration_path, class: "register" %>
+
+      <% end %>
 			</div> 
 		</div>
 		<ul class="main-menu">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="#">About</a></li>
+			<li><%= link_to "Accueil", root_path%></li>
+			<li><%= link_to "Vinyles", discs_path%></li>
 			<li><a href="#">Pages</a>
-				<ul class="sub-menu">
-					<li><a href="category.html">Category</a></li>
-					<li><a href="playlist.html">Playlist</a></li>
-					<li><a href="artist.html">Artist</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
+				<% if user_signed_in? && current_user.is_admin? == true %>
+        <ul class="sub-menu">
+          <li><%= link_to "Voir les tracks", tracks_path%></li>
+          <li><%= link_to "Voir les styles", styles_path%></li>
+          <li class="divider"></li>
+          <li><%= link_to "Voir les genres", genres_path%></li>
+          <li><%= link_to "Voir les artistes", artists_path%></li>
+          <li><%= link_to "Voir les deals", deals_path%></li>
+          <li><%= link_to "Voir les deals PM", deal_pms_path%></li>
+          <li><%= link_to "Voir les deals contents", deal_contents_path%></li>
+          <li><%= link_to "Voir les disques", discs_path%></li>
+          <li><%= link_to "Voir les user libraties", user_libraries_path%></li>
+        </ul>
+        <% else %>
+          <ul class="sub-menu">
+          <li class="divider"></li>
+          <li><%= link_to "Voir les disques", discs_path%></li>
+          <li><%= link_to "Voir les deals", deals_path%></li>
+          <li><%= link_to "Voir les user libraties", user_libraries_path%></li>
+        </ul>
+        <%end %>
 			</li>
-			<li><a href="blog.html">News</a></li>
+			<li><%= link_to "Blog", discs_path%></li>
 			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</header>
+	<!-- Header section end -->
 	<!-- Header section end -->
 
 	<!-- Hero section -->
