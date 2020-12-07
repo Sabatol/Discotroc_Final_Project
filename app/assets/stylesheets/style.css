@@ -597,7 +597,7 @@ Responsive
 
 .footer-section {
 	background: #0a183d;
-	padding: 100px 0 85px;
+	padding: 25px 0 15px;
 }
 
 .footer-widget {
@@ -767,7 +767,7 @@ Blog page
 
 .site-pagination a:hover,
 .site-pagination a.active {
-	color: #3c455f;
+	color: #ffd369;
 }
 
 /* ----------------
