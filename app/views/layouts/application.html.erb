@@ -3,42 +3,33 @@
   <head>
  <%= favicon_link_tag asset_path('favicon.png') %>
     <title>Discotroc</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "application", async: true %>
     <!-- Loading Bootstrap -->
-    <link href="Discotroc_KitUI/dist/css/vendor/bootstrap.min.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link href="Discotroc_KitUI/dist/css/flat-ui.css" rel="stylesheet">
-    <link href="Discotroc_KitUI/docs/assets/css/demo.css" rel="stylesheet">
+
 
     <link rel="shortcut icon" href="dist/favicon.ico">
 
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+
 
     <%= yield %>
     <%= render 'layouts/footer' %>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  
 
     <!-- Bootstrap 4 requires Popper.js -->
 
-    <script src="https://unpkg.com/popper.js@1.14.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="http://vjs.zencdn.net/6.6.3/video.js"></script>
-    <script src="Discotroc_KitUI/dist/scripts/flat-ui.js"></script>
-    <script src="Discotroc_KitUI/docs/assets/js/application.js"></script>
-
+    
   </body>
 </html>
