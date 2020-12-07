@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(title: params[:title], content: params[:content], user: curren_user)
+    @article = Article.new(title: params[:title], content: params[:content], user: current_user)
     if @article.save
       redirect_to articles_path
       flash[:notice_good] = "Votre article a bien été publié"
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    post_params = params.require(:article).permit(:title, :content)
+    post_params = params.require(:article).permit(:title, :content, :user)
     @article.update(post_params)
     redirect_to articles_path
   end
