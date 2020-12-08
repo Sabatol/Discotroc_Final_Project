@@ -1,5 +1,6 @@
 class DiscsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_completed?, except: [:index, :show]
 
   def index
     @discs = Disc.all
