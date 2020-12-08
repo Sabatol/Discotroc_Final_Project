@@ -28,7 +28,7 @@
         "ga"
       );
       ga("create", "UA-36965964-1");
-      ga("send", "pageview", { title: "404" });
+      ga("send", "pageview", { title: "500" });
     </script>
     <style type="text/css">
       html,
@@ -36,7 +36,7 @@
         background: url(./hand.jpg) center content-box no-repeat;
         margin: 0;
         padding: 0;
-        font: 14px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font: 20px/25px "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: #333;
       }
       a {
@@ -169,27 +169,28 @@
       <h1>500</h1>
       <p>Sorry, this resource could not be found.</p>
       <p>if this problem persist <strong>contact us</strong></p>
+
       <a href="https://discotroc-dev.herokuapp.com/">
         <img id="logo" alt="Discotroc" src="../app/assets/images/logo.png" />
       </a>
     </div>
     <script>
-      var winW = window.innerWidth;
-      var winH = window.innerHeight;
-      var pieces = document.getElementsByTagName("img");
-      var calculatePosition = function (piece, percentX, percentY) {
-        var calculatedX =
+      let winW = window.innerWidth;
+      let winH = window.innerHeight;
+      let pieces = document.getElementsByTagName("img");
+      let calculatePosition = function (piece, percentX, percentY) {
+        let calculatedX =
           piece.dataset.xRange / 2 - piece.dataset.xRange * percentX;
-        var calculatedY =
+        let calculatedY =
           piece.dataset.yRange / 2 - piece.dataset.yRange * percentY;
         piece.style.transform = piece.style.webkitTransform = piece.style.MozTransform =
           "translate3d(" + calculatedX + "px, " + calculatedY + "px, 0)";
       };
       window.onmousemove = function (e) {
-        var percentX = (e.clientX / winW).toFixed(4);
-        var percentY = (e.clientY / winH).toFixed(4);
+        let percentX = (e.clientX / winW).toFixed(4);
+        let percentY = (e.clientY / winH).toFixed(4);
 
-        for (var i = 0; i < pieces.length; i++) {
+        for (let i = 0; i < pieces.length; i++) {
           calculatePosition(pieces[i], percentX, percentY);
         }
       };
