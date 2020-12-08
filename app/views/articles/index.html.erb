@@ -5,7 +5,9 @@
 <%if article.user.first_name%>
 <p>Par <%=article.user.first_name%></p>
 <%else%>
-<p>Par <%=article.user.email%></p>
+<%string=article.user.email.split("@")%>
+<%firstName=string[0]%>
+<p>Par <%=firstName%></p>
 <%end%>
 <%= link_to "Voir", article_path(article.id)%>
 <%end%>

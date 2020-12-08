@@ -3,10 +3,12 @@ class DiscsController < ApplicationController
 
   def index
     @discs = Disc.all
+    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def show
     @disc = Disc.find(params[:id])
+    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def new
