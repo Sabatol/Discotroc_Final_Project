@@ -1,29 +1,30 @@
 <center>
-<h4> Ajouter un vinyle à ma bibliothèque </h4>
-
-<%= link_to "Rajouter un vinyle", new_user_library_path %>
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <h4>Ma bibliothèque de vinyles</h4>
-      <%@user_libraries.where(user_id: current_user.id).each do |user_library|%>
-        <p> <%= user_library.user.first_name%><p>
-        <p> <%= user_library.disc.title%>
-        <p><%= user_library.description%></p>
-        <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-        <hr>
-      <%end%>
-    </div>
-    <div class="col-6">
-      <h4>Liste des vinyles présents sur le site</h4>
-      <%@user_libraries.each do |user_library|%>
-        <p> <%= user_library.user.first_name%><p>
-        <p> <%= user_library.disc.title%>
-        <p><%= user_library.description%></p>
-        <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-        <hr>
-      <%end%>
-    </div>
-  </div>
-</div>
-</center>
+  <h4> Ajouter un vinyle à ma bibliothèque </h4>
+  <%= link_to "Rajouter un vinyle", new_user_library_path %>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h4>Ma bibliothèque de vinyles</h4>
+        <%@user_libraries.where(user_id: current_user.id).each do |user_library|%>
+          <p> <%= user_library.user.first_name%>
+            <p>
+              <p> <%= user_library.disc.title%>
+                <p><%= user_library.description%></p>
+                <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
+                <hr>
+              <%end%>
+            </div>
+            <div class="col-6">
+              <h4>Liste des vinyles présents sur le site</h4>
+              <%@user_libraries.each do |user_library|%>
+                <p> <%= user_library.user.first_name%>
+                  <p>
+                    <p> <%= user_library.disc.title%>
+                      <p><%= user_library.description%></p>
+                      <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
+                      <hr>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </center>
