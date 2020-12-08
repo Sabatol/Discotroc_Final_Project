@@ -1392,17 +1392,11 @@ Responsive
 	.main-menu .sub-menu {
 		left: 25px;
 	}
-	.user-panel {
-		padding-top: 30px;
-	}
 }
 
 /* Medium screen : 992px. */
 
 @media only screen and (min-width: 1050px) and (max-width: 1205px) {
-	.user-panel {
-		padding-top: 30px;
-	}
 	
 	.header-section {
 		padding-left: 15px;
@@ -1462,6 +1456,7 @@ Responsive
 	.user-panel {
 		padding-top: 30px;
 	}
+	
 	.hr-img {
 		display: none;
 	}
@@ -1598,10 +1593,6 @@ Responsive
 /* Large Mobile :480px. */
 
 @media only screen and (max-width: 767px) {
-	.user-panel {
-		padding-top: 30px;
-	}
-	
 	.hr-img {
 		display: none;
 	}
