@@ -25,4 +25,9 @@ class UsersController < ApplicationController
         redirect_to users_path     
     end
 
+
+    private
+    def spotify
+        spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+   end
 end

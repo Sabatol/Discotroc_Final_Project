@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
   devise_for :users
-
   resources :users
 
   resources :discs
@@ -15,6 +14,6 @@ Rails.application.routes.draw do
   resources :deal_pms
   resources :user_libraries
   resources :disc_states
-
+  resources :articles
  
 end
