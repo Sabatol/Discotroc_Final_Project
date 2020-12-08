@@ -8,7 +8,9 @@
 <%if user_library.user.first_name%>
 <p><%=user_library.user.first_name%></p>
 <%else%>
-<p><%=user_library.user.email%></p>
+<%string=user_library.user.email.split("@")%>
+<%firstName=string[0]%>
+<p><%=firstName%></p>
 <%end%>
 <%@search = @auth_wrapper.search(user_library.disc.title, type: :release)%>
 <p><%= image_tag @search.results.first.cover_image %></p>
