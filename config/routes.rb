@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :deal_pms
   resources :user_libraries
   resources :disc_states
-
+  resources :articles
  
 end
