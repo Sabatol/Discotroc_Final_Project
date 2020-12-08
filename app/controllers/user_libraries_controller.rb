@@ -1,5 +1,7 @@
 class UserLibrariesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_completed?, except: [:index, :show]
+
   def index
     @user_libraries = UserLibrary.all
     @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
