@@ -1,32 +1,30 @@
 <center>
-<p> Deal N° <%= @deal.id%>
+<p> Troc n° <%= @deal.id%>
 <hr style="width: 5%; border: 1px solid black;">
 
-<h6> Sender Disque(s) </h6>
+<h6> Disque n°1</h6>
 <hr style="width: 5%; border: 1px solid black;" >
 <% search_sender_disc(@deal).each do |content| %>
 <%= link_to disc_path(content.id) do %>
-<%= content.title%> 
+<%= content.title%>
 <% end %>
 | <%= content.value%> <br>
 <%end %>
 Valeur total : <%= search_sender_disc(@deal).sum(:value)%>
 <br> <br>
-<h6> Receiver Disque(s) </h6> 
+<h6> Disque n°2 </h6>
 <hr style="width: 5%; border: 1px solid black;" >
 <% search_receiver_disc(@deal).each do |content| %>
 <%= link_to disc_path(content.id) do %>
-<%= content.title%> 
+<%= content.title%>
 <% end %>
 | <%= content.value%> <br>
 <%end %>
 Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 
 <%if current_user.id == @deal.sender_id %>
-<h5> Sender </h5>
-<p> Vous êtes le créateur du deal ! </p>
+<p> Vous êtes à l'origine du troc ! </p>
 <% else %>
-<h5> Sender </h5>
 <p> Prénom/Nom :
 <%= link_to user_path(@deal.sender_id) do %>
  <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
@@ -43,7 +41,7 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 <%end %>
 <%end %>
 
-<h5> Status </h5>
+<h5> Statut du troc </h5>
 
 <% if current_user.id == @deal.sender_id && @deal.sender_ok? == true %>
 <p> Vous êtes ok pour ce deal </p>
@@ -73,7 +71,7 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
 <center>
 <%number = 1 %>
 <% search_pm.each do |pm| %>
-<p> Deal PM N° <%=number%>
+<p> Commentaire n° <%=number%>
 <hr style="width: 5%; border: 1px solid black;" >
 <h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
 <p><%=pm.content%></p>
@@ -95,7 +93,7 @@ Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
     <% end %>
     <% else %>
     <center>
-    <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
+    <p> Vous ne participez pas à ce tric, ni êtes un admin, donc vous ne pouvez pas voir la conversation </p>
 <% end %>
     </center>
 

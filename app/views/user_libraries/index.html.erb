@@ -10,7 +10,8 @@
 <%else%>
 <p><%=user_library.user.email%></p>
 <%end%>
-
+<%@search = @auth_wrapper.search(user_library.disc.title, type: :release)%>
+<p><%= image_tag @search.results.first.cover_image %></p>
 <p> <%= user_library.disc.title%>
 <p><%= user_library.description%></p>
 <%= link_to "Voir", user_library_path(user_library.id)%>
