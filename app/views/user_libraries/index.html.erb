@@ -1,14 +1,12 @@
 <center>
-<h6> Créer un user library </h6>
-
-<%= link_to "Créer", new_user_library_path %>
-
-
-<%@user_libraries.each do |user_library|%>
-<p> <%= user_library.user.first_name%><p>
-<p> <%= user_library.disc.title%>
-<p><%= user_library.description%></p>
-<%= link_to "Voir", user_library_path(user_library.id)%>
-<hr>
-<%end%>
-</center>
+  <h5> Ajouter un vinyl à sa librairie </h5>
+  <%= link_to "Ajouter vinyl", new_user_library_path %>
+  <%@user_libraries.each do |user_library|%>
+    <p> <%= user_library.user.first_name%>
+      <p>
+        <p> <%= user_library.disc.title%>
+          <p><%= user_library.description%></p>
+          <%= link_to "Voir", user_library_path(user_library.id)%>
+          <hr>
+        <%end%>
+      </center>
