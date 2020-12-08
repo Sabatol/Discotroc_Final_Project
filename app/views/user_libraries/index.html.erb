@@ -28,3 +28,57 @@
                 </div>
               </div>
             </center>
+
+            	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Similar Songs section -->
+	<section class="similar-songs-section">
+		<div class="container-fluid">
+			<h3>Similar Songs</h3>
+			<div class="row">
+			<%@user_libraries.each_with_index do |library, index|%>
+				<div class="col-xl-3 col-sm-6">
+					<div class="similar-song">
+						<%=image_tag "playlist/1.jpg", :class => "ss-thumb" %src= alt=""%>
+						<h4><%=library.disc.title%></h4>
+						<p><%=library.disc.artists.pluck(:name).join(" & ")%></p>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url="music-files/3.mp3"></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+									<!-- Player Controls -->
+									<div class="ss-controls">
+										<div class="songs-links">
+											<%=link_to image_tag("icons/p-1.png")%></a>
+											<a href=""><%=image_tag "icons/p-2.png"%></a>
+											<a href=""><%=image_tag "icons/p-3.png"%></a>
+										</div>
+									</div>
+									<!-- Progress Bar -->
+									<div class="player_bars">
+										<div class="jp-progress">
+											<div class="jp-seek-bar">
+												<div>
+													<div class="jp-play-bar"><div class="jp-current-time" role="timer" aria-label="time">0:00</div></div>
+												</div>
+											</div>
+										</div>
+										<div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+									</div>
+								</div>
+								<div class="jp-no-solution">
+									<span>Update Required</span>
+									To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<%end%>
+			</div>
+		</div>
+	</section>
+	<!-- Similar Songs section end -->

@@ -7,6 +7,93 @@
  =================================*/
 
 
+ /*----------------------------------------*/
+/* CUSTOM CSS
+/*----------------------------------------*/
+
+
+ @media only screen and (min-width: 768px) and (max-width: 991px) {
+	.footer-widget {
+		margin-bottom: 40px;
+	}
+}
+
+/* Large Mobile :480px. */
+
+@media only screen and (max-width: 767px) {
+	.footer-widget {
+		margin-bottom: 40px;
+	}
+}
+
+/* Small Mobile :320px. */
+
+@media only screen and (max-width: 479px) {
+	.section-title h2,
+	.hs-item h2,
+	.sub-text h2 {
+		font-size: 36px;
+	}
+	.wave-player-info h2 {
+		font-size: 24px;
+	}
+	.header-section {
+		padding: 0;
+	}
+	.player-box {
+		padding: 40px;
+	}
+	.contact-warp {
+		padding: 100px 15px;
+	}
+	.category-item .ci-link {
+		top: 26px;
+		bottom: auto;
+	}
+	.category-item .ci-text {
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+	}
+	.single_player_container .jp-interface {
+		display: block;
+	}
+	.song-details-box .player_controls_box,
+	.player_controls_box {
+		width: 100%;
+	}
+	.song-details-box .player_bars,
+	.player_bars {
+		width: 100%;
+	}
+	.song-details-box .jp-duration {
+		bottom: -19px;
+	}
+	.jp-duration {
+		bottom: -31px;
+	}
+	.song-details-box .song-item {
+		margin-bottom: 40px;
+	}
+	.player-section,
+	.player-box {
+		padding: 15px;
+	}
+	.social-links a {
+		margin-right: 20px;
+	}
+	.search-form {
+		text-align: center;
+	}
+	.search-form input {
+		padding-right: 41px;
+	}
+	.search-form button {
+		position: relative;
+		margin-top: 20px;
+	}
+
+
 
 /*----------------------------------------*/
 /* Template default CSS
@@ -15,7 +102,7 @@
 html,
 body {
 	height: 100%;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
@@ -1821,15 +1908,5 @@ Responsive
 		position: relative;
 		margin-top: 20px;
 	}
-
-  .p-blue {
-	  color: #0a183d
-  }
-
-  .p-white {
-	  color: #fff
-  }
-
-
 
 }
