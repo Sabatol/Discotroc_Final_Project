@@ -150,6 +150,7 @@ Commom elements
 
 .site-btn.sb-c2 {
 	background: #383b70;
+	color: rgb(221, 217, 217)
 }
 
 /* Preloder */
@@ -486,6 +487,8 @@ How section
 	right: -8px;
 	bottom: 0;
 }
+
+
 
 .how-item h4 {
 	margin-bottom: 25px;
@@ -1818,4 +1821,15 @@ Responsive
 		position: relative;
 		margin-top: 20px;
 	}
+
+  .p-blue {
+	  color: #0a183d
+  }
+
+  .p-white {
+	  color: #fff
+  }
+
+
+
 }
