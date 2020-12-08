@@ -1,256 +1,247 @@
 <!DOCTYPE html>
 <html lang="zxx">
-<head>
-	<title>SolMusic | HTML Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="SolMusic HTML Template">
-	<meta name="keywords" content="music, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-<body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-	<!-- Header section -->
-
-
-	<!-- Hero section -->
-	<section class="hero-section">
-		<div class="hero-slider owl-carousel">
-			<div class="hs-item">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hs-text">
-								<h2>Le <span>vinyl</span> ça s'échange.</h2>
-								<p>Discotroc est une plateforme d'échange de vinyles entre particuliers. Créer un compte, déposez vos vinyles, et commencer à les échangers.</p>
-								<%= link_to "Ajouter un disque", new_disc_path, class: "site-btn"%>
-								<%= link_to "Bouton désactivé", new_disc_path, class: "site-btn sb-c2"%>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="hr-img">
-							<%= image_tag "hero-bg.svg"%>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="hs-item">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="hs-text">
-								<h2>Échanger vos <span>vinyles</span>.</h2>
-								<p>Discotroc est une plateforme d'échange de vinyl entre particuliers. Créer un compte, déposez vos vinyles, et commencer à les échanger. </p>
-								<%= link_to "Ajouter un disque", new_disc_path, class: "site-btn"%>
-								<%= link_to "Bouton désactivé", new_disc_path, class: "site-btn sb-c2"%>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="hr-img">
-								<%= image_tag "hero-bg.svg"%>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero section end -->
-
-	<!-- Intro section -->
-	<section class="intro-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="section-title">
-						<h2>De particulier à particulier</h2>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-					<a href="#" class="site-btn">Try it now</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Intro section end -->
-
-	<!-- How section -->
-	<section class="how-section spad set-bg" data-setbg="img/how-to-bg.jpg">
-		<div class="container text-white">
-			<div class="section-title">
-				<h2>How it works</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="how-item">
-						<div class="hi-icon">
-						<%= image_tag "icons/brain.png"%>
-
-						</div>
-						<h4>Create an account</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. </p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="how-item">
-						<div class="hi-icon">
-						<%= image_tag "icons/pointer.png"%>
-
-						</div>
-						<h4>Choose a plan</h4>
-						<p>Donec in sodales dui, a blandit nunc. Pellen-tesque id eros venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa odio, portti-tor vitae efficitur non. </p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="how-item">
-						<div class="hi-icon">
-						<%= image_tag "icons/smartphone.png"%>
-
-						</div>
-						<h4>Download Music</h4>
-						<p>Ablandit nunc. Pellentesque id eros venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultric-ies volutpat tellus. </p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- How section end -->
-
-	<!-- Concept section -->
-	<section class="concept-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="section-title">
-						<h2>Our Concept & artists</h2>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="concept-item">
-					<%= image_tag "concept/1.jpg"%>
-
-						<h5>Soul Music</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="concept-item">
-					<%= image_tag "concept/2.jpg"%>
-						<h5>Live Concerts</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="concept-item">
-					<%= image_tag "concept/3.jpg"%>
-						<h5>Dj Sets</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="concept-item">
-					<%= image_tag "concept/4.jpg"%>
-						<h5>Live Streems</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Concept section end -->
-
-	<!-- Subscription section -->
-	<section class="subscription-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="sub-text">
-						<h2>Subscription from $15/month</h2>
-						<h3>Start a free trial now</h3>
-						<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<a href="#" class="site-btn">Try it now</a>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<ul class="sub-list">
-						<li><%= image_tag"icons/check-icon.png"%></li>
-						<li><%= image_tag  "icons/check-icon.png"%></li>
-						<li><%= image_tag  "icons/check-icon.png"%></li>
-						<li><%= image_tag  "icons/check-icon.png"%></li>
-						<li><%= image_tag "icons/check-icon.png"%></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Subscription section end -->
-
-	<!-- Premium section end -->
-	<section class="premium-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="section-title">
-						<h2>Why go Premium</h2>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="premium-item">
-					<%= image_tag "premium/1.jpg"%>
-
-						<h4>No ad interruptions </h4>
-						<p>Consectetur adipiscing elit</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="premium-item">
-						<%= image_tag "premium/2.jpg"%>
-						<h4>High Quality</h4>
-						<p>Ectetur adipiscing elit</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="premium-item">
-						<%= image_tag "premium/3.jpg"%>
-						<h4>Listen Offline</h4>
-						<p>Sed do eiusmod tempor </p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="premium-item">
-						<%= image_tag "premium/4.jpg"%>
-						<h4>Download Music</h4>
-						<p>Adipiscing elit</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-	</body>
+  <head>
+    <title>SolMusic | HTML Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="SolMusic HTML Template">
+    <meta name="keywords" content="music, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon"/>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger mb-0">
+        Veuillez compléter votre profil pour accéder à cette fonctionnalité.
+        <%= link_to "Compléter mon profil", edit_user_path(current_user.id), class: "text-dark ml-4" %>
+      </div>
+    <% end %>
+    <% if flash[:alert_admin] %>
+      <div class="alert alert-danger mb-0">
+        Non mais tu t'es pris pour un admin ?!
+      </div>
+    <% end %>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+    <!-- Header section -->
+    <!-- Hero section -->
+    <section class="hero-section">
+      <div class="hero-slider owl-carousel">
+        <div class="hs-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="hs-text">
+                  <h2>Le <span>vinyl</span> ça s'échange.</h2>
+                  <p>Discotroc est une plateforme d'échange de vinyles entre particuliers. Créer un compte, déposez vos vinyles, et commencer à les échangers.</p>
+                  <%= link_to "Ajouter un disque", new_disc_path, class: "site-btn"%>
+                  <%= link_to "Bouton désactivé", new_disc_path, class: "site-btn sb-c2"%>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="hr-img">
+                  <%= image_tag "hero-bg.svg"%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hs-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="hs-text">
+                  <h2>Échanger vos <span>vinyles</span>.</h2>
+                  <p>Discotroc est une plateforme d'échange de vinyl entre particuliers. Créer un compte, déposez vos vinyles, et commencer à les échanger. </p>
+                  <%= link_to "Ajouter un disque", new_disc_path, class: "site-btn"%>
+                  <%= link_to "Bouton désactivé", new_disc_path, class: "site-btn sb-c2"%>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="hr-img">
+                  <%= image_tag "hero-bg.svg"%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero section end -->
+    <!-- Intro section -->
+    <section class="intro-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="section-title">
+              <h2>De particulier à particulier</h2>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+            <a href="#" class="site-btn">Try it now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Intro section end -->
+    <!-- How section -->
+    <section class="how-section spad set-bg" data-setbg="img/how-to-bg.jpg">
+      <div class="container text-white">
+        <div class="section-title">
+          <h2>How it works</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="how-item">
+              <div class="hi-icon">
+                <%= image_tag "icons/brain.png"%>
+              </div>
+              <h4>Create an account</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipi-scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="how-item">
+              <div class="hi-icon">
+                <%= image_tag "icons/pointer.png"%>
+              </div>
+              <h4>Choose a plan</h4>
+              <p>Donec in sodales dui, a blandit nunc. Pellen-tesque id eros venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa odio, portti-tor vitae efficitur non. </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="how-item">
+              <div class="hi-icon">
+                <%= image_tag "icons/smartphone.png"%>
+              </div>
+              <h4>Download Music</h4>
+              <p>Ablandit nunc. Pellentesque id eros venenatis, sollicitudin neque sodales, vehicula nibh. Nam massa odio, porttitor vitae efficitur non, ultric-ies volutpat tellus. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- How section end -->
+    <!-- Concept section -->
+    <section class="concept-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="section-title">
+              <h2>Our Concept & artists</h2>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="concept-item">
+              <%= image_tag "concept/1.jpg"%>
+              <h5>Soul Music</h5>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="concept-item">
+              <%= image_tag "concept/2.jpg"%>
+              <h5>Live Concerts</h5>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="concept-item">
+              <%= image_tag "concept/3.jpg"%>
+              <h5>Dj Sets</h5>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="concept-item">
+              <%= image_tag "concept/4.jpg"%>
+              <h5>Live Streems</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Concept section end -->
+    <!-- Subscription section -->
+    <section class="subscription-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="sub-text">
+              <h2>Subscription from $15/month</h2>
+              <h3>Start a free trial now</h3>
+              <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <a href="#" class="site-btn">Try it now</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="sub-list">
+              <li><%= image_tag"icons/check-icon.png"%></li>
+              <li><%= image_tag  "icons/check-icon.png"%></li>
+              <li><%= image_tag  "icons/check-icon.png"%></li>
+              <li><%= image_tag  "icons/check-icon.png"%></li>
+              <li><%= image_tag "icons/check-icon.png"%></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Subscription section end -->
+    <!-- Premium section end -->
+    <section class="premium-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="section-title">
+              <h2>Why go Premium</h2>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="premium-item">
+              <%= image_tag "premium/1.jpg"%>
+              <h4>No ad interruptions </h4>
+              <p>Consectetur adipiscing elit</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="premium-item">
+              <%= image_tag "premium/2.jpg"%>
+              <h4>High Quality</h4>
+              <p>Ectetur adipiscing elit</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="premium-item">
+              <%= image_tag "premium/3.jpg"%>
+              <h4>Listen Offline</h4>
+              <p>Sed do eiusmod tempor </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="premium-item">
+              <%= image_tag "premium/4.jpg"%>
+              <h4>Download Music</h4>
+              <p>Adipiscing elit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

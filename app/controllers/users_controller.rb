@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
     def index
         @users = User.all
     end 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         @edit_user = User.find(params[:id])
         post_params = params.require(:user).permit(:first_name, :last_name, :address, :additional_address, :city, :zipcode, :country, :description)
         @edit_user.update(post_params)
-        if @edit_user.country && @edit_user.first_name && @edit_user.last_name && @edit_user.address && @edit_user.city && @edit_user.zipcode && @edit_user.description  
+        if user_completed?(@edit_user)
             @edit_user.update_attributes(completed: true)
             redirect_to user_path(@edit_user.id)
         else
@@ -33,7 +33,11 @@ class UsersController < ApplicationController
 
 
     private
-    def spotify
-        spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-   end
+    def user_completed?(user)
+        if user.country.present? && user.first_name.present? && user.last_name.present? && user.address.present? && user.city.present? && user.zipcode.present? && user.description.present? 
+            true
+        else 
+            false
+        end
+    end
 end

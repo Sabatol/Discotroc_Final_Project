@@ -1,19 +1,21 @@
 class DealContentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_completed?
+
   def index
     @deal_contents = DealContent.all
-end 
+  end 
 
-def show
+  def show
     @deal_content = DealContent.find(params[:id])
-end 
+  end 
 
-def new
+  def new
     @new_deal_content = DealContent.new 
     @user_library = UserLibrary.all.where(user_id: current_user.id)
-end 
+  end 
 
-def create
+  def create
     @new_deal_content = DealContent.new(sender_library_id: params[:sender_library_id], receiver_library_id: params[:receiver_library_id], deal_id: params[:deal_id])
     if @new_deal_content.save
       flash[:notice_good] = "Le Content Deal a bien été créer"
@@ -22,11 +24,11 @@ def create
       flash[:notice_bad] = "Le Content Deal n'a pas été créer"
       render 'new'
     end
-end
+  end
 
-def edit
+  def edit
     @edit_deal_content = DealContent.find(params[:id])
-end
+  end
 
   def update
     @edit_deal_content = DealContent.find(params[:id])

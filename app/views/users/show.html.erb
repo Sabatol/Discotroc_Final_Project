@@ -1,44 +1,49 @@
 <center>
   <h6>Index User</h6>
   <p> Utilisateurs n° <%= @user.id%>
+    <% if @user.completed? %>
+      <p>Votre profil est complet</p>
+    <% else %>
+      <p>Votre profil n'est pas complet</p>
+    <% end %>
     <hr style="width: 15%; border: 2px solid black;" >
     <h5>Info utilisateur</h5>
-    <%if @user.first_name != nil %>
+    <%if @user.first_name.present? %>
       <p> Prénom : <%=@user.first_name%></p>
     <%else%>
-      <p>Prénom : Information non renseignée</p>
+      <p> Prénom : Information non renseignée</p>
     <%end%>
-    <%if @user.last_name != nil  %>
+    <%if @user.last_name.present? %>
       <p> Nom : <%=@user.last_name%></p>
     <%else%>
       <p> Nom : Information non renseignée</p>
     <%end%>
-    <%if @user.description != nil  %>
+    <%if @user.description.present? %>
       <p> Description : <%=@user.description%></p>
     <%else%>
       <p>Description : Information non renseignée</p>
     <%end%>
-    <% if @user.address != nil  %>
+    <% if @user.address.present? %>
       <p> Adresse: <%=@user.address%>
       <%else%>
         <p> Adresse: Information non renseignée</p>
       <%end%>
-      <%if @user.additional_address != nil  %></p>
+      <%if @user.additional_address.present? %></p>
       <p> Complément d'adresse : <%=@user.additional_address%></p>
     <%else%>
       <p> Complément d'adresse : Information non renseignée</p>
     <%end%>
-    <%if @user.zipcode != nil  %>
+    <%if @user.zipcode.present? %>
       <p> Code Postal: <%=@user.zipcode%></p>
     <%else%>
       <p> Code Postal: Information non renseignée</p>
     <%end%>
-    <% if @user.city != nil  %>
+    <% if @user.city.present? %>
       <p> Ville: <%=@user.city%></p>
     <%else%>
       <p> Ville: Information non renseignée</p>
     <%end%>
-    <%if @user.country != nil  %>
+    <%if @user.country.present? %>
       <p> Pays: <%=@user.country%></p>
     <%else%>
       <p> Pays: Information non renseignée</p>
