@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(title: params[:title], content: params[:content], user: current_user)
+    @article = Article.new(title: params[:title], content: params[:content], user_id: params[:user])
     if @article.save
       redirect_to articles_path
       flash[:notice_good] = "Votre article a bien été publié"

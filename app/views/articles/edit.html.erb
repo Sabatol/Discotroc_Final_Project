@@ -6,7 +6,7 @@
 <%= f.text_field :title %>
 <%= label_tag 'Contenu' %> <br />
 <%= f.text_area :content%>
-<%= hidden_field_tag 'user', current_user %>
+<%= hidden_field_tag 'user', current_user.id %>
 <%= submit_tag "Modifier l'article", class: "btn btn-primary" %> <br>
 </form>
 <% end %>

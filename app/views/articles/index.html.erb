@@ -2,7 +2,11 @@
 
 <% @articles.each do |article| %>
 <p> <%=article.title%></p>
+<%if article.user.first_name%>
 <p>Par <%=article.user.first_name%></p>
+<%else%>
+<p>Par <%=article.user.email%></p>
+<%end%>
 <%= link_to "Voir", article_path(article.id)%>
 <%end%>
 
