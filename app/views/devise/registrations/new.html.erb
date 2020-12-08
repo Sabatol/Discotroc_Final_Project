@@ -1,27 +1,13 @@
-<div class="login-screen">
-  <h2 class="text-dark">S'inscrire</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="login-form">
-      <%= f.label :email, class: "text-dark" %><br />
-      <%= f.email_field :email, class: "form-control login-field", autofocus: true, autocomplete: "email", placeholder: "Entrez votre email" %>
-    </div>
-    <div class="login-form">
-      <%= f.label :password, "Mot de passe", class: "text-dark"  %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caractères minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, class: "form-control login-field", autocomplete: "new-password", placeholder: "Définissez votre mot de passe" %>
-    </div>
-    <div class="login-form">
-      <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "text-dark"  %><br />
-      <%= f.password_field :password_confirmation, class: "form-control login-field", autocomplete: "new-password", placeholder: "Confirmez votre mot de passe" %>
-    </div>
-    <div class="login-form">
-      <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg btn-block text-dark"  %>
-    </div>
-  <% end %>
-  <div class="login-link">
-    <%= render "devise/shared/links" %>
-  </div>
-</div>
+<section>
+	<div class="page">
+		<div class="sign_up">
+			<h2>S'inscrire</h2>
+       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "email" %><br>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Mot de passe", type: "password" %>
+			<%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirmation de mot de passe", type: "password" %> <br> <br>
+      <%= f.submit "S'inscrire", type: "submit", :class => "up"  %>
+<%end%>
+	</div>
+</section>
+</body>

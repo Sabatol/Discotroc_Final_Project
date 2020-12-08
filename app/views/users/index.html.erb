@@ -1,10 +1,79 @@
-<center>
+<head>
+	<title>Discotroc | Utilisateurs</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Discotroc | Utilisateurs">
+	<meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="shortcut icon"/>
 
-<%@users.each do |user|%>
-<p><%= user.first_name%></p>
-<p><%= user.last_name%></p>
-<%= link_to "Voir", user_path(user.id)%>
-<br> <hr style="width: 5%; border: 1px solid black;" > <br>
-<%end%>
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
 
-</center>
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Playlist section -->
+	<section class="playlist-section spad">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h2>Utilisateurs</h2>
+			</div>                                     
+			<div class="clearfix"></div>
+			<div class="row playlist-area">
+            <%@users.each do |user|%>
+				<div class="mix col-lg-3 col-md-4 col-sm-6">
+                <%=link_to user_path(user.id) do %>
+					<div class="playlist-item">
+                        <%= image_tag "playlist/2.jpg"%>
+                        <% if user.first_name == nil%>
+                        <h5> Prénom non renseigné </h5>
+                        
+                        <% elsif user.deals_sender.count == 0 %>
+                        <i class="fas fa-crown" style="color: white"></i>
+                        <h5><%= user.first_name%> <%= user.last_name%></h5>
+                        <% elsif user.deals_sender.count >= 1 && user.deals_sender.count < 3%>
+                        <i class="fas fa-crown" style="color: grey"></i>
+						<h5><%= user.first_name%> <%= user.last_name%></h5>
+                        <% elsif user.deals_sender.count >= 3 && user.deals_sender.count < 7%>
+                        <i class="fas fa-crown" style="color: brown"></i>
+                        <h5><%= user.first_name%> <%= user.last_name%></h5>
+                         <% elsif user.deals_sender.count >= 7%>
+                        <i class="fas fa-crown"></i>
+                        <h5><%= user.first_name%> <%= user.last_name%></h5>
+                        <% end %>
+                        <hr>
+					</div>
+                    <% end %>
+                    <div class="song-details-box text-center">
+						<ul>
+							<li><strong>Inscris le : </strong><%=user.created_at.strftime('%d-%m-%Y')%></li>
+                            <% if user.deals_sender.count == 1 || user.deals_sender.count == 0%>
+                            <li><strong>Disque échangé: </strong><%=user.deals_sender.count%></li>
+                            <% else %>
+							<li><strong>Disques échangés: </strong><%=user.deals_sender.count%></li>
+                            <% end %>
+						</ul>
+					</div>
+				</div>
+                <%end%>
+			</div>
+		</div>
+	</section>
+	<!-- Playlist section end -->
+
+
+	<p style="text-align: center"><i class="fas fa-crown"></i>* signifie que l'utilisateur a plus de deux échanges </p>
+
+
