@@ -10,6 +10,7 @@ end
 
 def new
     @new_deal_content = DealContent.new 
+    @user_library = UserLibrary.all.where(user_id: current_user.id)
 end 
 
 def create

@@ -1,7 +1,6 @@
     <center>
-    <%if @disc.cover_picture.nil? == false%>
-<%= image_tag @disc.cover_picture%><br>
-<%end%>
+    <% @search = @auth_wrapper.search(@disc.title, type: :release)%>
+     <%= image_tag @search.results.first.cover_image %><br>
     <h6>Titre</h6>
 <%= @disc.title%> <br>
 <br>
@@ -18,7 +17,7 @@
 <%= @disc.format%> <br>
 <br>
 <h6>Pays de sortie</h6>
-<%= @disc.country%> <br> 
+<%= @disc.country%> <br>
 <br>
 
 

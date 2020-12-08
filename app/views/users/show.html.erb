@@ -64,5 +64,12 @@
 <%end%>
 <h6>
 
-</center>
 <br>
+<% @user.comments_receiver.each_with_index do |comment, i| %>
+  <%= "Commentaire n°#{i+1} de #{comment.comment_sender.first_name}:"%> <br>
+  <%= comment.content %> <br>
+  <% if current_user.is_admin? %>
+    <%= link_to "Détruire commentaire", deal_comment_path(deal_id: comment.deal_id, id: comment.id), method: "DELETE" %>
+  <% end %>
+<% end %>
+</center>

@@ -4,7 +4,9 @@
     <%if @article.user.first_name%>
     <%=@article.user.first_name%> <%=@article.user.last_name%>
     <%else%>
-    <%=@article.user.email%>
+    <%string=@article.user.email.split("@")%>
+    <%firstName=string[0]%>
+    <%=firstName%>
     <%end%></p>
   <p><%=@article.content%></p>
   <br>
