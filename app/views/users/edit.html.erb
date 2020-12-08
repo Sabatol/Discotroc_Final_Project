@@ -1,44 +1,30 @@
 =<center>
-
-<%= form_for @edit_user do |f| %>
-        
-            <%= label_tag 'Prénom' %> <br />
-            <%= f.text_field :first_name, placeholder: 'Prénom', autocomplete: 'off' %> <br>
-          
-          
-            <%= label_tag 'Nom' %> <br />
-            <%= f.text_field :last_name, placeholder: 'Nom', autocomplete: 'off'%> <br>
-
-            <%= label_tag 'Description' %> <br />
-            <%= f.text_field :description, placeholder: 'Description', autocomplete: 'off'%> <br>
-         
-            <%= label_tag 'Adresse' %> <br />
-            <%= f.text_field :address, placeholder: 'Adresse', autocomplete: 'off'%> <br>
-        
-            <%= label_tag "Complement d'adesse" %> <br />
-            <%= f.text_field :additional_address, placeholder: "Complément d'adresse", autocomplete: 'off'%> <br>
-        
-            <%= label_tag 'Code Postal' %> <br />
-            <%= f.text_field :zipcode, placeholder: 'Code postal', autocomplete: 'off'%> <br>
-       
-            <%= label_tag 'Ville' %> <br />
-            <%= f.text_field :city, placeholder: 'Ville', autocomplete: 'off'%> <br>
-       
-            <%= label_tag 'Pays' %> <br />
-            <%= f.text_field :country, placeholder: 'Pays', autocomplete: 'off'%> <br>
-            
-        <br>
-        <br>
-
-          <%= submit_tag "Modifier", class: "btn btn-primary" %> <br><br>
-         <%= link_to "Revenir à l'accueil", root_path%> 
-    <% end %>
-    <br>                                                       
-
-<%= link_to 'Supprimer', user_path(@edit_user.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
-
+  <%= form_for @edit_user do |f| %>
+    <%= label_tag 'Prénom' %> <br />
+    <%= f.text_field :first_name, placeholder: 'Prénom', autocomplete: 'off' %> <br>
+    <%= label_tag 'Nom' %> <br />
+    <%= f.text_field :last_name, placeholder: 'Nom', autocomplete: 'off'%> <br>
+    <%= label_tag 'Description' %> <br />
+    <%= f.text_field :description, placeholder: 'Description', autocomplete: 'off'%> <br>
+    <%= label_tag 'Adresse' %> <br />
+    <%= f.text_field :address, placeholder: 'Adresse', autocomplete: 'off'%> <br>
+    <%= label_tag "Complement d'adesse" %> <br />
+    <%= f.text_field :additional_address, placeholder: "Complément d'adresse", autocomplete: 'off'%> <br>
+    <%= label_tag 'Code Postal' %> <br />
+    <%= f.text_field :zipcode, placeholder: 'Code postal', autocomplete: 'off'%> <br>
+    <%= label_tag 'Ville' %> <br />
+    <%= f.text_field :city, placeholder: 'Ville', autocomplete: 'off'%> <br>
+    <%= label_tag 'Pays' %> <br />
+    <%= f.text_field :country, placeholder: 'Pays', autocomplete: 'off'%> <br>
+    <br>
+    <br>
+    <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+    <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+  <% end %>
+  <br>
+  <%= link_to 'Supprimer', user_path(@edit_user.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
 </center>
-
 <br>
 <br>
 <br>
