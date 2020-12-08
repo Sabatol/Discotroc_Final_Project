@@ -1,0 +1,15 @@
+<center>
+  <h3>Éditer l'article :</h3>
+<%= form_for @article do |f| %>
+<form>
+<%= label_tag 'Titre' %> <br />
+<%= f.text_field :title %>
+<%= label_tag 'Contenu' %> <br />
+<%= f.text_area :content%>
+<%= hidden_field_tag 'user', current_user.id %>
+<%= submit_tag "Modifier l'article", class: "btn btn-primary" %> <br>
+</form>
+<% end %>
+<%= link_to "Revenir à l'accueil", root_path%> <br>
+<%= button_to "Supprimer", @article, method: :delete, data: {confirm: "Es-tu certain de vouloir supprimer cet article ?"}%>
+</center>

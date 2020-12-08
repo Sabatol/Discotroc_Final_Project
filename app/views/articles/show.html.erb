@@ -1,0 +1,17 @@
+<center>
+  <h2><%=@article.title%> </h2>
+  <p class="text-secondary">Article rédigé par
+    <%if @article.user.first_name%>
+    <%=@article.user.first_name%> <%=@article.user.last_name%>
+    <%else%>
+    <%=@article.user.email%>
+    <%end%></p>
+  <p><%=@article.content%></p>
+  <br>
+  <% if current_user.is_admin? == true || current_user == @article.user%>
+    <%= link_to "Modifier", edit_article_path(@article.id)%><br>
+    <%= button_to "Supprimer", @article, method: :delete, data: {confirm: "Es-tu certain de vouloir supprimer cet article ?"}%>
+  <%end%>
+  <br>
+  <%= link_to "Retour aux articles", articles_path%>
+</center>
