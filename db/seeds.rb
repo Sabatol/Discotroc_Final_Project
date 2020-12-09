@@ -17,8 +17,17 @@ formats.each do |name|
    Format.create(name: name)
 end
 
-
-10.times do
+  # Alpha_disc creation for user_controller => method: update
+  Disc.create(
+    title: "Veuillez choisir un disque à échanger",
+    release: 2020,
+    label: 'THP prod',
+    country: 'France',
+    artist: "Equipe THP vocal 1",
+    genre: Genre.first,
+    format: Format.first
+  )
+  10.times do
   Disc.create(
     title: Faker::Music.album,
     release: rand(1940..2020),
@@ -28,24 +37,39 @@ end
     genre: Genre.all.sample,
     format: Format.all.sample
   )
-end
+  end
 
-
-10.times do
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: 'Cacaboudin',
-    password_confirmation: 'Cacaboudin',
+    first_name: "PrénomAdmin",
+    last_name: "NomAdmin",
+    email: "discotroc@yopmail.com",
+    password: 'azerty',
+    password_confirmation: 'azerty',
     address: Faker::Address.street_address,
     additional_address: Faker::Address.secondary_address,
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
-    country: Faker::Address.country,
-    description: 'proutproutpouet'
+    country: "France",
+    description: "Description d'un administrateur créé via le seed.",
+    completed: true,
+    id_admin?: true
   )
-end
+  9.times do
+    User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email,
+      password: 'Cacaboudin',
+      password_confirmation: 'Cacaboudin',
+      address: Faker::Address.street_address,
+      additional_address: Faker::Address.secondary_address,
+      zipcode: Faker::Address.zip_code,
+      city: Faker::Address.city,
+      country: Faker::Address.country,
+      description: "Description d'un utilisateur créé via le seed.",
+      completed: true
+    )
+  end
 
 i = 0
 n = 0
@@ -105,7 +129,7 @@ end
 
 n = 0
 i = 1
-15.times do
+200.times do
   Comment.create(comment_sender_id: User.ids[n], comment_receiver_id: User.ids[i], deal_id: Deal.ids[n], content: "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne.")
   if n < User.count
     n += 1
