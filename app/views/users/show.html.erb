@@ -25,7 +25,11 @@
       <div class="player-box">
         <div class="tarck-thumb-warp">
           <div class="tarck-thumb">
-            <%= image_tag "avatars/Daft Punk.png"%>
+            <%if @user.avatar.attached?%>
+              <%= image_tag @user.avatar, alt: 'avatar' %>
+            <%else%>
+              <%= image_tag "avatars/Daft Punk.png"%>
+            <%end%>
           </div>
         </div>
         <div class="wave-player-warp">

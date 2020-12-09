@@ -15,42 +15,51 @@
 			<div class="form-content">
 				<div class="form-left" style="margin: 0 auto;">
 					<div class="middle text-center">
-          <%=image_tag "avatars/Daft Punk.png", style:"width: 200px; height: 200px;"%>
+						<%if @edit_user.avatar.attached?%>
+							<%= image_tag @edit_user.avatar, alt: 'avatar' %>
+						<%else%>
+							<%=image_tag "avatars/Daft Punk.png", style:"width: 200px; height: 200px;"%>
+						<%end%>
+
           <br>
 						<h4 class="text-center">Modifier votre profil</h4>
 						<p class="text-center">Saisissez vos nouvelles informations.</p>
 					</div>
-          <%= form_for @edit_user, class: "signin-form" do |f| %>
+          <%= form_for @edit_user, class: "signin-form", multipart: true do |f| %>
+							<div class="form-input">
+								<%= label_tag 'Avatar' %>
+								<%= f.file_field :avatar %>
+							</div>
 							<div class="form-input">
 								<%= label_tag 'Prénom' %>
 								<%= f.text_field :first_name, autocomplete: 'on' %>
 							</div>
              <div class="form-input">
-                <%= label_tag 'Nom' %> 
-               <%= f.text_field :last_name,  autocomplete: 'on'%> 
+                <%= label_tag 'Nom' %>
+               <%= f.text_field :last_name,  autocomplete: 'on'%>
              </div>
              <div class="form-input">
-                <%= label_tag 'Description' %> 
-               <%= f.text_field :description,  autocomplete: 'on'%> 
+                <%= label_tag 'Description' %>
+               <%= f.text_field :description,  autocomplete: 'on'%>
              </div>
              <div class="form-input">
-                <%= label_tag 'Adresse' %> 
-               <%= f.text_field :address, autocomplete: 'on'%> 
+                <%= label_tag 'Adresse' %>
+               <%= f.text_field :address, autocomplete: 'on'%>
              </div>
              <div class="form-input">
-                <%= label_tag 'Complément Adresse' %> 
-               <%= f.text_field :additional_address, autocomplete: 'on'%> 
+                <%= label_tag 'Complément Adresse' %>
+               <%= f.text_field :additional_address, autocomplete: 'on'%>
              </div>
              <div class="form-input">
-                <%= label_tag 'Code Postal' %> 
-               <%= f.text_field :zipcode, autocomplete: 'on'%> 
+                <%= label_tag 'Code Postal' %>
+               <%= f.text_field :zipcode, autocomplete: 'on'%>
              </div>
               <div class="form-input">
-                <%= label_tag 'Ville' %> 
-               <%= f.text_field :city, autocomplete: 'on'%> 
+                <%= label_tag 'Ville' %>
+               <%= f.text_field :city, autocomplete: 'on'%>
              </div>
              <div class="form-input">
-                <%= label_tag 'Pays' %> 
+                <%= label_tag 'Pays' %>
                <%= f.text_field :country, autocomplete: 'on'%>
              </div>
              <br>
@@ -64,9 +73,9 @@
              <%= link_to 'Supprimer', user_path(@edit_user.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
 					 </div>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 	</section>
 	<!-- //login-section -->
