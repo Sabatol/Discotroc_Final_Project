@@ -64,18 +64,18 @@
         <hr style="width: 5%; border: 1px solid black;" >
         <br>
         <br>
-        <h6> Disque proposé par <%=@deal.receiver.first_name%> </h6>
+        <h6> Disque proposé par <%=@deal.sender.first_name%> </h6>
         <% @deal.deal_contents.each do |deal_content| %>
-          <% if deal_content.receiver_library_id.present? %>
-            <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-            <% if receiver_library.present? %>
-              <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-              <%= receiver_disc.title%>
+          <% if deal_content.sender_library_id.present? %>
+            <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
+            <% if sender_library.present? %>
+              <% sender_disc = Disc.find(sender_library.disc_id)%>
+              <%= sender_disc.title%>
             <% else %>
-              <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+              <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
             <% end %>
           <% else %>
-            <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+            <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
           <% end %>
         <%end %>
       <%end %>
