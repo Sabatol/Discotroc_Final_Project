@@ -10,13 +10,13 @@ Rails.application.routes.draw do
 
 
   resources :user_libraries, only: [:index, :show] do
-    resources :deals, except: [:show, :index] do 
+    resources :deals, except: [:index] do 
       resources :comments, only: [:new, :create, :destroy]
       resources :deal_contents
       resources :deal_pms
     end
   end
-  resources :deals, only: [:show, :index]
+  resources :deals, only: [:index]
 
   resources :discs
   resources :genres

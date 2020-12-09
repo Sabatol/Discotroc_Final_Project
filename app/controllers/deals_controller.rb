@@ -30,7 +30,7 @@ class DealsController < ApplicationController
       new_deal_content = DealContent.create(sender_library_id: sender_library.id, receiver_library_id: receiver_library.id, deal_id: @new_deal.id)
       ####
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deal_path(@new_deal.id)
+      redirect_to user_library_deal_path(params[:user_library_id], @new_deal.id)
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'

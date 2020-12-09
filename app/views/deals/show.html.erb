@@ -49,72 +49,65 @@
           <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
       <% end %>
     <%end%>
-    <%#= form_tag deal_deal_content_path(deal_id: params[:id], action: 'create'), method: "post" do %>
-      <%#= label_tag 'Sender Library ID' %> <br>
-      <%#= select_tag 'sender_library_id', options_for_select(@user_library.map{|user_library| [(Disc.find(user_library.disc_id).title + ", état : " + DiscState.find(user_library.disc_state_id).name ), user_library.id]}) %> <br>
-      <%#= label_tag 'Receiver Library ID' %> <br>
-      <%#= text_field_tag 'receiver_library_id' %> <br>
-      <%#= submit_tag "Envoyer" %>
-      <%# end %>
-      <%=link_to "Proposer un disque", new_deal_deal_content_path(deal_id: @deal.id)  %>
-      <%if current_user.id == @deal.receiver_id %>
-        <h5> Receiver </h5>
-        <p> Vous participez à ce deal ! </p>
-      <% else %>
-        <h5> Receiver </h5>
-        <p> Prénom/Nom :<%=link_to user_path(@deal.receiver_id) do%> <%=User.find_by(id: @deal.receiver_id).first_name%> <%=User.find_by(id: @deal.receiver_id).last_name%></p>
-        <%end %>
+    <%=link_to "Proposer un disque", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
+    <%if current_user.id == @deal.receiver_id %>
+      <h5> Receiver </h5>
+      <p> Vous participez à ce deal ! </p>
+    <% else %>
+      <h5> Receiver </h5>
+      <p> Prénom/Nom :<%=link_to user_path(@deal.receiver_id) do%> <%=User.find_by(id: @deal.receiver_id).first_name%> <%=User.find_by(id: @deal.receiver_id).last_name%></p>
       <%end %>
-      <h5> Status </h5>
-      <% if current_user.id == @deal.sender_id && @deal.sender_ok? == true %>
-        <p> Vous êtes ok pour ce deal </p>
-      <% elsif current_user.id == @deal.sender_id && @deal.sender_ok? == false %>
-        <p> En attente de confirmation</p>
-      <% elsif @deal.sender_ok? == true %>
-        <p><%=User.find_by(id: @deal.sender_id).first_name%> a validé le troc.</p>
-      <% else%>
-        <p><%=User.find_by(id: @deal.sender_id).first_name%> n'a pas encore validé le troc.</p>
-      <% end %>
-      <% if current_user.id == @deal.receiver_id && @deal.receiver_ok? == true %>
-        <p> Vous êtes ok pour ce deal </p>
-      <% elsif current_user.id == @deal.receiver_id && @deal.receiver_ok? == false %>
-        <p> Vous n'avez pas encore validé</p>
-      <% elsif @deal.receiver_ok? == true %>
-        <p><%=User.find_by(id: @deal.receiver_id).first_name%> a validé le troc.</p>
-      <% else%>
-        <p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
-      <% end %>
-      <% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-        <%= link_to "Modifier", edit_deal_path(deal_id: @deal.id)%>
-      <% end %>
-      <p>############################################################################</p>
-      <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
-        <p>Vous pouvez laisser un commentaire sur la personne avec qui vous avez échangé !</p>
-        <%= link_to "Laisser un commentaire", new_deal_comment_path(deal_id: @deal.id) %>
-      <% end %>
-      <p>############################################################################</p>
-      <br>
-      <br>
-      <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
-        <%number = 1 %>
-        <% search_pm.each do |pm| %>
-          <p> Deal PM N° <%=number%> </p>
-          <hr style="width: 5%; border: 1px solid black;" >
-          <h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
-          <p><%=pm.content%></p>
-        <% end %>
-        <%= form_tag deal_deal_pms_path(deal_id: params[:id], action: 'create'), method: "post" do %>
-          <%= label_tag 'Content' %> <br>
-          <%= text_field_tag 'content', "Votre commentaire" %> <br>
-          <br>
-          <%= hidden_field_tag 'deal_id', @deal.id %> <br>
-          <br>
-          <%= hidden_field_tag 'pm_author_id', current_user.id %> <br>
-          <%= submit_tag "Envoyer" %>
-        <% end %>
-      <% else %>
-        <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
-      <% end %>
-      <br>
+    <%end %>
+    <h5> Status </h5>
+    <% if current_user.id == @deal.sender_id && @deal.sender_ok? == true %>
+      <p> Vous êtes ok pour ce deal </p>
+    <% elsif current_user.id == @deal.sender_id && @deal.sender_ok? == false %>
+      <p> En attente de confirmation</p>
+    <% elsif @deal.sender_ok? == true %>
+      <p><%=User.find_by(id: @deal.sender_id).first_name%> a validé le troc.</p>
+    <% else%>
+      <p><%=User.find_by(id: @deal.sender_id).first_name%> n'a pas encore validé le troc.</p>
     <% end %>
-  </div>
+    <% if current_user.id == @deal.receiver_id && @deal.receiver_ok? == true %>
+      <p> Vous êtes ok pour ce deal </p>
+    <% elsif current_user.id == @deal.receiver_id && @deal.receiver_ok? == false %>
+      <p> Vous n'avez pas encore validé</p>
+    <% elsif @deal.receiver_ok? == true %>
+      <p><%=User.find_by(id: @deal.receiver_id).first_name%> a validé le troc.</p>
+    <% else%>
+      <p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
+    <% end %>
+    <% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
+      <%#= link_to "Modifier", edit_deal_path(deal_id: @deal.id)%>
+    <% end %>
+    <p>############################################################################</p>
+    <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
+      <p>Vous pouvez laisser un commentaire sur la personne avec qui vous avez échangé !</p>
+      <%= link_to "Laisser un commentaire", new_deal_comment_path(deal_id: @deal.id) %>
+    <% end %>
+    <p>############################################################################</p>
+    <br>
+    <br>
+    <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
+      <%number = 1 %>
+      <% search_pm.each do |pm| %>
+        <p> Deal PM N° <%=number%> </p>
+        <hr style="width: 5%; border: 1px solid black;" >
+        <h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
+        <p><%=pm.content%></p>
+      <% end %>
+      <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
+        <%= label_tag 'Content' %> <br>
+        <%= text_field_tag 'content', "Votre commentaire" %> <br>
+        <br>
+        <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+        <br>
+        <%= hidden_field_tag 'pm_author_id', current_user.id %> <br>
+        <%= submit_tag "Envoyer" %>
+      <% end %>
+    <% else %>
+      <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
+    <% end %>
+    <br>
+  <% end %>
+</div>
