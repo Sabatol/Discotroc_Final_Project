@@ -1,26 +1,78 @@
 <div class="container text-center my-4">
-  <%= form_for @edit_disc do |f| %>
-    <%= label_tag 'Titre' %> <br />
-    <%= f.text_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off' %>
-       <%= label_tag 'Artist' %> <br />
-    <%= f.text_field :artist, placeholder: 'Artist', autocomplete: 'off'%> 
-    <%= label_tag 'Release' %> <br />
-    <%= f.text_field :release, placeholder: 'Année de sortie', autocomplete: 'off'%> 
-    <%= label_tag 'Label' %> <br />
-    <%= f.text_field :label, placeholder: 'Label', autocomplete: 'off'%>
-      <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name) %> <br>
-      <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name) %> <br>
-    <%= label_tag 'Country' %> <br />
-    <%= f.text_field :country, placeholder: 'Country', autocomplete: 'off'%>
-    <%= label_tag 'Cover Picture' %> <br />
-    <%= f.text_field :cover_picture, placeholder: 'Cover', autocomplete: 'off'%>
-    <br />
-    <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
-    <%= link_to "Revenir à l'accueil", root_path%>
-  <% end %>
+
   <% if user_signed_in? %>
     <% if current_user.is_admin? == true %>
+
+    <%= form_for @edit_disc do |f| %>
+      <%= label_tag 'Titre' %> <br />
+      <%= f.text_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off' %>
+      <%= label_tag 'Artiste' %> <br />
+      <%= f.text_field :artist, placeholder: 'Artist', autocomplete: 'off'%>
+      <%= label_tag 'Release' %> <br />
+      <%= f.text_field :release, placeholder: 'Année de sortie', autocomplete: 'off'%>
+      <%= label_tag 'Label' %> <br />
+      <%= f.text_field :label, placeholder: 'Label', autocomplete: 'off'%>
+      <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name) %> <br>
+      <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name) %> <br>
+      <%= label_tag 'Country' %> <br />
+      <%= f.text_field :country, placeholder: 'Country', autocomplete: 'off'%>
+      <%= label_tag 'Cover Picture' %> <br />
+      <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
+      <% @edit_disc.cover_picture = @search.results.first.cover_image%>
+      <% if @search.results.first != nil %>
+        <%= image_tag @edit_disc.cover_picture %>
+      <% else %>
+        <p>Pas de cover pour ce disque.</p>
+      <% end %>
+      <br />
+      <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+      <%= link_to "Revenir à l'accueil", root_path%>
+    <% end %>
       <%= link_to 'Supprimer', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+
+      <%else%>
+
+      <%= form_for @edit_disc do |f| %>
+        <%= f.hidden_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off', value: @edit_disc.title %>
+        <%= f.hidden_field :artist, placeholder: 'Artist', autocomplete: 'off', value: @edit_disc.artist%>
+        <%= f.hidden_field :release, placeholder: 'Année de sortie', autocomplete: 'off', value: @edit_disc.release%>
+        <%= f.hidden_field :label, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.label%>
+        <%= f.hidden_field :format_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.format_id%>
+        <%= f.hidden_field :genre_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.genre_id%>
+        <%= f.hidden_field :country, placeholder: 'Country', autocomplete: 'off', value: @edit_disc.country%>
+      <h6>Titre</h6>
+      <%= @edit_disc.title%> <br>
+      <br>
+      <h6>Artiste</h6>
+      <%= @edit_disc.artist%> <br>
+      <br>
+      <h6>Année de sortie</h6>
+      <%= @edit_disc.release%> <br>
+      <br>
+      <h6>Label</h6>
+      <%= @edit_disc.label%> <br>
+      <br>
+      <h6>Format</h6>
+      <%= @edit_disc.format.name%> <br>
+      <br>
+      <h6>Genre</h6>
+      <%= @edit_disc.genre.name%> <br>
+      <br>
+      <h6>Pays de sortie</h6>
+      <%= @edit_disc.country%> <br>
+      <br>
+      <br>
+        <%= label_tag 'Cover Picture' %> <br />
+        <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
+        <% if @search.results.first != nil%>
+        <% cover_picture = @search.results.first.cover_image%>
+          <%= image_tag cover_picture %>
+          <%= f.hidden_field :cover_picture, placeholder: 'cover_picture', autocomplete: 'off', value: cover_picture%>
+        <% end %>
+        <br />
+        <%= submit_tag "OK", class: "btn btn-primary" %> <br>
+        <%= link_to 'Annuler', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Cela va supprimer le disque. Es-tu certain ?' } %>
+      <% end %>
     <%end%>
   <% end %>
 </div>

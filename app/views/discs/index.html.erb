@@ -14,9 +14,8 @@
       <div class="col-3">
         <div class="tile bg-secondary">
           <br>
-          <%  search = @auth_wrapper.search(disc.title, type: :release)%>
-          <% if search.results.first != nil %>
-            <%= image_tag search.results.first.cover_image %>
+          <% if disc.cover_picture != nil %>
+            <%= image_tag disc.cover_picture %>
           <% else %>
             <p>Pas de cover pour ce disque.</p>
           <% end %>

@@ -66,3 +66,4 @@ gem 'dotenv-rails'
 gem 'faker'
 gem 'table_print'
 gem "discogs-wrapper"
+gem 'social-share-button', github: "huacnlee/social-share-button"

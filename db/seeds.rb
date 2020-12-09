@@ -9,11 +9,12 @@ require 'faker'
 
 genres = ["Disco", "Musiques Electroniques", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "World", "Classique", "Pop", "Variété", "Blues", "Reggae"]
 genres.each do |name|
-   Genre.create(name: name) 
+   Genre.create(name: name)
 end
 
-5.times do
-   Format.create(name: Faker::Music.band) 
+formats = ["Vinyle 33T", "Vinyle 45T", "CD"]
+formats.each do |name|
+   Format.create(name: name)
 end
 
 
@@ -113,7 +114,7 @@ i = 1
   end
   if i < User.count
     i+=1
-  else 
+  else
     i=0
   end
 end
