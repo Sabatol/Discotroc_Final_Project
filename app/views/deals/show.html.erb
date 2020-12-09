@@ -9,6 +9,7 @@
       <%= link_to disc_path(content.id) do %>
         <%= content.title%>
       <% end %>
+      | <%= content.value%> <br>
     <%end %>
     <br>
     <br>
@@ -18,6 +19,7 @@
       <%= link_to disc_path(content.id) do %>
         <%= content.title%>
       <% end %>
+      | <%= content.value%> <br>
     <%end %>
     <%if current_user.id == @deal.sender_id %>
       <h5> Sender </h5>
@@ -57,15 +59,33 @@
     <% else%>
       <p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
     <% end %>
-    <% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-      <%= link_to "Modifier", edit_deal_path(deal_id: @deal.id)%>
+    <% if current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
+      <%= form_tag deal_path(receiver_ok: params[:receiver_ok],action: 'update'), method: 'patch' do %>
+        <%= label_tag 'Receiver Ok ? ' %> <br />
+        <%= check_box_tag :receiver_ok? %>
+        <br>
+        <br>
+        <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+        <br>
+        <%= link_to "Revenir à l'accueil", root_path%>
+      <% end %>
+    <%  elsif  current_user.id == @deal.sender_id %>
+      <%= form_tag deal_path(sender_ok: params[:sender_ok?], action: 'update'), method: 'patch' do |f| %>
+        <%= label_tag 'Sender_ok ? ' %> <br />
+        <%= check_box :sender_ok? %>
+        <br>
+        <br>
+        <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+        <br>
+        <%= link_to "Revenir à l'accueil", root_path%>
+      <% end %>
+    <% else %>
+      <p>over !</p>
     <% end %>
-    <p>############################################################################</p>
     <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
       <p>Vous pouvez laisser un commentaire sur la personne avec qui vous avez échangé !</p>
       <%= link_to "Laisser un commentaire", new_deal_comment_path(deal_id: @deal.id) %>
     <% end %>
-    <p>############################################################################</p>
     <br>
     <br>
     <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
