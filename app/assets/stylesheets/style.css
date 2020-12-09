@@ -5,6 +5,19 @@
   Version: 1.0
  ---------------------------------
  =================================*/
+
+
+ 
+ /* FORM LOGIN SIGNUP FORGOT PASSWORD*/
+ .copy-right a {
+	 color: grey; 
+ }
+
+ .copy-right a:hover {
+	color: #08192d; 
+}
+
+
  .grid-info-form span {
 	 color: #ffd369;
  }
@@ -715,7 +728,7 @@ Commom elements
 }
 
 .site-btn:hover {
-	color: #fff;
+	color: brown;
 }
 
 .site-btn.sb-c2 {
