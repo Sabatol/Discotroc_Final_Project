@@ -144,7 +144,7 @@
               <div class="concept-item">
                 <%= image_tag "concept/1.jpg"%>
                 <h5 style="color:#ffd369"><%=library.disc.title%></h5>
-                <p style="color:white"><%=library.disc.artists.pluck(:name).join(" & ")%></p>
+                <p style="color:white"><%=library.disc.artist%></p>
               </div>
             <%end %>
           </div>

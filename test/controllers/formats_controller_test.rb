@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DiscStateTest < ActiveSupport::TestCase
+class FormatsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

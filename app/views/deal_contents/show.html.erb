@@ -1,34 +1,17 @@
 <center>
-<%disc_sender_price = Disc.find(UserLibrary.find(@deal_content.sender_library_id).disc_id).value%> 
-<%disc_receiver_price = Disc.find(UserLibrary.find(@deal_content.receiver_library_id).disc_id).value%>
-<%result = disc_receiver_price - disc_sender_price%>
-
-
-<p> Deal Content N° <%= @deal_content.id%>
-<hr style="width: 5%; border: 1px solid black;" >
-<p> Deal ID: <%=@deal_content.deal_id%></p>
-<h5>Nom de l'annonceur => <%= Deal.find_by(id:@deal_content.deal_id).receiver.first_name%>  </h6> 
-
-
-
-<h6> Disque desiré => <%= Disc.find(UserLibrary.find(@deal_content.sender_library_id).disc_id).title%>  </h6> 
-<p> (Sender Library ID: <%=@deal_content.sender_library_id%>)</p>
-<p> Valeur du disque :<%= disc_sender_price%> </p>
-
-<br>
-<h5>Nom de l'echangeur => <%= Deal.find_by(id:@deal_content.deal_id).sender.first_name%>  </h6>
-<h6> Disque proposé en echange => <%= Disc.find(UserLibrary.find(@deal_content.receiver_library_id).disc_id).title%>  </h6> 
-<p>(Receiver Library ID: <%=@deal_content.receiver_library_id%>)</p>
-<p> Valeur du disque :<%= disc_receiver_price%> </p>
-<br>
-
-<%if result <= 0%>
-<h6> Difference de valeur <%=result%> en faveur de l'echangeur</h6>
-<%else%>
-<h6> Difference de valeur <%=result%> en faveur de l'annonceur</h6>
-<%end%>
-<br>
-<%= link_to "Modifier", edit_deal_content_path(@deal_content.id)%>
-<br>
-<%= link_to "Retour a l'index Deal Content", deal_contents_path%>
-</center>
+  <p> Deal Content N° <%= @deal_content.id%>
+    <hr style="width: 5%; border: 1px solid black;" >
+    <p> Deal ID: <%=@deal_content.deal_id%></p>
+    <h5>Nom de l'annonceur => <%= Deal.find_by(id:@deal_content.deal_id).receiver.first_name%>  </h6>
+    <h6> Disque desiré => <%= Disc.find(UserLibrary.find(@deal_content.sender_library_id).disc_id).title%>  </h6>
+    <p> (Sender Library ID: <%=@deal_content.sender_library_id%>)</p>
+    <br>
+    <h5>Nom de l'echangeur => <%= Deal.find_by(id:@deal_content.deal_id).sender.first_name%>  </h6>
+    <h6> Disque proposé en echange => <%= Disc.find(UserLibrary.find(@deal_content.receiver_library_id).disc_id).title%>  </h6>
+    <p>(Receiver Library ID: <%=@deal_content.receiver_library_id%>)</p>
+    <br>
+    <br>
+    <%= link_to "Modifier", edit_deal_content_path(@deal_content.id)%>
+    <br>
+    <%= link_to "Retour a l'index Deal Content", deal_contents_path%>
+  </center>

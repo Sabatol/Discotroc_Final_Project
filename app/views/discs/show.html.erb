@@ -13,39 +13,27 @@
   <h6>Années de sortie</h6>
   <%= @disc.release%> <br>
   <br>
-  <h6>Valeur</h6>
-  <%= @disc.value%> <br>
-  <br>
   <h6>Label</h6>
   <%= @disc.label%> <br>
   <br>
   <h6>Format</h6>
-  <%= @disc.format%> <br>
+    <%if @disc.format.nil? == false %>
+    <h5>Genre :</h5>
+    <%= @disc.format.name%> <br>
+  <%end%>
   <br>
   <h6>Pays de sortie</h6>
   <%= @disc.country%> <br>
   <br>
   <br>
-  <%if @disc.artists.count > 0%>
+  <%if @disc.artist.nil? == false%>
     <h4>Artiste :</h4>
-    <h6> <%=@disc.artists.pluck(:name).join(" & ") %></h6>
+    <h6> <%=@disc.artist %></h6>
   <%end%>
   <br>
-  <%if @disc.genres.count > 0%>
+  <%if @disc.genre.nil? == false %>
     <h5>Genre :</h5>
-    <h6><%=@disc.genres.pluck(:name).join(", ")%></h6>
-  <%end%>
-  <br>
-  <%if @disc.styles.count > 0%>
-    <h5>Style :</h5>
-    <h6><%=@disc.styles.pluck(:name).join(", ")%></h6>
-  <%end%>
-  <br>
-  <%if @disc.tracks.count > 0%>
-    <h5>Track :</h5>
-    <%@disc.tracks.each do |disc_track|%>
-      <h6> <%=disc_track.name%> </h6>
-    <%end%>
+    <h6><%=@disc.genre.name%></h6>
   <%end%>
   <br>
   <% if user_signed_in? %>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
     def index
         @users = User.all
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
             @edit_user.update_attributes(completed: true)
             # Create an initial User_Library when user is completed creation, to move in model for FAT models, SKINNY controllers
             unless @edit_user.user_libraries.present?
-                new_deal_content = UserLibrary.create(disc_id: 1, description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", disc_state_id: 4)
+                new_deal_content = UserLibrary.create(disc_id: 1, description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: current_user.id)
             end
             ####
             redirect_to user_path(@edit_user.id)

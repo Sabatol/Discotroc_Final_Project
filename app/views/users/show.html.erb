@@ -50,17 +50,18 @@
     <%end%>
     <%= link_to "Modifier", edit_user_path(@user.id)%>
     <hr style="width: 15%; border: 2px solid black;" >
-    <%if @user.disc_ids.length > 0%>
-      <% index = 0%>
+    <%if @user.disc_ids.length > 1%>
       <h5>Disques'A Troqué :</h5>
       <% @user.discs.each do |disc| %>
-        <h6><%= link_to disc.title.to_s, user_library_path(disc.user_libraries.find_by(user_id: params[:id])) %></h6>
-        <%= @user.user_libraries.pluck(:description)[index]%>
-        <hr style="width: 15%; border: 2px solid black;" >
-        <% index +=1%>
+        <% if disc.present? && disc != Disc.first %>
+          <% user_library = disc.user_libraries.find_by(user_id: params[:id])%>
+          <h6><%= link_to disc.title.to_s, user_library_path(user_library) %></h6>
+          <%= user_library.description%>
+          <hr style="width: 15%; border: 2px solid black;" >
+        <% end %>
       <%end%>
     <%else%>
-      <h5>Ne propose pas de disque actuellement </h5>
+      <p>Vous n'avez pas encore de disque en bibliothèque.</p>
     <%end%>
     <h6>
       <br>
