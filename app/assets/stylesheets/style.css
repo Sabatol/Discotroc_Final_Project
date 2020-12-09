@@ -1,99 +1,137 @@
 
 /*=================================
 -----------------------------------
-  SolMusic HTML Template
-  Version: 1.0
+  DiscoTroc
+  Version: 0.0.2
  ---------------------------------
  =================================*/
 
-
- /*----------------------------------------*/
-/* CUSTOM CSS
+/*----------------------------------------*/
+/* Custom CSS HandMade
 /*----------------------------------------*/
 
-
- @media only screen and (min-width: 768px) and (max-width: 991px) {
-	.footer-widget {
-		margin-bottom: 40px;
-	}
+/* Library custom button */
+ .btn-library-index {
+	display: inline-block;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 4px;
+	border-radius: 50px;
+	text-transform: uppercase;
+	background: #0a183d;
+	color: #fff;
+	line-height: normal;
+	cursor: pointer;
+	text-align: center;
 }
 
-/* Large Mobile :480px. */
-
-@media only screen and (max-width: 767px) {
-	.footer-widget {
-		margin-bottom: 40px;
-	}
+.btn-library-index-bis{
+	background:    #0a183d;
+border-radius: 1000px;
+padding:       12px 34px;
+color:         #ffffff;
+display:       inline-block;
+text-align:    center;
 }
 
-/* Small Mobile :320px. */
-
-@media only screen and (max-width: 479px) {
-	.section-title h2,
-	.hs-item h2,
-	.sub-text h2 {
-		font-size: 36px;
-	}
-	.wave-player-info h2 {
-		font-size: 24px;
-	}
-	.header-section {
-		padding: 0;
-	}
-	.player-box {
-		padding: 40px;
-	}
-	.contact-warp {
-		padding: 100px 15px;
-	}
-	.category-item .ci-link {
-		top: 26px;
-		bottom: auto;
-	}
-	.category-item .ci-text {
-		position: absolute;
-		bottom: 10px;
-		left: 20px;
-	}
-	.single_player_container .jp-interface {
-		display: block;
-	}
-	.song-details-box .player_controls_box,
-	.player_controls_box {
-		width: 100%;
-	}
-	.song-details-box .player_bars,
-	.player_bars {
-		width: 100%;
-	}
-	.song-details-box .jp-duration {
-		bottom: -19px;
-	}
-	.jp-duration {
-		bottom: -31px;
-	}
-	.song-details-box .song-item {
-		margin-bottom: 40px;
-	}
-	.player-section,
-	.player-box {
-		padding: 15px;
-	}
-	.social-links a {
-		margin-right: 20px;
-	}
-	.search-form {
-		text-align: center;
-	}
-	.search-form input {
-		padding-right: 41px;
-	}
-	.search-form button {
-		position: relative;
-		margin-top: 20px;
-	}
+.btn-library-index:hover {
+	-webkit-transition: all 0.5s ease 1s;
+	transition: all 0.5s ease 1s;
+	color: #ffd369;
+}
 
 
+
+.btn-library-index,
+.btn-library-index:hover {
+	top: 0;
+	opacity: 1;
+}
+
+
+/*library-index-card*/
+
+.lao-card{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.head-lib-card{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+
+.lib-index-butn {
+
+}
+
+.library-index-section {
+	padding: 100px 33px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.library-index-section h3 {
+	margin-bottom: 70px;
+	padding-left: 6px;
+}
+
+.library-index-card{
+	padding: 0 6px;
+	margin-bottom: 4px;
+	height: 95%;
+}
+
+.library-index-card.ss-thumb {
+	border-radius: 41px;
+	margin-bottom: 22px;
+	min-width: 100%;
+}
+
+.library-index-card .ss-thumb {
+	border-radius: 41px;
+	margin-bottom: 22px;
+	min-width: 100%;
+}
+
+.library-index-cardh4 {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+.library-index-cardp {
+	font-size: 14px;
+}
+
+.library-index-card.player_bars {
+	width: 100%;
+}
+
+.library-index-card.jp-current-time {
+	padding-top: 10px;
+}
+
+.library-index-card.jp-duration {
+	bottom: -25px;
+}
+
+
+.library-index-card{
+	margin-bottom: 30px;
+}
+.library-index-section,
+.playlist-section {
+	padding: 100px 0;
+}
+.library-index-section .container,
+.playlist-section .container {
+	max-width: 100%;
+}
 
 /*----------------------------------------*/
 /* Template default CSS
@@ -686,7 +724,7 @@ Responsive
  -------------------*/
 
 .footer-section {
-	background: #0a183d;
+	background: #08192d;
 	padding: 25px 0 15px;
 }
 
@@ -1908,5 +1946,13 @@ Responsive
 		position: relative;
 		margin-top: 20px;
 	}
+
+  .p-blue {
+	  color: #0a183d
+  }
+
+  .p-white {
+	  color: #fff
+  }
 
 }
