@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-
   root 'home#index'
   devise_for :users
 
-  resources :deals do 
-    resources :comments, only: [:new, :create, :destroy]
+  resources :deals do
+    resources :comments, only: %i[new create destroy]
   end
-
 
   resources :users
   resources :discs
@@ -18,7 +16,6 @@ Rails.application.routes.draw do
   resources :deal_pms
   resources :user_libraries
   resources :disc_states
+  resources :contacts, only: %i[new create]
   resources :articles
-
-
 end
