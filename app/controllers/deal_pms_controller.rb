@@ -18,7 +18,7 @@ class DealPmsController < ApplicationController
     @new_deal_pm = DealPm.new(deal_id: params[:deal_id], pm_author_id: params[:pm_author_id], content: params[:content])
     if @new_deal_pm.save
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deals_path
+      redirect_to deal_path(params[:deal_id])
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'
@@ -34,13 +34,13 @@ class DealPmsController < ApplicationController
     @edit_deal_pm = DealPm.find(params[:id])
     post_params = params.require(:deal_pm).permit(:deal_id, :pm_author_id, :content)
     @edit_deal_pm.update(post_params)
-    redirect_to deal_pm_path(@edit_deal_pm.id)
+    redirect_to deal_path(params[:deal_id])
   end
 
   def destroy
     @destroy_deal = DealPm.find(params[:id])
     @destroy_deal.destroy
-    redirect_to deal_pms_path
+    redirect_to root_path
   end
 
 end

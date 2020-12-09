@@ -1,76 +1,78 @@
-    <center>
-    <% @search = @auth_wrapper.search(@disc.title, type: :release)%>
-     <%= image_tag @search.results.first.cover_image %><br>
-    <h6>Titre</h6>
-<%= @disc.title%> <br>
-<br>
-<h6>Années de sortie</h6>
-<%= @disc.release%> <br>
-<br>
-<h6>Valeur</h6>
-<%= @disc.value%> <br>
-<br>
-<h6>Label</h6>
-<%= @disc.label%> <br>
-<br>
-<h6>Format</h6>
-<%= @disc.format%> <br>
-<br>
-<h6>Pays de sortie</h6>
-<%= @disc.country%> <br>
-<br>
-
-
-<br>
-
-<%if @disc.artists.count > 0%>
-<h4>Artiste :</h4>
-
-<h6> <%=@disc.artists.pluck(:name).join(" & ") %></h6>
-<%end%>
-
-
-<br>
-<%if @disc.genres.count > 0%>
-<h5>Genre :</h5>
-<h6><%=@disc.genres.pluck(:name).join(", ")%></h6>
-<%end%>
-
-<br>
-<%if @disc.styles.count > 0%>
-<h5>Style :</h5>
-<h6><%=@disc.styles.pluck(:name).join(", ")%></h6>
-<%end%>
-
-<br>
-<%if @disc.tracks.count > 0%>
-<h5>Track :</h5>
- <%@disc.tracks.each do |disc_track|%>
- <h6> <%=disc_track.name%> </h6>
- <%end%>
-<%end%>
-<br>
-
-<% if current_user.is_admin? == true %>
-<%= link_to "Modifier", edit_disc_path(@disc.id)%>
-<%end%>
-
-<hr style="width: 15%; border: 2px solid black;" >
-
-<%if @disc.user_libraries.count > 0%>
-<h5>Il est disponible dans une libraries d'une utilisateur</h5>
-<% index_library = 0%>
-<%@disc.user_libraries.each do |library|%>
-<%if @disc.user_libraries[index_library].user.first_name != nil && @disc.user_libraries[index_library].user.last_name != nil%>
-<h6><%=link_to "#{@disc.user_libraries[index_library].user.first_name} #{@disc.user_libraries[index_library].user.last_name}", user_path(@disc.user_libraries[index_library].user.id)%></h6>
-<p>Pays du proprietaire : <%=@disc.user_libraries[index_library].user.country%></p>
-<p>Ville : <%=@disc.user_libraries[index_library].user.city%></p>
-<%end%>
-<p>Description : <%=@disc.user_libraries[index_library].description%></p>
-<%=link_to "Voir l'annonce", user_library_path(@disc.user_libraries[index_library].id) %>
-<%index_library+=1%>
-<hr style="width: 5%; border: 1px solid black;" >
-<%end%>
-<%end%>
-
-    </center>
+<div class="container text-center my-4">
+  <%= link_to "Retour aux disques", discs_path, class: "btn btn-secondary" %> <br>
+  <br>
+  <% search = @auth_wrapper.search(@disc.title, type: :release)%>
+  <% if search.results.first != nil %>
+    <%= image_tag search.results.first.cover_image %>
+  <% else %>
+    <p>Pas de cover pour ce disque.</p>
+  <% end %>
+  <h6>Titre</h6>
+  <%= @disc.title%> <br>
+  <br>
+  <h6>Années de sortie</h6>
+  <%= @disc.release%> <br>
+  <br>
+  <h6>Valeur</h6>
+  <%= @disc.value%> <br>
+  <br>
+  <h6>Label</h6>
+  <%= @disc.label%> <br>
+  <br>
+  <h6>Format</h6>
+  <%= @disc.format%> <br>
+  <br>
+  <h6>Pays de sortie</h6>
+  <%= @disc.country%> <br>
+  <br>
+  <br>
+  <%if @disc.artists.count > 0%>
+    <h4>Artiste :</h4>
+    <h6> <%=@disc.artists.pluck(:name).join(" & ") %></h6>
+  <%end%>
+  <br>
+  <%if @disc.genres.count > 0%>
+    <h5>Genre :</h5>
+    <h6><%=@disc.genres.pluck(:name).join(", ")%></h6>
+  <%end%>
+  <br>
+  <%if @disc.styles.count > 0%>
+    <h5>Style :</h5>
+    <h6><%=@disc.styles.pluck(:name).join(", ")%></h6>
+  <%end%>
+  <br>
+  <%if @disc.tracks.count > 0%>
+    <h5>Track :</h5>
+    <%@disc.tracks.each do |disc_track|%>
+      <h6> <%=disc_track.name%> </h6>
+    <%end%>
+  <%end%>
+  <br>
+  <% if user_signed_in? %>
+    <% if current_user.is_admin? == true %>
+      <%= link_to "Modifier", edit_disc_path(@disc.id)%>
+    <%end%>
+  <% end %>
+  <hr style="width: 15%; border: 2px solid black;" >
+  <%if @disc.user_libraries.count > 0%>
+    <h5>Voici la liste des utilisateurs en possession de ce disque : </h5>
+    <br>
+    <% index_library = 0%>
+    <%@disc.user_libraries.each do |library|%>
+      <%if @disc.user_libraries[index_library].user.first_name != nil && @disc.user_libraries[index_library].user.last_name != nil%>
+        <h6><%=link_to "#{@disc.user_libraries[index_library].user.first_name} #{@disc.user_libraries[index_library].user.last_name}", user_path(@disc.user_libraries[index_library].user.id)%></h6>
+        <p>Pays du proprietaire : <%=@disc.user_libraries[index_library].user.country%></p>
+        <p>Ville : <%=@disc.user_libraries[index_library].user.city%></p>
+      <%end%>
+      <p>Description : <%=@disc.user_libraries[index_library].description%></p>
+      <%=link_to "Voir l'annonce", user_library_path(@disc.user_libraries[index_library].id) %>
+      <%index_library+=1%>
+      <hr style="width: 5%; border: 1px solid black;" >
+    <%end%>
+  <% else %>
+    <h5>Aucun utilisateur n'est actuellement en possession de ce disque...</h5>
+  <%end%>
+  <% if user_signed_in? %>
+    <%= link_to "Moi aussi je l'ai ce disque chez moi !", new_user_user_library_path(current_user.id), class: "btn btn-secondary button-block"%>
+  <% end %>
+</div>
