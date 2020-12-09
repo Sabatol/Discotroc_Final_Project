@@ -4,6 +4,7 @@ class DiscsController < ApplicationController
 
   def index
     @discs = Disc.all
+    @all_genres = Genre.all
   end
 
   def show

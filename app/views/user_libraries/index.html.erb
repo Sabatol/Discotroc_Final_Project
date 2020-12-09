@@ -29,12 +29,15 @@
 				</ul>
 			</div> 
 				<div class="row playlist-area">
-	
 			<%@user_libraries.each_with_index do |library, index|%>
 			<% if library.disc.genre.name == @all_genres[0].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[0].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					 <% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -55,7 +58,11 @@
 			<% elsif library.disc.genre.name == @all_genres[1].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[1].name%>">
 					<div class="library-index-card" style="height: 95%;">
+			<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	              <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -81,7 +88,11 @@
 										<% elsif library.disc.genre.name == @all_genres[2].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[2].name%>">
 					<div class="library-index-card" style="height: 95%;">
+	<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -107,7 +118,11 @@
 										<% elsif library.disc.genre.name == @all_genres[3].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[3].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -133,7 +148,11 @@
 										<% elsif library.disc.genre.name == @all_genres[4].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[4].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -159,7 +178,11 @@
 																	<% elsif library.disc.genre.name == @all_genres[5].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[5].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -180,7 +203,11 @@
 									<% elsif library.disc.genre.name == @all_genres[6].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[6].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -201,7 +228,11 @@
 							<% elsif library.disc.genre.name == @all_genres[7].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[7].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -222,7 +253,11 @@
 						<% elsif library.disc.genre.name == @all_genres[8].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[8].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -243,7 +278,11 @@
 								<% elsif library.disc.genre.name == @all_genres[9].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[9].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -264,7 +303,11 @@
 									<% elsif library.disc.genre.name == @all_genres[10].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[10].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -285,7 +328,11 @@
 							<% elsif library.disc.genre.name == @all_genres[11].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[11].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -306,7 +353,11 @@
 						<% elsif library.disc.genre.name == @all_genres[12].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[12].name%>">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -327,7 +378,11 @@
 												<% elsif library.disc.genre.name == @all_genres[13].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[13].name%>">
 					<div class="library-index-card" style="height: 95%;">
+						<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
@@ -348,7 +403,11 @@
 												<% else %>
 				<div class="mix col-xl-3 col-sm-6 all">
 					<div class="library-index-card" style="height: 95%;">
+					<% if library.disc.cover_picture != nil %>
+					 <%= image_tag library.disc.cover_picture %>
+            <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<% end %>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
