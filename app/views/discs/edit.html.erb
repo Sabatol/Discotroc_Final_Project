@@ -2,6 +2,7 @@
 
   <% if user_signed_in? %>
     <% if current_user.is_admin? == true %>
+
     <%= form_for @edit_disc do |f| %>
       <%= label_tag 'Titre' %> <br />
       <%= f.text_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off' %>
@@ -28,6 +29,7 @@
       <%= link_to "Revenir à l'accueil", root_path%>
     <% end %>
       <%= link_to 'Supprimer', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+
       <%else%>
 
       <%= form_for @edit_disc do |f| %>

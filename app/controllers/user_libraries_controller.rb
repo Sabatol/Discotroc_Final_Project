@@ -4,12 +4,10 @@ class UserLibrariesController < ApplicationController
 
   def index
     @user_libraries = UserLibrary.all
-    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def show
     @user_library = UserLibrary.find(params[:id])
-    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def new
