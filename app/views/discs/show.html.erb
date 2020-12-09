@@ -1,8 +1,9 @@
 <div class="container text-center my-4">
   <%= link_to "Retour aux disques", discs_path, class: "btn btn-secondary" %> <br>
   <br>
-  <% search = @auth_wrapper.search(@disc.title, type: :release)%>
+  <% search = @auth_wrapper.search(@disc.artist + " " + @disc.title, type: :release)%>
   <% if search.results.first != nil %>
+  <%search.results.first.cover_image%>
     <%= image_tag search.results.first.cover_image %>
   <% else %>
     <p>Pas de cover pour ce disque.</p>

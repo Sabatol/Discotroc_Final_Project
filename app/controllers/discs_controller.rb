@@ -18,10 +18,10 @@ class DiscsController < ApplicationController
   end
 
   def create
-      @new_disc = Disc.new(title: params[:title], artist: params[:artist], release: params[:release], label: params[:label], genre: params[:genre], format: params[:format], country: params[:country])
+      @new_disc = Disc.new(title: params[:title], artist: params[:artist], release: params[:release], label: params[:label], genre_id: params[:genre_id], format_id: params[:format_id], country: params[:country])
       if @new_disc.save
+        redirect_to edit_disc_path(@new_disc.id)
         flash[:notice_good] = "Le disque a bien été créer"
-        redirect_to new_user_user_library_path(current_user.id)
       else
         flash[:notice_bad] = "Le disque n'a pas été créer"
         render 'new'
@@ -30,6 +30,7 @@ class DiscsController < ApplicationController
 
   def edit
     @edit_disc = Disc.find(params[:id])
+    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def update
@@ -40,10 +41,10 @@ class DiscsController < ApplicationController
         :artist,
         :release,
         :label,
-        :format,
-        :genre,
+        :format_id,
+        :genre_id,
         :country,
-        :cover_picture,
+        :cover_picture
       )
     @edit_disc.update(post_params)
     redirect_to disc_path

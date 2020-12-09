@@ -11,6 +11,7 @@
           <p> <%= user_library.user.first_name%>
           </p>
           <p> <%= user_library.disc.title%></p>
+          <p> <%=image_tag user_library.disc.cover_picture%></p>
           <p><%= user_library.description%></p>
           <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
           <hr>
@@ -23,6 +24,7 @@
         <p> <%= user_library.user.first_name%>
         </p>
         <p> <%= user_library.disc.title%></p>
+        <p> <%=image_tag user_library.disc.cover_picture%></p>
         <p><%= user_library.description%></p>
         <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
         <hr>
