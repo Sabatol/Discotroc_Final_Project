@@ -7,6 +7,7 @@
  =================================*/
 
 
+  
 
 /*----------------------------------------*/
 /* Template default CSS
@@ -1223,7 +1224,6 @@ Artest Page
 }
 
 .song-details-box ul strong {
-	float: left;
 	margin-right: 6px;
 	font-weight: 600;
 	color: #0a183d;

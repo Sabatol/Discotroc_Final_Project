@@ -1,38 +1,32 @@
-<center>
-  <h4> Ajouter un vinyle à ma bibliothèque </h4>
-  <%= link_to "Rajouter un vinyle", new_user_library_path %>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <h4>Ma bibliothèque de vinyles</h4>
+<div class="container text-center">
+  <% if user_signed_in? %>
+    <h4> Ajouter un disque à ma bibliothèque </h4>
+    <%= link_to "Rajouter un vinyle", new_user_user_library_path(current_user.id) %>
+  <% end %>
+  <div class="row">
+    <% if user_signed_in? %>
+      <div class="col-6 text-center">
+        <h4>Ma bibliothèque de disques</h4>
         <%@user_libraries.where(user_id: current_user.id).each do |user_library|%>
-          <%if user_library.user.first_name%>
-            <p><%=user_library.user.first_name%></p>
-          <%else%>
-            <%string=user_library.user.email.split("@")%>
-            <%firstName=string[0]%>
-            <p><%=firstName%></p>
-          <%end%>
-          <p>
-            <%@search = @auth_wrapper.search(user_library.disc.title, type: :release)%>
-            <p><%= image_tag @search.results.first.cover_image %></p>
-            <p> <%= user_library.disc.title%>
-              <p><%= user_library.description%></p>
-              <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-              <hr>
-            <%end%>
-          </div>
-          <div class="col-6">
-            <h4>Liste des vinyles présents sur le site</h4>
-            <%@user_libraries.each do |user_library|%>
-              <p> <%= user_library.user.first_name%>
-                <p>
-                  <p> <%= user_library.disc.title%>
-                    <p><%= user_library.description%></p>
-                    <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-                    <hr>
-                  <%end%>
-                </div>
-              </div>
-            </div>
-          </center>
+          <p> <%= user_library.user.first_name%>
+          </p>
+          <p> <%= user_library.disc.title%></p>
+          <p><%= user_library.description%></p>
+          <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
+          <hr>
+        <%end%>
+      </div>
+    <% end %>
+    <div class="col-6 text-center">
+      <h4>Liste des disques présents sur le site</h4>
+      <%@user_libraries.each do |user_library|%>
+        <p> <%= user_library.user.first_name%>
+        </p>
+        <p> <%= user_library.disc.title%></p>
+        <p><%= user_library.description%></p>
+        <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
+        <hr>
+      <%end%>
+    </div>
+  </div>
+</div>
