@@ -9,9 +9,7 @@
       <%= link_to disc_path(content.id) do %>
         <%= content.title%>
       <% end %>
-      | <%= content.value%> <br>
     <%end %>
-    Valeur total : <%= search_sender_disc(@deal).sum(:value)%>
     <br>
     <br>
     <h6> Receiver Disque(s) </h6>
@@ -20,9 +18,7 @@
       <%= link_to disc_path(content.id) do %>
         <%= content.title%>
       <% end %>
-      | <%= content.value%> <br>
     <%end %>
-    Valeur total : <%= search_receiver_disc(@deal).sum(:value)%>
     <%if current_user.id == @deal.sender_id %>
       <h5> Sender </h5>
       <p> Vous êtes le créateur du deal ! </p>
