@@ -10,6 +10,42 @@
 /* Custom CSS HandMade
 /*----------------------------------------*/
 
+/* SHOW DISC*/
+
+.more-infos.col-lg-4{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.lib-index-butn.mt-3.artist-release{
+	display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.artist-release .head-lib-card{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.admin-button-disc {
+	display: inline-block;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 13px;
+	border-radius: 50px;
+	text-transform: uppercase;
+	background: #0a183d;
+	color: #fff;
+	line-height: normal;
+	cursor: pointer;
+	text-align: center;
+}
+
 /* Library custom button */
  .btn-library-index {
 	display: inline-block;
