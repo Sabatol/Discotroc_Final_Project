@@ -21,7 +21,7 @@ class DiscsController < ApplicationController
       @new_disc = Disc.new(title: params[:title], release: params[:release], code: params[:code], value: params[:value], label: params[:label], format: params[:format], country: params[:country], cover_picture: params[:cover_picture])
       if @new_disc.save
         flash[:notice_good] = "Le disque a bien été créer"
-        redirect_to new_user_library_path
+        redirect_to new_user_user_library_path(current_user.id)
       else
         flash[:notice_bad] = "Le disque n'a pas été créer"
         render 'new'

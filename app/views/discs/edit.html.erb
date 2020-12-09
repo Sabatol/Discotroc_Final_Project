@@ -1,4 +1,4 @@
-     <center>
+<div class="container text-center my-4">
   <%= form_for @edit_disc do |f| %>
     <%= label_tag 'Titre' %> <br />
     <%= f.text_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off' %>
@@ -18,9 +18,11 @@
     <%= f.text_field :cover_picture, placeholder: 'Cover', autocomplete: 'off'%>
     <br />
     <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
-     <%= link_to "Revenir à l'accueil", root_path%>
+    <%= link_to "Revenir à l'accueil", root_path%>
   <% end %>
-  <% if current_user.is_admin? == true %>
-    <%= link_to 'Supprimer', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
-  <%end%>
-</center>
+  <% if user_signed_in? %>
+    <% if current_user.is_admin? == true %>
+      <%= link_to 'Supprimer', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+    <%end%>
+  <% end %>
+</div>

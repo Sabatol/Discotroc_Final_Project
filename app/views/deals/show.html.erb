@@ -1,5 +1,7 @@
-<center>
-  <p> Deal N° <%= @deal.id%>
+<div class="container text-center my-4">
+  <h1>Espace de troc</h1>
+  <% if user_signed_in? %>
+    <p> Deal N° <%= @deal.id%> </p>
     <hr style="width: 5%; border: 1px solid black;">
     <h6> Sender Disque(s) </h6>
     <hr style="width: 5%; border: 1px solid black;" >
@@ -31,7 +33,7 @@
           <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
       <% end %>
     <%end%>
-    <%=link_to "Proposer un disque", new_deal_content_path(deal_id: @deal.id)  %>
+    <%=link_to "Proposer un disque", new_deal_deal_content_path(deal_id: @deal.id)  %>
     <%if current_user.id == @deal.receiver_id %>
       <h5> Receiver </h5>
       <p> Vous participez à ce deal ! </p>
@@ -68,30 +70,28 @@
       <%= link_to "Laisser un commentaire", new_deal_comment_path(deal_id: @deal.id) %>
     <% end %>
     <p>############################################################################</p>
-  </center>
-  <br>
-  <br>
-  <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
-    <center>
+    <br>
+    <br>
+    <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
       <%number = 1 %>
       <% search_pm.each do |pm| %>
-        <p> Deal PM N° <%=number%>
-          <hr style="width: 5%; border: 1px solid black;" >
-          <h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
-          <p><%=pm.content%></p>
-        <% end %>
-        <center>
-          <%= form_tag deal_pms_path(action: 'create'), method: "post" do %>
-            <%= label_tag 'Content' %> <br>
-            <%= text_field_tag 'content', "Votre commentaire" %> <br>
-            <br>
-            <%= hidden_field_tag 'deal_id', @deal.id %> <br>
-            <br>
-            <%= hidden_field_tag 'pm_author_id', current_user.id %> <br>
-            <%= submit_tag "Envoyer" %>
-          <% end %>
-        <% else %>
-          <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
-        <% end %>
+        <p> Deal PM N° <%=number%> </p>
+        <hr style="width: 5%; border: 1px solid black;" >
+        <h5>Auteur : <%=User.find(pm.pm_author_id).first_name%></h5>
+        <p><%=pm.content%></p>
+      <% end %>
+      <%= form_tag deal_deal_pms_path(deal_id: params[:id], action: 'create'), method: "post" do %>
+        <%= label_tag 'Content' %> <br>
+        <%= text_field_tag 'content', "Votre commentaire" %> <br>
         <br>
-      </center>
+        <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+        <br>
+        <%= hidden_field_tag 'pm_author_id', current_user.id %> <br>
+        <%= submit_tag "Envoyer" %>
+      <% end %>
+    <% else %>
+      <p> Vous n'êtes ni le Sender, ni le receiver, ni un admin, donc vous ne pouvez pas voir la conversation </p>
+    <% end %>
+    <br>
+  <% end %>
+</div>
