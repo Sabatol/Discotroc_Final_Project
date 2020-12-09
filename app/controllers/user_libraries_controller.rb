@@ -18,7 +18,7 @@ class UserLibrariesController < ApplicationController
   end
 
   def create
-    @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description], disc_state_id: params[:disc_state_id])
+    @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description])
     if @new_user_library.save
       flash[:notice_good] = "Nouveau disque ajouté a votre librarie"
       redirect_to user_libraries_path 
