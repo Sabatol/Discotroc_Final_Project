@@ -1,27 +1,67 @@
-<div class="login-screen">
-  <h2 class="text-dark">S'inscrire</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="login-form">
-      <%= f.label :email, class: "text-dark" %><br />
-      <%= f.email_field :email, class: "form-control login-field", autofocus: true, autocomplete: "email", placeholder: "Entrez votre email" %>
-    </div>
-    <div class="login-form">
-      <%= f.label :password, "Mot de passe", class: "text-dark"  %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caractères minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, class: "form-control login-field", autocomplete: "new-password", placeholder: "Définissez votre mot de passe" %>
-    </div>
-    <div class="login-form">
-      <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "text-dark"  %><br />
-      <%= f.password_field :password_confirmation, class: "form-control login-field", autocomplete: "new-password", placeholder: "Confirmez votre mot de passe" %>
-    </div>
-    <div class="login-form">
-      <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg btn-block text-dark"  %>
-    </div>
-  <% end %>
-  <div class="login-link">
-    <%= render "devise/shared/links" %>
-  </div>
-</div>
+<head>
+	<title>Discotroc | S'inscrire</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		content="Inscription" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+</head>
+
+<body>
+<%= render "devise/shared/error_messages", resource: resource %>
+	<!-- /signup-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-right">
+					<div class="overlay">
+						<div class="grid-info-form">
+							
+							<h3>Créer un <span>compte</span> </h3>
+							<p>L'inscription chez Discotroc demande uniquement votre adresse email et votre mot de passe. <br> Les informations complémentaires vous seront demandés plus tard.</p>
+							<br>
+							<p> Déjà inscrit? </p>
+							<%= link_to "Se connecter", new_user_session_path, class: "site-btn", style: "padding: 10px 20px"%>
+						</div>
+					</div>
+				</div>
+				<div class="form-left">
+					<div class="middle">
+						<h4>S'inscrire</h4>
+						<p>Créer votre compte, et troquez.</p> <br>
+					</div>
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<form action="#" method="post" class="signin-form">
+							<div class="form-input">
+								<label>Adresse email</label>
+								 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "email" %>
+							</div><br>
+							<div class="form-input">
+								<label>Mot de passe</label>
+								 <%= f.password_field :password, autocomplete: "new-password", placeholder: "Mot de passe", type: "password" %>
+							</div><br>
+							<div class="form-input">
+								<label>Confirmation de mot de passe</label>
+								<%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirmation de mot de passe", type: "password" %> 
+							</div><br>
+							<%= f.submit "S'inscrire", type: "submit", class: "site-btn", style: "padding: 10px 20px"  %>
+					</form>
+					<%end%>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+</body>
+
+

@@ -1,21 +1,21 @@
- <center>
-<%= form_tag url_for(action: 'create'), method: "post" do %>
-        <% label_tag 'Sender' %> <br>
-        <%= hidden_field_tag 'sender_id', params[:sender_id]%> <br>
-
-        <% label_tag 'Receiver' %> <br>
-        <%= hidden_field_tag 'receiver_id', current_user.id %> <br>
-
-<%= submit_tag "Confirmer la demande de Troc" %>
-
-    <% end %> 
-
-
-    </center>
-
-    <br>
-<br>
-<br>
-<br>
-<br>
-<br> 
+<div class="container pt-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-4">
+      <h1>Ecran de confirmation</h1>
+      <br>
+      <ul>
+        <p>Vous désirez initier un troc avec <b><%=@sender.last_name%></b> <%=@sender.first_name%></p>
+        <p><%=@sender.first_name%> possède actuellement <b><%=@sender.user_libraries.count %> disques</b> qu'il souhaite échanger. </p>
+        <p><%=@sender.first_name%> est noté en moyenne <b>x/5 étoiles</b></p>
+        <p><b> Sa description actuelle : </b><%=@sender.description %></p>
+      </ul>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center mb-4">
+    <div class="col-4 text-center">
+      <%= form_tag url_for(sender_id: params[:sender_id], action: 'create'), method: "post" do %>
+        <%= submit_tag "Confirmer la demande de Troc" %>
+      <% end %>
+    </div>
+  </div>
+</div>

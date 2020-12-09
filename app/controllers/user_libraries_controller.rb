@@ -1,5 +1,7 @@
 class UserLibrariesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_completed?, except: [:index, :show]
+
   def index
     @user_libraries = UserLibrary.all
     @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
@@ -16,7 +18,7 @@ class UserLibrariesController < ApplicationController
   end
 
   def create
-    @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description], disc_state_id: params[:disc_state_id])
+    @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description])
     if @new_user_library.save
       flash[:notice_good] = "Nouveau disque ajouté a votre librarie"
       redirect_to user_libraries_path 

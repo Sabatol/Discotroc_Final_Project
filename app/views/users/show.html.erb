@@ -1,75 +1,74 @@
 <center>
-<h6>Index User</h6>
-<p> Utilisateurs n° <%= @user.id%>
-<hr style="width: 15%; border: 2px solid black;" >
-<h5>Info utilisateur</h5>
-<%if @user.first_name != nil%>
-<p> Prénom: <%=@user.first_name%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%if @user.last_name != nil%>
-<p> Nom: <%=@user.last_name%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%if @user.description != nil%>
-<p> Description: <%=@user.description%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<% if @user.address != nil%>
-<p> Adresse: <%=@user.address%>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%if @user.additional_address != nil %></p>
-, <%=@user.additional_address%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%if @user.additional_address != nil%>
-<p> Code Postal: <%=@user.zipcode%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<% if @user.city != nil%>
-<p> Ville: <%=@user.city%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%if @user.country != nil%>
-<p> Pays: <%=@user.country%></p>
-<%else%>
-<p>Information non renseignée</p> 
-<%end%>
-<%= link_to "Modifier", edit_user_path(@user.id)%>
-<hr style="width: 15%; border: 2px solid black;" >
-
-
-
-<%if @user.disc_ids.length > 0%>
-<% index = 0%>
-<h5>Disques'A Troqué :</h5>
-<% @user.discs.each do |disc| %>
-<h6><%= link_to disc.title.to_s, user_library_path(disc.user_libraries.find_by(user_id: params[:id])) %></h6>
-<%= @user.user_libraries.pluck(:description)[index]%>
-<hr style="width: 15%; border: 2px solid black;" >
-<% index +=1%>
-<%end%>
-
-
-<%else%>
-<h5>Ne propose pas de disque actuellement </h5>
-<%end%>
-<h6>
-
-<br>
-<% @user.comments_receiver.each_with_index do |comment, i| %>
-  <%= "Commentaire n°#{i+1} de #{comment.comment_sender.first_name}:"%> <br>
-  <%= comment.content %> <br>
-  <% if current_user.is_admin? %>
-    <%= link_to "Détruire commentaire", deal_comment_path(deal_id: comment.deal_id, id: comment.id), method: "DELETE" %>
-  <% end %>
-<% end %>
-</center>
+  <h6>Index User</h6>
+  <p> Utilisateurs n° <%= @user.id%>
+    <% if @user.completed? %>
+      <p>Votre profil est complet</p>
+    <% else %>
+      <p>Votre profil n'est pas complet</p>
+    <% end %>
+    <hr style="width: 15%; border: 2px solid black;" >
+    <h5>Info utilisateur</h5>
+    <%if @user.first_name.present? %>
+      <p> Prénom : <%=@user.first_name%></p>
+    <%else%>
+      <p> Prénom : Information non renseignée</p>
+    <%end%>
+    <%if @user.last_name.present? %>
+      <p> Nom : <%=@user.last_name%></p>
+    <%else%>
+      <p> Nom : Information non renseignée</p>
+    <%end%>
+    <%if @user.description.present? %>
+      <p> Description : <%=@user.description%></p>
+    <%else%>
+      <p>Description : Information non renseignée</p>
+    <%end%>
+    <% if @user.address.present? %>
+      <p> Adresse: <%=@user.address%>
+      <%else%>
+        <p> Adresse: Information non renseignée</p>
+      <%end%>
+      <%if @user.additional_address.present? %></p>
+      <p> Complément d'adresse : <%=@user.additional_address%></p>
+    <%else%>
+      <p> Complément d'adresse : Information non renseignée</p>
+    <%end%>
+    <%if @user.zipcode.present? %>
+      <p> Code Postal: <%=@user.zipcode%></p>
+    <%else%>
+      <p> Code Postal: Information non renseignée</p>
+    <%end%>
+    <% if @user.city.present? %>
+      <p> Ville: <%=@user.city%></p>
+    <%else%>
+      <p> Ville: Information non renseignée</p>
+    <%end%>
+    <%if @user.country.present? %>
+      <p> Pays: <%=@user.country%></p>
+    <%else%>
+      <p> Pays: Information non renseignée</p>
+    <%end%>
+    <%= link_to "Modifier", edit_user_path(@user.id)%>
+    <hr style="width: 15%; border: 2px solid black;" >
+    <%if @user.disc_ids.length > 0%>
+      <% index = 0%>
+      <h5>Disques'A Troqué :</h5>
+      <% @user.discs.each do |disc| %>
+        <h6><%= link_to disc.title.to_s, user_library_path(disc.user_libraries.find_by(user_id: params[:id])) %></h6>
+        <%= @user.user_libraries.pluck(:description)[index]%>
+        <hr style="width: 15%; border: 2px solid black;" >
+        <% index +=1%>
+      <%end%>
+    <%else%>
+      <h5>Ne propose pas de disque actuellement </h5>
+    <%end%>
+    <h6>
+      <br>
+      <% @user.comments_receiver.each_with_index do |comment, i| %>
+        <%= "Commentaire n°#{i+1} de #{comment.comment_sender.first_name}:"%> <br>
+        <%= comment.content %> <br>
+        <% if current_user.is_admin? %>
+          <%= link_to "Détruire commentaire", deal_comment_path(deal_id: comment.deal_id, id: comment.id), method: "DELETE" %>
+        <% end %>
+      <% end %>
+    </center>

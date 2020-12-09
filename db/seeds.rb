@@ -7,71 +7,28 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-randomizer = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a + %w[_ - .]
+genres = ["Disco", "Musiques Electroniques", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "World", "Classique", "Pop", "Variété", "Blues", "Reggae"]
+genres.each do |name|
+   Genre.create(name: name) 
+end
 
-format = ['CD', '33 tours', '45 tours', 'LaserDisc', 'HDCD']
+5.times do
+   Format.create(name: Faker::Music.band) 
+end
 
-5.times { Artist.create(name: Faker::Music.band) }
-
-5.times { Genre.create(name: Faker::Music.genre) }
-
-5.times { Style.create(name: Faker::Music.instrument) }
-
-60.times { Track.create(name: Faker::Music.chord) }
 
 10.times do
-  reference = ''
-  15.times { reference += randomizer[rand(randomizer.size)].to_s }
-
   Disc.create(
     title: Faker::Music.album,
     release: rand(1940..2020),
     label: 'PROUTPROUT',
-    code: reference,
-    value: rand(1..1000),
-    format: format[rand(0..4)],
-    country: 'France'
+    country: 'France',
+    artist: "je suis un artiste",
+    genre: Genre.all.sample,
+    format: Format.all.sample
   )
 end
 
-i = 0
-12.times do
-  DiscArtist.create(artist_id: Artist.ids.sample, disc_id: Disc.ids[i])
-  if i < Disc.count
-    i += 1
-  else
-    i = 0
-  end
-end
-
-i = 0
-15.times do
-  DiscStyle.create(style_id: Style.ids.sample, disc_id: Disc.ids[i])
-  if i < Disc.count
-    i += 1
-  else
-    i = 0
-  end
-end
-
-i = 0
-70.times do
-  DiscTrack.create(track_id: Track.ids.sample, disc_id: Disc.ids[i])
-  if i < Disc.count
-    i += 1
-  else
-    i = 0
-  end
-end
-i = 0
-15.times do
-  DiscGenre.create(genre_id: Genre.ids.sample, disc_id: Disc.ids[i])
-  if i < Disc.count
-    i += 1
-  else
-    i = 0
-  end
-end
 
 10.times do
   User.create(
@@ -89,14 +46,6 @@ end
   )
 end
 
-states = ['neuf', 'moyen', 'pas ouf', 'naze']
-coeff = [1, 0.75, 0.5, 0.25]
-n = 0
-states.each do |state_name|
-  DiscState.create(name: state_name, coefficient: coeff[n])
-  n += 1
-end
-
 i = 0
 n = 0
 15.times do
@@ -104,7 +53,6 @@ n = 0
   UserLibrary.create(
     user_id: User.ids[n],
     disc_id: Disc.ids[i],
-    disc_state_id: DiscState.ids.sample,
     description: Faker::Lorem.sentence(word_count: i)
   )
   if i < Disc.count
@@ -146,15 +94,6 @@ n = 0
     content:
       "Tabarouette de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne d'étole de calvince de saintes fesses de baptême de charogne de saint-sacrament de batince de ciarge de tabarslaque de ciboire de sacristi de cibouleau de tabarnak de charrue."
   )
-  if n < User.count
-    n += 1
-  else
-    n = 0
-  end
-end
-n = 0
-25.times do
-  Playlist.create(user_id: User.ids[n], title: Faker::Music.album)
   if n < User.count
     n += 1
   else
