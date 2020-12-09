@@ -681,7 +681,8 @@ Helper CSS
 	font-size: 60px;
 }
 
-.set-bg {
+.set-bgg {
+	background-image: url("https://images.pexels.com/photos/1173651/pexels-photo-1173651.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
@@ -1681,7 +1682,7 @@ Category page
 Artest Page
  -------------------*/
 
-.player-section {
+.player-sectioon {
 	padding: 57px 53px;
 }
 
@@ -2386,7 +2387,7 @@ Responsive
 	.song-details-box .song-item {
 		margin-bottom: 40px;
 	}
-	.player-section,
+	.player-sectioon,
 	.player-box {
 		padding: 15px;
 	}
