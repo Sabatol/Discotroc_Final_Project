@@ -2,12 +2,14 @@
   <%= form_tag url_for(action: 'create'), method: "post" do %>
     <%= label_tag 'Titre' %> <br>
     <%= text_field_tag 'title'%> <br>
-        <%= label_tag 'Artiste' %> <br>
+    <%= label_tag 'Artiste' %> <br>
     <%= text_field_tag 'artist' %> <br>
     <%= label_tag 'Année de création' %> <br>
     <%= text_field_tag 'release' %> <br>
-          <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name) %> <br>
-      <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name) %> <br>
+    <%= label_tag 'Format' %> <br>
+    <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name) %> <br>
+    <%= label_tag 'Genre' %> <br>
+    <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name) %> <br>
     <%= label_tag 'Label' %> <br>
     <%= text_field_tag 'label' %> <br>
     <%= label_tag 'Country' %> <br>
@@ -15,4 +17,3 @@
     <%= submit_tag "Envoyer" %>
   <% end %>
 </div>
-
