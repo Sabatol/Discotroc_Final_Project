@@ -1,19 +1,69 @@
-<div class="container text-center my-4">
-  <%= form_tag url_for(action: 'create'), method: "post" do %>
-    <%= label_tag 'Titre' %> <br>
-    <%= text_field_tag 'title'%> <br>
-    <%= label_tag 'Artiste' %> <br>
-    <%= text_field_tag 'artist' %> <br>
-    <%= label_tag 'Année de création' %> <br>
-    <%= text_field_tag 'release' %> <br>
-    <%= label_tag 'Format' %> <br>
-    <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name) %> <br>
-    <%= label_tag 'Genre' %> <br>
-    <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name) %> <br>
-    <%= label_tag 'Label' %> <br>
-    <%= text_field_tag 'label' %> <br>
-    <%= label_tag 'Country' %> <br>
-    <%= text_field_tag 'country' %> <br>
-    <%= submit_tag "Envoyer" %>
-  <% end %>
-</div>
+<head>
+	<title>Discotroc | Créer un disque</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		content="Créer un disque" />
+
+</head>
+
+<body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-left" style="margin: 0 auto;">
+					<div class="middle text-center">
+          <%=image_tag "icons/disc_red.png", style:"width: 200px; height: 200px;"%>
+          <br>
+						<h4 class="text-center">Ajouter un disque</h4>
+						<p class="text-center">Départ pour le troc dans 3..2..1</p>
+					</div>
+           <%= form_tag url_for(action: 'create'), method: "post" do %>
+							<div class="form-input">
+								<%= label_tag 'Titre' %>
+							<%= text_field_tag 'title'%>
+							</div>
+             <div class="form-input">
+                <%= label_tag 'Artiste' %> 
+               <%= text_field_tag 'artist' %>
+             </div>
+             <div class="form-input">
+                <%= label_tag 'Année de création' %> 
+               <%= text_field_tag 'release' %>
+             </div>
+             <div class="form-input">
+                <%= label_tag 'Format' %> <br>
+               <%=select_tag "format_id", options_from_collection_for_select(Format.all, :id, :name), :class => "browser-default custom-select" %> 
+             </div>
+             <div class="form-input">
+                <%= label_tag 'Genre' %> <br>
+               <%=select_tag "genre_id", options_from_collection_for_select(Genre.all, :id, :name), :class => "browser-default custom-select" %> 
+             </div>
+             <div class="form-input">
+                <%= label_tag 'Label' %> 
+               <%= text_field_tag 'label' %>
+             </div>
+              <div class="form-input">
+                <%= label_tag 'Pays' %> 
+                <%= text_field_tag 'country' %>
+             </div>
+             <br>
+             <div class="text-center">
+							<%= submit_tag "Créer un disque", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+              </div>
+              <%end%>
+              <br>
+					<div class="copy-right text-center">
+						<%= link_to "Revenir à l'accueil", root_path%> <br>
+             
+					 </div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+	<!-- //login-section -->
+</body>

@@ -105,7 +105,7 @@ end
 
 n = 0
 i = 1
-15.times do
+200.times do
   Comment.create(comment_sender_id: User.ids[n], comment_receiver_id: User.ids[i], deal_id: Deal.ids[n], content: "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne.")
   if n < User.count
     n += 1
