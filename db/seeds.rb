@@ -9,11 +9,12 @@ require 'faker'
 
 genres = ["Disco", "Musiques Electroniques", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "World", "Classique", "Pop", "Variété", "Blues", "Reggae"]
 genres.each do |name|
-   Genre.create(name: name) 
+   Genre.create(name: name)
 end
 
-5.times do
-   Format.create(name: Faker::Music.band) 
+formats = ["Vinyle 33T", "Vinyle 45T", "CD"]
+formats.each do |name|
+   Format.create(name: name)
 end
 
   # Alpha_disc creation for user_controller => method: update
@@ -113,7 +114,7 @@ end
 
 n = 0
 i = 1
-15.times do
+200.times do
   Comment.create(comment_sender_id: User.ids[n], comment_receiver_id: User.ids[i], deal_id: Deal.ids[n], content: "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne.")
   if n < User.count
     n += 1
@@ -122,7 +123,7 @@ i = 1
   end
   if i < User.count
     i+=1
-  else 
+  else
     i=0
   end
 end

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 gem 'jquery-rails'
 
@@ -66,3 +66,4 @@ gem 'dotenv-rails'
 gem 'faker'
 gem 'table_print'
 gem "discogs-wrapper"
+gem 'social-share-button', github: "huacnlee/social-share-button"
