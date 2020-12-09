@@ -4,28 +4,375 @@
     <%= link_to "Créer", new_disc_path, class: "btn btn-secondary"%> <br>
     <br>
   <% end %>
-  <h2> Index</h2>
-  <br>
-  <br>
-</div>
-<div class="container">
-  <div class="row demo-tiles">
-    <% @discs.each do |disc| %>
-      <div class="col-3">
-        <div class="tile bg-secondary">
-          <br>
-          <%  search = @auth_wrapper.search(disc.title, type: :release)%>
-          <% if search.results.first != nil %>
-            <%= image_tag search.results.first.cover_image %>
-          <% else %>
-            <p>Pas de cover pour ce disque.</p>
-          <% end %>
-          <br>
-          <h3 class="tile-title text-primary"><%=disc.title%></h3>
-          <br>
-          <%= link_to "Voir", disc_path(disc.id), class: "btn btn-primary btn-large btn-block text-dark"%>
-        </div>
-      </div>
-    <%end %>
-  </div>
-</div>
+	</div>
+            	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+
+	<!-- Similar Songs section -->
+	<section class="similar-songs-section">
+		<div class="container-fluid">
+			<div class="text-center">
+		  <h1>Disque a Troquer</h1>
+			<h3>Recherchez votre bonheur</h3></div>
+        <div class="container">
+				<ul class="playlist-filter controls">
+							<center>
+					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
+					</center>
+<% @all_genres.each do |genre|%>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=genre.name%>"><%=genre.name%></li>
+					<%end%>
+		
+				<hr style="width: 35%; border: 1px solid black;" >
+				</ul>
+				
+			</div> 
+			
+				<div class="row playlist-area">
+
+			<%@discs.each_with_index do |disc, index|%>
+			<% if disc.genre.name == @all_genres[0].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[0].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+									</div>
+ 									</div>
+                 	</div>
+									</div>
+			<% elsif disc.genre.name == @all_genres[1].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[1].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	              <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+									</div>								
+									</div>			
+									  <div class="low-card">
+										
+									<div class="lib-index-butn mt-3" ><%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+										<% elsif disc.genre.name == @all_genres[2].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[2].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+										<% elsif disc.genre.name == @all_genres[3].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[3].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+										<% elsif disc.genre.name == @all_genres[4].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[4].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+																	<% elsif disc.genre.name == @all_genres[5].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[5].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+									<% elsif disc.genre.name == @all_genres[6].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[6].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<% elsif disc.genre.name == @all_genres[7].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[7].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+						<% elsif disc.genre.name == @all_genres[8].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[8].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+								<% elsif disc.genre.name == @all_genres[9].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[9].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+									<% elsif disc.genre.name == @all_genres[10].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[10].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<% elsif disc.genre.name == @all_genres[11].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[11].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+						<% elsif disc.genre.name == @all_genres[12].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[12].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+												<% elsif disc.genre.name == @all_genres[13].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[13].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+												<% else %>
+				<div class="mix col-xl-3 col-sm-6 all">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=disc.title%></h4>
+							 <%=link_to user_library_path(disc.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=disc.artist%></p><pre><%=disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<%end%>
+							<%end%>
+			</div>
+		</div>
+	
+	</section>
+
