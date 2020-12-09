@@ -16,8 +16,12 @@
   <body>
     <% if flash[:alert] %>
       <div class="alert alert-danger mb-0">
-        Veuillez compléter votre profil pour accéder à cette fonctionnalité.
-        <%# <%= link_to "Compléter mon profil", edit_user_path(current_user.id), class: "text-dark ml-4" %> %>
+        <% if user_signed_in? %>
+          Veuillez compléter votre profil pour accéder à cette fonctionnalité.
+          <%= link_to "Compléter mon profil", edit_user_path(current_user.id), class: "text-dark ml-4" %>
+        <% else %>
+          Veuillez vous inscrire et compléter votre profil pour accéder à cette fonctionnalité.
+        <% end %>
       </div>
     <% end %>
     <% if flash[:alert_admin] %>
@@ -39,9 +43,9 @@
                 <div class="hs-text">
                   <h2>Les <span>disques</span> ça s'échange.</h2>
                   <p>Vos gout musicaux ont changé et vos vieux disques ne vous intéressent plus ? Vous pourriez les echanger... <br>
-                      C'est exactement ce que nous vous proposons !</p>
-                  <% if current_user != nil %>
-                    <%= link_to "Parcourir les disques", new_disc_path, class: "site-btn"%>
+                    C'est exactement ce que nous vous proposons !</p>
+                  <% if user_signed_in? %>
+                    <%= link_to "Parcourir les disques", discs_path, class: "site-btn"%>
                     <%= link_to "Ajouter un disque", new_disc_path, class: "site-btn sb-c2"%>
                   <% else %>
                     <%= link_to "S'inscrire", new_user_registration_path, class: "site-btn"%>
@@ -64,8 +68,8 @@
                 <div class="hs-text">
                   <h2>Votre collection devient <span>mondiale</span>.</h2>
                   <p>Discotroc connecte les passionnés de musique et leurs disques à travers le monde. Votre discothèque devient virtuellement illimitée </p>
-                  <% if current_user != nil %>
-                    <%= link_to "Parcourir les disques", new_disc_path, class: "site-btn"%>
+                  <% if user_signed_in? %>
+                    <%= link_to "Parcourir les disques", discs_path, class: "site-btn"%>
                     <%= link_to "Ajouter un disque", new_disc_path, class: "site-btn sb-c2"%>
                   <% else %>
                     <%= link_to "S'inscrire", new_user_registration_path, class: "site-btn"%>
@@ -140,7 +144,7 @@
               <div class="concept-item">
                 <%= image_tag "concept/1.jpg"%>
                 <h5 style="color:#ffd369"><%=library.disc.title%></h5>
-                <p style="color:white"><%=library.disc.artists.pluck(:name).join(" & ")%></p>
+                <p style="color:white"><%=library.disc.artist%></p>
               </div>
             <%end %>
           </div>

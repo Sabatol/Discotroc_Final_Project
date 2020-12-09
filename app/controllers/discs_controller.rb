@@ -18,10 +18,10 @@ class DiscsController < ApplicationController
   end
 
   def create
-      @new_disc = Disc.new(title: params[:title], release: params[:release], code: params[:code], value: params[:value], label: params[:label], format: params[:format], country: params[:country], cover_picture: params[:cover_picture])
+      @new_disc = Disc.new(title: params[:title], artist: params[:artist], release: params[:release], label: params[:label], genre: params[:genre], format: params[:format], country: params[:country])
       if @new_disc.save
         flash[:notice_good] = "Le disque a bien été créer"
-        redirect_to new_user_library_path
+        redirect_to new_user_user_library_path(current_user.id)
       else
         flash[:notice_bad] = "Le disque n'a pas été créer"
         render 'new'
@@ -37,15 +37,13 @@ class DiscsController < ApplicationController
     post_params =
       params.require(:disc).permit(
         :title,
-        :artist_id,
-        :year,
-        :code,
-        :value,
+        :artist,
+        :release,
         :label,
         :format,
+        :genre,
         :country,
         :cover_picture,
-        :release
       )
     @edit_disc.update(post_params)
     redirect_to disc_path

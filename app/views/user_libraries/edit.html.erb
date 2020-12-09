@@ -1,18 +1,15 @@
 <center>
-
-<%= form_tag user_library_path(action: 'create'), method: "post" do %>
-
-
-<%= label_tag 'Description' %> <br>
-<%= text_field_tag 'description', @edit_user_library.description%> <br>
-<br>
-<%= hidden_field_tag 'disc_id', @edit_user_library.disc_id %> <br>
-<br>
-<%= hidden_field_tag 'user_id', current_user.id %> <br>
-<%= submit_tag "Envoyer" %>
-<% end %>
-
-<%= button_to 'Supprimer', user_library_path(@edit_user_library.id), method: :delete, data: { confirm: 'Tu est sur ?' } %>
-
+  <% if user_signed_in? %>
+    <%= form_tag user_library_path(action: 'create'), method: "post" do %>
+      <%= label_tag 'Description' %> <br>
+      <%= text_field_tag 'description', @edit_user_library.description%> <br>
+      <br>
+      <%= hidden_field_tag 'disc_id', @edit_user_library.disc_id %> <br>
+      <br>
+      <%= hidden_field_tag 'user_id', current_user.id %> <br>
+      <%= submit_tag "Envoyer" %>
+    <% end %>
+    <%= button_to 'Supprimer', user_library_path(@edit_user_library.id), method: :delete, data: { confirm: 'Tu est sur ?' } %>
+  <% end %>
 </center>
 <br>

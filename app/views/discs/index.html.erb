@@ -1,19 +1,25 @@
- <center>
-  <h3> Créer un Disque </h3>
-  <%= link_to "Créer", new_disc_path%>
-  <br>
+<div class="container text-center my-4">
+  <% if user_signed_in? %>
+    <h3> Créer un Disque </h3>
+    <%= link_to "Créer", new_disc_path, class: "btn btn-secondary"%> <br>
+    <br>
+  <% end %>
   <h2> Index</h2>
   <br>
   <br>
-</center>
+</div>
 <div class="container">
   <div class="row demo-tiles">
     <% @discs.each do |disc| %>
       <div class="col-3">
         <div class="tile bg-secondary">
           <br>
-          <%  @search = @auth_wrapper.search(disc.title, type: :release)%>
-           <%= image_tag @search.results.first.cover_image %>
+          <%  search = @auth_wrapper.search(disc.title, type: :release)%>
+          <% if search.results.first != nil %>
+            <%= image_tag search.results.first.cover_image %>
+          <% else %>
+            <p>Pas de cover pour ce disque.</p>
+          <% end %>
           <br>
           <h3 class="tile-title text-primary"><%=disc.title%></h3>
           <br>

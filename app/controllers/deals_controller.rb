@@ -11,11 +11,13 @@ class DealsController < ApplicationController
   end 
 
   def new
+    @sender = User.find(params[:sender_id])
     @new_deal = Deal.new 
   end 
 
   def create
-    @new_deal = Deal.new(sender_id: params[:sender_id], receiver_id: params[:receiver_id])
+    @sender = User.find(params[:sender_id])
+    @new_deal = Deal.new(sender_id: @sender.id, receiver_id: current_user.id)
     if @new_deal.save
       flash[:notice_good] = "Le deal a bien été créer"
       redirect_to deal_path(@new_deal.id)
