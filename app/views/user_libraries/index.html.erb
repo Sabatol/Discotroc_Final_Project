@@ -1,34 +1,3 @@
-<center>
-  <%=link_to "Rajouter un vinyle", new_user_library_path %>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <h4>Ma bibliothèque de vinyles</h4>
-        <%@user_libraries.where(user_id: current_user.id).each do |user_library|%>
-          <p> <%= user_library.user.first_name%>
-            <p>
-              <p> <%= user_library.disc.title%>
-                <p><%= user_library.description%></p>
-                <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-                <hr>
-              <%end%>
-            </div>
-            <div class="col-6">
-              <h4>Liste des vinyles présents sur le site</h4>
-              <%@user_libraries.each do |user_library|%>
-                <p> <%= user_library.user.first_name%>
-                  <p>
-                    <p> <%= user_library.disc.title%>
-                      <p><%= user_library.description%></p>
-                      <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
-                      <hr>
-                    <%end%>
-                  </div>
-                </div>
-              </div>
-            </center>
-
-
             	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -46,8 +15,8 @@
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
-	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px"></i><%end%></div>
-						<p><%=library.disc.artists.pluck(:name).join(" & ")%></p>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artists.pluck(:name).join(" & ")%></p><pre><%=library.disc.release%>  </pre></div>
 						<div class="single_player">
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
@@ -56,10 +25,10 @@
 										</div>
 									
 									</div>
-									
+							
 										<div class="low-card">
-									<%=library.description%>
-									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index"%></div>
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 
 								</div>
 			

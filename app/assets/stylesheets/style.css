@@ -16,7 +16,7 @@
 	border: none;
 	font-size: 14px;
 	font-weight: 500;
-	padding: 4px 4px;
+	padding: 4px 13px;
 	border-radius: 50px;
 	text-transform: uppercase;
 	background: #0a183d;
@@ -51,6 +51,10 @@ text-align:    center;
 
 
 /*library-index-card*/
+
+.head-lib-card .p{
+	padding-right: 14px;
+}
 
 .lao-card{
 	display: flex;
