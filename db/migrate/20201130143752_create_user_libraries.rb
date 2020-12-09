@@ -4,7 +4,6 @@ class CreateUserLibraries < ActiveRecord::Migration[6.0]
       t.references :user, index: true
       t.references :disc, index: true
       t.text :description
-      t.references :disc_state, index: true
       t.timestamps
     end
   end
