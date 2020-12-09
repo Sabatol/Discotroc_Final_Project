@@ -39,22 +39,37 @@ end
   )
   end
 
-
-10.times do
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: 'Cacaboudin',
-    password_confirmation: 'Cacaboudin',
+    first_name: "PrénomAdmin",
+    last_name: "NomAdmin",
+    email: "discotroc@yopmail.com",
+    password: 'azerty',
+    password_confirmation: 'azerty',
     address: Faker::Address.street_address,
     additional_address: Faker::Address.secondary_address,
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
-    country: Faker::Address.country,
-    description: 'proutproutpouet'
+    country: "France",
+    description: "Description d'un administrateur créé via le seed.",
+    completed: true,
+    id_admin?: true
   )
-end
+  9.times do
+    User.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email,
+      password: 'Cacaboudin',
+      password_confirmation: 'Cacaboudin',
+      address: Faker::Address.street_address,
+      additional_address: Faker::Address.secondary_address,
+      zipcode: Faker::Address.zip_code,
+      city: Faker::Address.city,
+      country: Faker::Address.country,
+      description: "Description d'un utilisateur créé via le seed.",
+      completed: true
+    )
+  end
 
 i = 0
 n = 0

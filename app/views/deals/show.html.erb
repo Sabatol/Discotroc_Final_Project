@@ -20,7 +20,7 @@
           <% end %>
           <br>
           <%# Select form to choose a disc to troc ! %>
-          <%=link_to "Proposer un disque", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
+          <%=link_to "Proposer un disque (en travaux !)", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
         <%end %>
         <hr style="width: 5%; border: 1px solid black;" >
         <br>
@@ -59,7 +59,7 @@
           <% end %>
           <br>
           <%# Select form to choose a disc to troc ! %>
-          <%=link_to "Proposer un disque", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
+          <%=link_to "Proposer un disque (en travaux!)", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
         <%end %>
         <hr style="width: 5%; border: 1px solid black;" >
         <br>
@@ -117,7 +117,7 @@
     <% end %>
     <p>############################################################################</p>
     <% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-      <%#= link_to "Modifier", edit_deal_path(deal_id: @deal.id)%>
+      <%= link_to "Modifier", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
     <% end %>
     <p>############################################################################</p>
     <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
