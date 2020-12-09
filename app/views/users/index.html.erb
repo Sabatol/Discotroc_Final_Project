@@ -5,8 +5,6 @@
 	<meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
@@ -44,10 +42,10 @@
                         <i class="fas fa-crown" style="color: white"></i>
                         <h5><%= user.first_name%> <%= user.last_name%></h5>
                         <% elsif user.deals_sender.count >= 1 && user.deals_sender.count < 3%>
-                        <i class="fas fa-crown" style="color: grey"></i>
+                        <i class="fas fa-crown" style="color: brown"></i>
 						<h5><%= user.first_name%> <%= user.last_name%></h5>
                         <% elsif user.deals_sender.count >= 3 && user.deals_sender.count < 7%>
-                        <i class="fas fa-crown" style="color: brown"></i>
+                        <i class="fas fa-crown" style="color: grey"></i>
                         <h5><%= user.first_name%> <%= user.last_name%></h5>
                          <% elsif user.deals_sender.count >= 7%>
                         <i class="fas fa-crown"></i>
@@ -74,6 +72,8 @@
 	<!-- Playlist section end -->
 
 
-	<p style="text-align: center"><i class="fas fa-crown"></i>* signifie que l'utilisateur a plus de deux échanges </p>
+	<p style="text-align: center"><i class="fas fa-crown" style="color: brown"></i>* signifie que l'utilisateur à 1 ou 2 disques échangés</p>
+	<p style="text-align: center"><i class="fas fa-crown" style="color: grey"></i>* signifie que l'utilisateur à de 3 à 6 disques échangés</p>
+	<p style="text-align: center"><i class="fas fa-crown" style="color: #ffd369"></i>* signifie que l'utilisateur à 7 disques échangés ou plus</p>
 
 
