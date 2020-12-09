@@ -35,7 +35,7 @@ class DealContentsController < ApplicationController
 
   def update
     @edit_deal_content = DealContent.find(params[:id])
-    post_params = params.require(:deal_content).permit(:sender_library_id, :receiver_library_id, :deal_id)
+    post_params = params.permit(:sender_library_id, :receiver_library_id, :deal_id)
     @edit_deal_content.update(post_params)
     redirect_to user_library_deal_path(params[:user_library_id], params[:deal_id])
   end
