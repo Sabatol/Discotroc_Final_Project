@@ -12,19 +12,9 @@
 			<h3>Recherchez votre bonheur</h3></div>
         <div class="container">
 				<ul class="playlist-filter controls">
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[0].name%>"><%=@all_genres[0].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[1].name%>"><%=@all_genres[1].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[2].name%>"><%=@all_genres[2].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[3].name%>"><%=@all_genres[3].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[4].name%>"><%=@all_genres[4].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[5].name%>"><%=@all_genres[5].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[6].name%>"><%=@all_genres[6].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[7].name%>"><%=@all_genres[7].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[8].name%>"><%=@all_genres[8].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[9].name%>"><%=@all_genres[9].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[10].name%>"><%=@all_genres[10].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[11].name%>"><%=@all_genres[11].name%></li>
-					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[12].name%>"><%=@all_genres[12].name%></li>
+<% @all_genres.each do |genre|%>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=genre.name%>"><%=genre.name%></li>
+					<%end%>
 					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
 				</ul>
 			</div> 
