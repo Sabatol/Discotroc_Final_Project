@@ -4,12 +4,10 @@ class UserLibrariesController < ApplicationController
 
   def index
     @user_libraries = UserLibrary.all
-    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 
   def show
     @user_library = UserLibrary.find(params[:id])
-    @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])    
   end
 
   def new
@@ -21,7 +19,7 @@ class UserLibrariesController < ApplicationController
     @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description])
     if @new_user_library.save
       flash[:notice_good] = "Nouveau disque ajouté a votre librarie"
-      redirect_to user_libraries_path 
+      redirect_to user_libraries_path
     else
       flash[:notice_bad] = "Le disque n'a pas été ajouté"
       render 'new'

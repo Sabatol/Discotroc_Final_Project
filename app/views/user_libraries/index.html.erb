@@ -11,6 +11,11 @@
           <p> <%= user_library.user.first_name%>
           </p>
           <p> <%= user_library.disc.title%></p>
+           <% if user_library.disc.cover_picture != nil %>
+            <%= image_tag user_library.disc.cover_picture %>
+            <% else %>
+            <p>Pas de cover pour ce disque.</p>
+            <% end %>
           <p><%= user_library.description%></p>
           <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
           <hr>
@@ -23,6 +28,11 @@
         <p> <%= user_library.user.first_name%>
         </p>
         <p> <%= user_library.disc.title%></p>
+         <% if user_library.disc.cover_picture != nil %>
+          <%= image_tag user_library.disc.cover_picture %>
+          <% else %>
+          <p>Pas de cover pour ce disque.</p>
+          <% end %>
         <p><%= user_library.description%></p>
         <%= link_to "Voir le vinyle", user_library_path(user_library.id)%>
         <hr>
