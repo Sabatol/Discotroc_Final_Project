@@ -1,19 +1,17 @@
-
- <center>
- <h3> Créer un DEAL  </h3>
- <%= link_to "Créer", new_deal_path%>
- <br>
+<center>
+  <h3> Créer un DEAL  </h3>
+  <%#= link_to "Créer", new_deal_path%>
+  <br>
   <h2> Index</h2>
-
-<% @deals.each do |deal| %>
-<p> Deal N° <%= deal.id%>
-<hr style="width: 5%; border: 1px solid black;" >
-<p> Sender: <%=deal.sender_id%></p>
-<p> Receiver: <%=deal.receiver_id%></p>
-<p> Sender Ok ?: <%=deal.sender_ok?%></p>
-<p> Receiver Ok ?: <%=deal.receiver_ok?%></p>
-<%= link_to "Voir", deal_path(deal.id)%>
-
-<br> <br>
-<%end%>
-</center> 
+  <% @deals.each do |deal| %>
+    <p> Deal N° <%= deal.id%>
+      <hr style="width: 5%; border: 1px solid black;" >
+      <p> Sender: <%=deal.sender_id%></p>
+      <p> Receiver: <%=deal.receiver_id%></p>
+      <p> Sender Ok ?: <%=deal.sender_ok?%></p>
+      <p> Receiver Ok ?: <%=deal.receiver_ok?%></p>
+      <%= link_to "Voir", deals_path(deal.id)%>
+      <br>
+      <br>
+    <%end%>
+  </center>

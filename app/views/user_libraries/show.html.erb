@@ -1,22 +1,22 @@
 <div class="container text-center my-4">
   <p>Possesseur du disque: <%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
   </p>
-  <h6>  <% if @user_library.disc.cover_picture != nil %>
-      <%= image_tag @user_library.disc.cover_picture %>
-    <% else %>
-      <p>Pas de cover pour ce disque.</p>
-    <% end %>
+  <p>Nom du disque : <%=link_to @user_library.disc.title, disc_path(@user_library.disc.id)%></p>
+  <% if @user_library.disc.cover_picture != nil %>
+    <%= image_tag @user_library.disc.cover_picture %>
+  <% else %>
+    <p>Pas de cover pour ce disque.</p>
+  <% end %>
   <br>
   <% if user_signed_in? %>
     <% if current_user.id == @user_library.user_id || current_user.is_admin? == true %>
       <%= link_to "Modifier", edit_user_user_library_path(current_user.id, @user_library.id)%>
     <% end %>
     <% if current_user.user_libraries.ids.count > 0 && @user_library.user_id != current_user.id%>
-      <%= form_tag deals_path(sender_id: @user_library.user.id, action: 'create'), method: "post" do %>
+      <%= form_tag user_library_deals_path(user_library_id: params[:id], receiver_id: @user_library.user.id, action: 'create'), method: "post" do %>
         <%= submit_tag "Ouvrir un espace de troc", data: { confirm: 'Confirmez-vous la demande de troc ?' }, class: "btn btn-secondary" %>
       <% end %>
       <br>
-      <%= link_to "Ouvrir un espace de troc avec une page de confirmation (à virer)", new_deal_path(sender_id: @user_library.user.id, disc_id: @user_library.disc.id), class: "btn btn-secondary"  %>
     <%else%>
       <h5>Vous n'avez aucun disque dans votre collection.</h5>
       <p>Si vous désirez obtenir <%=@user_library.disc.title%>, vous devez pouvoir proposer quelque chose en échange !</p>

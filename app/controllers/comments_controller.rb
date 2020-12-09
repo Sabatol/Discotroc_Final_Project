@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @new_comment = Comment.new(content: params[:content], comment_sender_id: params[:comment_sender_id], comment_receiver_id: params[:comment_receiver_id], deal_id: params[:deal_id])
     if @new_comment.save
       flash[:notice_good] = "Le commentaire a bien été créé"
-      redirect_to deal_path(@new_comment.deal_id)
+      redirect_to user_library_deal_path(params[:user_library_id], @new_comment.deal_id)
     else
       flash[:notice_bad] = "Le commentaire n'a pas été créé"
       render 'new'
