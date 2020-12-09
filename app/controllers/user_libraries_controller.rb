@@ -4,6 +4,7 @@ class UserLibrariesController < ApplicationController
 
   def index
     @user_libraries = UserLibrary.all
+    @all_genres = Genre.all
     @auth_wrapper = Discogs::Wrapper.new('Discotroc', user_token: ENV['USER_TOKEN'])
   end
 

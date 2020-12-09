@@ -10,25 +10,88 @@
 			<div class="text-center">
 		  <h1>Disque a Troquer</h1>
 			<h3>Recherchez votre bonheur</h3></div>
-                
-			<div class="row">
+        <div class="container">
+				<ul class="playlist-filter controls">
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[0].name%>"><%=@all_genres[0].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[1].name%>"><%=@all_genres[1].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[2].name%>"><%=@all_genres[2].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[3].name%>"><%=@all_genres[3].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[4].name%>"><%=@all_genres[4].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[5].name%>"><%=@all_genres[5].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[6].name%>"><%=@all_genres[6].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[7].name%>"><%=@all_genres[7].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[8].name%>"><%=@all_genres[8].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[9].name%>"><%=@all_genres[9].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[10].name%>"><%=@all_genres[10].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[11].name%>"><%=@all_genres[11].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter=".<%=@all_genres[12].name%>"><%=@all_genres[12].name%></li>
+					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
+				</ul>
+			</div> 
+				<div class="row playlist-area">
+	
 			<%@user_libraries.each_with_index do |library, index|%>
-				<div class="col-xl-3 col-sm-6">
+			<% if library.disc.genre.name == @all_genres[0].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[0].name%>">
 					<div class="library-index-card" style="height: 95%;">
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
-							<div class="head-lib-card"><p><%=library.disc.artists.pluck(:name).join(" & ")%></p><pre><%=library.disc.release%>  </pre></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
 						<div class="single_player">
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-
-										</div>
-									
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									</div>
+ 									</div>
+                 	</div>
+									</div>
+			<% elsif library.disc.genre.name == @all_genres[1].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[1].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	              <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+									</div>								
+									</div>			
+									  <div class="low-card">
+										<%=library.description%>
+									<div class="lib-index-butn mt-3" ><%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
 							
+				</div>
+				</div>
+				
+							</div>
+										<% elsif library.disc.genre.name == @all_genres[2].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[2].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
 										<div class="low-card">
 											<%=library.description%>
 									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -41,142 +104,271 @@
 				</div>
 				
 							</div>
+										<% elsif library.disc.genre.name == @all_genres[3].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[3].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+										<% elsif library.disc.genre.name == @all_genres[4].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[4].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+
+								</div>
+			
+		
+							
+				</div>
+				</div>
+				
+							</div>
+																	<% elsif library.disc.genre.name == @all_genres[5].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[5].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+									<% elsif library.disc.genre.name == @all_genres[6].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[6].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<% elsif library.disc.genre.name == @all_genres[7].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[7].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+						<% elsif library.disc.genre.name == @all_genres[8].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[8].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+								<% elsif library.disc.genre.name == @all_genres[9].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[9].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+									<% elsif library.disc.genre.name == @all_genres[10].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[10].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<% elsif library.disc.genre.name == @all_genres[11].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[11].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+						<% elsif library.disc.genre.name == @all_genres[12].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[12].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+												<% elsif library.disc.genre.name == @all_genres[13].name%>
+				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[13].name%>">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+												<% else %>
+				<div class="mix col-xl-3 col-sm-6 all">
+					<div class="library-index-card" style="height: 95%;">
+						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
+						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+							 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
+							<div class="head-lib-card"><p><%=library.disc.artist%></p><pre><%=library.disc.release%>  </pre></div>
+						<div class="single_player">
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											<%=library.description%>
+									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+								</div>
+		            </div>
+			         	</div>		
+							</div>
+							<%end%>
 							<%end%>
 			</div>
 		</div>
+	
 	</section>
-	<!-- Similar Songs section end -->
-
-		<section class="playlist-section spad">
-		<div class="container-fluid">
-			<div class="section-title">
-				<h2>Playlists</h2>
-			</div>
-			<div class="container">
-				<ul class="playlist-filter controls">
-					<li class="control" data-filter=".genres">Genres</li>
-					<li class="control" data-filter=".artists">Artists</li>
-					<li class="control" data-filter=".movies">Movies Soundtracks</li>
-					<li class="control" data-filter=".labels">Labels</li>
-					<li class="control" data-filter="all">All Playlist</li>
-				</ul>
-			</div>                                              
-			<div class="clearfix"></div>
-			<div class="row playlist-area">
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-					<div class="playlist-item">
-						<img src="img/playlist/1.jpg" alt="">
-						<h5>Live Concerts</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-					<div class="playlist-item">
-						<img src="img/playlist/2.jpg" alt="">
-						<h5>Dj Sets</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-					<div class="playlist-item">
-						<img src="img/playlist/3.jpg" alt="">
-						<h5>Recorded Live</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 labels">
-					<div class="playlist-item">
-						<img src="img/playlist/4.jpg" alt="">
-						<h5>Oldies</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-					<div class="playlist-item">
-						<img src="img/playlist/5.jpg" alt="">
-						<h5>Rock & Roll</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-					<div class="playlist-item">
-						<img src="img/playlist/6.jpg" alt="">
-						<h5>Classic Music</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-					<div class="playlist-item">
-						<img src="img/playlist/7.jpg" alt="">
-						<h5>Rock</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 labels">
-					<div class="playlist-item">
-						<img src="img/playlist/8.jpg" alt="">
-						<h5>Alternative</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-					<div class="playlist-item">
-						<img src="img/playlist/9.jpg" alt="">
-						<h5>Country</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-					<div class="playlist-item">
-						<img src="img/playlist/10.jpg" alt="">
-						<h5>EDM</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-					<div class="playlist-item">
-						<img src="img/playlist/11.jpg" alt="">
-						<h5>Pop Culture</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 labels">
-					<div class="playlist-item">
-						<img src="img/playlist/12.jpg" alt="">
-						<h5>The 90’s</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-					<div class="playlist-item">
-						<img src="img/playlist/13.jpg" alt="">
-						<h5>Jass & Blues</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-					<div class="playlist-item">
-						<img src="img/playlist/14.jpg" alt="">
-						<h5>Dj Sets</h5>
-					</div>
-				</div>
-				<div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-					<div class="playlist-item">
-						<img src="img/playlist/15.jpg" alt="">
-						<h5>Minimal</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Playlist section end -->
-
-	<!-- Help section end -->
-	<section class="help-section spad pt-0">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="section-title mb-0 pb-4">
-						<h2>Need Help to find music? </h2>
-					</div>
-					<p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-				</div>
-				<div class="col-lg-6">
-					<div class="d-flex h-100 align-items-end">
-						<form class="search-form">
-							<input type="text" placeholder="Hit it">
-							<button>Search</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
