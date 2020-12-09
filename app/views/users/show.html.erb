@@ -184,7 +184,7 @@
                 <div class="song-details-box">
                   <h3>Disques à troquer</h3>
                   <!-- song -->
-                  <%if @user.disc_ids.length > 0 && @user.disc_ids.length < 10%>
+                  <%if @user.disc_ids.length > 1 && @user.disc_ids.length < 10%>
                     <% index = 0%>
                     <% @user.user_libraries.each do |disc| %>
                       <div class="song-item">
