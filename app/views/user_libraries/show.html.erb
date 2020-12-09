@@ -1,16 +1,12 @@
 <div class="container text-center my-4">
   <p>Possesseur du disque: <%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
   </p>
-  <h6><%=link_to @user_library.disc.title, disc_path(@user_library.disc.id)%></h6>
-  <% search = @auth_wrapper.search(@user_library.disc.title, type: :release)%>
-  <% if search.results.first != nil %>
-    <%= image_tag search.results.first.cover_image %>
+  <p>Nom du disque : <%=link_to @user_library.disc.title, disc_path(@user_library.disc.id)%></p>
+  <% if @user_library.disc.cover_picture != nil %>
+    <%= image_tag @user_library.disc.cover_picture %>
   <% else %>
     <p>Pas de cover pour ce disque.</p>
   <% end %>
-  <%if @user_library.description != nil%>
-    <p><%= @user_library.description%></p>
-  <%end%>
   <br>
   <% if user_signed_in? %>
     <% if current_user.id == @user_library.user_id || current_user.is_admin? == true %>
