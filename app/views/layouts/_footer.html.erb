@@ -17,7 +17,7 @@
             <div class="footer-widget">
               <h2>Sommaire</h2>
               <ul>
-                <%if current_user != nil%>
+                <% if user_signed_in? %>
                   <li><%=link_to 'Profil', user_path(current_user.id) %> </li>
                 <%else%>
                   <li><%=link_to 'Inscription', new_user_registration_path %> </li>

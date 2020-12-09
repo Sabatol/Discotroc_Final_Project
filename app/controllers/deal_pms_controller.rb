@@ -1,47 +1,47 @@
 class DealPmsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_admin?
+  before_action :is_completed?
+
   def index
     @deal_pms = DealPm.all
-end 
+  end 
 
-def show
+  def show
     @deal_pm = DealPm.find(params[:id])
-end 
+  end 
 
-def new
+  def new
     @new_deal_pm = DealPm.new 
-end 
+  end 
 
-def create
+  def create
     @new_deal_pm = DealPm.new(deal_id: params[:deal_id], pm_author_id: params[:pm_author_id], content: params[:content])
     if @new_deal_pm.save
       flash[:notice_good] = "Le deal a bien été créer"
-      redirect_to deals_path
+      redirect_to deal_path(params[:deal_id])
     else
       flash[:notice_bad] = "Le disque a bien été créer"
       render 'new'
     end
-end
+  end
 
-def edit
+  def edit
     @edit_deal_pm = DealPm.find(params[:id])
-end
+  end
 
   def update
     
     @edit_deal_pm = DealPm.find(params[:id])
     post_params = params.require(:deal_pm).permit(:deal_id, :pm_author_id, :content)
     @edit_deal_pm.update(post_params)
-    redirect_to deal_pm_path(@edit_deal_pm.id)
+    redirect_to deal_path(params[:deal_id])
   end
 
   def destroy
     @destroy_deal = DealPm.find(params[:id])
     @destroy_deal.destroy
-    redirect_to deal_pms_path
-    end
-     
+    redirect_to root_path
+  end
 
 end
 
