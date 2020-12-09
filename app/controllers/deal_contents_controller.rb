@@ -16,13 +16,16 @@ class DealContentsController < ApplicationController
   end 
 
   def create
-    @new_deal_content = DealContent.new(sender_library_id: params[:sender_library_id], receiver_library_id: params[:receiver_library_id], deal_id: params[:deal_id])
+    @deal = Deal.find(params[:deal_id])
+    @receiver_library = UserLibrary.find_by(params[:id])
+    @new_deal_content = DealContent.new(sender_library_id: params[:sender_library_id], receiver_library_id: @receiver_library.id, deal_id: @deal.id)
     if @new_deal_content.save
-      flash[:notice_good] = "Le Content Deal a bien été créer"
       redirect_to deal_path(params[:deal_id])
+      flash[:notice_good] = "Le Content Deal a bien été créer"
+
     else
-      flash[:notice_bad] = "Le Content Deal n'a pas été créer"
       render 'new'
+      flash[:notice_bad] = "Le Content Deal n'a pas été créer"
     end
   end
 

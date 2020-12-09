@@ -21,6 +21,15 @@ format = ['CD', '33 tours', '45 tours', 'LaserDisc', 'HDCD']
 
 10.times do
   reference = ''
+  alpha_disc = Disc.create(
+    title: "Veuillez choisir un disque à échanger",
+    release: 2020,
+    label: 'THP prod',
+    code:  randomizer[rand(randomizer.size)].to_s,
+    value: 1,
+    format: format[rand(0..4)],
+    country: 'France'
+  )
   15.times { reference += randomizer[rand(randomizer.size)].to_s }
 
   Disc.create(
