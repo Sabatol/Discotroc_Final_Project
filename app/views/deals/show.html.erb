@@ -226,8 +226,8 @@
                     <%number = 1 %>
                     <% search_pm.each do |pm| %>
                       <div class="artist-details">
-                        <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                        <div class="ad-text">
+                        <%= image_tag "avatars/Daft Punk.png", style: "width: 100px; height: 100px"%>
+                        <div>
                           <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
                           <h5><%=User.find(pm.pm_author_id).first_name%></h5>
                           <p><%=pm.content%></p>
