@@ -10,6 +10,20 @@
 /* Custom CSS HandMade
 /*----------------------------------------*/
 
+/* SHOW DEAL  */
+
+
+.deal-section {
+	padding: 57px 53px;
+}
+
+.deal-set-bg {
+    background-color: #0a183d;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
 /* SHOW DISC*/
 
 .more-infos.col-lg-4{
@@ -1844,7 +1858,7 @@ Category page
 }
 
 /* ----------------
-Artest Page
+	Artest Page
  -------------------*/
 
 .player-sectioon {
