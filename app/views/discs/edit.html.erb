@@ -40,6 +40,16 @@
         <%= f.hidden_field :format_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.format_id%>
         <%= f.hidden_field :genre_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.genre_id%>
         <%= f.hidden_field :country, placeholder: 'Country', autocomplete: 'off', value: @edit_disc.country%>
+      
+        <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
+        <% if @search.results.first != nil%>
+        <% cover_picture = @search.results.first.cover_image%>
+          <%= image_tag cover_picture, style: "display: 300px; height: 300px" %>
+          <%= f.hidden_field :cover_picture, placeholder: 'cover_picture', autocomplete: 'off', value: cover_picture%>
+        <% end %>
+        <br>
+      <hr style="width: 5%; border: 1px solid black;" >
+      <br>
       <h6>Titre</h6>
       <%= @edit_disc.title%> <br>
       <br>
@@ -61,17 +71,9 @@
       <h6>Pays de sortie</h6>
       <%= @edit_disc.country%> <br>
       <br>
-      <br>
-        <%= label_tag 'Cover Picture' %> <br />
-        <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
-        <% if @search.results.first != nil%>
-        <% cover_picture = @search.results.first.cover_image%>
-          <%= image_tag cover_picture %>
-          <%= f.hidden_field :cover_picture, placeholder: 'cover_picture', autocomplete: 'off', value: cover_picture%>
-        <% end %>
-        <br />
-        <%= submit_tag "OK", class: "btn btn-primary" %> <br>
-        <%= link_to 'Annuler', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Cela va supprimer le disque. Es-tu certain ?' } %>
+
+        <%= submit_tag "Ajouter le disque",  class: "site-btn text-center", style: "padding: 10px 20px"  %> <br><br>
+        <%= link_to 'Annuler', disc_path(@edit_disc.id), method: :delete, data: { confirm: 'Cela va supprimer le disque. Es-tu certain ?' },  class: "site-btn text-center", style: "padding: 10px 20px; background: black; color: white" %>
       <% end %>
     <%end%>
   <% end %>

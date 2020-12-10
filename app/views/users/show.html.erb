@@ -136,6 +136,73 @@
     <section class="songs-details-section">
       <div class="container-fluid">
         <div class="row">
+        <%if current_user.id == @user.id %>
+        <div class="col-lg-3">
+					<div class="song-details-box">
+
+						<h3>Deals en cours</h3>
+            <%all = Deal.where(sender_id: @user.id).without(sender_ok:true).pluck(:id)%>
+              <%deal = []%>
+                  <%all.each do |id|%>
+                    <% deal = Deal.find(id)%>
+                      <% i = deal.deal_contents.pluck(:sender_library_id)%>
+                      <% a = UserLibrary.find_by(id: i) %>
+                      <% if a.disc_id != 1 %>
+                        <%= link_to user_library_path(a.id) do %>
+                          <div class="song-item">
+                            <div class="row">
+                              <div class="col-xl-12 col-lg-12 col-md-7">
+                                <div class="song-info-box">
+                                  <% if a.disc.cover_picture != nil %>
+                                    <%= image_tag a.disc.cover_picture %>
+                                  <% else %>
+                                    <%= image_tag "icons/disc_red.png" %>
+                                  <% end %>
+                                  <div class="song-info">
+                                    <h5><%= a.disc.title%></h5>
+                                    <h4><%= a.disc.artist%></h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <%end %>
+                        <%end%>
+                        <%end%>
+                        <hr style="width: 20%; border: 1px solid black;" >
+                                    <%all2 = Deal.where(receiver_id: @user.id).without(receiver_ok:true).pluck(:id)%>
+              <%deal2 = []%>
+                  <%all2.each do |id|%>
+                    <% deal2 = Deal.find(id)%>
+                      <% i2 = deal2.deal_contents.pluck(:receiver_library_id)%>
+                      <% a2 = UserLibrary.find_by(id: i2) %>
+                      <% if a2.disc_id != 1 %>
+                        <%= link_to user_library_path(a2.id) do %>
+                          <div class="song-item">
+                            <div class="row">
+                              <div class="col-xl-12 col-lg-12 col-md-7">
+                                <div class="song-info-box">
+                                  <% if a2.disc.cover_picture != nil %>
+                                    <%= image_tag a2.disc.cover_picture %>
+                                  <% else %>
+                                    <%= image_tag "icons/disc_red.png" %>
+                                  <% end %>
+                                  <div class="song-info">
+                                    <h5><%= a2.disc.title%></h5>
+                                    <h4><%= a2.disc.artist%></h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <%end %>
+                        <%end%>
+                        <%end%>
+					</div>
+				</div>
+        <%end %>
+
+
           <div class="col-lg-9">
             <div class="row">
               <div class="col-lg-6">
