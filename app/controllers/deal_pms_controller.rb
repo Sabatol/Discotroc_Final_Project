@@ -17,10 +17,10 @@ class DealPmsController < ApplicationController
   def create
     @new_deal_pm = DealPm.new(deal_id: params[:deal_id], pm_author_id: params[:pm_author_id], content: params[:content])
     if @new_deal_pm.save
-      flash[:notice_good] = "Le deal a bien été créer"
+      flash[:notice_good] = "Le message a bien été envoyé."
       redirect_to user_library_deal_path(params[:user_library_id], params[:deal_id])
     else
-      flash[:notice_bad] = "Le disque a bien été créer"
+      flash[:notice_bad] = "Le message n'a pas pu être envoyé."
       render 'new'
     end
   end

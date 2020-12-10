@@ -10,9 +10,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(title: params[:title], content: params[:content], user_id: params[:user])
     if @article.save
       redirect_to article_path(@article.id)
-      flash[:notice_good] = "Votre article a bien été publié"
+      flash[:notice_good] = "Votre article a bien été publié !"
     else
-      flash[:notice_bad] = "Votre article n'a pas pu être publié"
+      flash[:notice_bad] = "Votre article n'a pas été publié."
       render 'new'
     end
   end
