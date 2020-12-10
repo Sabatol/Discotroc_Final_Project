@@ -38,6 +38,12 @@ class DealContentsController < ApplicationController
     @edit_deal_content = DealContent.find(params[:id])
     post_params = params.permit(:sender_library_id, :receiver_library_id, :deal_id)
     @edit_deal_content.update(post_params)
+    ### For AJAX
+    # respond_to do |format|
+    #   format.html { redirect_to user_library_deal_path(params[:user_library_id], params[:deal_id]) }
+    #   format.js { }
+    # end
+    ### Comment this line if you activate AJAX
     redirect_to user_library_deal_path(params[:user_library_id], params[:deal_id])
   end
 

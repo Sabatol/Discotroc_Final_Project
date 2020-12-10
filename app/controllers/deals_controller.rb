@@ -42,9 +42,9 @@ class DealsController < ApplicationController
 
   def update
     @edit_deal = Deal.find(params[:id])
-    post_params = params.require(:deal).permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
+    post_params = params.permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
     @edit_deal.update(post_params)
-    redirect_to deal_path(@edit_deal)
+    redirect_to  user_library_deal_path(params[:user_library_id], params[:deal_id])
   end
 
   def destroy
