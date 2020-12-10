@@ -1,8 +1,8 @@
 class DealsController < ApplicationController
+  attr_accessor :sender_id, :receiver_id, :sender_ok, :receiver_ok
   before_action :authenticate_user!, except: [:index]
   before_action :is_completed?, except: [:index, :show]
   before_action :is_deal_stakeholder, only: [:show, :edit, :update]
-
   def index
     @deals = Deal.all
   end
@@ -42,7 +42,7 @@ class DealsController < ApplicationController
 
   def update
     @edit_deal = Deal.find(params[:id])
-    post_params = params.permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
+    post_params = params.permit(:sender_ok, :receiver_ok)
     @edit_deal.update(post_params)
     redirect_to  user_library_deal_path(params[:user_library_id], params[:deal_id])
   end
