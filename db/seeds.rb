@@ -52,7 +52,7 @@ end
     country: "France",
     description: "Description d'un administrateur créé via le seed.",
     completed: true,
-    id_admin?: true
+    is_admin?: true
   )
   9.times do
     User.create(
