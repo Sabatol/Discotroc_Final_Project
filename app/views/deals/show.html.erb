@@ -14,8 +14,8 @@
               <% if deal_content.sender_library_id.present? %>
                 <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
                 <% if sender_library.present? %>
-                  <% sender_disc = Disc.find(sender_library.disc_id)%>
-                  <%= sender_disc.title%>
+                  <% @sender_disc = Disc.find(sender_library.disc_id)%>
+                  <div id="for_ajax"><%= @sender_disc.title%></div>
                 <% else %>
                   <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
                 <% end %>
@@ -47,10 +47,11 @@
             <br>
             <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
               <%= hidden_field_tag :receiver_id, current_user.id %> <br>
-              <%= check_box_tag :sender_ok, true %><br>
+              <%# next line for uncheck the box and next one to check the box %>
+              <%= hidden_field_tag 'sender_ok', '0' %>
+              <%= check_box_tag :sender_ok, 1, @deal.sender_ok %><br>
               <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
               <br>
-              <%= link_to "Revenir à l'accueil", root_path%>
             <% end %>
             <br>
             <%# end %>
@@ -131,8 +132,13 @@
             <!-- end -->
             <%# Checkbox to update the current_user status %>
             <br>
-            <% if current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-              <%= link_to "Modifier (checkbox en travaux !)", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
+            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+              <%= hidden_field_tag :sender_id, current_user.id %> <br>
+              <%# next line for uncheck the box and next one to check the box %>
+              <%= hidden_field_tag 'receiver_ok', '0' %>
+              <%= check_box_tag :receiver_ok, 1, @deal.receiver_ok %><br>
+              <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+              <br>
             <% end %>
             <br>
             <%# end %>
