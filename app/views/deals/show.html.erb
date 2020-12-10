@@ -107,24 +107,32 @@
                <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
             <% end %>
             <br> <br> 
-            <% if current_user.id == @deal.sender_id || current_user.is_admin? == true%>
+            <% if current_user.id == @deal.sender_id%>
             <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
               <%= hidden_field_tag :receiver_id, current_user.id %> <br>
               <%# next line for uncheck the box and next one to check the box %>
               <%= hidden_field_tag 'sender_ok', '0' %>
-              <%= check_box_tag :sender_ok, 1, @deal.sender_ok %><br>
-              <%= submit_tag "Modifier", class: "site-btn text-center", style: "padding: 10px 20px" %> <br>
+              <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
+              <% if @deal.sender_ok == false %>
+              <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
+              <%else%> 
+              <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
               <br>
+              <%end%>
             <% end %>
-          <% end %>
-          <% if current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
+          <% elsif current_user.id == @deal.receiver_id%>
             <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
               <%= hidden_field_tag :sender_id, current_user.id %> <br>
               <%# next line for uncheck the box and next one to check the box %>
               <%= hidden_field_tag 'receiver_ok', '0' %>
               <span class="checkmark"></span>
               <%= check_box_tag :receiver_ok, 1, @deal.receiver_ok, :class => "checkmark" %><br>
-              <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+                            <% if @deal.receiver_ok == false %>
+              <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
+              <%else%> 
+              <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
+              <br>
+              <%end%>
               <br>
             <% end %>
             <%end%>
@@ -172,7 +180,10 @@
                 <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
                <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
               <% end %>
-              <%end %>
+
+              <%else %>
+              <p> </p>
+              <%end%>
               <%end%>
 					</div>
 
@@ -228,21 +239,19 @@
 			<div class="form-content">
 				<div class="form-left" style="width: 70%">
       <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
-        
         <%= label_tag 'Votre commentaire' %> <br>
         <div class="form-input">
         <%= text_field_tag 'content' %> <br>
         </div>
         <br>
         <%= hidden_field_tag 'deal_id', @deal.id %>
-
         <%= hidden_field_tag 'pm_author_id', current_user.id %>
         <%= submit_tag "Envoyer", class: "site-btn text-center", style: "padding: 10px 20px" %>
       <% end %>
       </div>
       </div>
       </section>
-      <%end %>
+      <% end %>
 							</div>
 						</div>
 						<div class="col-lg-6">
