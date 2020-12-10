@@ -1,56 +1,44 @@
-<head>
-	<title>Discotroc | Ajouter un disque à sa librairie</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords"
-		content="Créer un disque" />
-
-</head>
-
-	<!-- /login-section -->
-	<section class="w3l-login-6">
-		<div class="login-hny">
-			<div class="form-content">
-				<div class="form-left" style="margin: 0 auto;">
-					<div class="middle text-center">
+<%= render'head'%>
+<!-- /login-section -->
+<section class="w3l-login-6">
+  <div class="login-hny">
+    <div class="form-content">
+      <div class="form-left" style="margin: 0 auto;">
+        <div class="middle text-center">
           <%=image_tag "icons/disc_turquoise.png", style:"width: 200px; height: 200px;"%>
           <br>
-						<h4 class="text-center">Ajouter un disque à sa librairie</h4>
-						<p class="text-center">Départ pour le troc dans 3..2..1</p>
-					</div>
+          <h4 class="text-center">Ajouter un disque à sa librairie</h4>
+          <p class="text-center">Départ pour le troc dans 3..2..1</p>
+        </div>
+        <br>
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+          <div class="form-input">
+            <%= label_tag 'Artiste' %> <br>
+            <%=select_tag "artist_id", options_from_collection_for_select(Disc.all, :id, :artist), :class => "browser-default custom-select" %>
+          </div>
           <br>
-           <%= form_tag url_for(action: 'create'), method: "post" do %>
-             <div class="form-input">
-                <%= label_tag 'Artiste' %> <br>
-                <%=select_tag "artist_id", options_from_collection_for_select(Disc.all, :id, :artist), :class => "browser-default custom-select" %> 
-             </div>
-             <br>
-             <div class="form-input">
-                <%= label_tag 'Disque' %> <br>
-               <%=select_tag "disc_id", options_from_collection_for_select(Disc.all, :id, :title), :class => "browser-default custom-select" %> 
-             </div>
-             <br>
-             <h6> Vous ne trouvez pas le disque ? <%=link_to "Ajoutez-le", new_disc_path, :style => "color: #cca956;"%></h6>
-             <br>
-             	<div class="form-input">
-								<%= label_tag 'Description' %>
-							<%= text_field_tag 'description'%>
-							</div>
-              <br>
-             <div class="text-center">
-							<%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
-              </div>
-              <%end%>
-              <br>
-					<div class="copy-right text-center">
-						<%= link_to "Revenir à l'accueil", root_path%> <br>
-             
-					 </div>
-				</div>
-				
-			</div>
-			
-		</div>
-	</section>
-	<!-- //login-section -->
+          <div class="form-input">
+            <%= label_tag 'Disque' %> <br>
+            <%=select_tag "disc_id", options_from_collection_for_select(Disc.all, :id, :title), :class => "browser-default custom-select" %>
+          </div>
+          <br>
+          <h6> Vous ne trouvez pas le disque ? <%=link_to "Ajoutez-le", new_disc_path, :style => "color: #cca956;"%></h6>
+          <br>
+          <div class="form-input">
+            <%= label_tag 'Description' %>
+            <%= text_field_tag 'description'%>
+          </div>
+          <br>
+          <div class="text-center">
+            <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+          </div>
+        <%end%>
+        <br>
+        <div class="copy-right text-center">
+          <%= link_to "Revenir à l'accueil", root_path%> <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- //login-section -->
