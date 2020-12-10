@@ -29,6 +29,11 @@
         Non mais tu t'es pris pour un admin ?!
       </div>
     <% end %>
+    <% if flash[:deal_alert] %>
+      <div class="alert alert-danger mb-0">
+        Petit malin ! Tu ne peux pas voir un troc auquel tu ne participes pas !
+      </div>
+    <% end %>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
