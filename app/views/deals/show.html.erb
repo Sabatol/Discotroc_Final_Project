@@ -211,10 +211,11 @@
 
     <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
       <%number = 1 %>
+      <h1><%=search_pm.count%></h1>
       <% search_pm.each do |pm| %>
       	<div class="artist-details">
         <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-				<div class="ad-text">
+				<div class="">
         <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
         <h5><%=User.find(pm.pm_author_id).first_name%></h5>
         <p><%=pm.content%></p>

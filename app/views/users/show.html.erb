@@ -17,6 +17,8 @@
   </head>
   <body>
     <!-- Page Preloder -->
+
+
     <div id="preloder">
       <div class="loader"></div>
     </div>
@@ -176,7 +178,7 @@
                             <p><%= comment.content %></p>
                           <%end%>
                           <% if current_user.is_admin? %>
-                            <%= link_to "Détruire commentaire", deal_comment_path(deal_id: comment.deal_id, id: comment.id), method: "DELETE", style: "color: #0a183d" %>
+
                           <% end %>
                         </div>
                       </div>
@@ -270,5 +272,6 @@
         </div>
       </div>
     </section>
+
     <!-- Songs details section -->
   </body>
