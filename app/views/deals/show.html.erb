@@ -108,11 +108,26 @@
             <% end %>
             <br> <br> 
             <% if current_user.id == @deal.sender_id || current_user.is_admin? == true%>
-            <%= link_to "Modifier mon status", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id), class: "site-btn text-center", style: "padding: 10px 20px"%>
+            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+              <%= hidden_field_tag :receiver_id, current_user.id %> <br>
+              <%# next line for uncheck the box and next one to check the box %>
+              <%= hidden_field_tag 'sender_ok', '0' %>
+              <%= check_box_tag :sender_ok, 1, @deal.sender_ok %><br>
+              <%= submit_tag "Modifier", class: "site-btn text-center", style: "padding: 10px 20px" %> <br>
+              <br>
+            <% end %>
           <% end %>
           <% if current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-            <%= link_to "Modifier mon status", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id), class: "site-btn text-center", style: "padding: 10px 20px"%>
-          <% end %>
+            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+              <%= hidden_field_tag :sender_id, current_user.id %> <br>
+              <%# next line for uncheck the box and next one to check the box %>
+              <%= hidden_field_tag 'receiver_ok', '0' %>
+              <span class="checkmark"></span>
+              <%= check_box_tag :receiver_ok, 1, @deal.receiver_ok, :class => "checkmark" %><br>
+              <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+              <br>
+            <% end %>
+            <%end%>
 					</div>
           
 				</div>
