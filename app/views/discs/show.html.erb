@@ -1,65 +1,121 @@
-<div class="container text-center my-4">
-  <%= link_to "Retour aux disques", discs_path, class: "btn btn-secondary" %> <br>
-  <br>
-  <% if @disc.cover_picture != nil %>
-    <%= image_tag @disc.cover_picture %>
-  <% else %>
-    <p>Pas de cover pour ce disque.</p>
-  <% end %>
-  <h6>Titre</h6>
-  <%= @disc.title%> <br>
-  <br>
-  <h6>Années de sortie</h6>
-  <%= @disc.release%> <br>
-  <br>
-  <h6>Label</h6>
-  <%= @disc.label%> <br>
-  <br>
-  <h6>Format</h6>
-    <%if @disc.format.nil? == false %>
-    <h5>Genre :</h5>
-    <%= @disc.format.name%> <br>
-  <%end%>
-  <br>
-  <h6>Pays de sortie</h6>
-  <%= @disc.country%> <br>
-  <br>
-  <br>
-  <%if @disc.artist.nil? == false%>
-    <h4>Artiste :</h4>
-    <h6> <%=@disc.artist %></h6>
-  <%end%>
-  <br>
-  <%if @disc.genre.nil? == false %>
-    <h5>Genre :</h5>
-    <h6><%=@disc.genre.name%></h6>
-  <%end%>
-  <br>
-  <% if user_signed_in? %>
-    <% if current_user.is_admin? == true %>
-      <%= link_to "Modifier", edit_disc_path(@disc.id)%>
-    <%end%>
-  <% end %>
-  <hr style="width: 15%; border: 2px solid black;" >
-  <%if @disc.user_libraries.count > 0%>
-    <h5>Voici la liste des utilisateurs en possession de ce disque : </h5>
-    <br>
-    <% index_library = 0%>
-    <%@disc.user_libraries.each do |library|%>
-      <%if @disc.user_libraries[index_library].user.first_name != nil && @disc.user_libraries[index_library].user.last_name != nil%>
-        <h6><%=link_to "#{@disc.user_libraries[index_library].user.first_name} #{@disc.user_libraries[index_library].user.last_name}", user_path(@disc.user_libraries[index_library].user.id)%></h6>
-        <p>Pays du proprietaire : <%=@disc.user_libraries[index_library].user.country%></p>
-        <p>Ville : <%=@disc.user_libraries[index_library].user.city%></p>
-      <%end%>
-      <p>Description : <%=@disc.user_libraries[index_library].description%></p>
-      <%=link_to "Voir l'annonce", user_library_path(@disc.user_libraries[index_library].id) %>
-      <%index_library+=1%>
-      <hr style="width: 5%; border: 1px solid black;" >
-    <%end%>
-  <% else %>
-    <h5>Aucun utilisateur n'est actuellement en possession de ce disque...</h5>
-  <%end%>
   <% if user_signed_in? %>
     <%= link_to "Moi aussi je l'ai ce disque chez moi !", new_user_user_library_path(current_user.id), class: "btn btn-secondary button-block"%>
   <% end %>
 </div>
+
+
+
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+<!-- Page Preloder -->
+  <% if user_signed_in? %>
+      <% if current_user.is_admin? == true %>
+      <%= button_to "Modifier", edit_disc_path(@disc.id), :method => "get"%>
+  <% end %>
+  <% end %>
+	<section class="player-section set-bg">
+  <div class="container">
+		<div class="player-box">
+			<div class="tarck-thumb-warp">
+				<div class="tarck-thumb">
+  <% if @disc.cover_picture != nil %>
+    <%= image_tag @disc.cover_picture %>
+  <% else %>
+     <%= image_tag "icons/disc_red.png" %>
+  <% end %>
+				</div>
+			</div>
+			<div class="wave-player-warp">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="wave-player-info">
+							<h2><%= @disc.title%></h2>
+							<h5>  <%if @disc.artist.nil? == false%>
+                    <%=@disc.artist %>
+                    <%else%>
+                    Artiste non renseigné
+                                        <%end%></h5>
+              <p><%if @disc.release.nil? == false%>
+                <%= @disc.release%>
+                <%else%>
+                Année de sortie inconnu
+                <%end%></p>
+								<%if @disc.release.nil? == false%>
+                	<h6>	<%=@disc.format.name%></h6>
+									<%else%>
+									Format inconnus
+									<%end%>
+						</div>
+					</div>
+					<div class="col-lg-4 more-infos">
+						<div class="comp-infos-up">
+<%if @disc.label.nil? == false%>
+					<h6>Label</h6><%= @disc.label%>
+  <%else%>
+  <h6>Label </h6>Inconnus
+  <%end%>
+						</div>
+          <div class="comp-info-down">
+          <% if @disc.genre.nil? == false%>
+            <h6>Genre  </h6><%=@disc.genre.name%>
+				<%else%>
+            <h6>Genre  </h6>Inconnus
+<%end%>
+        <h6>
+				</div>
+				<div class="comp-info-lower">
+			<%if @disc.country.nil? == false%>
+			<h6>Pays </h6><%=@disc.country%>
+			<%else%>
+			<h6>Pays  </h6>Inconnus
+			<%end%>
+					<div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+			<div class="container">
+				<div class="row playlist-area">
+		<%@disc.user_libraries.each_with_index do |library, index|%>>
+		<%if @disc.user_libraries[index].user.first_name != nil && @disc.user_libraries[index].user.last_name != nil%>
+				<div class="mix col-xl-3 col-sm-6">
+					<div class="library-index-card" style="height: 95%;">
+          <%if library.disc.cover_picture.nil? == false%>
+						<%=image_tag library.disc.cover_picture, :class => "ss-thumb" %src= alt=""%>
+            <%else%>
+						<%=image_tag "icons/disc_red.png", :class => "ss-thumb" %src= alt=""%>
+						<%end%>
+            <div class="head-lib-card"><h4><%=link_to "#{@disc.user_libraries[index].user.first_name} #{@disc.user_libraries[index].user.last_name}", user_path(@disc.user_libraries[index].user.id), :class => "text-center"%></h4>
+						</div>
+							<div class="head-lib-card artiste-release"><p><%=library.disc.artist%></p><p><%=library.disc.release%></p></div>
+          <p>  <%=library.user.country%></p>
+						<div class="single_player">
+                         
+							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
+								<div class="jp-gui jp-interface">
+										</div>								
+									</div>			
+										<div class="low-card">
+											
+									<div class="lib-index-butn mt-3 artist-release" style="	display: flex;
+flex-direction: row;
+justify-content: space-between;" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%>  	 <%=link_to user_library_path(library.id) do %>
+	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px"></i><%end%></div>
+									</div>
+ 									</div>
+                 	</div>
+                  </div>
+                  
+                  <%end%>
+                  <%end%>
+                </div>
+              </div>
+
+
+	</section>

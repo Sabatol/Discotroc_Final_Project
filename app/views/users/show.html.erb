@@ -188,40 +188,43 @@
                 <div class="song-details-box">
                   <h3>Disques à troquer</h3>
                   <!-- song -->
-                  <%if @user.disc_ids.length > 0 && @user.disc_ids.length < 10%>
+                  <%if @user.disc_ids.length > 1 && @user.disc_ids.length < 10%>
                     <% index = 0%>
                     <% @user.user_libraries.each do |disc| %>
-                      <div class="song-item">
+                      <% if disc.disc_id != 1 %>
                         <%= link_to user_library_path(disc.id) do %>
-                          <div class="row">
-                            <div class="col-xl-5 col-lg-12 col-md-5">
-                              <div class="song-info-box">
-                                <% if disc.disc.cover_picture != nil %>
-                                  <%= image_tag disc.disc.cover_picture %>
-                                <% else %>
-                                  <%= image_tag "icons/disc_red.png" %>
-                                <% end %>
-                                <div class="song-info">
-                                  <h5><%= disc.disc.title%></h5>
-                                  <h4><%= disc.disc.artist%></h4>
+                          <div class="song-item">
+                            <div class="row">
+                              <div class="col-xl-5 col-lg-12 col-md-5">
+                                <div class="song-info-box">
+                                  <% if disc.disc.cover_picture != nil %>
+                                    <%= image_tag disc.disc.cover_picture %>
+                                  <% else %>
+                                    <%= image_tag "icons/disc_red.png" %>
+                                  <% end %>
+                                  <div class="song-info">
+                                    <h5><%= disc.disc.title%></h5>
+                                    <h4><%= disc.disc.artist%></h4>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-12 col-md-7">
-                              <div class="single_player_container">
-                                <div class="single_player">
-                                  <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3"></div>
-                                  <div class="jp-audio jp_container_1" role="application" aria-label="media player">
-                                    <div class="jp-no-solution" style="color: black">
-                                      <%= disc.description%>
+                              <div class="col-xl-7 col-lg-12 col-md-7">
+                                <div class="single_player_container">
+                                  <div class="single_player">
+                                    <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3">
+                                      <div class="jp-audio jp_container_1" role="application" aria-label="media player">
+                                        <div class="jp-no-solution" style="color: black">
+                                          <%= disc.description%>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      <%end %>
+                        <%end %>
+                      <% end %>
                     <%end%>
                   <%elsif @user.disc_ids.length >= 10%>
                     <% @user.user_libraries.sample(10).each do |disc| %>
