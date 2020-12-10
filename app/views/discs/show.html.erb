@@ -4,7 +4,11 @@
 <!-- Page Preloder -->
 
 <section class="set-bgg-discshow">
-
+  <% if user_signed_in? %>
+      <% if current_user.is_admin? == true %>
+      <%= button_to "Modifier", edit_disc_path(@disc.id), :method => "get"%>
+  <% end %>
+  <% end %>
 	<div class="text-center"> <% if user_signed_in? %>
 		<%= link_to "J'ai ce disque a troqué !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 20px"%>
 		<% end %></div>
