@@ -1,0 +1,41 @@
+<section class="contact-section">
+  <div class="alert alert-secondary" role="alert">
+    <%=flash[:notice] %>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 p-0">
+        <!-- Map -->
+        <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15230.645420691595!2d26.701958!3d61.499119!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66c3372054ce9%3A0xf741427efc4679a6!2s83%20Boulevard%20Macdonald%2C%2075019%20Paris!5e0!3m2!1sfr!2sfr!4v1607593424839!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="contact-warp">
+          <div class="section-title mb-0">
+            <h2>Contactez-nous</h2>
+            <br>
+            <br>
+            <br>
+          </div>
+          <form class="contact-from">
+            <%= form_with(model: @message, local: true) do |form| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= form.text_field :name, class: 'form-control border border-darck', placeholder: "Ton nom..." %>
+                </div>
+                <div class="col-md-6">
+                  <%= form.text_field :email, class: 'form-control border border-darck', placeholder: "Ton email..." %>
+                </div>
+                <div class="col-md-12">
+                  <%= form.text_area :body, class: 'form-control border border-darck', placeholder: "Ton message..." %>
+                  <div class="submit text-center">
+                    <%= form.submit "Envoyer", class: 'site-btn bg-primary'%>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
