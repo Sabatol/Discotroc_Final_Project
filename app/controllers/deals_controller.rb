@@ -1,23 +1,22 @@
 class DealsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :is_completed?, except: [:index, :show]
-  
+  before_action :is_deal_stakeholder, only: [:show, :edit, :update]
+
   def index
     @deals = Deal.all
-  end 
+  end
 
   def show
     @deal = Deal.find(params[:id])
-  end 
+  end
 
   def new
     @sender = User.find(params[:sender_id])
-    @new_deal = Deal.new 
-  end 
+    @new_deal = Deal.new
+  end
 
   def create
-    # @sender = User.find(params[:sender_id])
-    # @new_deal = Deal.new(sender_id: @sender.id, receiver_id: current_user.id)
 
     @receiver = User.find(params[:receiver_id])
     @new_deal = Deal.new(receiver_id: @receiver.id, sender_id: current_user.id)
@@ -52,5 +51,5 @@ class DealsController < ApplicationController
     @destroy_deal = Deal.find(params[:id])
     @destroy_deal.destroy
     redirect_to deals_path
-  end 
+  end
 end

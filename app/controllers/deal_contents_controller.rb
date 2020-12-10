@@ -1,19 +1,20 @@
 class DealContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_completed?
+  before_action :is_deal_stakeholder
 
   def index
     @deal_contents = DealContent.all
-  end 
+  end
 
   def show
     @deal_content = DealContent.find(params[:id])
-  end 
+  end
 
   def new
-    @new_deal_content = DealContent.new 
+    @new_deal_content = DealContent.new
     @user_library = UserLibrary.all.where(user_id: current_user.id)
-  end 
+  end
 
   def create
     @deal = Deal.find(params[:deal_id])
@@ -50,6 +51,6 @@ class DealContentsController < ApplicationController
     @destroy_deal_content = DealContent.find(params[:id])
     @destroy_deal_content.destroy
     redirect_to root_path
-  end 
+  end
 
 end
