@@ -147,11 +147,11 @@
           <div class="col-lg-3 col-sm-6">
             <%= link_to user_library_path(library.id)  do %>
               <div class="concept-item">
-                                                              <% if library.disc.cover_picture != nil %>
-    <%= image_tag library.disc.cover_picture, style: "width: 200px; height: 200px" %>
-  <% else %>
-    <%= image_tag "icons/disc_red.png", style: "width: 200px; height: 200px" %>
-  <% end %>
+                <% if library.disc.cover_picture != nil %>
+                  <%= image_tag library.disc.cover_picture, style: "width: 200px; height: 200px" %>
+                <% else %>
+                  <%= image_tag "icons/disc_red.png", style: "width: 200px; height: 200px" %>
+                <% end %>
                 <h5 style="color:#ffd369"><%=library.disc.title%></h5>
                 <p style="color:white"><%=library.disc.artist%></p>
               </div>
