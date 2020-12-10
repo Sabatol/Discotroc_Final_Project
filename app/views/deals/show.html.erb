@@ -1,271 +1,279 @@
 <!DOCTYPE html>
 <html lang="zxx">
-<head>
-	<title>Discotroc | Troc </title>
-	<meta charset="UTF-8">
-	<meta name="description" content="SolMusic HTML Template">
-	<meta name="keywords" content="music, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-</head>
-
-<body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-
-	<!-- Playlist section -->
-	<section class="playlist-section spad">
-		<div class="container-fluid">
-			<div class="section-title">
-				<h2>Échange nº<%= @deal.id%></h2>
-			</div>                                            
-			<div class="clearfix"></div>
-       <div class="row my-4">
-      				<div class="mix col-lg-3 col-md-4 col-sm-6 artists">
-					<div class="playlist-item">
-						<h5></h5>
-					</div>
-				</div>
-      </div>
-
- 
-			<div class="row playlist-area">
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-          <% if current_user.id == @deal.sender.id%>
-          <h4> Votre disque </h4> 
-          <% else %>
-					<h4> Disque proposé par <%=@deal.sender.first_name%> </h4>
-          <% end %>
-          <br>
-          <div class="playlist-item">
-         
-				      <% @deal.deal_contents.each do |deal_content| %>
-               <%=link_to user_library_path(deal_content.sender_library_id), :style => "color: black" do %>
-              <% if deal_content.sender_library_id.present? %>
-                <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
-                <% if sender_library.present? %>
-                  <% if sender_library.disc.cover_picture != nil %>
-                	<%=image_tag sender_library.disc.cover_picture %>
-                  <% else %>
-                  <%=image_tag "icons/disc_red.png"%>
-                  <% end %>
-                  <% sender_disc = Disc.find(sender_library.disc_id)%>
-                  <%= sender_disc.title%>
-                  <br><br>
-                <% else %>
-                  <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
-                <% end %>
-              <% else %>
-                <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
-              <% end %>
-              <%end%>
-              <% if current_user.id == @deal.sender.id%>
-              <br><br>
-              <h3> Changer de disque </h3>
-              <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
-                <%= hidden_field_tag 'deal_id', @deal.id %> <br>
-                <% sender_libraries = UserLibrary.where(user_id: current_user.id)%>
-                <%= select_tag 'sender_library_id', options_for_select(sender_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
-                <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
-                <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
-               <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
-              <% end %>
-              <%end %>
-              <%end%>
-					</div>
-
-				</div>
-
-
-
-				<div class="mix col-lg-3 col-md-4 col-sm-6 movies">
-					<div class="playlist-item">
-            <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
-              <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
-            <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
-              <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
-              <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
-               <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
-               <%else %>
-               <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
-            <% end %>
-            <br> <br> 
-            <% if current_user.id == @deal.sender_id%>
-            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
-              <%= hidden_field_tag :receiver_id, current_user.id %> <br>
-              <%# next line for uncheck the box and next one to check the box %>
-              <%= hidden_field_tag 'sender_ok', '0' %>
-              <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
-              <% if @deal.sender_ok == false %>
-              <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
-              <%else%> 
-              <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
-              <br>
-              <%end%>
-            <% end %>
-          <% elsif current_user.id == @deal.receiver_id%>
-            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
-              <%= hidden_field_tag :sender_id, current_user.id %> <br>
-              <%# next line for uncheck the box and next one to check the box %>
-              <%= hidden_field_tag 'receiver_ok', '0' %>
-              <span class="checkmark"></span>
-              <%= check_box_tag :receiver_ok, 1, @deal.receiver_ok, :class => "checkmark" %><br>
-                            <% if @deal.receiver_ok == false %>
-              <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
-              <%else%> 
-              <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
-              <br>
-              <%end%>
-              <br>
-            <% end %>
-            <%end%>
-					</div>
-          
-				</div>
-
-
-				<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
-          <% if current_user.id == @deal.receiver.id%>
-          <h4> Votre disque </h4> 
-          <% else %>
-					<h4> Disque proposé par <%=@deal.receiver.first_name%> </h4>
-          <% end %>
-          <br>
-          <div class="playlist-item">
-				      <% @deal.deal_contents.each do |deal_content| %>
-              <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
-              <% if deal_content.receiver_library_id.present? %>
-                <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-                <% if receiver_library.present? %>
-                  <% if receiver_library.disc.cover_picture != nil %>
-                	<%=image_tag receiver_library.disc.cover_picture %>
-                  <% else %>
-                  <%=image_tag "icons/disc_red.png"%>
-                  <% end %>
-                  <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-                  <%= receiver_disc.title%>
-                   <br><br>
-                <% else %>
-                  <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
-                <% end %>
-              <% else %>
-                <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
-              <% end %>
-              <%end%>
-              <% if current_user.id == @deal.receiver.id%>
-              <br><br>
-              <h3> Changer de disque </h3>
-              <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
-                <%= hidden_field_tag 'deal_id', @deal.id %> <br>
-                <% receiver_libraries = UserLibrary.where(user_id: current_user.id)%>
-                <%= select_tag 'receiver_library_id', options_for_select(receiver_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
-                <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
-                <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
-               <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
-              <% end %>
-
-              <%else %>
-              <p> </p>
-              <%end%>
-              <%end%>
-					</div>
-
-				</div>
-
-
-				
-			</div>
-		</div>
-	</section>
-	<!-- Playlist section end -->
-
-
-	<!-- Songs details section -->
-	<section class="songs-details-section">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="song-details-box">
-						<h3>Info de l'échange</h3>
-						<ul>
-							<li><strong>Crée le :</strong><span><%=@deal.created_at.strftime('%d-%m-%Y')%></span></li>
-              <% if @deal.receiver_ok? == true && @deal.sender_ok? == true %>
-							<li><strong>Terminée:</strong><i class="fas fa-check-square"></li>
-              <%else%>
-							<li><strong>Terminée:</strong>Non.</li>
-              <%end%>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="song-details-box">
-								<h3>Conversation</h3>
-
-    <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
-      <%number = 1 %>
-      <% search_pm.each do |pm| %>
-      	<div class="artist-details">
-        <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-				<div class="ad-text">
-        <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
-        <h5><%=User.find(pm.pm_author_id).first_name%></h5>
-        <p><%=pm.content%></p>
-									</div>
-								</div>
-                <hr style="width: 70%; border: 1px solid grey;">
-      <% end %>
-      <br>
-      <section class="w3l-login-6">
-		<div class="login-hny">
-			<div class="form-content">
-				<div class="form-left" style="width: 70%">
-      <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
-        <%= label_tag 'Votre commentaire' %> <br>
-        <div class="form-input">
-        <%= text_field_tag 'content' %> <br>
+  <head>
+    <title>Discotroc | Troc </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="SolMusic HTML Template">
+    <meta name="keywords" content="music, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon"/>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+    <!-- Playlist section -->
+    <section class="playlist-section spad">
+      <div class="container-fluid">
+        <div class="section-title">
+          <h2>Échange nº<%= @deal.id%></h2>
         </div>
-        <br>
-        <%= hidden_field_tag 'deal_id', @deal.id %>
-        <%= hidden_field_tag 'pm_author_id', current_user.id %>
-        <%= submit_tag "Envoyer", class: "site-btn text-center", style: "padding: 10px 20px" %>
-      <% end %>
-      </div>
-      </div>
-      </section>
-      <% end %>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="song-details-box">
-								<h3>Laissez un avis</h3>
-								<!-- song -->
-								<div class="song-item">
-                    <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
-     
-                      <%= link_to "Laisser un avis", new_user_library_deal_comment_path(deal_id: @deal.id), class: "site-btn text-center", style: "padding: 10px 20px" %>
-                        <%else %>
-                        <p style="margin-top: -30px"> Les avis seront activés une fois l'échange achevé. </p>
-                            <br>
+        <div class="clearfix"></div>
+        <div class="row my-4">
+          <div class="mix col-lg-3 col-md-4 col-sm-6 artists">
+            <div class="playlist-item">
+              <h5></h5>
+            </div>
+          </div>
+        </div>
+        <div class="row playlist-area">
+          <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+            <h4> Votre disque </h4>
+            <br>
+            <% if current_user.id == @deal.receiver.id%>
+            <% else %>
+            <% end %>
+            <div class="playlist-item">
+              <% @deal.deal_contents.each do |deal_content| %>
+                <% if current_user.id == @deal.sender.id%>
+                  <%=link_to user_library_path(deal_content.sender_library_id), :style => "color: black" do %>
+                    <% if deal_content.sender_library_id.present? %>
+                      <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
+                      <% if sender_library.present? %>
+                        <% if sender_library.disc.cover_picture != nil %>
+                          <%=image_tag sender_library.disc.cover_picture %>
+                        <% else %>
+                          <%=image_tag "icons/disc_red.png"%>
+                        <% end %>
+                        <% sender_disc = Disc.find(sender_library.disc_id)%>
+                        <%= sender_disc.title%>
+                        <br>
+                        <br>
+                      <% else %>
+                        <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
                       <% end %>
-								</div>
-								<!-- song -->
-							</div>
-						</div>
-
-			</div>
-		</div>
-	</section>
-	<!-- Songs details section -->
-
-	</body>
-</html>
+                    <% else %>
+                      <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+                    <% end %>
+                  <%end%>
+                  <br>
+                  <br>
+                  <h3> Changer de disque</h3>
+                  <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
+                    <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+                    <% sender_libraries = UserLibrary.where(user_id: current_user.id)%>
+                    <%= select_tag 'sender_library_id', options_for_select(sender_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
+                    <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
+                    <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
+                    <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+                  <% end %>
+                <% elsif current_user.id == @deal.receiver.id %>
+                  <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
+                    <% if deal_content.receiver_library_id.present? %>
+                      <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                      <% if receiver_library.present? %>
+                        <% if receiver_library.disc.cover_picture != nil %>
+                          <%=image_tag receiver_library.disc.cover_picture %>
+                        <% else %>
+                          <%=image_tag "icons/disc_red.png"%>
+                        <% end %>
+                        <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                        <%= receiver_disc.title%>
+                        <br>
+                        <br>
+                      <% else %>
+                        <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                      <% end %>
+                    <% else %>
+                      <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                    <% end %>
+                  <%end%>                  <br>
+                  <br>
+                  <h3> Changer de disque</h3>
+                  <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
+                    <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+                    <% receiver_libraries = UserLibrary.where(user_id: current_user.id)%>
+                    <%= select_tag 'receiver_library_id', options_for_select(receiver_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
+                    <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
+                    <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
+                    <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+                  <% end %>
+                <%end %>
+              <%end%>
+            </div>
+          </div>
+          <div class="mix col-lg-3 col-md-4 col-sm-6 movies">
+            <div class="playlist-item">
+              <% if current_user.id == @deal.sender_id%>
+                <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                <%else %>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                <% end %>
+              <% else %>
+                <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                <%else %>
+                  <h5><i class="fas fa-times" style="color: red"> |   Status   | <i class="fas fa-times" style="color: red"></i></i></h5>
+                <% end %>
+              <% end %>
+              <br>
+              <br>
+              <% if current_user.id == @deal.sender_id%>
+                <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+                  <%# next line for uncheck the box and next one to check the box %>
+                  <%= hidden_field_tag 'sender_ok', '0' %>
+                  <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
+                  <% if @deal.sender_ok == false %>
+                    <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
+                  <%else%>
+                    <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
+                    <br>
+                  <%end%>
+                <% end %>
+              <% elsif current_user.id == @deal.receiver_id%>
+                <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+                  <%# next line for uncheck the box and next one to check the box %>
+                  <%= hidden_field_tag 'receiver_ok', '0' %>
+                  <span class="checkmark"></span>
+                  <%= check_box_tag :receiver_ok, 1, !@deal.receiver_ok %><br>
+                  <% if @deal.receiver_ok == false %>
+                    <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
+                  <%else%>
+                    <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
+                    <br>
+                  <%end%>
+                  <br>
+                <% end %>
+              <%end%>
+            </div>
+          </div>
+          <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+            <% if current_user.id == @deal.sender.id%>
+              <h4> Disque proposé par <%=@deal.receiver.first_name%> </h4>
+            <% else %>
+              <h4> Disque proposé par <%=@deal.sender.first_name%> </h4>
+            <% end %>
+            <br>
+            <div class="playlist-item">
+              <% @deal.deal_contents.each do |deal_content| %>
+                <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
+                  <% if deal_content.receiver_library_id.present? %>
+                    <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                    <% if receiver_library.present? %>
+                      <% if receiver_library.disc.cover_picture != nil %>
+                        <%=image_tag receiver_library.disc.cover_picture %>
+                      <% else %>
+                        <%=image_tag "icons/disc_red.png"%>
+                      <% end %>
+                      <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                      <%= receiver_disc.title%>
+                      <br>
+                      <br>
+                    <% else %>
+                      <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                    <% end %>
+                  <% else %>
+                    <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                  <% end %>
+                <%end%>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Playlist section end -->
+    <!-- Songs details section -->
+    <section class="songs-details-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="song-details-box">
+              <h3>Info de l'échange</h3>
+              <ul>
+                <li><strong>Crée le :</strong><span><%=@deal.created_at.strftime('%d-%m-%Y')%></span></li>
+                <% if @deal.receiver_ok? == true && @deal.sender_ok? == true %>
+                  <li><strong>Terminée:</strong><i class="fas fa-check-square"></i></li>
+                <%else%>
+                  <li><strong>Terminée:</strong>Non.</li>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="song-details-box">
+                  <h3>Conversation</h3>
+                  <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
+                    <%number = 1 %>
+                    <% search_pm.each do |pm| %>
+                      <div class="artist-details">
+                        <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
+                        <div class="ad-text">
+                          <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
+                          <h5><%=User.find(pm.pm_author_id).first_name%></h5>
+                          <p><%=pm.content%></p>
+                        </div>
+                      </div>
+                      <hr style="width: 70%; border: 1px solid grey;">
+                    <% end %>
+                    <br>
+                    <section class="w3l-login-6">
+                      <div class="login-hny">
+                        <div class="form-content">
+                          <div class="form-left" style="width: 70%">
+                            <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
+                              <%= label_tag 'Votre commentaire' %> <br>
+                              <div class="form-input">
+                                <%= text_field_tag 'content' %> <br>
+                              </div>
+                              <br>
+                              <%= hidden_field_tag 'deal_id', @deal.id %>
+                              <%= hidden_field_tag 'pm_author_id', current_user.id %>
+                              <%= submit_tag "Envoyer", class: "site-btn text-center", style: "padding: 10px 20px" %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </section>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="song-details-box">
+                    <h3>Laissez un avis</h3>
+                    <!-- song -->
+                    <div class="song-item">
+                      <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
+                        <%= link_to "Laisser un avis", new_user_library_deal_comment_path(deal_id: @deal.id), class: "site-btn text-center", style: "padding: 10px 20px" %>
+                      <%else %>
+                        <p style="margin-top: -30px"> Les avis seront activés une fois l'échange achevé. </p>
+                        <br>
+                      <% end %>
+                    </div>
+                    <!-- song -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Songs details section -->
+        </body>
+      </html>
