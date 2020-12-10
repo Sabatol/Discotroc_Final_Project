@@ -1,4 +1,4 @@
-class Contact < MailForm::Base
+class Contact
   attribute :name, validate: true
   attribute :email, validate: /\A[^@\s]+@[^@\s]+\z/i
 
