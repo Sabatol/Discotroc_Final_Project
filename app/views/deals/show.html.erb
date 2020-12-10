@@ -54,7 +54,10 @@
                           <%=image_tag "icons/disc_red.png"%>
                         <% end %>
                         <% sender_disc = Disc.find(sender_library.disc_id)%>
-                        <%= sender_disc.title%>
+                        <!--Do not display the alpha disc-->
+                        <% if sender_disc != Disc.find(1) %>
+                          <%= sender_disc.title%>
+                        <% end %>
                         <br>
                         <br>
                       <% else %>
@@ -140,7 +143,9 @@
                   <%# next line for uncheck the box and next one to check the box %>
                   <%= hidden_field_tag 'sender_ok', '0' %>
                   <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
-                  <% if @deal.sender_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <%=image_tag "deal_completed.jpg"%>
+                  <% elsif @deal.sender_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
@@ -153,7 +158,9 @@
                   <%= hidden_field_tag 'receiver_ok', '0' %>
                   <span class="checkmark"></span>
                   <%= check_box_tag :receiver_ok, 1, !@deal.receiver_ok %><br>
-                  <% if @deal.receiver_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <%=image_tag "deal_completed.jpg"%>
+                  <% elsif @deal.receiver_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
@@ -194,8 +201,39 @@
                   <% end %>
                 <%end%>
               <%end%>
-            </div>
-          </div>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="song-details-box">
+								<h3>Conversation</h3>
+
+    <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
+      <%number = 1 %>
+      <h1><%=search_pm.count%></h1>
+      <% search_pm.each do |pm| %>
+      	<div class="artist-details">
+        <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
+				<div class="">
+        <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
+        <h5><%=User.find(pm.pm_author_id).first_name%></h5>
+        <p><%=pm.content%></p>
+									</div>
+								</div>
+                <hr style="width: 70%; border: 1px solid grey;">
+      <% end %>
+      <br>
+      <section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-left" style="width: 70%">
+      <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
+        
+        <%= label_tag 'Votre commentaire' %> <br>
+        <div class="form-input">
+        <%= text_field_tag 'content' %> <br>
         </div>
       </div>
     </section>

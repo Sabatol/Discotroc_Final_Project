@@ -17,6 +17,8 @@
   </head>
   <body>
     <!-- Page Preloder -->
+
+
     <div id="preloder">
       <div class="loader"></div>
     </div>
@@ -220,7 +222,7 @@
                       <%= link_to user_path(comment.comment_sender) do %>
                         <div class="artist-details">
                           <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                          <div class="ad-text">
+                          <div class="">
                             <h5><%=comment.comment_sender.first_name%></h5>
                             <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
                             <p><%= comment.content %></p>
@@ -234,7 +236,7 @@
                       <%= link_to user_path(comment.comment_sender) do %>
                         <div class="artist-details">
                           <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                            <div class="ad-text">
+                            <div class="">
                             <h5><%=comment.comment_sender.first_name%></h5>
                             <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
                             <p><%= comment.content %></p>
@@ -331,5 +333,6 @@
         </div>
       </div>
     </section>
+
     <!-- Songs details section -->
   </body>

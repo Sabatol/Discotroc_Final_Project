@@ -9,16 +9,23 @@
 		<div class="container-fluid">
 			<div class="text-center">
 		  <h1>Disque a Troquer</h1>
-			<h3>Recherchez votre bonheur</h3></div>
-        <div class="container">
+						<h4 class="disc-index-title" style="margin-bottom: 15px">Cherchez votre bonheur</h4></div>
+			<div class="container text-center">
+  <% if user_signed_in? %>
+    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
+     <br>
+    <br>
+  <% end %></div>
+			
+        <div class="container">	
 								<ul class="playlist-filter controls">
 							<div class="text-center">
 					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
-					</div>
+					</div><div class="text-center">
 <% @all_genres.each do |genre|%>
 					<li class="control", style="margin-right: 10px" data-filter=".<%=genre.name%>"><%=genre.name%></li>
 					<%end%>
-		
+		</div>
 				<hr style="width: 35%; border: 1px solid black;" >
 				</ul>
 			</div> 
@@ -43,9 +50,19 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+								<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
 									</div>
  									</div>
                  	</div>
@@ -68,18 +85,23 @@
 								<div class="jp-gui jp-interface">
 									</div>								
 									</div>			
-									  <div class="low-card">
-										<%=library.description%>
-									<div class="lib-index-butn mt-3" ><%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-
-								</div>
-			
-		
-							
-				</div>
-				</div>
-				
-							</div>
+									 								<div class="low-card" style="flex-direction: column">
+											<%=library.description%>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 										<% elsif library.disc.genre.name == @all_genres[2].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[2].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -98,18 +120,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-
-								</div>
-			
-		
-							
-				</div>
-				</div>
-				
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 										<% elsif library.disc.genre.name == @all_genres[3].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[3].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -128,18 +155,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-
-								</div>
-			
-		
-							
-				</div>
-				</div>
-				
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 										<% elsif library.disc.genre.name == @all_genres[4].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[4].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -158,18 +190,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-
-								</div>
-			
-		
-							
-				</div>
-				</div>
-				
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 																	<% elsif library.disc.genre.name == @all_genres[5].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[5].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -188,13 +225,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 									<% elsif library.disc.genre.name == @all_genres[6].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[6].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -213,13 +260,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 							<% elsif library.disc.genre.name == @all_genres[7].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[7].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -238,13 +295,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 						<% elsif library.disc.genre.name == @all_genres[8].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[8].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -263,13 +330,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 								<% elsif library.disc.genre.name == @all_genres[9].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[9].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -288,13 +365,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 									<% elsif library.disc.genre.name == @all_genres[10].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[10].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -313,13 +400,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 							<% elsif library.disc.genre.name == @all_genres[11].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[11].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -338,13 +435,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 						<% elsif library.disc.genre.name == @all_genres[12].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[12].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -363,13 +470,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 												<% elsif library.disc.genre.name == @all_genres[13].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[13].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -388,13 +505,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 												<% else %>
 				<div class="mix col-xl-3 col-sm-6 all">
 					<div class="library-index-card" style="height: 95%;">
@@ -413,13 +540,23 @@
 								<div class="jp-gui jp-interface">
 										</div>								
 									</div>			
-										<div class="low-card">
+															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn mt-3" >	  <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
-								</div>
-		            </div>
-			         	</div>		
-							</div>
+									<div class="lib-index-butn" >	 
+									<%if user_signed_in?%>
+									<%if current_user.id != library.user_id%>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%elsif current_user.id == library.user_id%>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									<%else%>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%end%>
+									
+									</div>
+ 									</div>
+                 	</div>
+									</div>
 							<%end%>
 							<%end%>
 							</div>

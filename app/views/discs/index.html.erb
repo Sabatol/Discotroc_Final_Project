@@ -35,7 +35,7 @@
 				<div class="row playlist-area">
 
 			<%@discs.each_with_index do |disc, index|%>
-			<% if disc.genre.name == @all_genres[0].name%>
+			<% if disc.genre.name == @all_genres[0].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[0].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -65,7 +65,7 @@
  									</div>
                  	</div>
 									</div>
-			<% elsif disc.genre.name == @all_genres[1].name%>
+			<% elsif disc.genre.name == @all_genres[1].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[1].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -95,7 +95,7 @@
  									</div>
                  	</div>
 									</div>
-										<% elsif disc.genre.name == @all_genres[2].name%>
+										<% elsif disc.genre.name == @all_genres[2].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[2].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -125,7 +125,7 @@
  									</div>
                  	</div>
 									</div>
-										<% elsif disc.genre.name == @all_genres[3].name%>
+										<% elsif disc.genre.name == @all_genres[3].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[3].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -155,7 +155,7 @@
  									</div>
                  	</div>
 									</div>
-										<% elsif disc.genre.name == @all_genres[4].name%>
+										<% elsif disc.genre.name == @all_genres[4].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[4].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -185,7 +185,7 @@
  									</div>
                  	</div>
 									</div>
-																	<% elsif disc.genre.name == @all_genres[5].name%>
+																	<% elsif disc.genre.name == @all_genres[5].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[5].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -215,7 +215,7 @@
  									</div>
                  	</div>
 									</div>
-									<% elsif disc.genre.name == @all_genres[6].name%>
+									<% elsif disc.genre.name == @all_genres[6].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[6].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -245,7 +245,7 @@
  									</div>
                  	</div>
 									</div>
-							<% elsif disc.genre.name == @all_genres[7].name%>
+							<% elsif disc.genre.name == @all_genres[7].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[7].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -275,7 +275,7 @@
  									</div>
                  	</div>
 									</div>
-						<% elsif disc.genre.name == @all_genres[8].name%>
+						<% elsif disc.genre.name == @all_genres[8].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[8].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -305,7 +305,7 @@
  									</div>
                  	</div>
 									</div>
-								<% elsif disc.genre.name == @all_genres[9].name%>
+								<% elsif disc.genre.name == @all_genres[9].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[9].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -335,7 +335,7 @@
  									</div>
                  	</div>
 									</div>
-									<% elsif disc.genre.name == @all_genres[10].name%>
+									<% elsif disc.genre.name == @all_genres[10].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[10].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -365,7 +365,7 @@
  									</div>
                  	</div>
 									</div>
-							<% elsif disc.genre.name == @all_genres[11].name%>
+							<% elsif disc.genre.name == @all_genres[11].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[11].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -395,7 +395,7 @@
  									</div>
                  	</div>
 									</div>
-						<% elsif disc.genre.name == @all_genres[12].name%>
+						<% elsif disc.genre.name == @all_genres[12].name && disc.id != 1%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[12].name%>">
 					<div class="library-index-card" style="height: 95%;">
           <%if disc.cover_picture.nil? == false%>
@@ -426,36 +426,7 @@
                  	</div>
 									</div>
 
-												<% else %>
-				<div class="mix col-xl-3 col-sm-6 all">
-					<div class="library-index-card" style="height: 95%;">
-          <%if disc.cover_picture.nil? == false%>
-						<%=image_tag disc.cover_picture, :class => "ss-thumb" %src= alt=""%>
-            <%else%>
-						<%=image_tag "icons/disc_red.png", :class => "ss-thumb" %src= alt=""%>
-						<%end%>
-						<div class="head-lib-card"><%if disc.title.length >50%>
-						<h6>	<%=disc.title%></h6></div>
-						<%elsif disc.title.length > 36%>
-						<h5>	<%=disc.title%></h5></div>
-						<%else%>
-					<h4>	<%=disc.title%></h4></div>
-					<%end%>
-							<div class="head-lib-card"><p><%=disc.artist%></p></div>
-						<div class="single_player"><p><%=disc.release%></p>
-							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
-							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
-								<div class="jp-gui jp-interface">
-										</div>
-									</div>
-										<div class="low-card">
 											
-									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
-	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
-									</div>
- 									</div>
-                 	</div>
-									</div>
 							<%end%>
 							<%end%>
 			</div>
