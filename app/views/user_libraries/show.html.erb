@@ -1,4 +1,4 @@
-<div class="container text-center my-4">
+<div class="container h-100 text-center mt-auto">
   <p>Possesseur du disque: <%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
   </p>
   <p>Nom du disque : <%=link_to @user_library.disc.title, disc_path(@user_library.disc.id)%></p>
@@ -29,4 +29,3 @@
   <br>
   <%= link_to "Retour à l'espace troc", user_libraries_path, class: "btn btn-secondary"  %>
 </div>
-<div class="fixed-bottom"></div>
