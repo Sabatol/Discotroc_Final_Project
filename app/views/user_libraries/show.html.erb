@@ -43,12 +43,12 @@
 							<p><%if @user_library.disc.release.nil? == false%>
 								<%= @user_library.disc.release%>
 								<%else%>
-								Année de sortie inconnu
+								Année de sortie inconnue
 								<%end%></p>
 							<%if @user_library.disc.release.nil? == false%>
 							<h6> <%=@user_library.disc.format.name%></h6>
 							<%else%>
-							Format inconnus
+							Format inconnu
 							<%end%>
   <% if user_signed_in? %>
     <% if current_user.user_libraries.ids.count > 1 && @user_library.user_id != current_user.id%>
@@ -71,14 +71,14 @@
 							<%if @user_library.disc.label.nil? == false%>
 							<h6>Propriétaire</h6><%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
 							<%else%>
-							<h6>Propriétaire</h6>Inconnus
+							<h6>Propriétaire</h6>Inconnu
 							<%end%>
 						</div>
 						<div class="comp-info-down">
 							<% if @user_library.disc.genre.nil? == false%>
 							<h6>Disponible </h6><%=@user_library.user.country%>
 							<%else%>
-							<h6>Disponible </h6>Inconnus
+							<h6>Disponible </h6>Inconnu
 							<%end%>
 							<h6>
 						</div>
@@ -98,7 +98,7 @@
 
 <div class="container">
 <div class="disc-show-list text-center">
-	<h1>Trocs disponible</h1>
+	<h1>Trocs disponibles</h1>
 </div>
 
 <div class="row playlist-area deal-list" style=>

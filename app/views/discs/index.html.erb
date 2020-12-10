@@ -10,10 +10,10 @@
 		<div class="container-fluid">
 			<div class="text-center">
 		  <h1>Disque déjà enregistré</h1>
-			<h3 class="disc-index-title" style="margin-bottom: 15px">Recherchez le votre</h3></div>
+			<h3 class="disc-index-title" style="margin-bottom: 15px">Recherchez le vôtre</h3></div>
 			<div class="container text-center">
   <% if user_signed_in? %>
-    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
+    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez-le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
      <br>
     <br>
   <% end %>
@@ -21,7 +21,7 @@
         <div class="container">
 				<ul class="playlist-filter controls">
 							<div class="text-center">
-					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
+					<li class="control", style="margin-right: 10px" data-filter="all">Tous les genres</li>
 					</div><div class="text-center">
 <% @all_genres.each do |genre|%>
 					<li class="control", style="margin-right: 10px" data-filter=".<%=genre.name%>"><%=genre.name%></li>
@@ -58,7 +58,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -85,10 +85,10 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -118,7 +118,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -148,7 +148,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -178,7 +178,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -208,7 +208,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -238,7 +238,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -268,7 +268,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -298,7 +298,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -328,7 +328,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -358,7 +358,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -388,7 +388,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -418,7 +418,7 @@
 										</div>
 									</div>
 										<div class="low-card">
-											
+
 									<div class="lib-index-butn" >	  <%= link_to "Proposer un Troc", user_library_path(disc.id), class: "btn-library-index text-center"%></div>							 <%=link_to disc_path(disc.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 30px; padding-right:14px"></i><%end%>
 									</div>
@@ -426,7 +426,7 @@
                  	</div>
 									</div>
 
-											
+
 							<%end%>
 							<%end%>
 			</div>

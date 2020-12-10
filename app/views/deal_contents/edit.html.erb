@@ -1,10 +1,10 @@
 <center>
   <%= form_for @edit_deal_content do |f| %>
-    <%= label_tag 'Deal ID' %> <br />
+    <%= label_tag 'ID du troc' %> <br />
     <%= f.text_field :deal_id, placeholder: 'deal', autocomplete: 'off' %> <br>
-    <%= label_tag 'Sender Library ID' %> <br />
+    <%= label_tag 'Disque de lInitiateur' %> <br />
     <%= f.text_field :sender_library_id, placeholder: 'Sender library', autocomplete: 'off' %> <br>
-    <%= label_tag 'Receiver Library ID' %> <br />
+    <%= label_tag 'Disque du compère' %> <br />
     <%= f.text_field :receiver_library_id, placeholder: 'Receiver library', autocomplete: 'off'%> <br>
     <br>
     <br>

@@ -2,7 +2,7 @@
   <%= form_for @edit_genre do |f| %>
     <form>
       <%= label_tag 'Titre' %> <br />
-      <%= f.text_field :name, class: "form-control", placeholder: 'Nom du style', autocomplete: 'off' %>
+      <%= f.text_field :name, class: "form-control", placeholder: 'Nom du genre', autocomplete: 'off' %>
       <%= submit_tag "Modifier le genre", class: "btn btn-primary" %>  <%= link_to "Revenir à l'accueil", root_path%>
     </form>
   <% end %>
