@@ -1,7 +1,6 @@
 class DealPmsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_completed?
-  before_action :is_deal_stakeholder
 
   def index
     @deal_pms = DealPm.all
