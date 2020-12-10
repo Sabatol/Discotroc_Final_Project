@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
   def new
     @message = Message.new
+    puts
   end
+
   def create
-    @message = Message.new message_params
+    @message = Message.new(message_params)
     if @message.valid?
       MessageMailer.contact_email_from_user(@message).deliver_now
       redirect_to new_message_path

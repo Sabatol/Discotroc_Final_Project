@@ -1,9 +1,7 @@
 class MessageMailer < ApplicationMailer
+  default to: 'disco@yopmail.com'
   def contact_email_from_user(message)
     @message = message
-    mail(
-      to: 'disco@yopmail.com',
-      subject: 'Un utilisateur de teach-peach vous a envoyé un message..'
-    )
+    mail(from: @message.email, body: @message.body)
   end
 end
