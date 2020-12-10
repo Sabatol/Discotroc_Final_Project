@@ -1,4 +1,18 @@
- <center>
+
+<head>
+	<title>Discotroc - Troc'Messagerie</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Discotroc - DealPM">
+	<meta name="keywords" content="Article, Articles, Blogs, Blog, Musique, Disque, Vinyl, Partage, Actus">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<div class="text-center">
   <%= form_for @edit_deal_pm do |f| %>
     <%= label_tag 'Deal' %> <br />
     <%= f.text_field :deal_id, placeholder: 'Sender', autocomplete: 'off' %> <br>
@@ -14,7 +28,7 @@
   <% end %>
   <br>
   <%= link_to 'Supprimer', deal_pm_path(@edit_deal_pm.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
-</center>
+</div>
 <br>
 <br>
 <br>

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="zxx">
 <head>
-	<title>Discotroc | Articles</title>
+	<title>Discotroc - Coin Blog</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Discotroc | Articles">
-	<meta name="keywords" content="music, html">
+	<meta name="keywords" content="blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!--[if lt IE 9]>
@@ -13,7 +11,6 @@
 	<![endif]-->
 
 </head>
-<body>
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -23,11 +20,11 @@
 	<!-- Blog section -->
 	<section class="blog-section spad">
 		<div class="container">
-        <h4 class="text-center"> Créer un article </h4>
+        <h2 class="text-center"> Le Coin Blogs </h2>
         <br>
-        <center>
-        <%= link_to "Créer", new_article_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
-        </center>
+        <div class="text-center">
+        <%= link_to "Ecrire un article", new_article_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+        </div>
         <br>
         <br>
 			<!-- Blog post -->
@@ -46,5 +43,4 @@
 		</div>
 	</section>
 	<!-- Blog section end -->
-	</body>
 </html>
