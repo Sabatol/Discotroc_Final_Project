@@ -1,4 +1,15 @@
-<center>
+<head>
+	<title>Discotroc - Votre Troc</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Discotroc - Troc Contenus">
+	<meta charset="UTF-8" />
+	<meta name="keywords"	content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques" />
+
+</head>
+
+
+<div class="text-center">
   <p> Deal Content N° <%= @deal_content.id%>
     <hr style="width: 5%; border: 1px solid black;" >
     <p> Deal ID: <%=@deal_content.deal_id%></p>
@@ -14,4 +25,4 @@
     <%= link_to "Modifier", edit_deal_content_path(@deal_content.id)%>
     <br>
     <%= link_to "Retour a l'index Deal Content", deal_contents_path%>
-  </center>
+  </div>
