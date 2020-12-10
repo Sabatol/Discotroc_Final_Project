@@ -17,9 +17,9 @@ class GenresController < ApplicationController
     @new_genre = Genre.new(name: params[:name])
     if @new_genre.save
       redirect_to genres_path
-      flash[:notice_good] = "Nouveau Genre Crée"
+      flash[:notice_good] = "Un nouveau genre à été créé."
     else
-      flash[:notice_bad] = "Le genre n'as pas été créer"
+      flash[:notice_bad] = "Le genre désiré n'a pas été créé."
       render 'new'
     end
   end

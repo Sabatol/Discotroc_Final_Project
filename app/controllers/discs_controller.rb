@@ -20,9 +20,9 @@ class DiscsController < ApplicationController
       @new_disc = Disc.new(title: params[:title], artist: params[:artist], release: params[:release], label: params[:label], genre_id: params[:genre_id], format_id: params[:format_id], country: params[:country])
       if @new_disc.save
         redirect_to edit_disc_path(@new_disc.id)
-        flash[:notice_good] = "Le disque a bien été créer"
+        flash[:notice_good] = "Le disque a bien été créé."
       else
-        flash[:notice_bad] = "Le disque n'a pas été créer"
+        flash[:notice_bad] = "Le disque n'a pas été créé."
         render 'new'
       end
   end

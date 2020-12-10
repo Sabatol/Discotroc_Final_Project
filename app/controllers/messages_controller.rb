@@ -9,12 +9,10 @@ class MessagesController < ApplicationController
     if @message.valid?
       MessageMailer.contact_email_from_user(@message).deliver_now
       redirect_to new_message_path
-      flash[:notice] =
-        'We have received your message and will be in touch soon!'
+      flash[:notice] = "Nous avons bien reçu votre message, nous vous contacterons bientôt en retour !"
     else
-      flash[:notice] =
-        'There was an error sending your message. Please try again.'
       redirect_to new_message_path
+      flash[:notice] = "Une erreur est survenue au moment d'envoyer votre message, veuillez essayer à nouveau."
     end
   end
 

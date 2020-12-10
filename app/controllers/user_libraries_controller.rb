@@ -19,10 +19,10 @@ class UserLibrariesController < ApplicationController
   def create
     @new_user_library  = UserLibrary.new(user_id: params[:user_id], disc_id: params[:disc_id], description: params[:description])
     if @new_user_library.save
-      flash[:notice_good] = "Nouveau disque ajouté a votre librarie"
+      flash[:notice_good] = "Un nouveau disque a bien été ajouté à votre discothèque."
       redirect_to user_libraries_path
     else
-      flash[:notice_bad] = "Le disque n'a pas été ajouté"
+      flash[:notice_bad] = "Le disque n'a pas pu être ajouté à votre discothèque."
       render 'new'
     end
   end

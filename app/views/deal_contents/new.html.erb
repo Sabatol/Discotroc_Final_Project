@@ -1,4 +1,14 @@
-<center>
+<head>
+	<title>Discotroc - Votre Troc</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Discotroc - Troc Contenus">
+	<meta charset="UTF-8" />
+	<meta name="keywords"	content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques" />
+
+</head>
+
+<div class="text-center">
   <%= form_tag url_for(action: 'create'), method: "post" do %>
     <%= label_tag 'Deal ID' %> <br>
     <%= text_field_tag 'deal_id', params[:deal_id]%> <br>
@@ -8,7 +18,7 @@
     <%= text_field_tag 'receiver_library_id' %> <br>
     <%= submit_tag "Envoyer" %>
   <% end %>
-</center>
+</div>
 <br>
 <br>
 <br>

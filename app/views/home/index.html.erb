@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="zxx">
   <head>
     <title>Discotroc</title>
     <meta charset="UTF-8">
     <meta name="homepage" content="home page discotroc">
-    <meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
+    <meta name="keywords" content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google font -->
     <%stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap'%>
@@ -13,7 +11,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
     <% if flash[:alert] %>
       <div class="alert alert-danger mb-0">
         <% if user_signed_in? %>
@@ -142,7 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mx-0">
         <%@four_libraries.each do |library|%>
           <div class="col-lg-3 col-sm-6">
             <%= link_to user_library_path(library.id)  do %>

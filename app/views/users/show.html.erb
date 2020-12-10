@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx">
+
   <head>
     <% if current_user.id != nil && current_user.id == @user.id %>
       <title>Discotroc | Mon Profil </title>
@@ -7,7 +6,7 @@
       <title>Discotroc | Profil de <%=@user.first_name%> </title>
     <% end %>
     <meta charset="UTF-8">
-    <meta name="description" content="Discotroc | Profil">
+    <meta name="description" content="Profil User Show">
     <meta name="keywords" content="music, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -15,8 +14,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
     <!-- Page Preloder -->
+
+
     <div id="preloder">
       <div class="loader"></div>
     </div>
@@ -220,7 +220,7 @@
                       <%= link_to user_path(comment.comment_sender) do %>
                         <div class="artist-details">
                           <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                          <div class="ad-text">
+                          <div class="">
                             <h5><%=comment.comment_sender.first_name%></h5>
                             <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
                             <p><%= comment.content %></p>
@@ -234,7 +234,7 @@
                       <%= link_to user_path(comment.comment_sender) do %>
                         <div class="artist-details">
                           <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                            <div class="ad-text">
+                            <div class="">
                             <h5><%=comment.comment_sender.first_name%></h5>
                             <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
                             <p><%= comment.content %></p>
@@ -331,5 +331,5 @@
         </div>
       </div>
     </section>
-    <!-- Songs details section -->
-  </body>
+
+ 

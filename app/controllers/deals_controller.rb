@@ -28,10 +28,10 @@ class DealsController < ApplicationController
       receiver_library = UserLibrary.find(params[:user_library_id])
       new_deal_content = DealContent.create(sender_library_id: sender_library.id, receiver_library_id: receiver_library.id, deal_id: @new_deal.id)
       ####
-      flash[:notice_good] = "Le deal a bien été créer"
+      flash[:notice_good] = "Le troc a bien été initié."
       redirect_to user_library_deal_path(params[:user_library_id], @new_deal.id)
     else
-      flash[:notice_bad] = "Le disque a bien été créer"
+      flash[:notice_bad] = "Le troc n'a pas pu être initié."
       render 'new'
     end
   end

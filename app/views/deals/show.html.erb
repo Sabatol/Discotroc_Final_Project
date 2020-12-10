@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="zxx">
   <head>
-    <title>Discotroc | Troc </title>
+    <title>Discotroc - Votre Troc</title>
     <meta charset="UTF-8">
-    <meta name="description" content="SolMusic HTML Template">
+    <meta name="description" content="Discotroc Deal Show">
     <meta name="keywords" content="music, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="shortcut icon"/>
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <%stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet"%>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -54,7 +48,10 @@
                           <%=image_tag "icons/disc_red.png"%>
                         <% end %>
                         <% sender_disc = Disc.find(sender_library.disc_id)%>
-                        <%= sender_disc.title%>
+                        <!--Do not display the alpha disc-->
+                        <% if sender_disc != Disc.find(1) %>
+                          <%= sender_disc.title%>
+                        <% end %>
                         <br>
                         <br>
                       <% else %>
@@ -114,23 +111,23 @@
             <div class="playlist-item">
               <% if current_user.id == @deal.sender_id%>
                 <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <%else %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% end %>
               <% else %>
                 <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <%else %>
-                  <h5><i class="fas fa-times" style="color: red"> |   Status   | <i class="fas fa-times" style="color: red"></i></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"> |   Status   | <i class="fas fa-times" style="color: red"></i></i></h5>
                 <% end %>
               <% end %>
               <br>
@@ -140,7 +137,9 @@
                   <%# next line for uncheck the box and next one to check the box %>
                   <%= hidden_field_tag 'sender_ok', '0' %>
                   <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
-                  <% if @deal.sender_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <img src="https://thumbs.dreamstime.com/b/deal-complete-rubber-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83543122.jpg" alt="">
+                  <% elsif @deal.sender_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
@@ -153,7 +152,9 @@
                   <%= hidden_field_tag 'receiver_ok', '0' %>
                   <span class="checkmark"></span>
                   <%= check_box_tag :receiver_ok, 1, !@deal.receiver_ok %><br>
-                  <% if @deal.receiver_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <img src="https://thumbs.dreamstime.com/b/deal-complete-rubber-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83543122.jpg" alt="">
+                  <% elsif @deal.receiver_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
@@ -227,7 +228,7 @@
                     <% search_pm.each do |pm| %>
                       <div class="artist-details">
                         <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                        <div class="ad-text">
+                        <div class="">
                           <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
                           <h5><%=User.find(pm.pm_author_id).first_name%></h5>
                           <p><%=pm.content%></p>
@@ -275,5 +276,3 @@
             </div>
           </section>
           <!-- Songs details section -->
-        </body>
-      </html>
