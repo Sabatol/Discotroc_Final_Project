@@ -1,0 +1,50 @@
+<section class="contact-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 p-0">
+        <!-- Map -->
+        <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15230.645420691595!2d26.701958!3d61.499119!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66c3372054ce9%3A0xf741427efc4679a6!2s83%20Boulevard%20Macdonald%2C%2075019%20Paris!5e0!3m2!1sfr!2sfr!4v1607593424839!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="contact-warp">
+          <div class="section-title mb-0">
+            <br>
+            <br>
+            <h2>Contactez-nous</h2>
+            <br>
+            <br>
+          </div>
+          <%= form_for @message do |f| %>
+            <% if @message.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= "#{pluralize(@message.errors.count, "error")} prohibited this message from being sent:" %></h2>
+                <ul>
+                  <% @message.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="contact-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label :name %>
+                  <%= f.text_field :name , class: 'form-control border border-darck', placeholder: "Ton nom..."%>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :email %>
+                  <%= f.email_field :email , class: 'form-control border border-darck', placeholder: "Ton nom..."%>
+                </div>
+                <div class="col-md-12">
+                  <%= f.label :body %>
+                  <%= f.text_area :body , class: 'form-control border border-darck', placeholder: "Ton nom..."%>
+                  <%= f.submit 'Send', class: 'site-btn col-md-12 bg-primary  mt-2' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
