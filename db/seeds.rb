@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-genres = ["Disco", "Musiques Electroniques", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "World", "Classique", "Pop", "Variété", "Blues", "Reggae"]
+genres = ["Disco", "Electroniques", "Hip-Hop", "Jazz", "Soul", "Funk", "Rock", "World", "Classique", "Pop", "Variété", "Blues", "Reggae"]
 genres.each do |name|
    Genre.create(name: name)
 end
@@ -33,7 +33,7 @@ end
     release: rand(1940..2020),
     label: 'PROUTPROUT',
     country: 'France',
-    artist: "je suis un artiste",
+    artist: Faker::Music.band ,
     genre: Genre.all.sample,
     format: Format.all.sample
   )

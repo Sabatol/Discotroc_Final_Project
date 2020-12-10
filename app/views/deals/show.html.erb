@@ -3,122 +3,174 @@
   <% if user_signed_in? %>
     <p> Deal N° <%= @deal.id%> </p>
     <hr style="width: 5%; border: 1px solid black;">
+    <%# When the current_user is the deal initiator : %>
     <% if current_user == @deal.sender %>
-      <% if @deal.deal_contents.present? %>
-        <h6> Disque proposé par VOUS ! </h6>
-        <% @deal.deal_contents.each do |deal_content| %>
-          <% if deal_content.sender_library_id.present? %>
-            <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
-            <% if sender_library.present? %>
-              <% sender_disc = Disc.find(sender_library.disc_id)%>
-              <%= sender_disc.title%>
-            <% else %>
-              <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+      <div class="row my-4">
+        <% if @deal.deal_contents.present? %>
+          <%# Left table on view %>
+          <div class="col-6">
+            <h4> Disque proposé par VOUS ! </h4>
+            <% @deal.deal_contents.each do |deal_content| %>
+              <% if deal_content.sender_library_id.present? %>
+                <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
+                <% if sender_library.present? %>
+                  <% sender_disc = Disc.find(sender_library.disc_id)%>
+                  <%= sender_disc.title%>
+                <% else %>
+                  <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+                <% end %>
+              <% else %>
+                <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+              <% end %>
+              <br>
+              <%# Select form to choose a disc to troc for deal initiator ! %>
+              <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
+                <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+                <% sender_libraries = UserLibrary.where(user_id: current_user.id)%>
+                <%= select_tag 'sender_library_id', options_for_select(sender_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}) %> <br>
+                <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
+                <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
+                <%= submit_tag "Envoyer" %>
+              <% end %>
+              <%# ### %>
+            <%end %>
+            <!-- Display status of sender when he's the current_user -->
+            <br>
+            <h4 class="mt-4 mb-2">Votre statut actuellement : </h4>
+            <% if @deal.sender_ok? == true %>
+              <p> Vous êtes ok pour ce deal </p>
+            <% else%>
+              <p> En attente de confirmation</p>
+            <% end %>
+            <!-- end -->
+            <%# Checkbox to update the current_user status %>
+            <br>
+            <% if current_user.id == @deal.sender_id || current_user.is_admin? == true%>
+              <%= link_to "Modifier (checkbox en travaux !)", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
+            <% end %>
+            <br>
+            <%# end %>
+          </div>
+          <%# Right table on view %>
+          <div class="col-6">
+            <h4> Disque proposé par <%=@deal.receiver.first_name%> </h4>
+            <% @deal.deal_contents.each do |deal_content| %>
+              <% if deal_content.receiver_library_id.present? %>
+                <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                <% if receiver_library.present? %>
+                  <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                  <%= receiver_disc.title%>
+                <% else %>
+                  <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                <% end %>
+              <% else %>
+                <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+              <% end %>
+            <%end %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- Display status of receiver when the current_user is the sender -->
+            <h4 class="mt-4 mb-2">Statut de <%=@deal.receiver.first_name%> actuellement : </h4>
+            <% if @deal.receiver_ok? == true %>
+              <p><%=User.find_by(id: @deal.receiver_id).first_name%> a validé le troc.</p>
+            <% else%>
+              <p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
             <% end %>
           <% else %>
-            <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+            <p>Aucun deal content détecté</p>
           <% end %>
-          <br>
-          <%# Select form to choose a disc to troc ! %>
-          <%=link_to "Proposer un disque (en travaux !)", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
-        <%end %>
-        <hr style="width: 5%; border: 1px solid black;" >
-        <br>
-        <br>
-        <h6> Disque proposé par <%=@deal.receiver.first_name%> </h6>
-        <% @deal.deal_contents.each do |deal_content| %>
-          <% if deal_content.receiver_library_id.present? %>
-            <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-            <% if receiver_library.present? %>
-              <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-              <%= receiver_disc.title%>
-            <% else %>
-              <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
-            <% end %>
-          <% else %>
-            <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
-          <% end %>
-        <%end %>
-      <% else %>
-        <p>Aucun deal content détecté</p>
-      <% end %>
+        </div>
+      </div>
+      <%# When the current_user is the deal receiver : %>
     <% elsif current_user == @deal.receiver %>
-      <% if @deal.deal_contents.present? %>
-        <h6> Disque proposé par VOUS ! </h6>
-        <% @deal.deal_contents.each do |deal_content| %>
-          <% if deal_content.receiver_library_id.present? %>
-            <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-            <% if receiver_library.present? %>
-              <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-              <%= receiver_disc.title%>
-            <% else %>
-              <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+      <div class="row my-4">
+        <% if @deal.deal_contents.present? %>
+          <%# Left table on view %>
+          <div class="col-6">
+            <h4> Disque proposé par VOUS ! </h4>
+            <% @deal.deal_contents.each do |deal_content| %>
+              <% if deal_content.receiver_library_id.present? %>
+                <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                <% if receiver_library.present? %>
+                  <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                  <%= receiver_disc.title%>
+                <% else %>
+                  <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                <% end %>
+              <% else %>
+                <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+              <% end %>
+              <br>
+              <%# Select form to choose a disc to troc for deal initiator ! %>
+              <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
+                <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+                <% receiver_libraries = UserLibrary.where(user_id: current_user.id)%>
+                <%= select_tag 'receiver_library_id', options_for_select(receiver_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}) %> <br>
+                <% sender_library_id = @deal.deal_contents.first.sender_library_id %>
+                <%= hidden_field_tag 'sender_library_id', sender_library_id %> <br>
+                <%= submit_tag "Envoyer" %>
+              <% end %>
+              <%# ### %>
+            <%end %>
+            <!-- Display status of receiver when he's the current_user -->
+            <br>
+            <h4 class="mt-4 mb-2">Votre statut actuellement : </h4>
+            <% if @deal.receiver_ok? == true %>
+              <p> Vous êtes ok pour ce deal </p>
+            <% else%>
+              <p> En attente de confirmation</p>
+            <% end %>
+            <!-- end -->
+            <%# Checkbox to update the current_user status %>
+            <br>
+            <% if current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
+              <%= link_to "Modifier (checkbox en travaux !)", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
+            <% end %>
+            <br>
+            <%# end %>
+          </div>
+          <%# Right table on view %>
+          <div class="col-6">
+            <h4> Disque proposé par <%=@deal.sender.first_name%> </h4>
+            <% @deal.deal_contents.each do |deal_content| %>
+              <% if deal_content.sender_library_id.present? %>
+                <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
+                <% if sender_library.present? %>
+                  <% sender_disc = Disc.find(sender_library.disc_id)%>
+                  <%= sender_disc.title%>
+                <% else %>
+                  <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+                <% end %>
+              <% else %>
+                <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+              <% end %>
+            <%end %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- Display status of sender when the current_user is the receiver -->
+            <h4 class="mt-4 mb-2">Statut de <%=@deal.sender.first_name%> actuellement : </h4>
+            <% if @deal.sender_ok? == true %>
+              <p><%=User.find_by(id: @deal.sender_id).first_name%> a validé le troc.</p>
+            <% else%>
+              <p><%=User.find_by(id: @deal.sender_id).first_name%> n'a pas encore validé le troc.</p>
             <% end %>
           <% else %>
-            <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+            <p>Aucun deal content détecté</p>
           <% end %>
-          <br>
-          <%# Select form to choose a disc to troc ! %>
-          <%=link_to "Proposer un disque (en travaux!)", new_user_library_deal_deal_content_path(user_library_id: params[:user_library_id], deal_id: @deal.id)  %>
-        <%end %>
-        <hr style="width: 5%; border: 1px solid black;" >
-        <br>
-        <br>
-        <h6> Disque proposé par <%=@deal.sender.first_name%> </h6>
-        <% @deal.deal_contents.each do |deal_content| %>
-          <% if deal_content.sender_library_id.present? %>
-            <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
-            <% if sender_library.present? %>
-              <% sender_disc = Disc.find(sender_library.disc_id)%>
-              <%= sender_disc.title%>
-            <% else %>
-              <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
-            <% end %>
-          <% else %>
-            <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
-          <% end %>
-        <%end %>
-      <%end %>
+        </div>
+      </div>
     <% else %>
+      <p>Vous n'avez rien à faire là !</p>
     <% end %>
     <hr style="width: 5%; border: 1px solid black;" >
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    <%if current_user.id == @deal.sender_id %>
-    <% else %>
-      <h5> Sender </h5>
-      <p> Prénom/Nom :
-        <%= link_to user_path(@deal.sender_id) do %>
-          <%=User.find_by(id: @deal.sender_id).first_name%> <%=User.find_by(id: @deal.sender_id).last_name%></p>
-      <% end %>
-    <%end%>
-    <%if current_user.id == @deal.receiver_id %>
-      <h5> Receiver </h5>
-      <p> Vous participez à ce deal ! </p>
-    <% else %>
-    <%end %>
-    <h5> Status </h5>
-    <% if current_user.id == @deal.sender_id && @deal.sender_ok? == true %>
-      <p> Vous êtes ok pour ce deal </p>
-    <% elsif current_user.id == @deal.sender_id && @deal.sender_ok? == false %>
-      <p> En attente de confirmation</p>
-    <% elsif @deal.sender_ok? == true %>
-      <p><%=User.find_by(id: @deal.sender_id).first_name%> a validé le troc.</p>
-    <% else%>
-      <p><%=User.find_by(id: @deal.sender_id).first_name%> n'a pas encore validé le troc.</p>
-    <% end %>
-    <% if current_user.id == @deal.receiver_id && @deal.receiver_ok? == true %>
-      <p> Vous êtes ok pour ce deal </p>
-    <% elsif current_user.id == @deal.receiver_id && @deal.receiver_ok? == false %>
-      <p> Vous n'avez pas encore validé</p>
-    <% elsif @deal.receiver_ok? == true %>
-      <p><%=User.find_by(id: @deal.receiver_id).first_name%> a validé le troc.</p>
-    <% else%>
-      <p><%=User.find_by(id: @deal.receiver_id).first_name%> n'a pas encore validé le troc.</p>
-    <% end %>
-    <p>############################################################################</p>
-    <% if current_user.id == @deal.sender_id || current_user.id == @deal.receiver_id || current_user.is_admin? == true%>
-      <%= link_to "Modifier", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
-    <% end %>
     <p>############################################################################</p>
     <% if @deal.receiver_ok? == true && @deal.sender_ok? == true && (current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id) %>
       <p>Vous pouvez laisser un commentaire sur la personne avec qui vous avez échangé !</p>
@@ -127,6 +179,8 @@
     <p>############################################################################</p>
     <br>
     <br>
+    <%# Display private messages between sender and receiver in deal/show %>
+    <h2 class="my-4">Commentaires :</h2>
     <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
       <%number = 1 %>
       <% search_pm.each do |pm| %>
@@ -136,8 +190,8 @@
         <p><%=pm.content%></p>
       <% end %>
       <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
-        <%= label_tag 'Content' %> <br>
-        <%= text_field_tag 'content', "Votre commentaire" %> <br>
+        <%= label_tag 'Votre commentaire' %> <br>
+        <%= text_field_tag 'content' %> <br>
         <br>
         <%= hidden_field_tag 'deal_id', @deal.id %> <br>
         <br>
