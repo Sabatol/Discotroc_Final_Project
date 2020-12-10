@@ -6,10 +6,10 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="footer-widget">
-              <h2>A propos</h2>
+              <h2>À propos</h2>
               <ul>
                 <li><%=link_to "Notre Projet", root_path%></li>
-                <li><%=link_to "Contactez nous", new_message_path%>></li>
+                <li><%=link_to "Contactez-nous", new_message_path%>></li>
               </ul>
             </div>
           </div>
@@ -21,8 +21,8 @@
                   <li><%=link_to 'Profil', user_path(current_user.id) %> </li>
                 <%else%>
                   <li><%=link_to 'Inscription', new_user_registration_path %> </li>
-                  <li><%=link_to 'Blogs', articles_path %></li>
-                  <li><%=link_to 'Marché au trocs', user_libraries_path  %></li>
+                  <li><%=link_to 'Blog', articles_path %></li>
+                  <li><%=link_to 'Marché aux trocs', user_libraries_path  %></li>
                   <li><%=link_to 'Retour accueil', root_path %></li>
                 <%end%>
               </ul>
@@ -35,7 +35,7 @@
         <div class="copyright">
           Copyright &copy;<script>
             document.write(new Date().getFullYear());
-          </script> Tous droits pas reservés | Ce projet aurais pu etre fait avec <i class="fa fa-heart-o" aria-hidden="true"></i> par <%=link_to "des gens", "https://www.pixiz.com/frame/looser-2614421"%>
+          </script> Tous droits pas reservés | Ce projet aurait pu être fait avec <i class="fa fa-heart-o" aria-hidden="true"></i> par <%=link_to "des gens", "https://www.pixiz.com/frame/looser-2614421"%>
         </div>
         <div class="social-links">
           <%=link_to "www.instagram.com" do %>

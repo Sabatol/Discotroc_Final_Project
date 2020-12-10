@@ -10,7 +10,7 @@
   <% end %>
   <% end %>
 	<div class="text-center"> <% if user_signed_in? %>
-		<%= link_to "J'ai ce disque a troqué !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 20px"%>
+		<%= link_to "J'ai ce disque à troquer !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 20px"%>
 		<% end %></div>
 	<div class="container">
 		<div class="player-box box-discshow">
@@ -43,17 +43,17 @@
 							<p><%if @disc.release.nil? == false%>
 								<%= @disc.release%>
 								<%else%>
-								Année de sortie inconnu
+								Année de sortie inconnue
 								<%end%></p>
 							<%if @disc.release.nil? == false%>
 							<h6> <%=@disc.format.name%></h6>
 							<%else%>
-							Format inconnus
+							Format inconnu
 							<%end%>
 							<%if @disc.country.nil? == false%>
-							<h6>Sortis en <%=@disc.country%></h6>
+							<h6>Sorti en <%=@disc.country%></h6>
 							<%else%>
-							<h6>Pays </h6>Inconnus
+							<h6>Pays </h6>Inconnu
 							<%end%>
 						</div>
 					</div>
@@ -62,14 +62,14 @@
 							<%if @disc.label.nil? == false%>
 							<h6>Label</h6><%= @disc.label%>
 							<%else%>
-							<h6>Label </h6>Inconnus
+							<h6>Label </h6>Inconnu
 							<%end%>
 						</div>
 						<div class="comp-info-down">
 							<% if @disc.genre.nil? == false%>
 							<h6>Genre </h6><%=@disc.genre.name%>
 							<%else%>
-							<h6>Genre </h6>Inconnus
+							<h6>Genre </h6>Inconnu
 							<%end%>
 							<h6>
 						</div>
@@ -89,7 +89,7 @@
 
 <div class="container">
 <div class="disc-show-list text-center">
-	<h1>Trocs disponible</h1>
+	<h1>Trocs disponibles</h1>
 </div>
 
 <div class="row playlist-area deal-list" style=>

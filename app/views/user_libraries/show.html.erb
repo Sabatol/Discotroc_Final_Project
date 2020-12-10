@@ -20,132 +20,133 @@
       <div class="text-center"> <%= button_to "Modifier", edit_disc_path(@user_library.id), :method => "get"%></div>
     <% end %>
   <% end %>
-  <div class="text-center"> <% if user_signed_in? %>
-      <%= link_to "Proposer un troc !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 30px"%>
-    <% end %></div>
-  <div class="container">
-    <div class="player-box box-discshow">
-      <div class="tarck-thumb-warp">
-        <div class="tarck-thumb">
-          <% if @user_library.disc.cover_picture !=nil %>
-            <%= image_tag @user_library.disc.cover_picture %>
-          <% else %>
-            <%= image_tag "icons/disc_red.png" %>
-          <% end %>
-        </div>
+<% end %>
+<div class="text-center"> <% if user_signed_in? %>
+    <%= link_to "Proposer un troc !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 30px"%>
+  <% end %></div>
+<div class="container">
+  <div class="player-box box-discshow">
+    <div class="tarck-thumb-warp">
+      <div class="tarck-thumb">
+        <% if @user_library.disc.cover_picture !=nil %>
+          <%= image_tag @user_library.disc.cover_picture %>
+        <% else %>
+          <%= image_tag "icons/disc_red.png" %>
+        <% end %>
       </div>
-      <div class="wave-player-warp">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="wave-player-info">
-              <% if @user_library.disc.title.length >35%>
-                <h4><%=@user_library.disc.title%></h4>
-              <% elsif @user_library.disc.title.length >15%>
-                <h3><%=@user_library.disc.title%></h3>
+    </div>
+    <div class="wave-player-warp">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="wave-player-info">
+            <% if @user_library.disc.title.length >35%>
+              <h4><%=@user_library.disc.title%></h4>
+            <% elsif @user_library.disc.title.length >15%>
+              <h3><%=@user_library.disc.title%></h3>
+            <%else%>
+              <h2><%= @user_library.disc.title%></h2>
+            <%end%>
+            <h5> <%if @user_library.disc.artist.nil? == false%>
+                <%=@user_library.disc.artist %>
               <%else%>
-                <h2><%= @user_library.disc.title%></h2>
-              <%end%>
-              <h5> <%if @user_library.disc.artist.nil? == false%>
-                  <%=@user_library.disc.artist %>
-                <%else%>
-                  Artiste non renseigné
-                <%end%></h5>
-              <p><%if @user_library.disc.release.nil? == false%>
-                  <%= @user_library.disc.release%>
-                <%else%>
-                  Année de sortie inconnu
-                <%end%></p>
-              <%if @user_library.disc.release.nil? == false%>
-                <h6> <%=@user_library.disc.format.name%></h6>
+                Artiste non renseigné
+              <%end%></h5>
+            <p><%if @user_library.disc.release.nil? == false%>
+                <%= @user_library.disc.release%>
               <%else%>
-                Format inconnus
-              <%end%>
-              <% if user_signed_in? %>
-                <% if current_user.user_libraries.ids.count > 1 && @user_library.user_id != current_user.id%>
-                  <%= form_tag user_library_deals_path(user_library_id: params[:id], receiver_id: @user_library.user.id, action: 'create'), method: "post" do %>
-                    <%= submit_tag "Ouvrir un espace de troc", data: { confirm: 'Confirmez-vous la demande de troc ?' }, class: "site-btn text-center", style: "padding: 10px 30px; color: #0a183d;"%>
-                  <% end %>
-                  <br>
-                <%else%>
-                  <h5>Vous n'avez aucun disque dans votre collection.</h5>
-                  <p>Si vous désirez obtenir <%=@user_library.disc.title%>, vous devez pouvoir proposer quelque chose en échange !</p>
-                  <%=link_to "Cliquez ici pour ajouter un disque à votre collection.", new_user_user_library_path(current_user.id), class: "site" %>
-                <%end%>
-              <% else %>
-                <%= link_to "Veuillez vous inscrire pour pouvoir échanger avec vos compères.", new_user_registration_path, class: "site-btn text-center", style: "padding: 10px 30px; color:#0a183d;"%>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-lg-4 more-infos">
-            <div class="comp-infos-up">
-              <%if @user_library.disc.label.nil? == false%>
-                <h6>Propriétaire</h6>
-                <%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
+                Année de sortie inconnue
+              <%end%></p>
+            <%if @user_library.disc.release.nil? == false%>
+              <h6> <%=@user_library.disc.format.name%></h6>
+            <%else%>
+              Format inconnu
+            <%end%>
+            <% if user_signed_in? %>
+              <% if current_user.user_libraries.ids.count > 1 && @user_library.user_id != current_user.id%>
+                <%= form_tag user_library_deals_path(user_library_id: params[:id], receiver_id: @user_library.user.id, action: 'create'), method: "post" do %>
+                  <%= submit_tag "Ouvrir un espace de troc", data: { confirm: 'Confirmez-vous la demande de troc ?' }, class: "site-btn text-center", style: "padding: 10px 30px; color: #0a183d;"%>
+                <% end %>
+                <br>
               <%else%>
-                <h6>Propriétaire</h6>
-                Inconnus
+                <h5>Vous n'avez aucun disque dans votre collection.</h5>
+                <p>Si vous désirez obtenir <%=@user_library.disc.title%>, vous devez pouvoir proposer quelque chose en échange !</p>
+                <%=link_to "Cliquez ici pour ajouter un disque à votre collection.", new_user_user_library_path(current_user.id), class: "site" %>
               <%end%>
-            </div>
-            <div class="comp-info-down">
-              <% if @user_library.disc.genre.nil? == false%>
-                <h6>Disponible </h6>
-                <%=@user_library.user.country%>
-              <%else%>
-                <h6>Disponible </h6>
-                Inconnus
-              <%end%>
-              <h6>
-              </div>
-              <div class="comp-info-lower">
-                <div>
-                </div>
-              </div>
-            </div>
+            <% else %>
+              <%= link_to "Veuillez vous inscrire pour pouvoir échanger avec vos compères.", new_user_registration_path, class: "site-btn text-center", style: "padding: 10px 30px; color:#0a183d;"%>
+            <% end %>
           </div>
         </div>
-      </div>
-    </section>
-    <div class="container">
-      <div class="disc-show-list text-center">
-        <h1>Trocs disponible</h1>
-      </div>
-      <div class="row playlist-area deal-list" style=>
-        <%@user_library.user.user_libraries.each_with_index do |library, index|%>
-          <%if library.user.first_name != nil && library.user.last_name != nil%>
-            <div class="mix col-xl-3 col-sm-6">
-              <div class="library-index-card" style="height: 95%;">
-                <%if library.disc.cover_picture.nil? == false%>
-                  <%=image_tag library.disc.cover_picture, :class => "ss-thumb" %src= alt=""%>
-                <%else%>
-                  <%=image_tag "icons/disc_red.png", :class => "ss-thumb" %src= alt=""%>
-                <%end%>
-                <div class="head-lib-card">
-                  <h4>
-                    <%=link_to "#{library.user.first_name} #{library.user.last_name}", user_path(library.user.id), :class => "name-disc-show" %>
-                  </h4>
-                  <%=link_to user_path(library.user.id) do %>
-                    <i class="fas fa-id-card disc-show"></i><%end%>
-                </div>
-                <div class="head-lib-card artiste-release">
-                  <p><%=library.disc.artist%></p>
-                </div>
-                <p> <%=library.user.country%></p>
-                <div class="single_player">
-                  <div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
-                  <div class="jp-audio jp_container_8" role="application" aria-label="media player">
-                    <div class="jp-gui jp-interface">
-                    </div>
-                  </div>
-                  <div class="low-card">
-                    <div class="lib-index-butn">
-                      <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%>
-                    </div>
-                  </div>
-                </div>
+        <div class="col-lg-4 more-infos">
+          <div class="comp-infos-up">
+            <%if @user_library.disc.label.nil? == false%>
+              <h6>Propriétaire</h6>
+              <%=link_to @user_library.user.first_name, user_path(@user_library.user.id)%>
+            <%else%>
+              <h6>Propriétaire</h6>
+              Inconnu
+            <%end%>
+          </div>
+          <div class="comp-info-down">
+            <% if @user_library.disc.genre.nil? == false%>
+              <h6>Disponible </h6>
+              <%=@user_library.user.country%>
+            <%else%>
+              <h6>Disponible </h6>
+              Inconnu
+            <%end%>
+            <h6>
+            </div>
+            <div class="comp-info-lower">
+              <div>
               </div>
             </div>
-          <%end%>
-        <%end%>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <div class="container">
+    <div class="disc-show-list text-center">
+      <h1>Trocs disponibles</h1>
+    </div>
+    <div class="row playlist-area deal-list" style=>
+      <%@user_library.user.user_libraries.each_with_index do |library, index|%>
+        <%if library.user.first_name != nil && library.user.last_name != nil%>
+          <div class="mix col-xl-3 col-sm-6">
+            <div class="library-index-card" style="height: 95%;">
+              <%if library.disc.cover_picture.nil? == false%>
+                <%=image_tag library.disc.cover_picture, :class => "ss-thumb" %src= alt=""%>
+              <%else%>
+                <%=image_tag "icons/disc_red.png", :class => "ss-thumb" %src= alt=""%>
+              <%end%>
+              <div class="head-lib-card">
+                <h4>
+                  <%=link_to "#{library.user.first_name} #{library.user.last_name}", user_path(library.user.id), :class => "name-disc-show" %>
+                </h4>
+                <%=link_to user_path(library.user.id) do %>
+                  <i class="fas fa-id-card disc-show"></i><%end%>
+              </div>
+              <div class="head-lib-card artiste-release">
+                <p><%=library.disc.artist%></p>
+              </div>
+              <p> <%=library.user.country%></p>
+              <div class="single_player">
+                <div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
+                <div class="jp-audio jp_container_8" role="application" aria-label="media player">
+                  <div class="jp-gui jp-interface">
+                  </div>
+                </div>
+                <div class="low-card">
+                  <div class="lib-index-butn">
+                    <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</section>

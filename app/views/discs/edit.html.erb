@@ -46,13 +46,13 @@
 
       <%= form_for @edit_disc do |f| %>
         <%= f.hidden_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off', value: @edit_disc.title %>
-        <%= f.hidden_field :artist, placeholder: 'Artist', autocomplete: 'off', value: @edit_disc.artist%>
+        <%= f.hidden_field :artist, placeholder: 'Artiste', autocomplete: 'off', value: @edit_disc.artist%>
         <%= f.hidden_field :release, placeholder: 'Année de sortie', autocomplete: 'off', value: @edit_disc.release%>
         <%= f.hidden_field :label, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.label%>
-        <%= f.hidden_field :format_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.format_id%>
-        <%= f.hidden_field :genre_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.genre_id%>
-        <%= f.hidden_field :country, placeholder: 'Country', autocomplete: 'off', value: @edit_disc.country%>
-      
+        <%= f.hidden_field :format_id, placeholder: 'Format', autocomplete: 'off', value: @edit_disc.format_id%>
+        <%= f.hidden_field :genre_id, placeholder: 'Genre', autocomplete: 'off', value: @edit_disc.genre_id%>
+        <%= f.hidden_field :country, placeholder: 'Pays', autocomplete: 'off', value: @edit_disc.country%>
+
         <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
         <% if @search.results.first != nil%>
         <% cover_picture = @search.results.first.cover_image%>

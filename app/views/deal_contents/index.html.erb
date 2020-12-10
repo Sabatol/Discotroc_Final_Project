@@ -10,21 +10,21 @@
 
 
 <div class="text-center">
- <%= link_to "Créer un DealContent", new_deal_content_path%>
+ <%= link_to "Ajouter des disques au troc", new_deal_content_path%>
  <br>
  <br>
  <p> --------------------------------------------</p>
  <br>
 
 <% @deal_contents.each do |dealcontent| %>
-<h5> Deal Content N° <%= dealcontent.id%></h5>
+<h5> Disque N° <%= dealcontent.id%></h5>
 <hr style="width: 5%; border: 1px solid black;" >
-<p> Deal ID: <%=dealcontent.deal_id%></p>
-<p> Sender Library ID: <%=dealcontent.sender_library_id%></p>
-<h5> Titre de l'album du Sender => <%= Disc.find(UserLibrary.find(dealcontent.sender_library_id).disc_id).title%> </h5>
-<p> Receiver Library ID: <%=dealcontent.receiver_library_id%></p>
-<h6> Titre de l'album du Receiver => <%= Disc.find(UserLibrary.find(dealcontent.receiver_library_id).disc_id).title%> </h6>
+<p> Troc ID: <%=dealcontent.deal_id%></p>
+<p> ID du disque de l'initiateur: <%=dealcontent.sender_library_id%></p>
+<h5> Titre de l'album de l'initiateur => <%= Disc.find(UserLibrary.find(dealcontent.sender_library_id).disc_id).title%> </h5>
+<p> ID du disque du compère: <%=dealcontent.receiver_library_id%></p>
+<h6> Titre de l'album du compère => <%= Disc.find(UserLibrary.find(dealcontent.receiver_library_id).disc_id).title%> </h6>
 <%= link_to "Voir", deal_content_path(dealcontent.id)%>
 <br> <br>
 <%end%>
-</div> 
+</div>

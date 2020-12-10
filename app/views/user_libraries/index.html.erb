@@ -20,19 +20,19 @@
 	<section class="similar-songs-section">
 		<div class="container-fluid">
 			<div class="text-center">
-		  <h1>Disque a Troquer</h1>
+		  <h1>Disques à Troquer</h1>
 						<h4 class="disc-index-title" style="margin-bottom: 15px">Cherchez votre bonheur</h4></div>
 			<div class="container text-center">
   <% if user_signed_in? %>
-    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
+    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez-le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
      <br>
     <br>
   <% end %></div>
-			
-        <div class="container">	
+
+        <div class="container">
 								<ul class="playlist-filter controls">
 							<div class="text-center">
-					<li class="control", style="margin-right: 10px" data-filter="all">Tout les genres</li>
+					<li class="control", style="margin-right: 10px" data-filter="all">Tous les genres</li>
 					</div><div class="text-center">
 <% @all_genres.each do |genre|%>
 					<li class="control", style="margin-right: 10px" data-filter=".<%=genre.name%>"><%=genre.name%></li>
@@ -40,7 +40,7 @@
 		</div>
 				<hr style="width: 35%; border: 1px solid black;" >
 				</ul>
-			</div> 
+			</div>
 			<div class='container'>
 				<div class="row playlist-area">
 			<%@user_libraries.each_with_index do |library, index|%>
@@ -60,11 +60,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 								<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -74,7 +74,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -95,11 +95,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-									</div>								
-									</div>			
+									</div>
+									</div>
 									 								<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -109,7 +109,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -130,11 +130,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -144,7 +144,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -165,11 +165,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -179,7 +179,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -200,11 +200,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 																	<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -214,7 +214,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -235,11 +235,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -249,7 +249,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -270,11 +270,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -284,7 +284,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -305,11 +305,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -319,7 +319,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -340,11 +340,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -354,7 +354,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -375,11 +375,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -389,7 +389,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -410,11 +410,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -424,7 +424,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -445,11 +445,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -459,7 +459,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -480,11 +480,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -494,7 +494,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -515,11 +515,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -529,7 +529,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -550,11 +550,11 @@
 							<div class="jp-jplayer jplayer" data-ancestor=".jp_container_8" data-url=""></div>
 							<div class="jp-audio jp_container_8" role="application" aria-label="media player">
 								<div class="jp-gui jp-interface">
-										</div>								
-									</div>			
+										</div>
+									</div>
 															<div class="low-card" style="flex-direction: column">
 											<%=library.description%>
-									<div class="lib-index-butn" >	 
+									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
 									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
@@ -564,7 +564,7 @@
 									<%else%>
 									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
 									<%end%>
-									
+
 									</div>
  									</div>
                  	</div>
@@ -574,5 +574,5 @@
 							</div>
 			</div>
 		</div>
-	
+
 	</section>

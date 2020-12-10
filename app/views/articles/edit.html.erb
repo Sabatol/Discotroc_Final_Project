@@ -18,8 +18,8 @@
           <i class="fas fa-feather-alt fa-4x"></i>
           <br>
           <br>
-						<h4 class="text-center">Ecrire un article</h4>
-						<p class="text-center">Partagez vos coup de coeurs musicaux.</p>
+						<h4 class="text-center">Écrire un article</h4>
+						<p class="text-center">Partagez vos coups de coeur musicaux.</p>
 					</div>
                <br>
            <%= form_for @article do |f| %>
@@ -30,7 +30,7 @@
                        <%= hidden_field_tag 'user', current_user.id %>
                        <br>
              <div class="form-input">
-                <%= label_tag 'Contenu de votre article' %> 
+                <%= label_tag 'Contenu de votre article' %>
                <%= f.text_area :content, :size =>"70x10" %>
              </div>
              <br>
@@ -42,12 +42,16 @@
               <br>
 					<div class="copy-right text-center">
                   <%= link_to "Revenir sur les articles", articles_path%><br>
-						<%= link_to "Revenir à l'accueil", root_path%> 
+						<%= link_to "Revenir à l'accueil", root_path%>
 					 </div>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 	</section>
 	<!-- //login-section -->
+<<<<<<< HEAD
+</body>
+=======
+>>>>>>> main

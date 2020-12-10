@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
 
+
+
+
   resources :users do
     resources :user_libraries, except: %i[index show]
 
