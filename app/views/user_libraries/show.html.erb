@@ -17,6 +17,8 @@
         <%= submit_tag "Ouvrir un espace de troc", data: { confirm: 'Confirmez-vous la demande de troc ?' }, class: "btn btn-secondary" %>
       <% end %>
       <br>
+    <%elsif current_user == @user_library.user %>
+      <h5>Il s'agit de VOTRE disque, pensez à soigner sa description !</h5>
     <%else%>
       <h5>Vous n'avez aucun disque dans votre collection.</h5>
       <p>Si vous désirez obtenir <%=@user_library.disc.title%>, vous devez pouvoir proposer quelque chose en échange !</p>
