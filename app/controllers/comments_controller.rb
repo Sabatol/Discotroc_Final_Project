@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_completed?
+  before_action :is_deal_stakeholder
 
   def new
     @new_comment = Comment.new()

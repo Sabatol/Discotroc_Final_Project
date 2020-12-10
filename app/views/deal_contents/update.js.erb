@@ -1,0 +1,5 @@
+function changeTitles() {
+text_to_change = document.querySelector("#for_ajax")
+text_to_change.textContent = "<%= j render 'disc_proposition', sender_disc: @sender_disc %>"
+}
+changeTitles()

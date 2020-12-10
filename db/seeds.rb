@@ -75,9 +75,10 @@ User.create(
     additional_address: Faker::Address.secondary_address,
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
-    country: Faker::Address.country,
-    description: "Description d'un utilisateur créé via le seed.",
-    completed: true
+    country: 'France',
+    description: "Description d'un administrateur créé via le seed.",
+    completed: true,
+    is_admin?: true
   )
 end
 

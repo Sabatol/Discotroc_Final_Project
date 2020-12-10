@@ -1,23 +1,22 @@
 class DealsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :is_completed?, except: [:index, :show]
-  
+  before_action :is_deal_stakeholder, only: [:show, :edit, :update]
+
   def index
     @deals = Deal.all
-  end 
+  end
 
   def show
     @deal = Deal.find(params[:id])
-  end 
+  end
 
   def new
     @sender = User.find(params[:sender_id])
-    @new_deal = Deal.new 
-  end 
+    @new_deal = Deal.new
+  end
 
   def create
-    # @sender = User.find(params[:sender_id])
-    # @new_deal = Deal.new(sender_id: @sender.id, receiver_id: current_user.id)
 
     @receiver = User.find(params[:receiver_id])
     @new_deal = Deal.new(receiver_id: @receiver.id, sender_id: current_user.id)
@@ -43,14 +42,14 @@ class DealsController < ApplicationController
 
   def update
     @edit_deal = Deal.find(params[:id])
-    post_params = params.require(:deal).permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
+    post_params = params.permit(:sender_id, :receiver_id, :sender_ok, :receiver_ok)
     @edit_deal.update(post_params)
-    redirect_to deal_path(@edit_deal)
+    redirect_to  user_library_deal_path(params[:user_library_id], params[:deal_id])
   end
 
   def destroy
     @destroy_deal = Deal.find(params[:id])
     @destroy_deal.destroy
     redirect_to deals_path
-  end 
+  end
 end

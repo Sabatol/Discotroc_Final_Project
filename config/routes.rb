@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :user_libraries, except: %i[index show]
+    resources :avatars, only: %i[create]
   end
 
   resources :user_libraries, only: %i[index show] do
