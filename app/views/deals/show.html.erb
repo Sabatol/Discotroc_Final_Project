@@ -201,8 +201,39 @@
                   <% end %>
                 <%end%>
               <%end%>
-            </div>
-          </div>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="song-details-box">
+								<h3>Conversation</h3>
+
+    <% if current_user.id == @deal.receiver_id || current_user.id == @deal.sender_id || current_user.is_admin? == true %>
+      <%number = 1 %>
+      <h1><%=search_pm.count%></h1>
+      <% search_pm.each do |pm| %>
+      	<div class="artist-details">
+        <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
+				<div class="">
+        <p> <%=pm.created_at.strftime('%d/%m %Hh%M')%> </p>
+        <h5><%=User.find(pm.pm_author_id).first_name%></h5>
+        <p><%=pm.content%></p>
+									</div>
+								</div>
+                <hr style="width: 70%; border: 1px solid grey;">
+      <% end %>
+      <br>
+      <section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-left" style="width: 70%">
+      <%= form_tag user_library_deal_deal_pms_path(user_library_id: params[:user_library_id],deal_id: params[:id], action: 'create'), method: "post" do %>
+        
+        <%= label_tag 'Votre commentaire' %> <br>
+        <div class="form-input">
+        <%= text_field_tag 'content' %> <br>
         </div>
       </div>
     </section>
