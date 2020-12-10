@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :articles
   has_many :playlists, dependent: :destroy
 
-
   has_many :comments_receiver, class_name: 'Comment', foreign_key: 'comment_receiver_id', dependent: :destroy
   has_many :comments_sender, class_name: 'Comment', foreign_key: 'comment_sender_id'
 
@@ -25,6 +24,8 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   validates :email, presence: true
+
+  has_one_attached :avatar
 
   # Call after creation to send an email
   after_create :send_welcome_email
