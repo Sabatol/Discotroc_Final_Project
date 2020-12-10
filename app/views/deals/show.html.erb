@@ -45,8 +45,12 @@
             <!-- end -->
             <%# Checkbox to update the current_user status %>
             <br>
-            <% if current_user.id == @deal.sender_id || current_user.is_admin? == true%>
-              <%= link_to "Modifier (checkbox en travaux !)", edit_user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id)%>
+            <%= form_tag user_library_deal_path(user_library_id: params[:user_library_id],deal_id: @deal.id, action: 'update'), method: "patch" do %>
+              <%= hidden_field_tag :receiver_id, current_user.id %> <br>
+              <%= check_box_tag :sender_ok, true %><br>
+              <%= submit_tag "Modifier", class: "btn btn-primary" %> <br>
+              <br>
+              <%= link_to "Revenir à l'accueil", root_path%>
             <% end %>
             <br>
             <%# end %>
