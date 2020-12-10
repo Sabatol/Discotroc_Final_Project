@@ -54,7 +54,10 @@
                           <%=image_tag "icons/disc_red.png"%>
                         <% end %>
                         <% sender_disc = Disc.find(sender_library.disc_id)%>
-                        <%= sender_disc.title%>
+                        <!--Do not display the alpha disc-->
+                        <% if sender_disc != Disc.find(1) %>
+                          <%= sender_disc.title%>
+                        <% end %>
                         <br>
                         <br>
                       <% else %>
@@ -140,7 +143,9 @@
                   <%# next line for uncheck the box and next one to check the box %>
                   <%= hidden_field_tag 'sender_ok', '0' %>
                   <%= check_box_tag :sender_ok, 1, !@deal.sender_ok %><br>
-                  <% if @deal.sender_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <img src="https://thumbs.dreamstime.com/b/deal-complete-rubber-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83543122.jpg" alt="">
+                  <% elsif @deal.sender_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
@@ -153,7 +158,9 @@
                   <%= hidden_field_tag 'receiver_ok', '0' %>
                   <span class="checkmark"></span>
                   <%= check_box_tag :receiver_ok, 1, !@deal.receiver_ok %><br>
-                  <% if @deal.receiver_ok == false %>
+                  <% if @deal.sender_ok == true && @deal.receiver_ok == true %>
+                    <img src="https://thumbs.dreamstime.com/b/deal-complete-rubber-stamp-grunge-design-dust-scratches-effects-can-be-easily-removed-clean-crisp-look-color-easily-83543122.jpg" alt="">
+                  <% elsif @deal.receiver_ok == false %>
                     <%= submit_tag "Accepter le deal", class: "site-btn text-center", style: "padding: 10px 20px" %>
                   <%else%>
                     <%= submit_tag "Refuser le deal", class: "site-btn text-center", style: "padding: 10px 20px" %><br>
