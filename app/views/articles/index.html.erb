@@ -1,15 +1,50 @@
-<center>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Discotroc | Articles</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Discotroc | Articles">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
-<% @articles.each do |article| %>
-<p> <%=article.title%></p>
-<%if article.user.first_name%>
-<p>Par <%=article.user.first_name%></p>
-<%else%>
-<%string=article.user.email.split("@")%>
-<%firstName=string[0]%>
-<p>Par <%=firstName%></p>
-<%end%>
-<%= link_to "Voir", article_path(article.id)%>
-<%end%>
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
-</center>
+	
+	<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+        <h4 class="text-center"> Créer un article </h4>
+        <br>
+        <center>
+        <%= link_to "Créer", new_article_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+        </center>
+        <br>
+        <br>
+			<!-- Blog post -->
+			<% @articles.each do |article| %>
+            <div class="blog-item">
+            <%= link_to article_path(article.id) do %>
+                <%=image_tag "blog/1.jpg"%>
+				<div class="blog-date" style="color: black"><%= article.created_at.strftime('%d-%d-%Y') %></div>
+				<h3><%=article.title%></h3>
+				<div class="blog-meta"><p>Par <%=article.user.first_name%></p></div>
+				<p><%= truncate(article.content, length: 100)%></p>
+			</div>
+            <%end%>
+			<!-- Blog post -->
+            <%end%>
+		</div>
+	</section>
+	<!-- Blog section end -->
+	</body>
+</html>

@@ -1,14 +1,54 @@
-<center>
-  <h3>Écrire un article</h3>
-<%= form_tag url_for(action: 'create'), method: "post" do %>
+<head>
+	<title>Discotroc | Créer un disque</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		content="Créer un disque" />
 
-   <p><%= label_tag 'Titre' %></p>
-   <p><%= text_field_tag 'title', '', size: 75 %></p>
-   <p><%= label_tag 'Contenu de votre article' %></p>
-   <%= hidden_field_tag 'user', current_user.id %>
-   <p><%= text_area_tag 'content', nil, rows: 25, cols: 100 %></p>
+</head>
 
-<%= submit_tag "Soumettre", class:"btn btn-info" %>
-
-<% end %>
-   </center>
+<body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-left" style="margin: 0 auto;">
+					<div class="middle text-center">
+          <i class="fas fa-feather-alt fa-4x"></i>
+          <br>
+          <br>
+						<h4 class="text-center">Créer un article</h4>
+						<p class="text-center">Partagez vos coup de coeurs musicaux.</p>
+					</div>
+               <br>
+           <%= form_tag url_for(action: 'create'), method: "post" do %>
+							<div class="form-input">
+								<%= label_tag 'Titre' %>
+							<%= text_field_tag 'title'%>
+							</div>
+                       <%= hidden_field_tag 'user', current_user.id %>
+                       <br>
+             <div class="form-input">
+                <%= label_tag 'Contenu de votre article' %> 
+               <%= text_area_tag 'content' %>
+             </div>
+             <br>
+             <div class="text-center">
+					<%= submit_tag "Créer un article", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+              </div>
+              <%end%>
+              <br>
+              <br>
+					<div class="copy-right text-center">
+                  <%= link_to "Revenir sur les articles", articles_path%><br>
+						<%= link_to "Revenir à l'accueil", root_path%> 
+					 </div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+	<!-- //login-section -->
+</body>

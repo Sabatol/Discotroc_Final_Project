@@ -428,6 +428,27 @@ button:hover {
   border: 2px solid #beced0;
 }
 
+textarea {
+  background: #fff;
+  outline: none;
+  width: 100%;
+  font-size: 17px;
+  padding: 10px 15px;
+  color: #090e0d;
+  border: 2px solid #beced0;
+}
+
+#content {
+  background: #fff;
+  outline: none;
+  width: 100%;
+  font-size: 17px;
+  padding: 10px 15px;
+  color: #090e0d;
+  border: 2px solid #beced0;
+
+}
+
 .w3l-login-6 .form-input input:focus {
   border: 2px solid #08192d;
   background: #fff;
