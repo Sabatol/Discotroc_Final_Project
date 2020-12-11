@@ -2,19 +2,6 @@ class DealContentsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_completed?
 
-  def index
-    @deal_contents = DealContent.all
-  end
-
-  def show
-    @deal_content = DealContent.find(params[:id])
-  end
-
-  def new
-    @new_deal_content = DealContent.new
-    @user_library = UserLibrary.all.where(user_id: current_user.id)
-  end
-
   def create
     @deal = Deal.find(params[:deal_id])
     @receiver_library = UserLibrary.find_by(params[:id])
@@ -27,10 +14,6 @@ class DealContentsController < ApplicationController
       render 'new'
       flash[:notice_bad] = "La proposition d'échange n'a pas été créée."
     end
-  end
-
-  def edit
-    @edit_deal_content = DealContent.find(params[:id])
   end
 
   def update
