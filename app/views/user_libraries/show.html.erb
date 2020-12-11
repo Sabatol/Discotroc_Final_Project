@@ -9,11 +9,6 @@
 </div>
 <!-- Page Preloder -->
 <section class="set-bgg-discshow">
-  <% if user_signed_in? %>
-    <% if current_user.is_admin? == true %>
-      <div class="text-center"> <%= button_to "Modifier", edit_disc_path(@user_library.id), :method => "get"%></div>
-    <% end %>
-  <% end %>
   <div class="text-center"> <% if user_signed_in? %>
       <%= link_to "Proposer un troc !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 30px"%>
     <% end %></div>

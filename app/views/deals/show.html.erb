@@ -67,36 +67,40 @@
                     <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
                   <% end %>
                 <% elsif current_user.id == @deal.receiver.id %>
-                  <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
-                    <% if deal_content.receiver_library_id.present? %>
-                      <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-                      <% if receiver_library.present? %>
-                        <% if receiver_library.disc.cover_picture != nil %>
-                          <%=image_tag receiver_library.disc.cover_picture %>
-                        <% else %>
-                          <%=image_tag "icons/disc_red.png"%>
-                        <% end %>
-                        <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-                        <%= receiver_disc.title%>
-                        <br>
-                        <br>
+                <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
+                  <% if deal_content.receiver_library_id.present? %>
+                    <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                    <% if receiver_library.present? %>
+                      <% if receiver_library.disc.cover_picture != nil %>
+                        <%=image_tag receiver_library.disc.cover_picture %>
                       <% else %>
-                        <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
+                        <%=image_tag "icons/disc_red.png"%>
                       <% end %>
+                      <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                      <!--Do not display the alpha disc-->
+                      <% if receiver_disc != Disc.find(1) %>
+                        <%= receiver_disc.title%>
+                      <% end %>
+                      <br>
+                      <br>
                     <% else %>
                       <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
                     <% end %>
-                  <%end%>                  <br>
-                  <br>
-                  <h3> Changer de disque</h3>
-                  <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
-                    <%= hidden_field_tag 'deal_id', @deal.id %> <br>
-                    <% receiver_libraries = UserLibrary.where(user_id: current_user.id)%>
-                    <%= select_tag 'receiver_library_id', options_for_select(receiver_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
-                    <% receiver_library_id = @deal.deal_contents.first.receiver_library_id %>
-                    <%= hidden_field_tag 'receiver_library_id', receiver_library_id %> <br>
-                    <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+                  <% else %>
+                    <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
                   <% end %>
+                <%end%>
+                <br>
+                <br>
+                <h3> Changer de disque</h3>
+                <%= form_tag user_library_deal_deal_content_path(user_library_id: params[:user_library_id],deal_id: @deal.id,id: @deal.deal_contents.first.id, action: 'update'), method: "patch" do %>
+                  <%= hidden_field_tag 'deal_id', @deal.id %> <br>
+                  <% receiver_libraries = UserLibrary.where(user_id: current_user.id)%>
+                  <%= select_tag 'receiver_library_id', options_for_select(receiver_libraries.map{|user_library| [(Disc.find(user_library.disc_id).title), user_library.id]}), :class => "browser-default custom-select" %> <br>
+                  <% sender_library_id = @deal.deal_contents.first.sender_library_id %>
+                  <%= hidden_field_tag 'sender_library_id', sender_library_id %> <br>
+                  <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+                <% end %>
                 <%end %>
               <%end%>
             </div>
@@ -162,34 +166,60 @@
           <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
             <% if current_user.id == @deal.sender.id%>
               <h4> Disque proposé par <%=@deal.receiver.first_name%> </h4>
-            <% else %>
-              <h4> Disque proposé par <%=@deal.sender.first_name%> </h4>
-            <% end %>
-            <br>
-            <div class="playlist-item">
-              <% @deal.deal_contents.each do |deal_content| %>
-                <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
-                  <% if deal_content.receiver_library_id.present? %>
-                    <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
-                    <% if receiver_library.present? %>
-                      <% if receiver_library.disc.cover_picture != nil %>
-                        <%=image_tag receiver_library.disc.cover_picture %>
+              <br>
+              <div class="playlist-item">
+                <% @deal.deal_contents.each do |deal_content| %>
+                  <%=link_to user_library_path(deal_content.receiver_library_id), :style => "color: black" do %>
+                    <% if deal_content.receiver_library_id.present? %>
+                      <% receiver_library = UserLibrary.find(deal_content.receiver_library_id)%>
+                      <% if receiver_library.present? %>
+                        <% if receiver_library.disc.cover_picture != nil %>
+                          <%=image_tag receiver_library.disc.cover_picture %>
+                        <% else %>
+                          <%=image_tag "icons/disc_red.png"%>
+                        <% end %>
+                        <% receiver_disc = Disc.find(receiver_library.disc_id)%>
+                        <%= receiver_disc.title%>
+                        <br>
+                        <br>
                       <% else %>
-                        <%=image_tag "icons/disc_red.png"%>
+                        <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
                       <% end %>
-                      <% receiver_disc = Disc.find(receiver_library.disc_id)%>
-                      <%= receiver_disc.title%>
-                      <br>
-                      <br>
                     <% else %>
                       <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
                     <% end %>
-                  <% else %>
-                    <p><%=@deal.receiver.first_name%> n'a encore proposé aucun disque.</p>
-                  <% end %>
+                  <%end%>
                 <%end%>
-              <%end%>
-            </div>
+              </div>
+            <% else %>
+              <h4> Disque proposé par <%=@deal.sender.first_name%> </h4>
+              <br>
+              <div class="playlist-item">
+                <% @deal.deal_contents.each do |deal_content| %>
+                  <%=link_to user_library_path(deal_content.sender_library_id), :style => "color: black" do %>
+                    <% if deal_content.sender_library_id.present? %>
+                      <% sender_library = UserLibrary.find(deal_content.sender_library_id)%>
+                      <% if sender_library.present? %>
+                        <% if sender_library.disc.cover_picture != nil %>
+                          <%=image_tag sender_library.disc.cover_picture %>
+                        <% else %>
+                          <%=image_tag "icons/disc_red.png"%>
+                        <% end %>
+                        <% sender_disc = Disc.find(sender_library.disc_id)%>
+                        <%= sender_disc.title%>
+                        <br>
+                        <br>
+                      <% else %>
+                        <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+                      <% end %>
+                    <% else %>
+                      <p><%=@deal.sender.first_name%> n'a encore proposé aucun disque.</p>
+                    <% end %>
+                  <%end%>
+                <%end%>
+              </div>
+            <% end %>
+
           </div>
         </div>
       </div>
