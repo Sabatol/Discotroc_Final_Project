@@ -14,12 +14,12 @@
         <%= form_tag url_for(action: 'create'), method: "post" do %>
           <div class="form-input">
             <%= label_tag 'Artiste' %> <br>
-            <%=select_tag "artist_id", options_from_collection_for_select(Disc.all, :id, :artist), :class => "browser-default custom-select" %>
+            <%=select_tag "artist_id", options_from_collection_for_select(Disc.all.drop(1), :id, :artist), :class => "browser-default custom-select" %>
           </div>
           <br>
           <div class="form-input">
             <%= label_tag 'Disque' %> <br>
-            <%=select_tag "disc_id", options_from_collection_for_select(Disc.all, :id, :title), :class => "browser-default custom-select" %>
+            <%=select_tag "disc_id", options_from_collection_for_select(Disc.all.drop(1), :id, :title), :class => "browser-default custom-select" %>
           </div>
           <br>
           <h6> Vous ne trouvez pas le disque ? <%=link_to "Ajoutez-le", new_disc_path, :style => "color: #cca956;"%></h6>
