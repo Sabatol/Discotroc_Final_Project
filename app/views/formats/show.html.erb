@@ -13,5 +13,11 @@
 <%= link_to "Modifier", edit_genre_path(@genre.id)%>
 <%end%>
 <br>
-<%= link_to "Retour aux genres", genres_path%>
+<%= link_to "Retour aux formats", formats_path%>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+					<br>
+					<br>
 </div>

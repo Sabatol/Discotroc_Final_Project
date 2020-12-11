@@ -26,19 +26,20 @@
                        <br>
              <div class="form-input">
                 <%= label_tag 'Contenu de votre article' %>
-               <%= text_area_tag 'content', "", :size =>"70x10" %>
+               <%= text_area_tag 'content'%>
              </div>
              <br>
              <div class="text-center">
-					<%= submit_tag "Créer un article", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
-              </div>
+			    <%= submit_tag "Créer un article", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+             </div>
               <%end%>
-              <br>
-              <br>
-					<div class="copy-right text-center">
-                  <%= link_to "Revenir sur les articles", articles_path%><br>
-						<%= link_to "Revenir à l'accueil", root_path%>
-					 </div>
+    <br>
+    <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+					<br>
+					<br>
 				</div>
 
 			</div>

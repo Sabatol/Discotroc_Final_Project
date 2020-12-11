@@ -38,11 +38,12 @@
           <div class="text-center">
             <%= button_to 'Supprimer', user_user_library_path(@edit_user_library.id), method: :delete, data: { confirm: 'Tu est sur ?' }, class: "site-btn text-center", style: "padding: 10px 20px" %>
           </div>
-          <br>
-          <br>
-          <div class="copy-right text-center">
-            <%= link_to "Revenir à l'accueil", root_path%> <br>
-          </div>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+					<br>
+					<br>
         </div>
       </div>
     </div>
