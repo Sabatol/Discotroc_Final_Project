@@ -8,7 +8,7 @@
             <div class="footer-widget">
               <h2>À propos</h2>
               <ul>
-                <li><%=link_to "Notre Projet", root_path%></li>
+                <li><%=link_to "Notre Projet", "https://www.youtube.com/watch?v=d7RWIcOcHgg&ab_channel=LesarchivesdelaRTS", target: "_blank"%></li>
                 <li><%=link_to "Contactez-nous", new_message_path%></li>
               </ul>
             </div>
@@ -33,21 +33,19 @@
       <div class="col-xl-6 col-lg-5 order-lg-1">
         <%= image_tag "logo-white-sm.png"%>
         <div class="copyright">
-          Copyright &copy;<script>
-            document.write(new Date().getFullYear());
-          </script> Tous droits pas reservés | Ce projet aurait pu être fait avec <i class="fa fa-heart-o" aria-hidden="true"></i> par <%=link_to "des gens", "https://www.pixiz.com/frame/looser-2614421"%>
+          Copyright &copy;2020 Tous droits pas reservés | Ce projet aurait pu être fait avec <i class="fa fa-heart-o" aria-hidden="true"></i> par <%=link_to "des gens", "https://www.pixiz.com/frame/looser-2614421"%>
         </div>
         <div class="social-links">
-          <%=link_to "www.instagram.com" do %>
+          <%=link_to "https://www.instagram.com/the_hacking_project/?hl=fr", target: "_blank" do %>
             <i class="fa fa-instagram"></i>
           <%end%>
-          <%=link_to "www.instagram.com" do %>
+          <%=link_to "https://www.facebook.com/thehackingproject/", target: "_blank" do %>
             <i class="fa fa-facebook"></i>
           <%end%>
-          <%=link_to "www.instagram.com" do %>
+          <%=link_to "https://twitter.com/the_hacking_pro?lang=fr", target: "_blank" do %>
             <i class="fa fa-twitter"></i>
           <%end%>
-          <%=link_to "www.instagram.com" do %>
+          <%=link_to "https://www.youtube.com/channel/UCFWng8WJ-Xaee2fs0a4dcvQ", target: "_blank" do %>
             <i class="fa fa-youtube"></i>
           <%end%>
         </div>

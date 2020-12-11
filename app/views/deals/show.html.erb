@@ -26,9 +26,6 @@
           <div class="mix col-lg-3 col-md-4 col-sm-6 genres">
             <h4> Votre disque </h4>
             <br>
-            <% if current_user.id == @deal.receiver.id%>
-            <% else %>
-            <% end %>
             <div class="playlist-item">
               <% @deal.deal_contents.each do |deal_content| %>
                 <% if current_user.id == @deal.sender.id%>
