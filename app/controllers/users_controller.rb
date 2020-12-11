@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     def update
         @edit_user = User.find(params[:id])
-        post_params = params.require(:user).permit(:first_name, :last_name, :address, :additional_address, :city, :zipcode, :country, :description, :avatar)
+        post_params = params.require(:user).permit(:first_name, :last_name, :address, :additional_address, :city, :zipcode, :country, :description, :avatar, :is_admin)
         @edit_user.update(post_params)
         if user_completed?(@edit_user)
             @edit_user.update_attributes(completed: true)

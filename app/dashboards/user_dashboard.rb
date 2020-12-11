@@ -25,7 +25,6 @@ class UserDashboard < Administrate::BaseDashboard
     city: Field::String,
     country: Field::String,
     description: Field::Text,
-    is_admin?: Field::Boolean,
     email: Field::String,
     encrypted_password: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -67,7 +66,6 @@ class UserDashboard < Administrate::BaseDashboard
   city
   country
   description
-  is_admin?
   email
   encrypted_password
   reset_password_sent_at
@@ -97,7 +95,6 @@ class UserDashboard < Administrate::BaseDashboard
   city
   country
   description
-  is_admin?
   email
   encrypted_password
   reset_password_sent_at
