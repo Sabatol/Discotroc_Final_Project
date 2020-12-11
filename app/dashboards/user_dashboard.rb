@@ -21,6 +21,7 @@ class UserDashboard < Administrate::BaseDashboard # on pages throughout the dash
     description: Field::Text,
     email: Field::String,
     password: Field::String,
+    password_confirmation: Field::String,
     encrypted_password: Field::String,
     reset_password_sent_at: Field::DateTime,
     remember_created_at: Field::DateTime,
@@ -63,6 +64,7 @@ class UserDashboard < Administrate::BaseDashboard # on pages throughout the dash
     description
     email
     password
+    password_confirmation
     encrypted_password
     reset_password_sent_at
     remember_created_at
@@ -93,6 +95,7 @@ class UserDashboard < Administrate::BaseDashboard # on pages throughout the dash
     description
     email
     password
+    password_confirmation
     encrypted_password
     reset_password_sent_at
     remember_created_at

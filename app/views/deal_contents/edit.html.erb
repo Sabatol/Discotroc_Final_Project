@@ -1,9 +1,8 @@
 <head>
-	<title>Discotroc - Contenus du troc</title>
-	<meta name="description" content="Discotroc - Contenus du Troc">
-
-	<meta name="keywords"	content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques" />
-<%= render 'head'%>
+  <title>Discotroc - Contenus du troc</title>
+  <meta name="description" content="Discotroc - Contenus du Troc">
+  <meta name="keywords"	content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques" />
+  <%= render 'head'%>
 </head>
 <div class="text-center">
   <%= form_for @edit_deal_content do |f| %>
@@ -21,16 +20,16 @@
   <% end %>
   <br>
   <%= link_to 'Supprimer', deal_content_path(@edit_deal_content.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
-<div>
-<br>
-<br>
-<br>
-<br>
-<br>
-   <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
-					<br>
-					<br>
-
+  <div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="copy-right text-center">
+      <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+       <br>
+      <%= link_to "Revenir à l'accueil", root_path%>
+      <br>
+      <br>

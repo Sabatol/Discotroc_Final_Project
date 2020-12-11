@@ -1,49 +1,47 @@
 <head>
-	<title>Discotroc - Coin Blog</title>
-	<meta name="description" content="Discotroc | Articles">
-	<meta name="keywords" content="blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques">
-
-<%=render 'head'%>
+  <title>Discotroc - Coin Blog</title>
+  <meta name="description" content="Discotroc | Articles">
+  <meta name="keywords" content="blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques">
+  <%=render 'head'%>
 </head>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-	
-	<!-- Blog section -->
-	<section class="blog-section spad">
-		<div class="container">
-        <h2 class="text-center"> Le Coin Blogs </h2>
-        <br>
-        <div class="text-center">
-        <%= link_to "Ecrire un article", new_article_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<!-- Blog section -->
+<section class="blog-section spad">
+  <div class="container">
+    <h2 class="text-center"> Le Coin Blogs </h2>
+    <br>
+    <div class="text-center">
+      <%= link_to "Ecrire un article", new_article_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+    </div>
+    <br>
+    <br>
+    <!-- Blog post -->
+    <% @articles.each do |article| %>
+      <div class="blog-item">
+        <%= link_to article_path(article.id) do %>
+          <%=image_tag "blog/1.jpg"%>
+          <div class="blog-date" style="color: black"><%= article.created_at.strftime('%d-%d-%Y') %></div>
+          <h3><%=article.title%></h3>
+          <div class="blog-meta">
+            <p>Par <%=article.user.first_name%></p>
+          </div>
+          <p><%= truncate(article.content, length: 100)%></p>
         </div>
-        <br>
-        <br>
-			<!-- Blog post -->
-			<% @articles.each do |article| %>
-            <div class="blog-item">
-            <%= link_to article_path(article.id) do %>
-                <%=image_tag "blog/1.jpg"%>
-				<div class="blog-date" style="color: black"><%= article.created_at.strftime('%d-%d-%Y') %></div>
-				<h3><%=article.title%></h3>
-				<div class="blog-meta"><p>Par <%=article.user.first_name%></p></div>
-				<p><%= truncate(article.content, length: 100)%></p>
-			</div>
-            <%end%>
-			<!-- Blog post -->
-            <%end%>
-		</div>
-		
-	   <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
-					<br>
-					<br>
-	</section>
-
-		<br>
-	<!-- Blog section end -->
+      <%end%>
+      <!-- Blog post -->
+    <%end%>
+  </div>
+  <br>
+  <div class="copy-right text-center">
+    <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+     <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+    <br>
+    <br>
+  </section>
+  <br>
+  <!-- Blog section end -->
 </html>

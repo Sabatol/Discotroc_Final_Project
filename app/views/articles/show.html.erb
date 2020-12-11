@@ -1,41 +1,35 @@
-
 <head>
-	<title>Discotroc - <%=@article.title%></title>
-	<meta name="description" content="Discotroc - <%=@article.title%>">
-	<meta name="keywords" content="Article, Articles, Blogs, Blog, Musique, Disque, Vinyl, Partage, Actus">
-<%=render 'head'%>
-
+  <title>Discotroc - <%=@article.title%></title>
+  <meta name="description" content="Discotroc - <%=@article.title%>">
+  <meta name="keywords" content="Article, Articles, Blogs, Blog, Musique, Disque, Vinyl, Partage, Actus">
+  <%=render 'head'%>
 </head>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-	
-	<!-- Blog section -->
-	<section class="blog-section spad">
-		<div class="container">
-			<!-- Blog post -->
-
-            <div class="blog-item">
-           
-                <%=image_tag "blog/1.jpg"%>
-   
-  <br> 
-				<div class="blog-date" style="color: black"><%= @article.created_at.strftime('%d-%d-%Y') %></div>
-				<h3><%=@article.title%></h3>
-				<div class="blog-meta"><p>Par <%=@article.user.first_name%></p></div>
-				<p><%= @article.content%></p>
-			</div>
-  <% if current_user.is_admin? == true || current_user == @article.user%>
-    <%= link_to "Modifier", edit_article_path(@article.id), class: "site-btn text-center", style: "padding: 10px 20px; background: grey; color: white"%> <%= link_to "Supprimer", @article, method: :delete, data: {confirm: "Es-tu certain de vouloir supprimer cet article ?"}, class: "site-btn text-center", style: "padding: 10px 20px; background: #B22222; color: white"%>
-  <%end%>
-  <br>  <br> 
- <%= link_to "Retour aux articles", articles_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
-  <%= link_to "Retour à l'accueil", root_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
-			<!-- Blog post -->
-
-		</div>
-	</section>
-	<!-- Blog section end -->
-
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<!-- Blog section -->
+<section class="blog-section spad">
+  <div class="container">
+    <!-- Blog post -->
+    <div class="blog-item">
+      <%=image_tag "blog/1.jpg"%>
+      <br>
+      <div class="blog-date" style="color: black"><%= @article.created_at.strftime('%d-%d-%Y') %></div>
+      <h3><%=@article.title%></h3>
+      <div class="blog-meta">
+        <p>Par <%=@article.user.first_name%></p>
+      </div>
+      <p><%= @article.content%></p>
+    </div>
+    <% if current_user.is_admin? == true || current_user == @article.user%>
+      <%= link_to "Modifier", edit_article_path(@article.id), class: "site-btn text-center", style: "padding: 10px 20px; background: grey; color: white"%> <%= link_to "Supprimer", @article, method: :delete, data: {confirm: "Es-tu certain de vouloir supprimer cet article ?"}, class: "site-btn text-center", style: "padding: 10px 20px; background: #B22222; color: white"%>
+    <%end%>
+    <br>
+      <br>
+    <%= link_to "Retour aux articles", articles_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+    <%= link_to "Retour à l'accueil", root_path, class: "site-btn text-center", style: "padding: 10px 20px" %>
+    <!-- Blog post -->
+  </div>
+</section>
+<!-- Blog section end -->
