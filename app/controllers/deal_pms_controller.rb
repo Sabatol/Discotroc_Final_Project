@@ -2,18 +2,6 @@ class DealPmsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_completed?
 
-  def index
-    @deal_pms = DealPm.all
-  end
-
-  def show
-    @deal_pm = DealPm.find(params[:id])
-  end
-
-  def new
-    @new_deal_pm = DealPm.new
-  end
-
   def create
     @new_deal_pm = DealPm.new(deal_id: params[:deal_id], pm_author_id: params[:pm_author_id], content: params[:content])
     if @new_deal_pm.save
@@ -23,10 +11,6 @@ class DealPmsController < ApplicationController
       flash[:notice_bad] = "Le message n'a pas pu être envoyé."
       render 'new'
     end
-  end
-
-  def edit
-    @edit_deal_pm = DealPm.find(params[:id])
   end
 
   def update
