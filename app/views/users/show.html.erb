@@ -143,7 +143,7 @@
                       <% i = deal.deal_contents.pluck(:sender_library_id)%>
                       <% a = UserLibrary.find_by(id: i) %>
                       <% if a.disc_id != 1 %>
-                        <%= link_to user_library_path(a.id) do %>
+                        <%= link_to user_library_deal_path(a.id, deal.id) do %>
                           <div class="song-item">
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-7">
@@ -172,7 +172,7 @@
                       <% i2 = deal2.deal_contents.pluck(:receiver_library_id)%>
                       <% a2 = UserLibrary.find_by(id: i2) %>
                       <% if a2.disc_id != 1 %>
-                        <%= link_to user_library_path(a2.id) do %>
+                        <%= link_to user_library_deal_path(a2.id, deal2.id) do %>
                           <div class="song-item">
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-7">
