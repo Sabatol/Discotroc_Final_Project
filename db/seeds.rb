@@ -34,8 +34,8 @@ Disc.create(
   label: 'THP prod',
   country: 'France',
   artist: 'DiscoTroc',
-  genre: 'DiscoTroc',
-  format: 'DiscoTroc'
+  genre: Genre.all.sample,
+  format: Format.all.sample
 )
 
 10.times do
@@ -50,7 +50,10 @@ Disc.create(
   )
 end
 
-User.create(
+
+users = []
+
+users << User.create(
   first_name: 'DiscoTroc',
   last_name: 'Admin',
   email: 'discotroc@yopmail.com',
@@ -65,7 +68,7 @@ User.create(
   completed: true,
   is_admin?: true
 )
-9.times do
+users << 9.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -81,6 +84,13 @@ User.create(
     completed: true,
     is_admin?: false
   )
+end
+
+# Create first user_library alpha_disc for each user
+i = 0
+10.times do 
+  UserLibrary.create(disc_id: 1, description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
+  i += 1
 end
 
 i = 0
