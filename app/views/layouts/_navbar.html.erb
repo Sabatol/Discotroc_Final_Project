@@ -6,6 +6,9 @@
     <span>|</span>
     <div class="user-panel">
       <% if user_signed_in? %>
+        <% if current_user.is_admin? %>
+        <%= link_to "Admin", admin_root_path, class: "btn btn-danger" %>
+        <% end %>
         <%= link_to "Mon profil", user_path(current_user.id), class: "login" %>
         <%= link_to "Se déconnecter", destroy_session_path(:user), class: "register", :method => :get %>
       <% else %>

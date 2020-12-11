@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :pm_authors, class_name: 'DealPm', foreign_key: 'pm_author_id'
 
   has_many :articles
-  has_many :playlists, dependent: :destroy
 
   has_many :comments_receiver, class_name: 'Comment', foreign_key: 'comment_receiver_id', dependent: :destroy
   has_many :comments_sender, class_name: 'Comment', foreign_key: 'comment_sender_id'
