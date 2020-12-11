@@ -1,57 +1,51 @@
-<head>
-	<title>Discotroc - Edition Troc</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords"
-		content="Créer un disque" />
-
-</head>
-
+   <head>
+    <title>Discotroc - Modification Troc </title>
+    <meta name="description" content="Discs Index">
+    <meta name="keywords" content="music, html">>
+<%= render 'head'%>
+  </head>
 <body>
-	<!-- /login-section -->
-	<section class="w3l-login-6">
-		<div class="login-hny">
-			<div class="form-content">
-				<div class="form-left" style="margin: 0 auto;">
-					<div class="middle text-center">
-          <% if @edit_user_library.disc.cover_picture %>
-          <%=image_tag @edit_user_library.disc.cover_picture, style:"width: 200px; height: 200px;"%>
-          <% else %>
-          <%=image_tag "icons/disc_red.png", style:"width: 200px; height: 200px;"%>
-          <%end%>
-          <br><br>
-						<h4 class="text-center">Modifier <br><%= @edit_user_library.disc.title %> </h4>
+  <!-- /login-section -->
+  <section class="w3l-login-6">
+    <div class="login-hny">
+      <div class="form-content">
+        <div class="form-left" style="margin: 0 auto;">
+          <div class="middle text-center">
+            <% if @edit_user_library.disc.cover_picture %>
+              <%=image_tag @edit_user_library.disc.cover_picture, style:"width: 200px; height: 200px;"%>
+            <% else %>
+              <%=image_tag "icons/disc_red.png", style:"width: 200px; height: 200px;"%>
+            <%end%>
             <br>
-						<p class="text-center">Il ne vous restera plus qu'à l'ajouter dans votre librairie.</p>
-					</div>
-           <%= form_tag user_user_library_path(action: 'create'), method: "post" do %>
-							<div class="form-input">
-								<%= label_tag 'Description' %>
-							<%= text_field_tag 'description', @edit_user_library.description%>
-							</div>
-                    <%= hidden_field_tag 'disc_id', @edit_user_library.disc_id %> <br>
-      <%= hidden_field_tag 'user_id', current_user.id %>
-
-             <div class="text-center">
-							<%= submit_tag "Modifier le disque", class: "site-btn text-center", style: "padding: 10px 20px"  %>
-              </div>
-              <%end%>
-              <br>
-              <div class="text-center">
-              <%= button_to 'Supprimer', user_user_library_path(@edit_user_library.id), method: :delete, data: { confirm: 'Tu est sur ?' }, class: "site-btn text-center", style: "padding: 10px 20px" %> 
-              </div>
-              <br>
-              
-              <br>
-					<div class="copy-right text-center">
-						<%= link_to "Revenir à l'accueil", root_path%> <br> 
-					 </div>
-				</div>
-				
-			</div>
-			
-		</div>
-	</section>
-	<!-- //login-section -->
+            <br>
+            <h4 class="text-center">Modifier <br>
+              <%= @edit_user_library.disc.title %> </h4>
+            <br>
+            <p class="text-center">Il ne vous restera plus qu'à l'ajouter dans votre librairie.</p>
+          </div>
+          <%= form_tag user_user_library_path(action: 'create'), method: "post" do %>
+            <div class="form-input">
+              <%= label_tag 'Description' %>
+              <%= text_field_tag 'description', @edit_user_library.description%>
+            </div>
+            <%= hidden_field_tag 'disc_id', @edit_user_library.disc_id %> <br>
+            <%= hidden_field_tag 'user_id', current_user.id %>
+            <div class="text-center">
+              <%= submit_tag "Modifier le disque", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+            </div>
+          <%end%>
+          <br>
+          <div class="text-center">
+            <%= button_to 'Supprimer', user_user_library_path(@edit_user_library.id), method: :delete, data: { confirm: 'Tu est sur ?' }, class: "site-btn text-center", style: "padding: 10px 20px" %>
+          </div>
+          <br>
+          <br>
+          <div class="copy-right text-center">
+            <%= link_to "Revenir à l'accueil", root_path%> <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //login-section -->
 </body>

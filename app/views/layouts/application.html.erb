@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
- <%= favicon_link_tag asset_path('favicon.png') %>
-
-
-
-
- <script src="https://kit.fontawesome.com/8f239ccbef.js" crossorigin="anonymous"></script>
+    <%= favicon_link_tag asset_path('favicon.png') %>
+    <script src="https://kit.fontawesome.com/8f239ccbef.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-   
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag "application", async: true %>
-    
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
-  <body>
-      <%= render 'layouts/navbar' %>
+  <body class="mh-100">
+    <%= render 'layouts/navbar' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
-    
   </body>
 </html>

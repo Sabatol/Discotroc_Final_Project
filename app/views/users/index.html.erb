@@ -1,21 +1,9 @@
 <head>
-	<title>Discotroc | Utilisateurs</title>
-	<meta charset="UTF-8">
+	<title>Discotroc - Utilisateurs</title>
 	<meta name="description" content="Discotroc | Utilisateurs">
 	<meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 
-	<!-- Google font -->
-<%stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"%>
- 
-
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
+ <%= render 'head'%>
 </head>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -27,7 +15,7 @@
 		<div class="container-fluid">
 			<div class="section-title">
 				<h2>Utilisateurs</h2>
-			</div>                                     
+			</div>
 			<div class="clearfix"></div>
 			<div class="row playlist-area">
             <%@users.each do |user|%>
@@ -37,7 +25,7 @@
                         <%= image_tag "playlist/2.jpg"%>
                         <% if user.first_name == nil%>
                         <h5> Prénom non renseigné </h5>
-                        
+
                         <% elsif user.deals_sender.count == 0 %>
                         <i class="fas fa-crown" style="color: white"></i>
                         <h5><%= user.first_name%> <%= user.last_name%></h5>
@@ -56,7 +44,7 @@
                     <% end %>
                     <div class="song-details-box text-center">
 						<ul>
-							<li><strong>Inscris le : </strong><%=user.created_at.strftime('%d-%m-%Y')%></li>
+							<li><strong>Inscrit(e) depuis le : </strong><%=user.created_at.strftime('%d-%m-%Y')%></li>
                             <% if user.deals_sender.count == 1 || user.deals_sender.count == 0%>
                             <li><strong>Disque échangé: </strong><%=user.deals_sender.count%></li>
                             <% else %>
@@ -75,5 +63,3 @@
 	<p style="text-align: center"><i class="fas fa-crown" style="color: brown"></i>* signifie que l'utilisateur à 1 ou 2 disques échangés</p>
 	<p style="text-align: center"><i class="fas fa-crown" style="color: grey"></i>* signifie que l'utilisateur à de 3 à 6 disques échangés</p>
 	<p style="text-align: center"><i class="fas fa-crown" style="color: #ffd369"></i>* signifie que l'utilisateur à 7 disques échangés ou plus</p>
-
-

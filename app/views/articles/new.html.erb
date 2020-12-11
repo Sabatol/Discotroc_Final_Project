@@ -1,10 +1,8 @@
 <head>
 	<title>Discotroc - Ecrire un article</title>
-	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
 	<meta name="keywords" content="Article, Articles, Blogs, Blog, Musique, Disque, Vinyl, Partage, Actus" />
-
+<%= render 'head'%>
 </head>
 	<!-- /login-section -->
 	<section class="w3l-login-6">
@@ -15,7 +13,7 @@
           <i class="fas fa-feather-alt fa-4x"></i>
           <br>
           <br>
-						<h4 class="text-center">Ecrire un article</h4>
+						<h4 class="text-center">Écrire un article</h4>
 						<p class="text-center">Partagez vos coups de coeur musicaux.</p>
 					</div>
                <br>
@@ -27,7 +25,7 @@
                        <%= hidden_field_tag 'user', current_user.id %>
                        <br>
              <div class="form-input">
-                <%= label_tag 'Contenu de votre article' %> 
+                <%= label_tag 'Contenu de votre article' %>
                <%= text_area_tag 'content', "", :size =>"70x10" %>
              </div>
              <br>
@@ -39,12 +37,12 @@
               <br>
 					<div class="copy-right text-center">
                   <%= link_to "Revenir sur les articles", articles_path%><br>
-						<%= link_to "Revenir à l'accueil", root_path%> 
+						<%= link_to "Revenir à l'accueil", root_path%>
 					 </div>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 	</section>
 	<!-- //login-section -->

@@ -1,14 +1,8 @@
   <head>
     <title>Discotroc - Votre Troc</title>
-    <meta charset="UTF-8">
     <meta name="description" content="Discotroc Deal Show">
     <meta name="keywords" content="music, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"%>
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<%=render 'head'%>
   </head>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -18,7 +12,7 @@
     <section class="playlist-section spad">
       <div class="container-fluid">
         <div class="section-title">
-          <h2>Échange nº<%= @deal.id%></h2>
+          <h2>Troc nº<%= @deal.id%></h2>
         </div>
         <div class="clearfix"></div>
         <div class="row my-4">
@@ -111,23 +105,23 @@
             <div class="playlist-item">
               <% if current_user.id == @deal.sender_id%>
                 <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Statut   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Statut   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Statut   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <%else %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Statut   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% end %>
               <% else %>
                 <% if @deal.sender_ok? == true && @deal.receiver_ok? == false %>
-                  <h5><i class="fas fa-times" style="color: red"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"></i> |   Statut   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <% elsif @deal.sender_ok? == false && @deal.receiver_ok? == true %>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-times" style="color: red"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Statut   | <i class="fas fa-times" style="color: red"></i></h5>
                 <% elsif @deal.sender_ok? == true && @deal.receiver_ok? == true%>
-                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Status   | <i class="fas fa-check-square" style="color: green"></i></h5>
+                  <h5><i class="fas fa-check-square" style="color: green"></i> |   Statut   | <i class="fas fa-check-square" style="color: green"></i></h5>
                 <%else %>
-                  <h5><i class="fas fa-times" style="color: red"> |   Status   | <i class="fas fa-times" style="color: red"></i></i></h5>
+                  <h5><i class="fas fa-times" style="color: red"> |   Statut   | <i class="fas fa-times" style="color: red"></i></i></h5>
                 <% end %>
               <% end %>
               <br>
@@ -207,13 +201,13 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="song-details-box">
-              <h3>Info de l'échange</h3>
+              <h3>Info du troc</h3>
               <ul>
-                <li><strong>Crée le :</strong><span><%=@deal.created_at.strftime('%d-%m-%Y')%></span></li>
+                <li><strong>Créé le :</strong><span><%=@deal.created_at.strftime('%d-%m-%Y')%></span></li>
                 <% if @deal.receiver_ok? == true && @deal.sender_ok? == true %>
-                  <li><strong>Terminée:</strong><i class="fas fa-check-square"></i></li>
+                  <li><strong>Terminé:</strong><i class="fas fa-check-square"></i></li>
                 <%else%>
-                  <li><strong>Terminée:</strong>Non.</li>
+                  <li><strong>Terminé:</strong>Non.</li>
                 <%end%>
               </ul>
             </div>
