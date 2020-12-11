@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :deals, only: [:index], path: 'troc'
 
   resources :discs, path: 'disques'
-  resources :genres
+  resources :genres, only: [:create, :update, :destroy]
   resources :formats
   resources :articles
   resources :messages, only: [:new, :create], path: 'contactez-nous'
