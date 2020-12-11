@@ -21,11 +21,11 @@ class DealContentsController < ApplicationController
     @new_deal_content = DealContent.new(sender_library_id: params[:sender_library_id], receiver_library_id: @receiver_library.id, deal_id: @deal.id)
     if @new_deal_content.save
       redirect_to user_library_deal_path(params[:user_library_id], params[:deal_id])
-      flash[:notice_good] = "Le Content Deal a bien été créer"
+      flash[:notice_good] = "La proposition d'échange a bien été créée."
 
     else
       render 'new'
-      flash[:notice_bad] = "Le Content Deal n'a pas été créer"
+      flash[:notice_bad] = "La proposition d'échange n'a pas été créée."
     end
   end
 

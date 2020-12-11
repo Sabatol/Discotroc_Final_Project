@@ -18,9 +18,9 @@ class FormatsController < ApplicationController
       @new_format = Format.new(name: params[:name])
       if @new_format.save
         redirect_to formats_path
-        flash[:notice_good] = "Nouveau format Crée"
+        flash[:notice_good] = "Un nouveau format a été ajouté !"
       else
-        flash[:notice_bad] = "Le format n'as pas été créer"
+        flash[:notice_bad] = "Le format n'a pas pu être ajouté."
         render 'new'
       end
     end

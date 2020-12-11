@@ -1,14 +1,14 @@
 module UserLibrariesHelper
 
 def owner_disc
-owner_discs = UserLibrary.where(user_id: current_user.id)
-owner_disc = Disc.where(id: owner_discs.ids)
+  owner_discs = UserLibrary.where(user_id: current_user.id)
+  owner_disc = Disc.where(id: owner_discs.ids)
 
   return owner_disc
 end
 
 def all_genre
-@filter_genre = Genre.all
+  @filter_genre = Genre.all
 end
 
 end

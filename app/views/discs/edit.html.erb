@@ -1,4 +1,16 @@
-<div class="container text-center my-4">
+
+  <head>
+    <title>Discotroc - Modification Disque </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="SolMusic HTML Template">
+    <meta name="keywords" content="music, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head><div class="container text-center my-4">
 
   <% if user_signed_in? %>
     <% if current_user.is_admin? == true %>
@@ -34,13 +46,13 @@
 
       <%= form_for @edit_disc do |f| %>
         <%= f.hidden_field :title, placeholder: 'Le titre de lalbum', autocomplete: 'off', value: @edit_disc.title %>
-        <%= f.hidden_field :artist, placeholder: 'Artist', autocomplete: 'off', value: @edit_disc.artist%>
+        <%= f.hidden_field :artist, placeholder: 'Artiste', autocomplete: 'off', value: @edit_disc.artist%>
         <%= f.hidden_field :release, placeholder: 'Année de sortie', autocomplete: 'off', value: @edit_disc.release%>
         <%= f.hidden_field :label, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.label%>
-        <%= f.hidden_field :format_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.format_id%>
-        <%= f.hidden_field :genre_id, placeholder: 'Label', autocomplete: 'off', value: @edit_disc.genre_id%>
-        <%= f.hidden_field :country, placeholder: 'Country', autocomplete: 'off', value: @edit_disc.country%>
-      
+        <%= f.hidden_field :format_id, placeholder: 'Format', autocomplete: 'off', value: @edit_disc.format_id%>
+        <%= f.hidden_field :genre_id, placeholder: 'Genre', autocomplete: 'off', value: @edit_disc.genre_id%>
+        <%= f.hidden_field :country, placeholder: 'Pays', autocomplete: 'off', value: @edit_disc.country%>
+
         <%  @search = @auth_wrapper.search(@edit_disc.artist + " " + @edit_disc.title, type: :release)%>
         <% if @search.results.first != nil%>
         <% cover_picture = @search.results.first.cover_image%>

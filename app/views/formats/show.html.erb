@@ -1,12 +1,23 @@
-<center>
+  <head>
+    <title>Discotroc - Format </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Discs Index">
+    <meta name="keywords" content="music, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<div class="text-center">
 <p> Genre N° <%= @genre.id%>
 <hr style="width: 5%; border: 1px solid black;" >
 <p> Nom </p> <p><%=@genre.name%></p>
 <hr style="width: 5%; border: 1px solid black;" >
-<h6> Disque Rock </h6>
 <% if current_user.is_admin? == true %>
 <%= link_to "Modifier", edit_genre_path(@genre.id)%>
 <%end%>
 <br>
 <%= link_to "Retour aux genres", genres_path%>
-</center>
+</div>

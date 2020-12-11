@@ -1,14 +1,14 @@
 <head>
-	<title>Discotroc | Créer un disque</title>
+	<title>Discotroc - Blog</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Discotroc - Blog">
 	<meta charset="UTF-8" />
-	<meta name="keywords"
-		content="Créer un disque" />
+	<meta name="keywords"	content="blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques" />
 
 </head>
 
-<body>
+
 	<!-- /login-section -->
 	<section class="w3l-login-6">
 		<div class="login-hny">
@@ -18,8 +18,8 @@
           <i class="fas fa-feather-alt fa-4x"></i>
           <br>
           <br>
-						<h4 class="text-center">Créer un article</h4>
-						<p class="text-center">Partagez vos coup de coeurs musicaux.</p>
+						<h4 class="text-center">Écrire un article</h4>
+						<p class="text-center">Partagez vos coups de coeur musicaux.</p>
 					</div>
                <br>
            <%= form_for @article do |f| %>
@@ -30,8 +30,8 @@
                        <%= hidden_field_tag 'user', current_user.id %>
                        <br>
              <div class="form-input">
-                <%= label_tag 'Contenu de votre article' %> 
-               <%= f.text_area :content%>
+                <%= label_tag 'Contenu de votre article' %>
+               <%= f.text_area :content, :size =>"70x10" %>
              </div>
              <br>
              <div class="text-center">
@@ -42,13 +42,16 @@
               <br>
 					<div class="copy-right text-center">
                   <%= link_to "Revenir sur les articles", articles_path%><br>
-						<%= link_to "Revenir à l'accueil", root_path%> 
+						<%= link_to "Revenir à l'accueil", root_path%>
 					 </div>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 	</section>
 	<!-- //login-section -->
+<<<<<<< HEAD
 </body>
+=======
+>>>>>>> main

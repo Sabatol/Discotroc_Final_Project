@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
   root 'home#index'
-  devise_for :users
+  devise_for :users, path: 'utilisateur'
 
-  resources :users do
-    resources :user_libraries, except: %i[index show]
+  resources :users, path: 'utilisateur' do
+    resources :user_libraries, except: %i[index show], path: 'bibliothèques'
+
     resources :avatars, only: %i[create]
   end
 
-  resources :user_libraries, only: %i[index show] do
-    resources :deals, except: %i[index] do
-      resources :comments, only: %i[new create destroy]
-      resources :deal_contents
-      resources :deal_pms
+  resources :user_libraries, only: %i[index show], path: 'bibliothèques' do
+    resources :deals, except: %i[index], path: 'Echange' do
+      resources :comments, only: %i[new create destroy], path: 'bibliothèques'
+      resources :deal_contents, path: 'proposition'
+      resources :deal_pms, path: 'message-privé'
     end
   end
-  resources :deals, only: %i[index]
+  resources :deals, only: %i[index], path: 'troc'
 
-  resources :discs
+  resources :discs, path: 'disques'
   resources :genres
   resources :formats
   resources :articles
-  resources :messages, only: %i[new create]
+  resources :messages, only: %i[new create], path: 'contactez-nous'
 end

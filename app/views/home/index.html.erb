@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="zxx">
   <head>
     <title>Discotroc</title>
     <meta charset="UTF-8">
     <meta name="homepage" content="home page discotroc">
-    <meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
+    <meta name="keywords" content="troc, vinyls, CD, LaserDisc, blog, blogs, articles, articles, news, musique, musiques, playlists, partage, disques">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google font -->
-    <%stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap'%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
     <% if flash[:alert] %>
       <div class="alert alert-danger mb-0">
         <% if user_signed_in? %>
@@ -47,7 +44,7 @@
               <div class="col-lg-6">
                 <div class="hs-text">
                   <h2>Les <span>disques</span> ça s'échange.</h2>
-                  <p>Vos gout musicaux ont changé et vos vieux disques ne vous intéressent plus ? Vous pourriez les echanger... <br>
+                  <p>Vos goûts musicaux ont changé et vos vieux disques ne vous intéressent plus ? Vous pourriez les échanger... <br>
                     C'est exactement ce que nous vous proposons !</p>
                   <% if user_signed_in? %>
                     <%= link_to "Parcourir les disques", discs_path, class: "site-btn"%>
@@ -105,7 +102,7 @@
               <div class="hi-icon">
                 <%= image_tag "icons/brain.png"%>
               </div>
-              <h4>Créez un compte</h4>
+              <h4>Créer un compte</h4>
               <p style="color:#0a183d">Rentrez votre adresse email, un mot de passe, et bienvenue chez Discotroc ! </p>
             </div>
           </div>
@@ -114,8 +111,8 @@
               <div class="hi-icon">
                 <%= image_tag "icons/pointer.png"%>
               </div>
-              <h4>Ajoutez un disque</h4>
-              <p style="color:#0a183d">Proposez vos anciens disques aux autres utilisateurs. Ajoutez les à votre librarie en ligne !</p>
+              <h4>Ajouter un disque</h4>
+              <p style="color:#0a183d">Proposez vos anciens disques aux autres utilisateurs. Ajoutez-les à votre collection en ligne !</p>
             </div>
           </div>
           <div class="col-md-4">
@@ -123,7 +120,7 @@
               <div class="hi-icon">
                 <%= image_tag "icons/smartphone.png"%>
               </div>
-              <h4>Echangez vos disques</h4>
+              <h4>Échangez vos disques</h4>
               <p style="color:#0a183d"> Baladez-vous dans les disques disponibles, et trouvez celui qui deviendra peut-être le vôtre.</p>
             </div>
           </div>
@@ -142,7 +139,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mx-0">
         <%@four_libraries.each do |library|%>
           <div class="col-lg-3 col-sm-6">
             <%= link_to user_library_path(library.id)  do %>
@@ -175,8 +172,8 @@
           <div class="col-lg-3 col-sm-6">
             <div class="premium-item">
               <%= image_tag "icons/disc_turquoise.png"%>
-              <h4> Ecologie </h4>
-              <p>Ne jettez plus vos disques, échangez-les ou donnez-les via notre partenaire <%=link_to "Donnons.org", "http://#{"www.donnons.org"}", :target => "_blank", :style => "color: #0a183d"%> !</p>
+              <h4>Écologie </h4>
+              <p>Ne jetez plus vos disques, échangez-les ou donnez-les via notre partenaire <%=link_to "Donnons.org", "http://#{"www.donnons.org"}", :target => "_blank", :style => "color: #0a183d"%> !</p>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
@@ -190,14 +187,14 @@
             <div class="premium-item">
               <%= image_tag "icons/disc_beige.png"%>
               <h4>Partage</h4>
-              <p>Elargissez vos horizons musicaux et profitez de disques du monde entier </p>
+              <p>Élargissez vos horizons musicaux et profitez de disques du monde entier </p>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
             <div class="premium-item">
               <%= image_tag "icons/disc_red.png"%>
               <h4>Musique</h4>
-              <p>Parce qu'au final, si vous êtes là c'est avant tout parce que vous aimez la musique !</p>
+              <p>Parce qu'au final, si vous êtes ici c'est avant tout parce que vous aimez la musique !</p>
             </div>
           </div>
         </div>

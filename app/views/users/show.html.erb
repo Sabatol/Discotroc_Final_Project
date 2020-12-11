@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx">
+
   <head>
     <% if current_user.id != nil && current_user.id == @user.id %>
       <title>Discotroc | Mon Profil </title>
@@ -7,7 +6,7 @@
       <title>Discotroc | Profil de <%=@user.first_name%> </title>
     <% end %>
     <meta charset="UTF-8">
-    <meta name="description" content="Discotroc | Profil">
+    <meta name="description" content="Profil User Show">
     <meta name="keywords" content="music, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--[if lt IE 9]>
@@ -15,7 +14,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
     <!-- Page Preloder -->
 
 
@@ -43,7 +41,7 @@
                 <%end%>
                 <% if @user.first_name == nil && @user.last_name == nil%>
                   <h4> Prénom/Nom non renseigné </h4>
-                  <p style="color: red"> Vous devez complétez votre profil pour <br>
+                  <p style="color: red"> Vous devez compléter votre profil pour <br>
                     profiter des fonctionnalités de Discotroc. </p>
                 <% elsif @user.last_name == nil %>
                   <h2> <%= @user.first_name%> </h2>
@@ -77,7 +75,7 @@
             </div>
             <div class="col-lg-4">
               <div class="songs-links">
-                <h5><strong>Inscris le: </strong> <%= @user.created_at.strftime('%d-%m-%Y')%></h5>
+                <h5><strong>Inscrit(e) depuis le: </strong> <%= @user.created_at.strftime('%d-%m-%Y')%></h5>
                 <% if @user.deals_sender.count == 0 %>
                   <i class="fas fa-crown" style="color: white"></i>
                   <h5><strong>Disque échangé: </strong> 0</h5>
@@ -142,7 +140,7 @@
         <div class="col-lg-3">
 					<div class="song-details-box">
 
-						<h3>Deals en cours</h3>
+						<h3>Trocs en cours</h3>
             <%all = Deal.where(sender_id: @user.id).without(sender_ok:true).pluck(:id)%>
               <%deal = []%>
                   <%all.each do |id|%>
@@ -334,5 +332,4 @@
       </div>
     </section>
 
-    <!-- Songs details section -->
-  </body>
+ 
