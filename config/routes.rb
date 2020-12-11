@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :user_libraries, only: [:index, :show], path: 'bibliothèques' do
-    resources :deals, except: [:index], path: 'Echange' do
+    resources :deals, except: [:index, :new, :edit], path: 'Echange' do
       resources :comments, only: [:new, :create, :destroy], path: 'bibliothèques'
       resources :deal_contents, only: [:create, :update, :destroy], path: 'proposition'
-      resources :deal_pms, path: 'message-privé'
+      resources :deal_pms, only: [:create], path: 'message-privé'
     end
   end
   resources :deals, only: [:index], path: 'troc'
