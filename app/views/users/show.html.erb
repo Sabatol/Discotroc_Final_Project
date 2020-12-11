@@ -1,18 +1,13 @@
 
   <head>
     <% if current_user.id != nil && current_user.id == @user.id %>
-      <title>Discotroc | Mon Profil </title>
+      <title>Discotroc - Mon Profil </title>
     <% elsif current_user.id != @user.id%>
-      <title>Discotroc | Profil de <%=@user.first_name%> </title>
+      <title>Discotroc - Profil de <%=@user.first_name%> </title>
     <% end %>
-    <meta charset="UTF-8">
     <meta name="description" content="Profil User Show">
     <meta name="keywords" content="music, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+     <%= render 'head'%>
   </head>
     <!-- Page Preloder -->
 
@@ -148,7 +143,7 @@
                       <% i = deal.deal_contents.pluck(:sender_library_id)%>
                       <% a = UserLibrary.find_by(id: i) %>
                       <% if a.disc_id != 1 %>
-                        <%= link_to user_library_path(a.id) do %>
+                        <%= link_to user_library_deal_path(a.id, deal.id) do %>
                           <div class="song-item">
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-7">
@@ -177,7 +172,7 @@
                       <% i2 = deal2.deal_contents.pluck(:receiver_library_id)%>
                       <% a2 = UserLibrary.find_by(id: i2) %>
                       <% if a2.disc_id != 1 %>
-                        <%= link_to user_library_path(a2.id) do %>
+                        <%= link_to user_library_deal_path(a2.id, deal2.id) do %>
                           <div class="song-item">
                             <div class="row">
                               <div class="col-xl-12 col-lg-12 col-md-7">
@@ -330,6 +325,12 @@
           </div>
         </div>
       </div>
+      <br>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+        </div>
     </section>
 
  

@@ -1,3 +1,10 @@
+<head>
+	<title>Discotroc - Changement de mots de passe</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"	content="Discotroc - change password" />
+	<%=render 'head'%>
+	<script>
+
 <div class="login-screen">
   <h2 class="text-dark">Changement de mot de passe</h2>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>

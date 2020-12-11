@@ -25,23 +25,6 @@
       <li><%= link_to "Voir les disques", discs_path %></li>
     <% end %>
     <li><%= link_to "Espace Troc", user_libraries_path%></li>
-    <li><a href="#">Temporaire</a>
-      <% if user_signed_in? && current_user.is_admin? == true %>
-        <ul class="sub-menu">
-          <li><%= link_to "Voir les deals", deals_path%></li>
-          <li><%#= link_to "Voir les deals PM", deal_pms_path%></li>
-          <li><%#= link_to "Voir les deals contents", deal_contents_path%></li>
-          <li><%= link_to "Voir les disques", discs_path%></li>
-          <li><%= link_to "Voir les collections", user_libraries_path%></li>
-        </ul>
-      <% else %>
-        <ul class="sub-menu">
-          <li class="divider"></li>
-          <li><%= link_to "Voir les disques", discs_path%></li>
-          <li><%= link_to "Voir les trocs en cours", deals_path%></li>
-        </ul>
-      <%end %>
-    </li>
     <li><%= link_to "Blog", articles_path%></li>
   </ul>
 </header>

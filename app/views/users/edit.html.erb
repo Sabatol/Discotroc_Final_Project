@@ -1,11 +1,7 @@
 <head>
-	<title>Discotroc | Modifier Profil</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords"
-		content="Modifier Profil" />
-
+	<title>Discotroc - Modifier Profil</title>
+	<meta name="keywords"	content="Modifier Profil">
+<%= render 'head'%>
 </head>
 
 <body>
@@ -77,6 +73,11 @@
 			</div>
 
 		</div>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+        </div>
 	</section>
 	<!-- //login-section -->
 </body>

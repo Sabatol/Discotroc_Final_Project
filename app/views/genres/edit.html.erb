@@ -1,14 +1,8 @@
    <head>
     <title>Discotroc - Liste des Genres </title>
-    <meta charset="UTF-8">
     <meta name="description" content="Discs Index">
     <meta name="keywords" content="music, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<%=render 'head'%>
   </head>
   <div class="text-center">
   <%= form_for @edit_genre do |f| %>
@@ -19,4 +13,10 @@
     </form>
   <% end %>
   <%= link_to 'Supprimer', genre_path(@edit_genre.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+					<br>
+					<br>
 </div>

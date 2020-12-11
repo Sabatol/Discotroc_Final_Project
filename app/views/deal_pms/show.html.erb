@@ -1,15 +1,8 @@
 <head>
 	<title>Discotroc - Troc'Message</title>
-	<meta charset="UTF-8">
 	<meta name="description" content="Discotroc - <%=@article.title%>">
 	<meta name="keywords" content="Article, Articles, Blogs, Blog, Musique, Disque, Vinyl, Partage, Actus">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
+<%=render 'head'%>
 </head>
 <div class="text-center" style="margin-bottom: 40px">
 <p> Message Privé N° <%= @deal_pm.id%>
@@ -20,3 +13,9 @@
 <%= link_to "Modifier", edit_deal_pm_path(@deal_pm.id)%>
 
 </div>
+   <br>
+        <div class="copy-right text-center">
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
+					<%= link_to "Revenir à l'accueil", root_path%>
+					<br>
+					<br>
