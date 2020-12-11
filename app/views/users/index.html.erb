@@ -1,70 +1,66 @@
 <head>
-	<title>Discotroc - Utilisateurs</title>
-	<meta name="description" content="Discotroc | Utilisateurs">
-	<meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
-
- <%= render 'head'%>
+  <title>Discotroc - Utilisateurs</title>
+  <meta name="description" content="Discotroc | Utilisateurs">
+  <meta name="keywords" content="music, vinyls, CD, K7, LaserDisc, Market, troc, share">
+  <%= render 'head'%>
 </head>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-	<!-- Playlist section -->
-	<section class="playlist-section spad">
-		<div class="container-fluid">
-			<div class="section-title">
-				<h2>Utilisateurs</h2>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row playlist-area">
-            <%@users.each do |user|%>
-				<div class="mix col-lg-3 col-md-4 col-sm-6">
-                <%=link_to user_path(user.id) do %>
-					<div class="playlist-item">
-                        <%= image_tag "playlist/2.jpg"%>
-                        <% if user.first_name == nil%>
-                        <h5> Prénom non renseigné </h5>
-
-                        <% elsif user.deals_sender.count == 0 %>
-                        <i class="fas fa-crown" style="color: white"></i>
-                        <h5><%= user.first_name%> <%= user.last_name%></h5>
-                        <% elsif user.deals_sender.count >= 1 && user.deals_sender.count < 3%>
-                        <i class="fas fa-crown" style="color: brown"></i>
-						<h5><%= user.first_name%> <%= user.last_name%></h5>
-                        <% elsif user.deals_sender.count >= 3 && user.deals_sender.count < 7%>
-                        <i class="fas fa-crown" style="color: grey"></i>
-                        <h5><%= user.first_name%> <%= user.last_name%></h5>
-                         <% elsif user.deals_sender.count >= 7%>
-                        <i class="fas fa-crown"></i>
-                        <h5><%= user.first_name%> <%= user.last_name%></h5>
-                        <% end %>
-                        <hr>
-					</div>
-                    <% end %>
-                    <div class="song-details-box text-center">
-						<ul>
-							<li><strong>Inscrit(e) depuis le : </strong><%=user.created_at.strftime('%d-%m-%Y')%></li>
-                            <% if user.deals_sender.count == 1 || user.deals_sender.count == 0%>
-                            <li><strong>Disque échangé: </strong><%=user.deals_sender.count%></li>
-                            <% else %>
-							<li><strong>Disques échangés: </strong><%=user.deals_sender.count%></li>
-                            <% end %>
-						</ul>
-					</div>
-				</div>
-                <%end%>
-			</div>
-		</div>
-     <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<!-- Playlist section -->
+<section class="playlist-section spad">
+  <div class="container-fluid">
+    <div class="section-title">
+      <h2>Utilisateurs</h2>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row playlist-area">
+      <%@users.each do |user|%>
+        <div class="mix col-lg-3 col-md-4 col-sm-6">
+          <%=link_to user_path(user.id) do %>
+            <div class="playlist-item">
+              <%= image_tag "playlist/2.jpg"%>
+              <% if user.first_name == nil%>
+                <h5> Prénom non renseigné </h5>
+              <% elsif user.deals_sender.count == 0 %>
+                <i class="fas fa-crown" style="color: white"></i>
+                <h5><%= user.first_name%> <%= user.last_name%></h5>
+              <% elsif user.deals_sender.count >= 1 && user.deals_sender.count < 3%>
+                <i class="fas fa-crown" style="color: brown"></i>
+                <h5><%= user.first_name%> <%= user.last_name%></h5>
+              <% elsif user.deals_sender.count >= 3 && user.deals_sender.count < 7%>
+                <i class="fas fa-crown" style="color: grey"></i>
+                <h5><%= user.first_name%> <%= user.last_name%></h5>
+              <% elsif user.deals_sender.count >= 7%>
+                <i class="fas fa-crown"></i>
+                <h5><%= user.first_name%> <%= user.last_name%></h5>
+              <% end %>
+              <hr>
+            </div>
+          <% end %>
+          <div class="song-details-box text-center">
+            <ul>
+              <li><strong>Inscrit(e) depuis le : </strong><%=user.created_at.strftime('%d-%m-%Y')%></li>
+              <% if user.deals_sender.count == 1 || user.deals_sender.count == 0%>
+                <li><strong>Disque échangé: </strong><%=user.deals_sender.count%></li>
+              <% else %>
+                <li><strong>Disques échangés: </strong><%=user.deals_sender.count%></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-	</section>
-	<!-- Playlist section end -->
-
-
-	<p style="text-align: center"><i class="fas fa-crown" style="color: brown"></i>* signifie que l'utilisateur à 1 ou 2 disques échangés</p>
-	<p style="text-align: center"><i class="fas fa-crown" style="color: grey"></i>* signifie que l'utilisateur à de 3 à 6 disques échangés</p>
-	<p style="text-align: center"><i class="fas fa-crown" style="color: #ffd369"></i>* signifie que l'utilisateur à 7 disques échangés ou plus</p>
+      <%end%>
+    </div>
+  </div>
+  <br>
+  <div class="copy-right text-center">
+    <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+     <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+  </div>
+</section>
+<!-- Playlist section end -->
+<p style="text-align: center"><i class="fas fa-crown" style="color: brown"></i>* signifie que l'utilisateur à 1 ou 2 disques échangés</p>
+<p style="text-align: center"><i class="fas fa-crown" style="color: grey"></i>* signifie que l'utilisateur à de 3 à 6 disques échangés</p>
+<p style="text-align: center"><i class="fas fa-crown" style="color: #ffd369"></i>* signifie que l'utilisateur à 7 disques échangés ou plus</p>

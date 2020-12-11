@@ -5,12 +5,11 @@
   <div class="header-right">
     <span>|</span>
     <div class="user-panel">
-
       <% if user_signed_in? && current_user.is_admin? == true  %>
         <div class="sub-menu">
-        <%= link_to "Mon profil", user_path(current_user.id), class: "login" %>
-        <%= link_to "Dashboard Admin", admin_root_path %>
-         <%= link_to "Se déconnecter", destroy_session_path(:user), class: "register", :method => :get %>
+          <%= link_to "Mon profil", user_path(current_user.id), class: "login" %>
+          <%= link_to "Dashboard Admin", admin_root_path %>
+          <%= link_to "Se déconnecter", destroy_session_path(:user), class: "register", :method => :get %>
         </div>
       <% elsif user_signed_in? %>
         <%= link_to "Mon profil", user_path(current_user.id), class: "login" %>
@@ -25,11 +24,11 @@
     <li><%= link_to "Accueil", root_path%></li>
     <%if user_signed_in?%>
       <li><%= link_to "Ajouter un disque", new_user_user_library_path(current_user.id)%></li>
-      <% else %>
+    <% else %>
       <li><%= link_to "Ajouter un disque", new_user_session_path%></li>
-      <% end %>
-      <li><%=link_to "Espace Troc", user_libraries_path %>
-</li>
+    <% end %>
+    <li><%=link_to "Espace Troc", user_libraries_path %>
+    </li>
     <li><%= link_to "Blog", articles_path%></li>
   </ul>
 </header>

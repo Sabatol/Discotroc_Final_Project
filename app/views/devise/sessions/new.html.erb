@@ -1,68 +1,67 @@
 <head>
-	<title>Discotroc | Se connecter</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords"
+  <title>Discotroc | Se connecter</title>
+  <!-- Meta tag Keywords -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="keywords"
 		content="Discotroc | Se connecter" />
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
+  <script>
+    addEventListener("load", function () {
+    	setTimeout(hideURLbar, 0);
+    }, false);
+    
+    function hideURLbar() {
+    	window.scrollTo(0, 1);
+    }
+  </script>
 </head>
-
 <body>
-
-<%= render "devise/shared/error_messages", resource: resource %>
-	<!-- /signup-section -->
-	<section class="w3l-login-6">
-		<div class="login-hny">
-			<div class="form-content">
-				<div class="form-right">
-					<div class="overlay">
-						<div class="grid-info-form">
-
-							<h3>Content de vous <span>revoir</span> </h3>
-							<p> Quel disque allez-vous échanger aujourd'hui ?</p>
-							<br>
-							<p>Pas encore inscrit(e) ?</p>
-							<%= link_to "S'inscrire", new_user_registration_path, class: "site-btn", style: "padding: 10px 20px"%>
-						</div>
-					</div>
-				</div>
-				<div class="form-left">
-					<div class="middle">
-						<h4>Se connecter</h4>
-						<p>Content de vous revoir.</p> <br>
-					</div>
-				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-					<form action="#" method="post" class="signin-form">
-							<div class="form-input">
-								<label>Adresse email</label>
-								 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "email" %>
-							</div><br>
-							<div class="form-input">
-								<label>Mot de passe</label>
-								 <%= f.password_field :password, autocomplete: "new-password", placeholder: "Mot de passe", type: "password" %>
-							</div><br>
-
-    						<label class="container" style="font-size: 16px; padding-top: 5px"> Se souvenir de moi
-								<%= f.check_box :remember_me, type: "checkbox", class:"checkmark" %>
-								<span class="checkmark"></span>
-							</label><br>
-							<%= f.submit "Se connecter", type: "submit", class: "site-btn", style: "padding: 10px 20px"  %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <!-- /signup-section -->
+  <section class="w3l-login-6">
+    <div class="login-hny">
+      <div class="form-content">
+        <div class="form-right">
+          <div class="overlay">
+            <div class="grid-info-form">
+              <h3>Content de vous <span>revoir</span> </h3>
+              <p> Quel disque allez-vous échanger aujourd'hui ?</p>
+              <br>
+              <p>Pas encore inscrit(e) ?</p>
+              <%= link_to "S'inscrire", new_user_registration_path, class: "site-btn", style: "padding: 10px 20px"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-left">
+          <div class="middle">
+            <h4>Se connecter</h4>
+            <p>Content de vous revoir.</p>
+             <br>
+          </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <form action="#" method="post" class="signin-form">
+              <div class="form-input">
+                <label>Adresse email</label>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "email" %>
+              </div>
+              <br>
+              <div class="form-input">
+                <label>Mot de passe</label>
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: "Mot de passe", type: "password" %>
+              </div>
+              <br>
+              <label class="container" style="font-size: 16px; padding-top: 5px"> Se souvenir de moi
+                <%= f.check_box :remember_me, type: "checkbox", class:"checkmark" %>
+                <span class="checkmark"></span>
+              </label><br>
+              <%= f.submit "Se connecter", type: "submit", class: "site-btn", style: "padding: 10px 20px"  %>
               <div class="copy-right text-center">
-						<p><%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %></p>
-					 </div>
-					</form>
-					<%end%>
-				</div>
-			</div>
-		</div>
-	</section>
+                <p><%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %></p>
+              </div>
+            </form>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>

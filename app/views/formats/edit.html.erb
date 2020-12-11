@@ -1,11 +1,10 @@
- 
-   <head>
-    <title>Discotroc - Modification Format </title>
-
-    <meta name="description" content="Discs Index">
-    <meta name="keywords" content="music, html">
-<%=render 'head'%>
-  </head><div class="text-center">
+<head>
+  <title>Discotroc - Modification Format </title>
+  <meta name="description" content="Discs Index">
+  <meta name="keywords" content="music, html">
+  <%=render 'head'%>
+</head>
+<div class="text-center">
   <%= form_for @edit_genre do |f| %>
     <form>
       <%= label_tag 'Titre' %> <br />
@@ -14,10 +13,11 @@
     </form>
   <% end %>
   <%= link_to 'Supprimer', genre_path(@edit_genre.id), method: :delete, data: { confirm: 'Es-tu certain ?' } %>
-   <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
-					<br>
-					<br>
-</div>
+  <br>
+  <div class="copy-right text-center">
+    <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+     <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+    <br>
+    <br>
+  </div>

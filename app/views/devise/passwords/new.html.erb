@@ -1,54 +1,52 @@
 <head>
-	<title>Discotroc - Mot de passe oublié</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords"	content="Discotroc - forgotten password" />
-	<%=render 'head'%>
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
+  <title>Discotroc - Mot de passe oublié</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords"	content="Discotroc - forgotten password" />
+  <%=render 'head'%>
+  <script>
+    addEventListener("load", function () {
+    	setTimeout(hideURLbar, 0);
+    }, false);
+    
+    function hideURLbar() {
+    	window.scrollTo(0, 1);
+    }
+  </script>
 </head>
-
 <body>
-
-           <%= render "devise/shared/error_messages", resource: resource %>
-
-	<!-- /signup-section -->
-	<section class="w3l-login-6">
-		<div class="login-hny">
-			<div class="form-content">
-				<div class="form-right">
-					<div class="overlay">
-						<div class="grid-info-form">
-							<h3>Mot de passe <span>oublié</span> </h3>
-							<br>
-							<p> Vous vous en souvenez ? </p>
-							<%= link_to "Se connecter", new_user_session_path, class: "site-btn", style: "padding: 10px 20px"%>
-						</div>
-					</div>
-				</div>
-				<div class="form-left">
-					<div class="middle">
-
-						<h4>Mot de passe oublié</h4>
-						<p>Pas de panique ! On va le retrouver.</p> <br>
-					</div>
-			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-					<form action="#" method="post" class="signin-form">
-							<div class="form-input">
-								<label>Adresse email</label>
-								  <%= f.email_field :email, class: "form-control login-field", autofocus: true, placeholder: "Email", autocomplete: "email" %>
-							</div><br>
-							<%= f.submit "Envoyer les instruction", type: "submit", class: "site-btn", style: "padding: 10px 20px"  %>
-					</form>
-					<%end%>
-				</div>
-			</div>
-		</div>
-	</section>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <!-- /signup-section -->
+  <section class="w3l-login-6">
+    <div class="login-hny">
+      <div class="form-content">
+        <div class="form-right">
+          <div class="overlay">
+            <div class="grid-info-form">
+              <h3>Mot de passe <span>oublié</span> </h3>
+              <br>
+              <p> Vous vous en souvenez ? </p>
+              <%= link_to "Se connecter", new_user_session_path, class: "site-btn", style: "padding: 10px 20px"%>
+            </div>
+          </div>
+        </div>
+        <div class="form-left">
+          <div class="middle">
+            <h4>Mot de passe oublié</h4>
+            <p>Pas de panique ! On va le retrouver.</p>
+             <br>
+          </div>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <form action="#" method="post" class="signin-form">
+              <div class="form-input">
+                <label>Adresse email</label>
+                <%= f.email_field :email, class: "form-control login-field", autofocus: true, placeholder: "Email", autocomplete: "email" %>
+              </div>
+              <br>
+              <%= f.submit "Envoyer les instruction", type: "submit", class: "site-btn", style: "padding: 10px 20px"  %>
+            </form>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>

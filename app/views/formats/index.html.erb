@@ -1,25 +1,23 @@
   <head>
-    <title>Discotroc - Liste Formats </title>
-
-    <meta name="description" content="Discs Index">
-    <meta name="keywords" content="music, html">
-<%=render 'head'%>
-  </head>
+  <title>Discotroc - Liste Formats </title>
+  <meta name="description" content="Discs Index">
+  <meta name="keywords" content="music, html">
+  <%=render 'head'%>
+</head>
 <div class="text-center">
- <h3> Créer un Genre </h3>
- <%= link_to "Créer", new_genre_path%>
- <br>
-<h2> Index</h2>
-
-
-<% @genres.each do |genre| %>
-<p> <%=genre.name%></p>
-<%= link_to "Voir", genre_path(genre.id)%>
-<%end%>
-   <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
-					<br>
-					<br>
-</div>
+  <h3> Créer un Genre </h3>
+  <%= link_to "Créer", new_genre_path%>
+  <br>
+  <h2> Index</h2>
+  <% @genres.each do |genre| %>
+    <p> <%=genre.name%></p>
+    <%= link_to "Voir", genre_path(genre.id)%>
+  <%end%>
+  <br>
+  <div class="copy-right text-center">
+    <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+     <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+    <br>
+    <br>
+  </div>

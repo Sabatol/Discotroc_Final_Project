@@ -1,309 +1,267 @@
-
-  <head>
-    <% if current_user.id != nil && current_user.id == @user.id %>
-      <title>Discotroc - Mon Profil </title>
-    <% elsif current_user.id != @user.id%>
-      <title>Discotroc - Profil de <%=@user.first_name%> </title>
-    <% end %>
-    <meta name="description" content="Profil User Show">
-    <meta name="keywords" content="music, html">
-     <%= render 'head'%>
-  </head>
-    <!-- Page Preloder -->
-
-
-    <div id="preloder">
-      <div class="loader"></div>
+<head>
+  <% if current_user.id != nil && current_user.id == @user.id %>
+    <title>Discotroc - Mon Profil </title>
+  <% elsif current_user.id != @user.id%>
+    <title>Discotroc - Profil de <%=@user.first_name%> </title>
+  <% end %>
+  <meta name="description" content="Profil User Show">
+  <meta name="keywords" content="music, html">
+  <%= render 'head'%>
+</head>
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<!-- Player section -->
+<section class="player-sectioon set-bgg">
+  <div class="player-box">
+    <div class="tarck-thumb-warp">
+      <div class="tarck-thumb">
+        <%if @user.avatar.attached?%>
+          <%= image_tag @user.avatar, alt: 'avatar' %>
+        <%else%>
+          <%= image_tag "avatars/Daft Punk.png"%>
+        <%end%>
+      </div>
     </div>
-    <!-- Player section -->
-    <section class="player-sectioon set-bgg">
-      <div class="player-box">
-        <div class="tarck-thumb-warp">
-          <div class="tarck-thumb">
-            <%if @user.avatar.attached?%>
-              <%= image_tag @user.avatar, alt: 'avatar' %>
-            <%else%>
-              <%= image_tag "avatars/Daft Punk.png"%>
+    <div class="wave-player-warp">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="wave-player-info">
+            <% if current_user.id == @user.id && @user.first_name != nil%>
+              <h4> Bienvenue </h4>
+            <%end%>
+            <% if @user.first_name == nil && @user.last_name == nil%>
+              <h4> Prénom/Nom non renseigné </h4>
+              <p style="color: red"> Vous devez compléter votre profil pour <br>
+                profiter des fonctionnalités de Discotroc. </p>
+            <% elsif @user.last_name == nil %>
+              <h2> <%= @user.first_name%> </h2>
+            <% elsif @user.first_name == nil %>
+              <h2> <%= @user.last_name%> </h2>
+            <% else %>
+              <h2><%= @user.first_name%> <%= @user.last_name%> </h2>
+            <% end %>
+            <br>
+            <% if current_user.id == @user.id %>
+              <p><strong>Email: </strong><%=  @user.email %></p>
+              <p><strong>Description: </strong><%=  @user.description %></p>
+              <p><strong>Adresse: </strong><%=  @user.address %></p>
+              <p><strong>Complément d'adresse: </strong><%=  @user.additional_address %></p>
+              <p><strong>Code Postal: </strong><%=  @user.zipcode %></p>
+              <p><strong>Ville: </strong><%=  @user.city %></p>
+              <p><strong>Pays: </strong><%=  @user.country %></p>
+            <% end %>
+            <% if @user.description.present? && current_user.id != @user.id %>
+              <p><strong>Description: </strong><%=  @user.description %></p>
+            <%end%>
+            <%if @user.city.present? && @user.country.present? && current_user.id != @user.id%>
+              <p><strong>Pays: </strong><%= @user.country %></p>
+              <p><strong>Ville: </strong><%= @user.city %></p>
+            <%elsif @user.city.present? && current_user.id != @user.id%>
+              <p><strong>Ville: </strong><%= @user.city %></p>
+            <% elsif @user.country.present? && current_user.id != @user.id%>
+              <p><strong>Pays: </strong><%= @user.country %></p>
             <%end%>
           </div>
         </div>
-        <div class="wave-player-warp">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="wave-player-info">
-                <% if current_user.id == @user.id && @user.first_name != nil%>
-                  <h4> Bienvenue </h4>
-                <%end%>
-                <% if @user.first_name == nil && @user.last_name == nil%>
-                  <h4> Prénom/Nom non renseigné </h4>
-                  <p style="color: red"> Vous devez compléter votre profil pour <br>
-                    profiter des fonctionnalités de Discotroc. </p>
-                <% elsif @user.last_name == nil %>
-                  <h2> <%= @user.first_name%> </h2>
-                <% elsif @user.first_name == nil %>
-                  <h2> <%= @user.last_name%> </h2>
-                <% else %>
-                  <h2><%= @user.first_name%> <%= @user.last_name%> </h2>
-                <% end %>
-                <br>
-                <% if current_user.id == @user.id %>
-                  <p><strong>Email: </strong><%=  @user.email %></p>
-                  <p><strong>Description: </strong><%=  @user.description %></p>
-                  <p><strong>Adresse: </strong><%=  @user.address %></p>
-                  <p><strong>Complément d'adresse: </strong><%=  @user.additional_address %></p>
-                  <p><strong>Code Postal: </strong><%=  @user.zipcode %></p>
-                  <p><strong>Ville: </strong><%=  @user.city %></p>
-                  <p><strong>Pays: </strong><%=  @user.country %></p>
-                <% end %>
-                <% if @user.description.present? && current_user.id != @user.id %>
-                  <p><strong>Description: </strong><%=  @user.description %></p>
-                <%end%>
-                <%if @user.city.present? && @user.country.present? && current_user.id != @user.id%>
-                  <p><strong>Pays: </strong><%= @user.country %></p>
-                  <p><strong>Ville: </strong><%= @user.city %></p>
-                <%elsif @user.city.present? && current_user.id != @user.id%>
-                  <p><strong>Ville: </strong><%= @user.city %></p>
-                <% elsif @user.country.present? && current_user.id != @user.id%>
-                  <p><strong>Pays: </strong><%= @user.country %></p>
-                <%end%>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="songs-links">
-                <h5><strong>Inscrit(e) depuis le: </strong> <%= @user.created_at.strftime('%d-%m-%Y')%></h5>
-                <% if @user.deals_sender.count == 0 %>
-                  <i class="fas fa-crown" style="color: white"></i>
-                  <h5><strong>Disque échangé: </strong> 0</h5>
-                <% elsif @user.deals_sender.count == 1 %>
-                  <h5><strong>Disque échangé: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: grey"></i></h5>
-                <% elsif @user.deals_sender.count > 1 && @user.deals_sender.count < 3%>
-                  <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: brown"></i></h5>
-                <% elsif @user.deals_sender.count >= 3 && @user.deals_sender.count < 7%>
-                  <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: grey"></i></h5>
-                <% elsif @user.deals_sender.count >= 7%>
-                  <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: #ffd369"></i></h5>
-                <% end %>
-                <br>
-                <% if @user.comments_receiver.count == 0 %>
-                  <i class="fas fa-crown" style="color: white"></i>
-                  <h5><strong>Avis reçu: </strong> 0</h5>
-                <% elsif @user.comments_receiver.count == 1 %>
-                  <h5><strong>Avis reçu: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: brown"></i></h5>
-                <% elsif @user.comments_receiver.count > 1 && @user.comments_receiver.count < 3%>
-                  <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: brown"></i></h5>
-                <% elsif @user.comments_receiver.count >= 3 && @user.comments_receiver.count < 7%>
-                  <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: grey"></i></h5>
-                <% elsif @user.comments_receiver.count >= 7%>
-                  <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: #ffd369"></i></h5>
-                <% end %>
-                <br>
-                <% if @user.comments_sender.count == 0 %>
-                  <i class="fas fa-crown" style="color: white"></i>
-                  <h5><strong>Avis donné: </strong> 0</h5>
-                <% elsif @user.comments_sender.count == 1 %>
-                  <h5><strong>Avis donné: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: brown"></i></h5>
-                <% elsif @user.comments_sender.count > 1 && @user.comments_sender.count < 3%>
-                  <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: brown"></i></h5>
-                <% elsif @user.comments_sender.count >= 3 && @user.comments_sender.count < 7%>
-                  <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: grey"></i></h5>
-                <% elsif @user.comments_sender.count >= 7%>
-                  <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: #ffd369"></i></h5>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div id="wavePlayer" class="clierfix">
-            <div id="audiowave" data-waveurl="music-files/8.mp3"></div>
-            <div id="currentTime"></div>
-            <div id="clipTime"></div>
-            <!-- Player Controls -->
-            <div class="wavePlayer_controls">
-              <% if current_user.id == @user.id  %>
-                <%= link_to edit_user_path, style: "color: #0a183d" do %>	<i class="fas fa-edit">Editer mon profil</i><%end%>
-              <% end %>
-            </div>
+        <div class="col-lg-4">
+          <div class="songs-links">
+            <h5><strong>Inscrit(e) depuis le: </strong> <%= @user.created_at.strftime('%d-%m-%Y')%></h5>
+            <% if @user.deals_sender.count == 0 %>
+              <i class="fas fa-crown" style="color: white"></i>
+              <h5><strong>Disque échangé: </strong> 0</h5>
+            <% elsif @user.deals_sender.count == 1 %>
+              <h5><strong>Disque échangé: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: grey"></i></h5>
+            <% elsif @user.deals_sender.count > 1 && @user.deals_sender.count < 3%>
+              <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: brown"></i></h5>
+            <% elsif @user.deals_sender.count >= 3 && @user.deals_sender.count < 7%>
+              <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: grey"></i></h5>
+            <% elsif @user.deals_sender.count >= 7%>
+              <h5><strong>Disques échangés: </strong> <%= @user.deals_sender.count%> <i class="fas fa-crown" style="color: #ffd369"></i></h5>
+            <% end %>
+            <br>
+            <% if @user.comments_receiver.count == 0 %>
+              <i class="fas fa-crown" style="color: white"></i>
+              <h5><strong>Avis reçu: </strong> 0</h5>
+            <% elsif @user.comments_receiver.count == 1 %>
+              <h5><strong>Avis reçu: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: brown"></i></h5>
+            <% elsif @user.comments_receiver.count > 1 && @user.comments_receiver.count < 3%>
+              <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: brown"></i></h5>
+            <% elsif @user.comments_receiver.count >= 3 && @user.comments_receiver.count < 7%>
+              <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: grey"></i></h5>
+            <% elsif @user.comments_receiver.count >= 7%>
+              <h5><strong>Avis reçus: </strong> <%= @user.comments_receiver.count%> <i class="fas fa-star" style="color: #ffd369"></i></h5>
+            <% end %>
+            <br>
+            <% if @user.comments_sender.count == 0 %>
+              <i class="fas fa-crown" style="color: white"></i>
+              <h5><strong>Avis donné: </strong> 0</h5>
+            <% elsif @user.comments_sender.count == 1 %>
+              <h5><strong>Avis donné: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: brown"></i></h5>
+            <% elsif @user.comments_sender.count > 1 && @user.comments_sender.count < 3%>
+              <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: brown"></i></h5>
+            <% elsif @user.comments_sender.count >= 3 && @user.comments_sender.count < 7%>
+              <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: grey"></i></h5>
+            <% elsif @user.comments_sender.count >= 7%>
+              <h5><strong>Avis donnés: </strong> <%= @user.comments_sender.count%> <i class="fas fa-star" style="color: #ffd369"></i></h5>
+            <% end %>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Player section end -->
-    <!-- Songs details section -->
-    <section class="songs-details-section">
-      <div class="container-fluid">
-        <div class="row">
-        <%if current_user.id == @user.id %>
+      <div id="wavePlayer" class="clierfix">
+        <div id="audiowave" data-waveurl="music-files/8.mp3"></div>
+        <div id="currentTime"></div>
+        <div id="clipTime"></div>
+        <!-- Player Controls -->
+        <div class="wavePlayer_controls">
+          <% if current_user.id == @user.id  %>
+            <%= link_to edit_user_path, style: "color: #0a183d" do %>	<i class="fas fa-edit">Editer mon profil</i><%end%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Player section end -->
+<!-- Songs details section -->
+<section class="songs-details-section">
+  <div class="container-fluid">
+    <div class="row">
+      <%if current_user.id == @user.id %>
         <div class="col-lg-3">
-					<div class="song-details-box">
-
-						<h3>Trocs en cours</h3>
+          <div class="song-details-box">
+            <h3>Trocs en cours</h3>
             <%all = Deal.where(sender_id: @user.id).without(sender_ok:true).pluck(:id)%>
-              <%deal = []%>
-                  <%all.each do |id|%>
-                    <% deal = Deal.find(id)%>
-                      <% i = deal.deal_contents.pluck(:sender_library_id)%>
-                      <% a = UserLibrary.find_by(id: i) %>
-                      <% if a.disc_id != 1 %>
-                        <%= link_to user_library_deal_path(a.id, deal.id) do %>
-                          <div class="song-item">
-                            <div class="row">
-                              <div class="col-xl-12 col-lg-12 col-md-7">
-                                <div class="song-info-box">
-                                  <% if a.disc.cover_picture != nil %>
-                                    <%= image_tag a.disc.cover_picture %>
-                                  <% else %>
-                                    <%= image_tag "icons/disc_red.png" %>
-                                  <% end %>
-                                  <div class="song-info">
-                                    <h5><%= a.disc.title%></h5>
-                                    <h4><%= a.disc.artist%></h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+            <%deal = []%>
+            <%all.each do |id|%>
+              <% deal = Deal.find(id)%>
+              <% i = deal.deal_contents.pluck(:sender_library_id)%>
+              <% a = UserLibrary.find_by(id: i) %>
+              <% if a.disc_id != 1 %>
+                <%= link_to user_library_deal_path(a.id, deal.id) do %>
+                  <div class="song-item">
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-7">
+                        <div class="song-info-box">
+                          <% if a.disc.cover_picture != nil %>
+                            <%= image_tag a.disc.cover_picture %>
+                          <% else %>
+                            <%= image_tag "icons/disc_red.png" %>
+                          <% end %>
+                          <div class="song-info">
+                            <h5><%= a.disc.title%></h5>
+                            <h4><%= a.disc.artist%></h4>
                           </div>
-                        <%end %>
-                        <%end%>
-                        <%end%>
-                        <hr style="width: 20%; border: 1px solid black;" >
-                                    <%all2 = Deal.where(receiver_id: @user.id).without(receiver_ok:true).pluck(:id)%>
-              <%deal2 = []%>
-                  <%all2.each do |id|%>
-                    <% deal2 = Deal.find(id)%>
-                      <% i2 = deal2.deal_contents.pluck(:receiver_library_id)%>
-                      <% a2 = UserLibrary.find_by(id: i2) %>
-                      <% if a2.disc_id != 1 %>
-                        <%= link_to user_library_deal_path(a2.id, deal2.id) do %>
-                          <div class="song-item">
-                            <div class="row">
-                              <div class="col-xl-12 col-lg-12 col-md-7">
-                                <div class="song-info-box">
-                                  <% if a2.disc.cover_picture != nil %>
-                                    <%= image_tag a2.disc.cover_picture %>
-                                  <% else %>
-                                    <%= image_tag "icons/disc_red.png" %>
-                                  <% end %>
-                                  <div class="song-info">
-                                    <h5><%= a2.disc.title%></h5>
-                                    <h4><%= a2.disc.artist%></h4>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        <%end %>
-                        <%end%>
-                        <%end%>
-					</div>
-				</div>
-        <%end %>
-
-
-          <div class="col-lg-9">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="song-details-box">
-                  <% if @user.first_name != nil %>
-                    <h3>Les avis à propos de <%= @user.first_name %></h3>
-                  <% else %>
-                    <h3> Avis: </h3>
-                  <% end %>
-                  <% if @user.comments_receiver.count == 0 %>
-                    <h5 class="text-center"> Pas encore d'avis </h5>
-                  <%end%>
-                  <% if @user.comments_receiver != nil && @user.comments_receiver.count < 10 %>
-                    <% @user.comments_receiver.each do |comment| %>
-                      <%= link_to user_path(comment.comment_sender) do %>
-                        <div class="artist-details">
-                          <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                          <div class="">
-                            <h5><%=comment.comment_sender.first_name%></h5>
-                            <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
-                            <p><%= comment.content %></p>
-                          <%end%>
                         </div>
                       </div>
-                    <% end %>
-                  <%end%>
-                  <% if @user.comments_receiver != nil && @user.comments_receiver.count > 10 %>
-                    <% @user.comments_receiver.sample(10).each do |comment| %>
-                      <%= link_to user_path(comment.comment_sender) do %>
-                        <div class="artist-details">
-                          <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
-                            <div class="">
-                            <h5><%=comment.comment_sender.first_name%></h5>
-                            <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
-                            <p><%= comment.content %></p>
-                          <%end%>
-                            </div>
+                    </div>
+                  </div>
+                <%end %>
+              <%end%>
+            <%end%>
+            <hr style="width: 20%; border: 1px solid black;" >
+            <%all2 = Deal.where(receiver_id: @user.id).without(receiver_ok:true).pluck(:id)%>
+            <%deal2 = []%>
+            <%all2.each do |id|%>
+              <% deal2 = Deal.find(id)%>
+              <% i2 = deal2.deal_contents.pluck(:receiver_library_id)%>
+              <% a2 = UserLibrary.find_by(id: i2) %>
+              <% if a2.disc_id != 1 %>
+                <%= link_to user_library_deal_path(a2.id, deal2.id) do %>
+                  <div class="song-item">
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-7">
+                        <div class="song-info-box">
+                          <% if a2.disc.cover_picture != nil %>
+                            <%= image_tag a2.disc.cover_picture %>
+                          <% else %>
+                            <%= image_tag "icons/disc_red.png" %>
+                          <% end %>
+                          <div class="song-info">
+                            <h5><%= a2.disc.title%></h5>
+                            <h4><%= a2.disc.artist%></h4>
+                          </div>
+                        </div>
                       </div>
-                    <%end%>
-                  <%end%>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="song-details-box">
-                  <h3>Disques à troquer</h3>
-                  <!-- song -->
-                  <%if @user.disc_ids.length > 1 && @user.disc_ids.length < 10%>
-                    <% index = 0%>
-                    <% @user.user_libraries.each do |disc| %>
-                      <% if disc.disc_id != 1 %>
-                        <%= link_to user_library_path(disc.id) do %>
-                          <div class="song-item">
-                            <div class="row">
-                              <div class="col-xl-5 col-lg-12 col-md-5">
-                                <div class="song-info-box">
-                                  <% if disc.disc.cover_picture != nil %>
-                                    <%= image_tag disc.disc.cover_picture %>
-                                  <% else %>
-                                    <%= image_tag "icons/disc_red.png" %>
-                                  <% end %>
-                                  <div class="song-info">
-                                    <h5><%= disc.disc.title%></h5>
-                                    <h4><%= disc.disc.artist%></h4>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-xl-7 col-lg-12 col-md-7">
-                                <div class="single_player_container">
-                                  <div class="single_player">
-                                    <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3">
-                                      <div class="jp-audio jp_container_1" role="application" aria-label="media player">
-                                        <div class="jp-no-solution" style="color: black">
-                                          <%= disc.description%>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                    </div>
+                  </div>
+                <%end %>
+              <%end%>
+            <%end%>
+          </div>
+        </div>
+      <%end %>
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="song-details-box">
+              <% if @user.first_name != nil %>
+                <h3>Les avis à propos de <%= @user.first_name %></h3>
+              <% else %>
+                <h3> Avis: </h3>
+              <% end %>
+              <% if @user.comments_receiver.count == 0 %>
+                <h5 class="text-center"> Pas encore d'avis </h5>
+              <%end%>
+              <% if @user.comments_receiver != nil && @user.comments_receiver.count < 10 %>
+                <% @user.comments_receiver.each do |comment| %>
+                  <%= link_to user_path(comment.comment_sender) do %>
+                    <div class="artist-details">
+                      <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
+                      <div class="">
+                        <h5><%=comment.comment_sender.first_name%></h5>
+                        <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
+                        <p><%= comment.content %></p>
+                      <%end%>
+                    </div>
+                  </div>
+                <% end %>
+              <%end%>
+              <% if @user.comments_receiver != nil && @user.comments_receiver.count > 10 %>
+                <% @user.comments_receiver.sample(10).each do |comment| %>
+                  <%= link_to user_path(comment.comment_sender) do %>
+                    <div class="artist-details">
+                      <%= image_tag "avatars/Michael_Jackson.png", style: "width: 100px; height: 100px"%>
+                      <div class="">
+                        <h5><%=comment.comment_sender.first_name%></h5>
+                        <span><%=comment.created_at.strftime("%d-%m-%Y")%></span>
+                        <p><%= comment.content %></p>
+                      <%end%>
+                    </div>
+                  </div>
+                <%end%>
+              <%end%>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="song-details-box">
+              <h3>Disques à troquer</h3>
+              <!-- song -->
+              <%if @user.disc_ids.length > 1 && @user.disc_ids.length < 10%>
+                <% index = 0%>
+                <% @user.user_libraries.each do |disc| %>
+                  <% if disc.disc_id != 1 %>
+                    <%= link_to user_library_path(disc.id) do %>
+                      <div class="song-item">
+                        <div class="row">
+                          <div class="col-xl-5 col-lg-12 col-md-5">
+                            <div class="song-info-box">
+                              <% if disc.disc.cover_picture != nil %>
+                                <%= image_tag disc.disc.cover_picture %>
+                              <% else %>
+                                <%= image_tag "icons/disc_red.png" %>
+                              <% end %>
+                              <div class="song-info">
+                                <h5><%= disc.disc.title%></h5>
+                                <h4><%= disc.disc.artist%></h4>
                               </div>
                             </div>
                           </div>
-                        <%end %>
-                      <% end %>
-                    <%end%>
-                  <%elsif @user.disc_ids.length >= 10%>
-                    <% @user.user_libraries.sample(10).each do |disc| %>
-                      <div class="song-item">
-                        <%= link_to user_library_path(disc.id) do %>
-                          <div class="row">
-                            <div class="col-xl-5 col-lg-12 col-md-8">
-                              <div class="song-info-box">
-                                <% if disc.disc.cover_picture != nil %>
-                                  <%= image_tag disc.disc.cover_picture %>
-                                <% else %>
-                                  <%= image_tag "icons/disc_red.png" %>
-                                <% end %>
-                                <div class="song-info">
-                                  <h5><%= disc.disc.title%></h5>
-                                  <h4><%= disc.disc.artist%></h4>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-12 col-md-3">
-                              <div class="single_player_container">
-                                <div class="single_player">
-                                  <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3"></div>
+                          <div class="col-xl-7 col-lg-12 col-md-7">
+                            <div class="single_player_container">
+                              <div class="single_player">
+                                <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3">
                                   <div class="jp-audio jp_container_1" role="application" aria-label="media player">
                                     <div class="jp-no-solution" style="color: black">
                                       <%= disc.description%>
@@ -314,23 +272,58 @@
                             </div>
                           </div>
                         </div>
-                      <%end %>
-                    <%end%>
-                  <%else%>
-                    <h5>Ne propose pas de disque actuellement </h5>
-                  <%end%>
-                </div>
-              </div>
+                      </div>
+                    <%end %>
+                  <% end %>
+                <%end%>
+              <%elsif @user.disc_ids.length >= 10%>
+                <% @user.user_libraries.sample(10).each do |disc| %>
+                  <div class="song-item">
+                    <%= link_to user_library_path(disc.id) do %>
+                      <div class="row">
+                        <div class="col-xl-5 col-lg-12 col-md-8">
+                          <div class="song-info-box">
+                            <% if disc.disc.cover_picture != nil %>
+                              <%= image_tag disc.disc.cover_picture %>
+                            <% else %>
+                              <%= image_tag "icons/disc_red.png" %>
+                            <% end %>
+                            <div class="song-info">
+                              <h5><%= disc.disc.title%></h5>
+                              <h4><%= disc.disc.artist%></h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-12 col-md-3">
+                          <div class="single_player_container">
+                            <div class="single_player">
+                              <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1" data-url="music-files/1.mp3"></div>
+                              <div class="jp-audio jp_container_1" role="application" aria-label="media player">
+                                <div class="jp-no-solution" style="color: black">
+                                  <%= disc.description%>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <%end %>
+                <%end%>
+              <%else%>
+                <h5>Ne propose pas de disque actuellement </h5>
+              <%end%>
             </div>
           </div>
         </div>
       </div>
-      <br>
-   <br>
-        <div class="copy-right text-center">
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br> <br>
-					<%= link_to "Revenir à l'accueil", root_path%>
-        </div>
-    </section>
-
- 
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="copy-right text-center">
+    <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%> <br>
+     <br>
+    <%= link_to "Revenir à l'accueil", root_path%>
+  </div>
+</section>
