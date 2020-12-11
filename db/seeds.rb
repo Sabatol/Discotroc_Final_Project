@@ -89,7 +89,7 @@ end
 # Create first user_library alpha_disc for each user
 i = 0
 10.times do 
-  UserLibrary.create(disc_id: 1, description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
+  UserLibrary.create(disc_id: Disc.ids[0], description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
   i += 1
 end
 
