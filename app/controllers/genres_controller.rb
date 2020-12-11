@@ -1,17 +1,6 @@
 class GenresController < ApplicationController
   before_action :authenticate_user!
   before_action :is_admin?
-  def index 
-    @genres = Genre.all
-  end
-
-  def show
-    @genre = Genre.find(params[:id])
-  end
-
-  def new
-    @new_genre = Genre.new
-  end
 
   def create 
     @new_genre = Genre.new(name: params[:name])
@@ -24,10 +13,6 @@ class GenresController < ApplicationController
     end
   end
 
-  def edit
-    @edit_genre = Genre.find(params[:id])
-  end
-  
   def update
     @edit_genre = Genre.find(params[:id])
     post_params = params.require(:genre).permit(:name)

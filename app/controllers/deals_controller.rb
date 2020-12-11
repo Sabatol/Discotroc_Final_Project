@@ -11,11 +11,6 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
   end
 
-  def new
-    @sender = User.find(params[:sender_id])
-    @new_deal = Deal.new
-  end
-
   def create
 
     @receiver = User.find(params[:receiver_id])
@@ -34,10 +29,6 @@ class DealsController < ApplicationController
       flash[:notice_bad] = "Le troc n'a pas pu être initié."
       render 'new'
     end
-  end
-
-  def edit
-    @edit_deal = Deal.find(params[:id])
   end
 
   def update
