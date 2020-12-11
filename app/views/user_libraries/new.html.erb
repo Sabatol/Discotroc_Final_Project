@@ -35,14 +35,15 @@
           </div>
           <br>
           <div class="text-center">
-            <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px 20px"  %>
+            <%= submit_tag "Envoyer", type: "submit", class: "site-btn text-center", style: "padding: 10px; width: 90%"  %>
           </div>
         <%end%>
         <br>
         <div class="copy-right text-center">
-          <%= link_to "Revenir à l'accueil", root_path%> <br>
+
           <br>
-          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 20px"%>
+          <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 12px"%><br><br>
+          <%= link_to "Revenir à l'accueil", root_path, style:" margin-top: 0.5rem"%> 
         </div>
       </div>
     </div>
