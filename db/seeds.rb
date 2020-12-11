@@ -33,10 +33,11 @@ Disc.create(
   release: 2020,
   label: 'THP prod',
   country: 'France',
-  artist: 'Equipe THP vocal 1',
-  genre: Genre.first,
-  format: Format.first
+  artist: 'DiscoTroc',
+  genre: 'DiscoTroc',
+  format: 'DiscoTroc'
 )
+
 10.times do
   Disc.create(
     title: Faker::Music.album,
@@ -50,17 +51,17 @@ Disc.create(
 end
 
 User.create(
-  first_name: 'PrénomAdmin',
-  last_name: 'NomAdmin',
+  first_name: 'DiscoTroc',
+  last_name: 'Admin',
   email: 'discotroc@yopmail.com',
-  password: 'azerty',
-  password_confirmation: 'azerty',
-  address: Faker::Address.street_address,
-  additional_address: Faker::Address.secondary_address,
-  zipcode: Faker::Address.zip_code,
-  city: Faker::Address.city,
+  password: 'THPdiscoTROC3483',
+  password_confirmation: 'THPdiscoTROC3483',
+  address: "83, Boulevard Macdonald",
+  additional_address: "Discotroc",
+  zipcode: 75019,
+  city: "Paris",
   country: 'France',
-  description: "Description d'un administrateur créé via le seed.",
+  description: "Compte Admin",
   completed: true,
   is_admin?: true
 )
@@ -76,9 +77,9 @@ User.create(
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
     country: 'France',
-    description: "Description d'un administrateur créé via le seed.",
+    description: Faker::Lorem.sentence(word_count: rand(3..15)),
     completed: true,
-    is_admin?: true
+    is_admin?: false
   )
 end
 
@@ -89,7 +90,7 @@ n = 0
   UserLibrary.create(
     user_id: User.ids[n],
     disc_id: Disc.ids[i],
-    description: Faker::Lorem.sentence(word_count: i)
+    description: Faker::Lorem.sentence(word_count: rand(2..10))
   )
   if i < Disc.count
     i += 1
@@ -102,6 +103,7 @@ n = 0
     n = 0
   end
 end
+
 
 8.times do
   Deal.create(sender_id: User.ids.sample, receiver_id: User.ids.sample)
@@ -119,7 +121,7 @@ end
   DealPm.create(
     deal_id: Deal.ids.sample,
     pm_author_id: User.ids.sample,
-    content: 'Bonjour, je suis très interessé!'
+    content: Faker::Lorem.sentence(word_count: rand(3..12))
   )
 end
 n = 0
@@ -127,8 +129,7 @@ n = 0
   Article.create(
     user_id: User.ids[n],
     title: Faker::Lorem.sentence,
-    content:
-      "Tabarouette de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne d'étole de calvince de saintes fesses de baptême de charogne de saint-sacrament de batince de ciarge de tabarslaque de ciboire de sacristi de cibouleau de tabarnak de charrue."
+    content:Faker::Lorem.sentence(word_count: rand(3..15))
   )
   if n < User.count
     n += 1
@@ -144,8 +145,7 @@ i = 1
     comment_sender_id: User.ids[n],
     comment_receiver_id: User.ids[i],
     deal_id: Deal.ids[n],
-    content:
-      "Tabarnac de mosus de cibolac de calvinouche de tabarnane de crucifix de purée de sacréfice de bout d'viarge de sacrament de patente à gosse de câlisse d'astie de calvaire de cimonaque de maudit de cochonnerie de verrat de mangeux d'marde de colon de bâtard de cibole de crime de viande à chien de cul d'enfant d'chienne."
+    content: Faker::Lorem.sentence(word_count: rand(3..15))
   )
   if n < User.count
     n += 1

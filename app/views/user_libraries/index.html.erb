@@ -19,7 +19,7 @@
 						<h4 class="disc-index-title" style="margin-bottom: 15px">Cherchez votre bonheur</h4></div>
 			<div class="container text-center">
   <% if user_signed_in? %>
-    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez-le !", new_disc_path, class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
+    <h5 class="disc-index-title" style="margin-bottom: 10px"><%= link_to "Ou créez-le !", new_user_user_library_path(current_user.id), class: "site-btn text-center", style: "padding: 10px 20px"%> </h5>
      <br>
     <br>
   <% end %></div>

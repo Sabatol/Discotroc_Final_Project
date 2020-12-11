@@ -9,9 +9,6 @@
 <hr style="width: 5%; border: 1px solid black;" >
 <p> Nom </p> <p><%=@genre.name%></p>
 <hr style="width: 5%; border: 1px solid black;" >
-<% if current_user.is_admin? == true %>
-<%= link_to "Modifier", edit_genre_path(@genre.id)%>
-<%end%>
 <br>
 <%= link_to "Retour aux formats", formats_path%>
    <br>

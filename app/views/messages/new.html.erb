@@ -40,17 +40,19 @@
             <div class="contact-form">
               <div class="row">
                 <div class="col-md-6">
-                  <%= f.label :name %>
+                  <%= f.label :nom %>
                   <%= f.text_field :name , class: 'form-control border border-darck', placeholder: "Ton nom..."%>
                 </div>
                 <div class="col-md-6">
                   <%= f.label :email %>
                   <%= f.email_field :email , class: 'form-control border border-darck', placeholder: "Ton email..."%>
                 </div>
+                <br><br><br><br>
                 <div class="col-md-12">
-                  <%= f.label :body %>
+                  <%= f.label :contenu %>
                   <%= f.text_area :body , class: 'form-control border border-darck', placeholder: "Ton message..."%>
-                  <%= f.submit 'Send', class: 'site-btn col-md-12 bg-primary  mt-2' %>
+                  <br><br>
+                  <%= f.submit 'Envoyer', class: 'site-btn col-md-12 bg-primary  mt-2' %>
                 </div>
               <% end %>
             </div>
