@@ -11,6 +11,7 @@ module ApplicationHelper
             flash[:alert_admin] = "Non mais tu t'es pris pour un admin ?!"
         end
     end
+    
     def is_completed?
         if current_user.completed == true
             return true
