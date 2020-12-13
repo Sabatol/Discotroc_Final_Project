@@ -49,9 +49,7 @@ Disc.create(
 end
 
 
-users = []
-
-users << User.create(
+User.create(
   first_name: 'DiscoTroc',
   last_name: 'Admin',
   email: 'discotroc@yopmail.com',
@@ -66,7 +64,7 @@ users << User.create(
   completed: true,
   is_admin?: true
 )
-users << 9.times do
+9.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -84,10 +82,10 @@ users << 9.times do
   )
 end
 
-# Create first user_library alpha_disc for each user
+# Create for each user their first user_library (with alpha_disc)
 i = 0
 10.times do
-  UserLibrary.create(disc_id: Disc.ids[0], description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
+  UserLibrary.create(disc_id: Disc.ids[0], description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: User.ids[i])
   i += 1
 end
 
@@ -113,31 +111,31 @@ y = 1
 z = 2
 deals = []
 8.times do
-  deals << Deal.create(sender_id: User.ids[y], receiver_id: User.ids[z])
+  Deal.create(sender_id: User.ids[y], receiver_id: User.ids[z])
 
   DealContent.create(
-    deal_id: deals[x].id,
-    sender_library_id: deals[x].sender.user_library_ids.sample,
-    receiver_library_id: deals[x].receiver.user_library_ids.sample
+    deal_id: Deal.ids[x],
+    sender_library_id: Deal.all[x].sender.user_library_ids.sample,
+    receiver_library_id: Deal.all[x].receiver.user_library_ids.sample
   )
 
   2.times do
     Comment.create(
       comment_sender_id: User.ids[y],
       comment_receiver_id: User.ids[z],
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       content: Faker::Lorem.sentence(word_count: rand(3..15))
     )
   end
 
   2.times do
     DealPm.create(
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       pm_author_id: User.ids[y],
       content: Faker::Lorem.sentence(word_count: rand(3..12))
     )
     DealPm.create(
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       pm_author_id: User.ids[z],
       content: Faker::Lorem.sentence(word_count: rand(3..12))
     )
