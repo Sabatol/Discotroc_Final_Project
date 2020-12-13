@@ -48,7 +48,16 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">
+						<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -83,7 +92,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	              <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -118,7 +135,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -153,7 +178,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -188,7 +221,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -223,7 +264,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -258,7 +307,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -293,7 +350,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -328,7 +393,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -363,7 +436,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -398,7 +479,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -433,7 +522,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -468,7 +565,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -503,7 +608,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
@@ -538,7 +651,15 @@
             <% else %>
 						<%=image_tag "playlist/4.jpg", :class => "ss-thumb" %src= alt=""%>
 						<% end %>
-						<div class="head-lib-card"><h4><%=library.disc.title%></h4>
+						<div class="head-lib-card">	<%if library.disc.title.length < 15%>
+						<h4><%=library.disc.title%></h4>
+						<%elsif library.disc.title.length >14 && library.disc.title.length < 23%>
+						<h5><%=library.disc.title%></h5>
+						<%elsif library.disc.title.length > 23 && library.disc.title.length < 30%>
+						<h6><%=library.disc.title%></h6>
+						<%else%>
+						<h6><%=library.disc.title.split(//)[0..21].push("...").join%></h6>
+						<%end%>
 							 <%=link_to user_library_path(library.id) do %>
 	  <i class="fas fa-eye" style="color:#0a183d; font-size: 25px; padding-right:14px"></i><%end%></div>
 							<div class="head-lib-card"><p><%=library.disc.artist%></p></div>
