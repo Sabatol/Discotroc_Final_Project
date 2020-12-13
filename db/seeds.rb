@@ -9,7 +9,7 @@ require 'faker'
 
 genres = %w[
   Disco
-  Electroniques
+  Electronique
   Hip-Hop
   Jazz
   Soul
@@ -88,25 +88,20 @@ end
 
 # Create first user_library alpha_disc for each user
 i = 0
-10.times do 
+10.times do
   UserLibrary.create(disc_id: Disc.ids[0], description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
   i += 1
 end
 
-i = 0
+
 n = 0
 15.times do
-  i = rand(4..10)
+  i = rand(1..10)
   UserLibrary.create(
     user_id: User.ids[n],
     disc_id: Disc.ids[i],
     description: Faker::Lorem.sentence(word_count: rand(2..10))
   )
-  if i < Disc.count
-    i += 1
-  else
-    i = 0
-  end
   if n < User.count
     n += 1
   else
@@ -115,25 +110,47 @@ n = 0
 end
 
 
+x = 0
+y = 1
+z = 2
+deals = []
 8.times do
-  Deal.create(sender_id: User.ids.sample, receiver_id: User.ids.sample)
-end
+  deals << Deal.create(sender_id: User.ids[y], receiver_id: User.ids[z])
 
-12.times do
   DealContent.create(
-    deal_id: Deal.ids.sample,
-    sender_library_id: UserLibrary.ids.sample,
-    receiver_library_id: UserLibrary.ids.sample
+    deal_id: deals[x].id,
+    sender_library_id: deals[x].sender.user_library_ids.sample,
+    receiver_library_id: deals[x].receiver.user_library_ids.sample
   )
+
+  2.times do
+    Comment.create(
+      comment_sender_id: User.ids[y],
+      comment_receiver_id: User.ids[z],
+      deal_id: deals[x].id,
+      content: Faker::Lorem.sentence(word_count: rand(3..15))
+    )
+  end
+
+  2.times do
+    DealPm.create(
+      deal_id: deals[x].id,
+      pm_author_id: User.ids[y],
+      content: Faker::Lorem.sentence(word_count: rand(3..12))
+    )
+    DealPm.create(
+      deal_id: deals[x].id,
+      pm_author_id: User.ids[z],
+      content: Faker::Lorem.sentence(word_count: rand(3..12))
+    )
+  end
+
+  x += 1
+  y += 1
+  z += 1
 end
 
-12.times do
-  DealPm.create(
-    deal_id: Deal.ids.sample,
-    pm_author_id: User.ids.sample,
-    content: Faker::Lorem.sentence(word_count: rand(3..12))
-  )
-end
+
 n = 0
 25.times do
   Article.create(
@@ -145,26 +162,5 @@ n = 0
     n += 1
   else
     n = 0
-  end
-end
-
-n = 0
-i = 1
-200.times do
-  Comment.create(
-    comment_sender_id: User.ids[n],
-    comment_receiver_id: User.ids[i],
-    deal_id: Deal.ids[n],
-    content: Faker::Lorem.sentence(word_count: rand(3..15))
-  )
-  if n < User.count
-    n += 1
-  else
-    n = 0
-  end
-  if i < User.count
-    i += 1
-  else
-    i = 0
   end
 end
