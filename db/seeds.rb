@@ -1,12 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 
+
+ # Create genre of music for filter
 genres = %w[
   Disco
   Electronique
@@ -42,7 +40,7 @@ Disc.create(
   Disc.create(
     title: Faker::Music.album,
     release: rand(1940..2020),
-    label: 'PROUTPROUT',
+    label: 'Label',
     country: 'France',
     artist: Faker::Music.band,
     genre: Genre.all.sample,
@@ -73,13 +71,13 @@ users << 9.times do
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    password: 'Cacaboudin',
-    password_confirmation: 'Cacaboudin',
+    password: 'Azerty',
+    password_confirmation: 'Azerty',
     address: Faker::Address.street_address,
     additional_address: Faker::Address.secondary_address,
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
-    country: 'France',
+    country: Faker::Address.country,
     description: Faker::Lorem.sentence(word_count: rand(3..15)),
     completed: true,
     is_admin?: false
