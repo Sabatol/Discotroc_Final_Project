@@ -6,6 +6,15 @@
   </head>
 <body>
 	<!-- /login-section -->
+  <% if flash[:notice_bad] %>
+    <div class="alert alert-danger mb-0">
+      <% if user_signed_in? %>
+        Veillez à remplir tous les champs afin de créer votre disque.
+      <% else %>
+        Veuillez vous inscrire et compléter votre profil pour accéder à cette fonctionnalité.
+      <% end %>
+    </div>
+  <% end %>
 	<section class="w3l-login-6">
 		<div class="login-hny">
 			<div class="form-content">
@@ -56,7 +65,7 @@
                <div class="copy-right text-center">
           <br>
           <%= link_to "Retour", :back, class: "site-btn text-center", style: "padding: 10px 12px"%><br><br>
-          <%= link_to "Revenir à l'accueil", root_path, style:" margin-top: 0.5rem"%> 
+          <%= link_to "Revenir à l'accueil", root_path, style:" margin-top: 0.5rem"%>
         </div>
 
 			</div>
