@@ -91,11 +91,14 @@
 
 
 <div class="container">
+
+
+<%if @disc.user_libraries.count != 0%>
 <div class="disc-show-list text-center">
 	<h1>Trocs disponibles</h1>
 </div>
 
-<div class="row playlist-area deal-list" style=>
+<div class="row playlist-area deal-list">
 	<%@disc.user_libraries.each_with_index do |library, index|%>
 	<%if @disc.user_libraries[index].user.first_name != nil && @disc.user_libraries[index].user.last_name != nil%>
 
@@ -134,6 +137,7 @@
 		</div>
 	</div>
 
+	<%end%>
 	<%end%>
 	<%end%>
 </div>
