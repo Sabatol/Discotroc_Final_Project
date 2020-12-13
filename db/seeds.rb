@@ -1,12 +1,9 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 
+# Create genre of music for filter
 genres = %w[
   Disco
   Electronique
@@ -24,10 +21,10 @@ genres = %w[
 ]
 genres.each { |name| Genre.create(name: name) }
 
-formats = ['Vinyle 33T', 'Vinyle 45T', 'CD']
+formats = ['Vinyle 33T', 'Vinyle 45T', 'Vinyl 78T', 'CD', 'LaserDisc', 'Blue-Ray BDA', 'Dual Disc', 'DVD-A']
 formats.each { |name| Format.create(name: name) }
 
-# Alpha_disc creation for user_controller => method: update
+# Alpha_disc creation for user_controller => method: update    *Alpha_disc is the first disc of the table and we use it for selector in deal_show      
 Disc.create(
   title: 'Veuillez choisir un disque à échanger',
   release: 2020,
@@ -42,7 +39,7 @@ Disc.create(
   Disc.create(
     title: Faker::Music.album,
     release: rand(1940..2020),
-    label: 'PROUTPROUT',
+    label: 'Nu Guinea',
     country: 'France',
     artist: Faker::Music.band,
     genre: Genre.all.sample,
@@ -51,9 +48,7 @@ Disc.create(
 end
 
 
-users = []
-
-users << User.create(
+User.create(
   first_name: 'DiscoTroc',
   last_name: 'Admin',
   email: 'discotroc@yopmail.com',
@@ -68,25 +63,26 @@ users << User.create(
   completed: true,
   is_admin?: true
 )
-users << 9.times do
+
+9.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    password: 'Cacaboudin',
-    password_confirmation: 'Cacaboudin',
+    password: 'azerty',
+    password_confirmation: 'azerty',
     address: Faker::Address.street_address,
     additional_address: Faker::Address.secondary_address,
     zipcode: Faker::Address.zip_code,
     city: Faker::Address.city,
-    country: 'France',
-    description: Faker::Lorem.sentence(word_count: rand(3..15)),
+    country: Faker::Address.country,
+    description: Faker::Lorem.sentence(word_count: rand(5..15)),
     completed: true,
     is_admin?: false
   )
 end
 
-# Create first user_library alpha_disc for each user
+# Create first user_library alpha_disc for each user    *Alpha_disc is the first disc of the table and we use it for selector in deal_show 
 i = 0
 10.times do
   UserLibrary.create(disc_id: Disc.ids[0], description: "Ce disque n'est pas sensé apparaître, merci de contacter les administrateurs du site à ce sujet si vous voyez ce message.", user_id: users[i])
@@ -113,33 +109,32 @@ end
 x = 0
 y = 1
 z = 2
-deals = []
 8.times do
-  deals << Deal.create(sender_id: User.ids[y], receiver_id: User.ids[z])
+Deal.create(sender_id: User.ids[y], receiver_id: User.ids[z])
 
   DealContent.create(
-    deal_id: deals[x].id,
-    sender_library_id: deals[x].sender.user_library_ids.sample,
-    receiver_library_id: deals[x].receiver.user_library_ids.sample
+    deal_id: Deal.ids[x],
+    sender_library_id: Deal.ids[x]nder.user_library_ids.sample,
+    receiver_library_id: Deal.ids[x]ceiver.user_library_ids.sample
   )
 
   2.times do
     Comment.create(
       comment_sender_id: User.ids[y],
       comment_receiver_id: User.ids[z],
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       content: Faker::Lorem.sentence(word_count: rand(3..15))
     )
   end
 
   2.times do
     DealPm.create(
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       pm_author_id: User.ids[y],
       content: Faker::Lorem.sentence(word_count: rand(3..12))
     )
     DealPm.create(
-      deal_id: deals[x].id,
+      deal_id: Deal.ids[x],
       pm_author_id: User.ids[z],
       content: Faker::Lorem.sentence(word_count: rand(3..12))
     )
