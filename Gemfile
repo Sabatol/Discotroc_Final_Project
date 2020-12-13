@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # Gem that opens the mails send by mailer in the default browser
   gem 'letter_opener'
 end
 
@@ -61,10 +62,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Devise for users
 gem 'devise'
 
+# Gem for fill DB tables with consistent informations
+gem 'faker'
+
 # Dotenv to protect API keys
 gem 'dotenv-rails'
-gem 'faker'
+
+# Used to display the contents of the DB tables in the terminal
 gem 'table_print'
+
+
+# Required to recover Cover Picture from discs on the internet via Discogs
 gem "discogs-wrapper"
-gem 'social-share-button', github: "huacnlee/social-share-button"
+
+# Make an Admin Dashboard 
 gem "administrate"
+
+# For build social share button
+gem 'social-share-button', github: "huacnlee/social-share-button"
+
