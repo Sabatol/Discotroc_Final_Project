@@ -20,8 +20,8 @@ class DealsController < ApplicationController
 
       # Create an initial deal_content when deal creation, to move in model for FAT models, SKINNY controllers
       sender_library = UserLibrary.find(current_user.user_libraries.first.id)
-      receiver_library = UserLibrary.find(params[:user_library_id])
-      new_deal_content = DealContent.create(sender_library_id: sender_library.id, receiver_library_id: receiver_library.id, deal_id: @new_deal.id)
+      @receiver_library = UserLibrary.find(params[:user_library_id])
+      new_deal_content = DealContent.create(sender_library_id: sender_library.id, receiver_library_id: @receiver_library.id, deal_id: @new_deal.id)
       ####
       flash[:notice_good] = "Le troc a bien été initié."
       redirect_to user_library_deal_path(params[:user_library_id], @new_deal.id)
