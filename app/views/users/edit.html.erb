@@ -6,6 +6,16 @@
 
 <body>
 	<!-- /login-section -->
+	<% if flash[:alert] %>
+		<div class="alert alert-danger mb-0">
+			<% if user_signed_in? %>
+				Veuillez compléter votre profil pour accéder à cette fonctionnalité.
+				<%= link_to "Compléter mon profil", edit_user_path(current_user.id), class: "text-dark ml-4" %>
+			<% else %>
+				Veuillez vous inscrire et compléter votre profil pour accéder à cette fonctionnalité.
+			<% end %>
+		</div>
+	<% end %>
 	<section class="w3l-login-6">
 		<div class="login-hny">
 			<div class="form-content">

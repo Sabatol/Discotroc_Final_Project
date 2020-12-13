@@ -11,16 +11,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger mb-0">
-        <% if user_signed_in? %>
-          Veuillez compléter votre profil pour accéder à cette fonctionnalité.
-          <%= link_to "Compléter mon profil", edit_user_path(current_user.id), class: "text-dark ml-4" %>
-        <% else %>
-          Veuillez vous inscrire et compléter votre profil pour accéder à cette fonctionnalité.
-        <% end %>
-      </div>
-    <% end %>
     <% if flash[:alert_admin] %>
       <div class="alert alert-danger mb-0">
         Cette page est réservée aux Admin

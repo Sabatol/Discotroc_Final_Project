@@ -11,12 +11,12 @@ module ApplicationHelper
             flash[:alert_admin] = "Non mais tu t'es pris pour un admin ?!"
         end
     end
-    
+
     def is_completed?
         if current_user.completed == true
             return true
         else
-            redirect_to root_path
+            redirect_to edit_user_path(current_user)
             flash[:alert] = "Veuillez compléter votre profil pour accéder à cette fonctionnalité"
         end
     end
