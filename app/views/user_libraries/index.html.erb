@@ -1,11 +1,11 @@
    <head>
     <title>Discotroc - Liste des Trocs </title>
     <meta name="description" content="Discs Index">
-    <meta name="keywords" content="music, html">>
+    <meta name="keywords" content="music, html">
 <%= render 'head'%>
   </head>
             	<!-- Page Preloder -->
-							
+
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -15,7 +15,7 @@
 	<section class="similar-songs-section">
 		<div class="container-fluid">
 			<div class="text-center">
-		  <h1>Disques à Troquer</h1>
+		  <h1>Espace Troc</h1>
 						<h4 class="disc-index-title" style="margin-bottom: 15px">Cherchez votre bonheur</h4></div>
 			<div class="container text-center">
   <% if user_signed_in? %>
@@ -39,6 +39,7 @@
 			<div class='container'>
 				<div class="row playlist-area">
 			<%@user_libraries.each_with_index do |library, index|%>
+      <% unless library.disc.id == 1 %>
 			<% if library.disc.genre.name == @all_genres[0].name%>
 				<div class="mix col-xl-3 col-sm-6 <%=@all_genres[0].name%>">
 					<div class="library-index-card" style="height: 95%;">
@@ -62,12 +63,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -97,12 +98,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -132,12 +133,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -167,12 +168,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -202,12 +203,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -237,12 +238,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -272,12 +273,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -307,12 +308,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -342,12 +343,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -377,12 +378,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -412,12 +413,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -447,12 +448,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -482,12 +483,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -517,12 +518,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -552,12 +553,12 @@
 									<div class="lib-index-butn" >
 									<%if user_signed_in?%>
 									<%if current_user.id != library.user_id%>
-									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%elsif current_user.id == library.user_id%>
-									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									 <%= link_to "Voir mon Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 									<%else%>
-									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center"%></div>
+									<%= link_to "Proposer un Troc", user_library_path(library.id), class: "btn-library-index text-center mt-3"%></div>
 									<%end%>
 
 									</div>
@@ -565,9 +566,10 @@
                  	</div>
 									</div>
 							<%end%>
+              <%end%>
 							<%end%>
 							</div>
-							
+
 			</div>
     <br>
         <div class="copy-right text-center">
