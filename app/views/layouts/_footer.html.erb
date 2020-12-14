@@ -19,15 +19,15 @@
               <ul>
                 <% if user_signed_in? %>
                   <li><%=link_to 'Profil', user_path(current_user.id) %> </li>
-                    <li><%=link_to 'Inscription', new_user_registration_path %> </li>
+                  <li><%=link_to 'Inscription', new_user_registration_path %> </li>
                   <li><%=link_to 'Blog', articles_path %></li>
-                  <li><%=link_to 'Marché aux trocs', user_libraries_path  %></li>
-                  <li><%=link_to 'Retour accueil', root_path %></li>
+                  <li><%=link_to 'Marché aux Trocs', user_libraries_path  %></li>
+                  <li><%=link_to 'Retour Accueil', root_path %></li>
                 <%else%>
                   <li><%=link_to 'Inscription', new_user_registration_path %> </li>
                   <li><%=link_to 'Blog', articles_path %></li>
-                  <li><%=link_to 'Marché aux trocs', user_libraries_path  %></li>
-                  <li><%=link_to 'Retour accueil', root_path %></li>
+                  <li><%=link_to 'Marché aux Trocs', user_libraries_path  %></li>
+                  <li><%=link_to 'Retour Accueil', root_path %></li>
                 <%end%>
               </ul>
             </div>
