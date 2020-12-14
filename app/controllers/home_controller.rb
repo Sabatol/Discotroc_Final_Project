@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @four_libraries = UserLibrary.last(4)
+    userlibraries = UserLibrary.all.without(disc_id: 1)
+    @four_libraries = userlibraries.last(4)
   end
 end
