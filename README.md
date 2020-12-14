@@ -1,73 +1,96 @@
-###ALERTE
+# DiscoTroc
 
-Le readme, tout comme l'application, est en cours de fabrication !
 
-# Discotroc
+![alt text][img]
 
-Discotroc est un site à but non-lucratif. Il connecte les utilisateurs entre eux dans le but d’échanger des vinyles, et de partager leur passion des disques et de la musique.
 
-Discotroc ne dispose pas de moyen de paiement, la seule monnaie est l'échange !
+[DiscoTroc](https://discotroc-dev.herokuapp.com/) is a non-profit site. It connects users with each other for the purpose of exchanging records, and sharing their passion for records and music.
 
-C'est avant tout une communauté de passionnés qui veulent échanger leurs disques. Il est aussi possible de soumettre des articles et playlists afin de partager ses coups de cœur.
+DiscoTroc does not have a means of payment, only the exchange!
 
-Au travers d'articles et playlists, les membres de la communauté font découvrir leurs pépites. Aussi si vous n'avez pas d'idée précise, vous pouvez tout simplement chercher parmi les disques disponibles à l'échange.
+It is above all a community of enthusiasts and connoisseurs who want to exchange their musical nuggets. It is also possible to submit articles in order to share your favorites, rants, etc.
 
-## Parcours Utilisateur
+### User Browsing
+
+A user named "felix" searches on google for a site which would allow him to get rid of his old discs and discover others at a lower cost.
+After a brief search on google.com, he clicks on the link leading to the DiscoTroc application.
+
+After seeing the hompage he understands that he has to create a user account to offer his old records.
+
+He searches in our database, and after having found 2 of the 3 discs that he will offer for exchange, he understands that the third one does not yet exist and he decides to register it on the site.
+After entering some information, our application will find for him the most appropriate cover image for his disc.
+
+A few days later he receives an email informing him that someone is interested in his record. after some discussions he concludes an agreement.
+Users will finalize the exchange by post
+
 
 [img]: https://media.lactualite.com/2016/06/Vinyle-768x432.jpg "Super vinyle"
 
-Reference-style:
-![alt text][img]
+## Developpement  
 
-## Installation
+### How to Install
 
-- Avoir un super ordinateur
-- Faire fonctionner rails
-- Ouvrir ses petits yeux fatigués
+This app is created with Ruby 2.7.1 in Rails 6 (PostGresQL).
+
+(You need to have a linux environnement like WSL, MacOS or a distro like Ubuntu or others)
+
+For LocalHost Server
+- Clone or download this repository
+- Go in the folder's app with you terminal (check the path) and run this command :
+```ruby
+$ bundle install
+
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
 
 ```
+ And now you can run 
+```ruby
+$ rails s
+```
+enjoy !
 
-bundle install
-rails db:create db:migrate db:seed
-rails s
-
+You can also use the BuildIn Console with the command
+```ruby
+$ rails c
 ```
 
-## Fonctionnalités déjà implémentées
-
-- Créer, voir et modifier un profil
-- Poster et voir un ou plusieurs vinyles
-- Rechercher un deal
-- Créer et participer à un deal
-- Mener à bien un échange entre deux utilisateurs
-- Recevoir un email de changement de mot de passe
-- API Discogs
-- Devise
+## Somes Features
+- Create, view and modify a profile
+- Post and view one or more vinyls
+- Find a deal
+- Create and participate in a deal
+- Find Cover picture automaticly (Powered by Discogs)
+- Carry out an exchange between two users
+- Mailer (register confirmation, forgotten password, Deal confirmed, contact us)
+- Currency
 - Active Storage
 
-| /                     | Visiteur | Utilisateur connecté | Utilisateur confirmé |
+etc...
+
+### Users Permissions
+
+|                       | Visitor  |    Connected User    |   Confirmed User     |
 | --------------------- | -------- | -------------------- | -------------------- |
-| _S'inscrire_          | Oui      | /                    | /                    |
-| _Se connecter_        | Oui      | Oui                  | Oui                  |
-| _Modifier son profil_ | Non      | Oui                  | Oui                  |
-| _Voir les vinyles_    | Oui      | Oui                  | Oui                  |
+| _Sign Up_             | Yes      |      ----------      |      ----------      |
+| _Sign In_             |   ----   | Yes                  | Yes                  |
+| _Edit Profil_         | No       | Yes                  | Yes                  |
+| _Look at Discs_       | Yes      | Yes                  | Yes                  |
+| _Make A Deal_         | No       | Yes                  | Yes                  |
 
-## Fonctionnalités à venir
+## The Team 
 
--
--
--
+This project was made in 2 weeks and updated by the "Vocal ONE" Team of the BootCamp "The Hacking Project".
 
-## PLSisation
+- Chris Boyer (ChriZoizo)
+- Florian Empinet (FlorianE-THP)
+- Jonathan Bouillaux (Piwiit)
+- Ugo Sacrez (Sabatol)
+- Killian Kos (Kill84)
 
-Ranked top 5 :
+# Heroku Link
 
-1.
-1.
-1.
-1.
-1.
 
-## La fameuse application !
-
-[Discotroc !](https://discotroc-dev.herokuapp.com/)
+the following link open the Production Application Hosted by Heroku :
+[DiscoTroc](https://discotroc-dev.herokuapp.com/)
