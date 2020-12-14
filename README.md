@@ -93,4 +93,4 @@ This project was made in 2 weeks and updated by the "Vocal ONE" Team of the Boot
 
 
 the following link open the Production Application Hosted by Heroku :
-[DiscoTroc](https://discotroc-dev.herokuapp.com/)
+[DiscoTroc](https://discotroc.herokuapp.com/)
