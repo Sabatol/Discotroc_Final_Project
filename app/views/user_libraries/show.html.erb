@@ -100,6 +100,7 @@
       </div>
       <div class="row playlist-area deal-list" style=>
         <%@user_library.user.user_libraries.each_with_index do |library, index|%>
+        <%if library.disc_id != 1 %>
           <%if library.user.first_name != nil && library.user.last_name != nil%>
             <div class="mix col-xl-3 col-sm-6">
               <div class="library-index-card" style="height: 95%;">
@@ -133,7 +134,8 @@
                 </div>
               </div>
             </div>
-          <%end%>
+          <% end %>
+        <% end %>
         <% end %>
       </div>
     <br>
