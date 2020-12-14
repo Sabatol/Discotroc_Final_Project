@@ -1,7 +1,3 @@
-###ALERTE
-
-Le readme, tout comme l'application, est en cours de fabrication !
-
 # Discotroc
 
 Discotroc est un site à but non-lucratif. Il connecte les utilisateurs entre eux dans le but d’échanger des vinyles, et de partager leur passion des disques et de la musique.
@@ -22,10 +18,8 @@ Reference-style:
 ## Installation
 
 - Avoir un super ordinateur
-- Faire fonctionner rails
-- Ouvrir ses petits yeux fatigués
-
-```
+- cette application fonctionne avec Ruby 2.7.1
+- Faire fonctionner rails 6.0.3
 
 bundle install
 rails db:create db:migrate db:seed
@@ -41,9 +35,11 @@ rails s
 - Créer et participer à un deal
 - Mener à bien un échange entre deux utilisateurs
 - Recevoir un email de changement de mot de passe
+- Recevoir un email lors de la création d'un deal
 - API Discogs
 - Devise
 - Active Storage
+- dashboard administrateur
 
 | /                     | Visiteur | Utilisateur connecté | Utilisateur confirmé |
 | --------------------- | -------- | -------------------- | -------------------- |
@@ -52,22 +48,13 @@ rails s
 | _Modifier son profil_ | Non      | Oui                  | Oui                  |
 | _Voir les vinyles_    | Oui      | Oui                  | Oui                  |
 
-## Fonctionnalités à venir
-
--
--
--
-
-## PLSisation
-
-Ranked top 5 :
-
-1.
-1.
-1.
-1.
-1.
 
 ## La fameuse application !
 
 [Discotroc !](https://discotroc-dev.herokuapp.com/)
+
+parcours admin
+- email : discotroc@yopmail.com
+- mot de passe : THPdiscoTROC3483
+
+```
