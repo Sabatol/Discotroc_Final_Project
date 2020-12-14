@@ -37,17 +37,17 @@
 				<div class="form-left">
 					<div class="middle">
 						<h4>S'inscrire</h4>
-						<p>Créez votre compte, et troquez.</p> <br>
+						<p>Créez votre compte et troquez !</p> <br>
 					</div>
 					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 					<form action="#" method="post" class="signin-form">
 							<div class="form-input">
 								<label>Adresse email</label>
-								 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "dupont@yopmail.com", type: "email" %>
+								 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "mail@exemple.com", type: "email" %>
 							</div><br>
 							<div class="form-input">
 								<label>Mot de passe</label>
-								 <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 charactéres minimum", type: "password" %>
+								 <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 caractères minimum", type: "password" %>
 							</div><br>
 							<div class="form-input">
 								<label>Confirmation de mot de passe</label>
